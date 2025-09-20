@@ -1,0 +1,66 @@
+import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Card } from "../ui/card";
+
+export default function Footer() {
+  return (
+    <footer className="w-full border-t border-blue-950 bg-zinc-950 p-6">
+      {/* Topo */}
+      <div className="grid grid-cols-1 md:gap-8 md:grid-cols-3 lg:grid-cols-4">
+        {/* Marca */}
+        <Card className="border-none bg-transparent shadow-none max-w-sm">
+          <h1 className="text-xl font-bold">LinKarme</h1>
+          <p className=" text-sm text-foreground/70 max-w-xs">
+            Plataforma de encurtamento e rastreamento de links para
+            empreendedores digitais.
+          </p>
+        </Card>
+
+        {/* Plataforma */}
+        <Card className="border-none bg-transparent shadow-none">
+          <h2 className="font-semibold">Plataforma</h2>
+          <div className=" flex flex-col gap-2 text-sm text-foreground/70">
+            <span>Preços</span>
+            <span>Afiliados</span>
+            <span>Sobre</span>
+          </div>
+        </Card>
+
+        {/* Legais */}
+        <Card className="border-none bg-transparent shadow-none">
+          <h2 className="font-semibold">Legais</h2>
+          <div className=" flex flex-col gap-2 text-sm text-foreground/70">
+            <span>Termos de serviços</span>
+            <span>Política de privacidade</span>
+          </div>
+        </Card>
+
+        {/* Contato */}
+        <Card className="p-4 border border-blue-500/40 bg-linear-to-r bg-blue-900/5 to-blue-900/40 shadow-none h-min">
+          <h2 className="font-semibold">Entre em contato</h2>
+
+          <div className="flex flex-col gap-2">
+            <p className="text-sm text-foreground/80">
+              Email: contato@linkarme.com
+            </p>
+            <p className="text-sm text-foreground/80">
+              WhatsApp: (99) 9999-9999
+            </p>
+          </div>
+        </Card>
+      </div>
+
+      {/* Base */}
+      <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-foreground/10 pt-6 text-sm text-foreground/70 md:flex-row">
+        <span>
+          © {new Date().getFullYear()} LinKarme. Todos os direitos reservados.
+        </span>
+        <div className="flex gap-4">
+          <Linkedin className="size-5 cursor-pointer hover:text-foreground" />
+          <Instagram className="size-5 cursor-pointer hover:text-foreground" />
+          <Facebook className="size-5 cursor-pointer hover:text-foreground" />
+          <Youtube className="size-5 cursor-pointer hover:text-foreground" />
+        </div>
+      </div>
+    </footer>
+  );
+}
