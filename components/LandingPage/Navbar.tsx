@@ -14,12 +14,12 @@ import { Menu } from 'lucide-react';
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center w-full justify-between p-4 border-b">
+    <nav className="flex items-center w-full justify-between p-4 border-b text-white">
       {/* Logo */}
       <h1 className="font-black text-lg">Linkarme</h1>
 
       {/* Menu Desktop */}
-      <div className="hidden md:flex items-center gap-10 font-mono text-foreground/80">
+      <div className="hidden md:flex items-center gap-10 font-mono text-white/80">
         <span>Início</span>
         <span>Preços</span>
         <span>Contatos</span>
@@ -30,7 +30,7 @@ export default function Navbar() {
       <div className="hidden md:flex items-center gap-4">
         <Link href="/auth/sign-up">
           <ShimmerButton>
-            <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-foreground/90">
+            <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white/90">
               Cadastrar
             </span>
           </ShimmerButton>
@@ -53,11 +53,11 @@ export default function Navbar() {
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="flex flex-col">
-            <SheetHeader>
-              <SheetTitle>Menu</SheetTitle>
+          <SheetContent side="right" className="flex flex-col bg-background text-white">
+            <SheetHeader className='text-white'>
+              <SheetTitle className='text-white'>Menu</SheetTitle>
             </SheetHeader>
-            <div className="flex flex-col gap-4 font-mono text-foreground/80 px-4">
+            <div className="flex flex-col gap-4 font-mono text-white/80 px-4">
               <span>Início</span>
               <span>Preços</span>
               <span>Contatos</span>
@@ -66,7 +66,7 @@ export default function Navbar() {
             <div className="flex flex-col gap-4 mt-auto p-4 w-full">
                <Link href="/auth/sign-up" className='flex w-full'>
               <ShimmerButton className='flex w-full'>
-                <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-foreground/90">
+                <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white/90">
                   Cadastrar
                 </span>
               </ShimmerButton>
@@ -74,7 +74,7 @@ export default function Navbar() {
 
                 <Link href="/auth/login" className='flex w-full'>
               <ShimmerButton className='flex w-full'>
-                <span className="whitespace-pre-wrap text-center text-sm font-bold leading-none tracking-tight text-primary">
+                <span className="whitespace-pre-wrap text-center text-sm font-bold leading-none tracking-tight text-white/90">
                   Entrar
                 </span>
               </ShimmerButton>
