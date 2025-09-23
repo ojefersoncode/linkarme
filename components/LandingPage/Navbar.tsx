@@ -56,7 +56,7 @@ export default function Navbar() {
             side="right"
             className="flex flex-col bg-background text-white"
           >
-            <SheetHeader className="text-white">
+            <SheetHeader className="text-text-muted">
               <SheetTitle className="text-muted">Menu</SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-4 font-mono text-white/80 px-4">
