@@ -9,7 +9,7 @@ export default function HomePage() {
       <div className="min-h-screen">
         <Navbar />
 
-        <div className="flex flex-col items-center justify-center mx-auto px-4 md:h-[400px] max-md:h-[500px]">
+        <div className="flex flex-col items-center justify-center mx-auto px-4 md:h-[400px] max-md:h-[400px]">
           <div className="text-center space-y-4 pt-28">
             <div className="space-y-4">
               <h1 className="text-2xl md:text-6xl md:max-w-5xl max-md:max-w-md font-bold text-[#eaedf4]">
