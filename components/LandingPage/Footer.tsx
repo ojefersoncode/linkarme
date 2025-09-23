@@ -3,7 +3,7 @@ import { Card } from '../ui/card';
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-zinc-950 bg-background p-6">
+    <footer className="w-full border-t border-accent/40 bg-background p-6">
       {/* Topo */}
       <div className="grid grid-cols-1 md:gap-8 md:grid-cols-3 lg:grid-cols-4">
         {/* Marca */}
@@ -35,7 +35,7 @@ export default function Footer() {
         </Card>
 
         {/* Contato */}
-        <Card className="p-4 border border-zinc-700 bg-foreground shadow-none h-min">
+        <Card className="p-4 border border-accent/50 bg-accent/20 shadow-none h-min">
           <h2 className="font-semibold">Entre em contato</h2>
 
           <div className="flex flex-col gap-2">

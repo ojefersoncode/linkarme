@@ -31,7 +31,7 @@ export default function HomePage() {
 
             <div className="py-4 px-2 md:hidden">
               <img
-                className="border rounded-md"
+                className="border border-accent/40 rounded-md"
                 src="/dashboard.png"
                 alt=""
               />
@@ -40,7 +40,7 @@ export default function HomePage() {
         </div>
 
         <div className="md:px-12 max-md:hidden pb-12">
-          <img  className="border rounded-md" src="/dashboard.png" alt="" />
+          <img  className="border border-accent/40 rounded-lg" src="/dashboard.png" alt="" />
         </div>
       </div>
 

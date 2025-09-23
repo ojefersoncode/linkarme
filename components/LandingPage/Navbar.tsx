@@ -28,16 +28,16 @@ export default function Navbar() {
       {/* Botões Desktop */}
       <div className="hidden md:flex items-center gap-4">
         <Link href="/auth/sign-up" className="flex w-full">
-          <Button className="flex w-full rounded-sm bg-primary text-white">
-            <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white/90">
+          <Button className="flex w-full rounded-sm bg-accent/50 hover:bg-accent/50 text-muted">
+            <span className="whitespace-pre-wrap text-center text-sm font-medium">
               Cadastrar
             </span>
           </Button>
         </Link>
 
         <Link href="/auth/login" className="flex w-full">
-          <Button className="flex w-full">
-            <span className="whitespace-pre-wrap text-center text-sm font-bold leading-none tracking-tight text-white/90">
+          <Button className="flex w-full bg-accent/50 hover:bg-accent/50 text-muted">
+            <span className="whitespace-pre-wrap text-center text-sm font-bold">
               Entrar
             </span>
           </Button>
@@ -48,7 +48,7 @@ export default function Navbar() {
       <div className="md:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon">
+            <Button className='bg-transparent hover:bg-transparent text-muted dark:text-muted' size="icon">
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
@@ -57,7 +57,7 @@ export default function Navbar() {
             className="flex flex-col bg-background text-white"
           >
             <SheetHeader className="text-white">
-              <SheetTitle className="text-white">Menu</SheetTitle>
+              <SheetTitle className="text-muted">Menu</SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-4 font-mono text-white/80 px-4">
               <span>Início</span>
@@ -67,16 +67,16 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col gap-4 mt-auto p-4 w-full">
               <Link href="/auth/sign-up" className="flex w-full">
-                <Button className="flex w-full rounded-sm bg-primary text-white">
-                  <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white/90">
+                <Button className="flex w-full rounded-sm bg-accent/50 hover:bg-accent/50 text-white">
+                  <span className="whitespace-pre-wrap text-center text-sm font-medium text-muted">
                     Cadastrar
                   </span>
                 </Button>
               </Link>
 
               <Link href="/auth/login" className="flex w-full">
-                <Button className="flex w-full">
-                  <span className="whitespace-pre-wrap text-center text-sm font-bold leading-none tracking-tight text-white/90">
+                <Button className="flex w-full bg-accent/50 hover:bg-accent/50">
+                  <span className="whitespace-pre-wrap text-center text-sm font-bold text-muted">
                     Entrar
                   </span>
                 </Button>

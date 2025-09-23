@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const createGridMask = (start: number, end: number): string => {
   const mid = (start + end) / 2;
-  return `linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) ${start}%, rgba(0,0,0,0.2) ${mid}%, rgba(0,0,0,0.6) ${end - 20}%, rgba(0,0,0,1) ${end}%)`;
+  return `linear-gradient(to bottom, transparent 100%, rgba(0,0,0,0.05) ${start}%, rgba(0,0,0,0.2) ${mid}%, rgba(0,0,0,0.6) ${end - 20}%, rgba(0,0,0,1) ${end}%)`;
 };
 
 const generateRayConfig = (index: number, total: number) => {
