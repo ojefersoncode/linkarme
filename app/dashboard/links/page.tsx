@@ -9,6 +9,7 @@ import { DeleteLinkButton } from "@/components/delete-link-button"
 import { CopyLinkButton } from "@/components/copy-link-button"
 import { ToggleLinkButton } from "@/components/toggle-link-button"
 import { ExportDataDialog } from "@/components/export-data-dialog"
+import { MenuMobile } from "@/components/menu-mobile"
 
 export default async function LinksPage() {
   const supabase = await createClient()
@@ -53,17 +54,24 @@ export default async function LinksPage() {
     })) || []
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="p-6 max-md:p-0 space-y-6">
+
+      <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+        <div className="flex items-center gap-1 py-3">
+          <MenuMobile /> <img src="/logo.png" alt="" className="h-6" />
+        </div>
+      </div>
+
+
+      <div className="flex items-center justify-between max-md:px-4">
         <div>
-          <h1 className="text-3xl font-bold text-white">Links</h1>
-          <p className="text-muted-foreground">Gerencie seus links curtos personalizados</p>
+          <h1 className="text-2xl max-md:text-xl font-bold text-muted-foreground">Links</h1>
         </div>
         <div className="flex gap-2">
           <ExportDataDialog links={linksForExport} />
-          <Button asChild>
+          <Button asChild className="text-muted max-md:text-sm">
             <Link href="/dashboard/links/create">
-              <Plus className="h-4 w-4 mr-2 text-white" />
+              <Plus className="h-4 w-4 mr-2" />
               Criar Link
             </Link>
           </Button>
@@ -77,7 +85,7 @@ export default async function LinksPage() {
             const shortUrl = `https://${link.domains?.domain}/${link.slug}`
 
             return (
-              <Card key={link.id} className="bg-foreground border-zinc-700">
+              <Card key={link.id} className="bg-foreground border-accent/40">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="space-y-2 flex-1">
@@ -139,7 +147,8 @@ export default async function LinksPage() {
           })}
         </div>
       ) : (
-        <Card className="bg-foreground border border-zinc-700">
+        <div className="max-md:px-4">
+            <Card className="bg-foreground border border-accent/40">
           <CardHeader>
             <CardTitle>Nenhum link encontrado</CardTitle>
             <CardDescription>
@@ -147,7 +156,7 @@ export default async function LinksPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button asChild>
+            <Button asChild className="text-muted max-md:text-sm">
               <Link href="/dashboard/links/create">
                 <Plus className="h-4 w-4 mr-2" />
                 Criar Primeiro Link
@@ -155,6 +164,8 @@ export default async function LinksPage() {
             </Button>
           </CardContent>
         </Card>
+        </div>
+      
       )}
     </div>
   )

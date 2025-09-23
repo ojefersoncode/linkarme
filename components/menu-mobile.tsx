@@ -41,39 +41,36 @@ export function MenuMobile() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="m-2 bg-foreground hover:bg-foreground text-yellow-400 border">
-          <Menu className="h-4 w-4" />
+        <Button className="bg-foreground hover:bg-foreground text-muted-foreground border-none m-0 px-1 py-4">
+          <Menu className="size-5 p-0 m-0" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="bg-foreground p-4 w-64">
-        <SheetHeader>
-          <SheetTitle className="flex items-center gap-2 mb-4 text-white">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <Link2 className="h-4 w-4" />
-            </div>
-            Linkasme
+      <SheetContent side="right" className="bg-foreground pt-2 pb-4 w-64">
+        <SheetHeader className='flex w-full px-0 text-muted'>
+          <SheetTitle className="flex items-center pb-2 text-white border-b border-accent/30 w-full">
+            <img src="/logo.png" alt=""  className='h-6 px-4'/>
           </SheetTitle>
         </SheetHeader>
 
-        <div className="flex flex-col w-full h-screen justify-between">
+        <div className="flex flex-col w-full h-screen justify-between px-2">
           <nav className="flex flex-col gap-2 mb-4">
             {menuItems.map((item) => (
               <Link
                 key={item.title}
                 href={item.url}
-                className="flex items-center gap-2 px-3 py-2 rounded-md text-white hover:text-white transition-all duration-300"
+                className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-white hover:text-muted/80 transition-all duration-300"
               >
-                <item.icon className="h-4 w-4" />
+                <item.icon className="size-4" />
                 {item.title}
               </Link>
             ))}
           </nav>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col px-2">
             <div>
               <Button
                 variant="ghost"
-                className="w-full mb-4 justify-center text-white border border-zinc-700 bg-background hover:bg-background dark:hover:bg-background hover:text-white"
+                className="w-full mb-4 justify-center text-background border-none bg-white hover:bg-background dark:hover:bg-white/80 hover:text-background"
               >
                 Gerenciar plano
               </Button>

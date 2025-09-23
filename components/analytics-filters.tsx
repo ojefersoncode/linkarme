@@ -49,25 +49,25 @@ export function AnalyticsFilters({
   };
 
   return (
-          <Card className="bg-foreground border-zinc-700">
+          <Card className="bg-foreground border-accent/40">
       <CardContent>
         <div className="flex items-center w-full justify-between pb-4">
           <h1 className='font-bold '>Filtro</h1>
-          <Filter className="h-4 w-4 text-yellow-500" />
+          <Filter className="h-4 w-4 text-primary" />
         </div>
         <div className="flex w-full items-center gap-4">
           <Select
             value={currentDays.toString()}
             onValueChange={handleDaysChange}
           >
-            <SelectTrigger className="w-[180px] bg-yellow-500 dark:bg-background hover:bg-background dark:hover:bg-background">
+            <SelectTrigger className="w-[180px] bg-primary dark:bg-primary hover:bg-primary dark:hover:bg-primary">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className='bg-background dark:bg-background hover:bg-background dark:hover:bg-background'>
-              <SelectItem value="7">Últimos 7 dias</SelectItem>
-              <SelectItem value="30">Últimos 30 dias</SelectItem>
-              <SelectItem value="90">Últimos 90 dias</SelectItem>
-              <SelectItem value="365">Último ano</SelectItem>
+            <SelectContent className='bg-background'>
+              <SelectItem className='bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary' value="7">Últimos 7 dias</SelectItem>
+              <SelectItem className='bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary' value="30">Últimos 30 dias</SelectItem>
+              <SelectItem className='bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary' value="90">Últimos 90 dias</SelectItem>
+              <SelectItem className='bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary' value="365">Último ano</SelectItem>
             </SelectContent>
           </Select>
 
@@ -76,11 +76,11 @@ export function AnalyticsFilters({
             value={currentLinkId || 'all'}
             onValueChange={handleLinkChange}
           >
-            <SelectTrigger className="w-[250px] bg-background dark:bg-background hover:bg-background dark:hover:bg-background">
+            <SelectTrigger className="w-[250px] bg-primary dark:bg-primary hover:bg-primary dark:hover:bg-primary">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem className='bg-background dark:bg-background hover:bg-background dark:hover:bg-background' value="all">Todos os links</SelectItem>
+            <SelectContent className='bg-background'>
+              <SelectItem className='bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary' value="all">Todos os links</SelectItem>
               {links.map((link) => (
                 <SelectItem key={link.id} value={link.id}>
                   {link.domains?.domain}/{link.slug}{' '}

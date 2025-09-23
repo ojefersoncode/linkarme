@@ -189,36 +189,42 @@ export default async function AnalyticsPage({
     const userLinks = userLinksResult.data || [];
 
     return (
-      <div className="p-6 space-y-6">
-        <div className="flex items-center justify-between">
+      <div className="p-6 max-md:p-0 space-y-6">
+        <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+          <div className="flex items-center gap-1 py-3">
+            <MenuMobile /> <img src="/logo.png" alt="" className="h-6" />
+          </div>
+          <div className="flex items-center px-4">
+            <ExportDataDialog links={userLinks} />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between max-md:hidden">
           <div>
             <h1 className="text-3xl font-bold text-white">Analytics</h1>
           </div>
 
-       <div className="flex items-center gap-4">
-           <ExportDataDialog links={userLinks} />
-          <div className="md:hidden">
-            <MenuMobile />
+          <div className="flex items-center gap-4">
+            <ExportDataDialog links={userLinks} />
           </div>
         </div>
-          
-       
+
+        <div className="max-md:px-4">
+          <AnalyticsFilters
+            links={userLinks}
+            currentDays={days}
+            currentLinkId={linkId}
+          />
         </div>
 
-        <AnalyticsFilters
-          links={userLinks}
-          currentDays={days}
-          currentLinkId={linkId}
-        />
-
         {/* Overview Cards */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Card className="bg-foreground border-zinc-700">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
+          <Card className="bg-foreground border-accent/40">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Total de Cliques
               </CardTitle>
-              <BarChart3 className="h-4 w-4 text-yellow-500" />
+              <BarChart3 className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -230,12 +236,12 @@ export default async function AnalyticsPage({
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground border-zinc-700">
+          <Card className="bg-foreground border-accent/40">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Visitantes Únicos
               </CardTitle>
-              <Users className="h-4 w-4 text-yellow-500" />
+              <Users className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -247,12 +253,12 @@ export default async function AnalyticsPage({
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground border-zinc-700">
+          <Card className="bg-foreground border-accent/40">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Taxa de Cliques
               </CardTitle>
-              <TrendingUp className="h-4 w-4 text-yellow-500" />
+              <TrendingUp className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -266,10 +272,10 @@ export default async function AnalyticsPage({
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground border-zinc-700">
+          <Card className="bg-foreground border-accent/40">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Países</CardTitle>
-              <Globe className="h-4 w-4 text-yellow-500" />
+              <Globe className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -281,8 +287,8 @@ export default async function AnalyticsPage({
         </div>
 
         {/* Charts */}
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card className="bg-foreground border-zinc-700">
+        <div className="grid gap-6 md:grid-cols-2 max-md:px-4">
+          <Card className="bg-foreground border-accent/40">
             <CardHeader>
               <CardTitle>Cliques ao Longo do Tempo</CardTitle>
               <CardDescription>
@@ -294,7 +300,7 @@ export default async function AnalyticsPage({
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground border-zinc-700">
+          <Card className="bg-foreground border-accent/40">
             <CardHeader>
               <CardTitle>Distribuição Geográfica</CardTitle>
               <CardDescription>Cliques por país</CardDescription>
@@ -306,17 +312,19 @@ export default async function AnalyticsPage({
         </div>
 
         {/* Top Links Table */}
-          <Card className="bg-foreground border-zinc-700">
-          <CardHeader>
-            <CardTitle>Links Mais Acessados</CardTitle>
-            <CardDescription>
-              Seus links com melhor performance nos últimos {days} dias
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <TopLinksTable links={topLinks} />
-          </CardContent>
-        </Card>
+        <div className="max-md:px-4 max-md:pb-4">
+          <Card className="bg-foreground border-accent/40">
+            <CardHeader>
+              <CardTitle>Links Mais Acessados</CardTitle>
+              <CardDescription>
+                Seus links com melhor performance nos últimos {days} dias
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <TopLinksTable links={topLinks} />
+            </CardContent>
+          </Card>
+        </div>
       </div>
     );
   } catch (error) {

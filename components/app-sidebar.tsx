@@ -1,6 +1,6 @@
 "use client"
 
-import { Home, Link2, BarChart3, Settings, Globe, LogOut, CreditCard } from "lucide-react"
+import { Home, Link2, BarChart3, Settings, Globe, LogOut } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -57,13 +57,10 @@ export function AppSidebar() {
 
 
   return (
-    <Sidebar className="bg-foreground border-zinc-700">   
-      <SidebarHeader className="bg-foreground border-zinc-700 p-4">
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Link2 className="h-4 w-4" />
-          </div>
-          <span className="text-lg font-semibold">Linkasme</span>
+    <Sidebar className="bg-foreground border-accent/40">   
+      <SidebarHeader className="bg-foreground border-b border-accent/40 p-4">
+        <div className="flex items-center">
+           <img src="/logo.png" alt="" className='h-6' />
         </div>
       </SidebarHeader>
       <SidebarContent className="justify-between bg-foreground">
@@ -72,7 +69,7 @@ export function AppSidebar() {
             <SidebarMenu>
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className="hover:bg-primary/40 transition-all duration-200">
                     <Link href={item.url}>
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
@@ -84,15 +81,15 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
         <div className="p-4 justify-end">
-            <Button variant="ghost" className="w-full justify-center bg-white text-black hover:bg-white dark:hover:bg-white hover:text-black">
+            <Button variant="ghost" className="w-full justify-center bg-white text-background hover:bg-white dark:hover:bg-white hover:text-background">
          Gerenciar plano
         </Button>
         </div>
              
       </SidebarContent>
-      <SidebarFooter className="border-t p-4 bg-foreground border-zinc-700">
+      <SidebarFooter className="border-t p-4 bg-foreground border-accent/40">
      
-        <Button variant="ghost" className="w-full justify-start" onClick={handleLogout}>
+        <Button className="w-full justify-start bg-transparent hover:bg-transparent text-white" onClick={handleLogout}>
           <LogOut className="h-4 w-4 mr-2" />
           Sair
         </Button>

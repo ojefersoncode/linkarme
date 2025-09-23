@@ -1,6 +1,6 @@
 "use client"
 
-import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 interface ClicksOverTimeChartProps {
@@ -9,7 +9,6 @@ interface ClicksOverTimeChartProps {
 }
 
 export function ClicksOverTimeChart({ data, days }: ClicksOverTimeChartProps) {
-  // Generate array of dates for the period
   const chartData = []
   const endDate = new Date()
 
@@ -22,8 +21,7 @@ export function ClicksOverTimeChart({ data, days }: ClicksOverTimeChartProps) {
       date: dateStr,
       clicks: data[dateStr] || 0,
       displayDate: date.toLocaleDateString("pt-BR", {
-        month: "short",
-        day: "numeric",
+        day: "numeric", // 👈 agora só o dia
       }),
     })
   }
@@ -36,22 +34,19 @@ export function ClicksOverTimeChart({ data, days }: ClicksOverTimeChartProps) {
           color: "hsl(var(--chart-1))",
         },
       }}
-      className="h-[300px]"
+      className="h-[300px] max-w-sm"
     >
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
+        <BarChart data={chartData}>
           <XAxis dataKey="displayDate" tick={{ fontSize: 12 }} interval="preserveStartEnd" />
           <YAxis tick={{ fontSize: 12 }} />
           <ChartTooltip content={<ChartTooltipContent />} />
-          <Line
-            type="monotone"
+          <Bar
             dataKey="clicks"
-            stroke="var(--color-clicks)"
-            strokeWidth={2}
-            dot={{ fill: "var(--color-clicks)", strokeWidth: 2, r: 4 }}
-            activeDot={{ r: 6 }}
+            fill="var(--color-clicks)"
+            radius={[6, 6, 0, 0]} // arredonda topo
           />
-        </LineChart>
+        </BarChart>
       </ResponsiveContainer>
     </ChartContainer>
   )

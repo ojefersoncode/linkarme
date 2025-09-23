@@ -137,15 +137,15 @@ export default function CreateLinkPage() {
   if (domains.length === 0) {
     return (
       <div className="p-6 space-y-6">
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" asChild>
+        <div className="flex items-center gap-2">
+          <Button className="bg-transparent hover:bg-transparent dark:bg-transparent dark:hover:bg-transparent text-muted" size="sm" asChild>
             <Link href="/dashboard/links">
-              <ArrowLeft className="h-4 w-4 text-white" />
+              <ArrowLeft className="size-5 text-white" />
             </Link>
           </Button>
           <div>
-            <h1 className="text-3xl font-bold text-white">Criar Link</h1>
-            <p className="text-muted-foreground">Crie um novo link curto personalizado</p>
+            <h1 className="text-3xl max-md:text-xl font-bold text-muted">Criar Link</h1>
+            <p className="text-muted-foreground max-md:text-sm">Crie um novo link personalizado</p>
           </div>
         </div>
 
@@ -155,7 +155,7 @@ export default function CreateLinkPage() {
             <CardDescription>Você precisa ter pelo menos um domínio verificado para criar links.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Button asChild>
+            <Button asChild className="text-muted max-md:text-sm">
               <Link href="/dashboard/domains">Gerenciar Domínios</Link>
             </Button>
           </CardContent>

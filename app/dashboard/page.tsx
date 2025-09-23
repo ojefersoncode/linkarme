@@ -56,24 +56,28 @@ export default async function DashboardPage() {
     })) || [];
 
   return (
-    <div className="p-4 md:p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-white">Dashboard</h1>
+    <div className="md:p-6 space-y-6">
+      <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+        <div className="flex items-center gap-1 px-2 py-3">
+          <MenuMobile /> <img src="/logo.png" alt="" className="h-6" />
         </div>
-        <div className="flex items-center gap-4">
+        <div className="px-4">
           <ExportDataDialog links={linksForExport} />
-          <div className="md:hidden">
-            <MenuMobile />
-          </div>
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="bg-foreground border-zinc-700">
+      <div className="flex items-center justify-between w-full max-md:py-2 max-md:hidden">
+        <h1 className="text-base md:text-xl font-bold text-muted-foreground">Dashboard</h1>
+        <div className="max-md:justify-end max-md:w-full">
+          <ExportDataDialog links={linksForExport} />
+        </div>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
+        <Card className="bg-foreground border-accent/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Domínios</CardTitle>
-            <Globe className="h-4 w-4 text-yellow-500" />
+            <Globe className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.domains}</div>
@@ -83,10 +87,10 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-foreground border-accent/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Links</CardTitle>
-            <Link2 className="h-4 w-4 text-yellow-500" />
+            <Link2 className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.links}</div>
@@ -94,10 +98,10 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-foreground border-accent/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Cliques</CardTitle>
-            <BarChart3 className="h-4 w-4 text-yellow-500" />
+            <BarChart3 className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.clicks}</div>
@@ -105,12 +109,12 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-foreground border-accent/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Taxa de Cliques
             </CardTitle>
-            <TrendingUp className="h-4 w-4 text-yellow-500" />
+            <TrendingUp className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -121,8 +125,8 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card className="bg-foreground border-zinc-700">
+      <div className="grid gap-4 max-md:px-4 pb-4 md:grid-cols-2">
+        <Card className="bg-foreground border-accent/30">
           <CardHeader>
             <CardTitle>Primeiros Passos</CardTitle>
             <CardDescription>
@@ -139,7 +143,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-foreground border-accent/30">
           <CardHeader>
             <CardTitle>Atividade Recente</CardTitle>
             <CardDescription>Suas últimas ações na plataforma</CardDescription>

@@ -1,35 +1,42 @@
-import { redirect } from "next/navigation"
-import { createClient } from "@/lib/supabase/server"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Plus, Globe, CheckCircle, Clock } from "lucide-react"
-import Link from "next/link"
-import { DeleteDomainButton } from "@/components/delete-domain-button"
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Plus, Globe, CheckCircle, Clock } from 'lucide-react';
+import Link from 'next/link';
+import { DeleteDomainButton } from '@/components/delete-domain-button';
+import { MenuMobile } from '@/components/menu-mobile';
 
 export default async function DomainsPage() {
-  const supabase = await createClient()
+  const supabase = await createClient();
 
   const {
     data: { user },
-    error,
-  } = await supabase.auth.getUser()
+    error
+  } = await supabase.auth.getUser();
   if (error || !user) {
-    redirect("/auth/login")
+    redirect('/auth/login');
   }
 
   const { data: domains } = await supabase
-    .from("domains")
-    .select("*")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false })
+    .from('domains')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false });
 
   const getStatusIcon = (verified: boolean) => {
     if (verified) {
-      return <CheckCircle className="h-4 w-4 text-green-500" />
+      return <CheckCircle className="h-4 w-4 text-green-500" />;
     }
-    return <Clock className="h-4 w-4 text-yellow-500" />
-  }
+    return <Clock className="h-4 w-4 text-yellow-500" />;
+  };
 
   const getStatusBadge = (verified: boolean) => {
     if (verified) {
@@ -37,18 +44,26 @@ export default async function DomainsPage() {
         <Badge variant="default" className="bg-green-100 text-green-800">
           Verificado
         </Badge>
-      )
+      );
     }
-    return <Badge variant="secondary">Pendente</Badge>
-  }
+    return <Badge variant="secondary">Pendente</Badge>;
+  };
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-white">Domínios</h1>
+    <div className="p-6 max-md:p-0 space-y-6">
+      <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+        <div className="flex items-center gap-1 py-3">
+          <MenuMobile /> <img src="/logo.png" alt="" className="h-6" />
         </div>
-        <Button asChild>
+      </div>
+
+      <div className="flex items-center justify-between max-md:px-4">
+        <div>
+          <h1 className="text-2xl max-md:text-xl font-bold text-muted-foreground">
+            Domínios
+          </h1>
+        </div>
+        <Button asChild className="text-muted">
           <Link href="/dashboard/domains/add">
             <Plus className="h-4 w-4 mr-2" />
             Adicionar Domínio
@@ -57,9 +72,9 @@ export default async function DomainsPage() {
       </div>
 
       {domains && domains.length > 0 ? (
-        <div className="grid gap-4">
+        <div className="grid gap-4 max-md:px-4">
           {domains.map((domain) => (
-            <Card key={domain.id} className="bg-foreground border-zinc-700">
+            <Card key={domain.id} className="bg-foreground border-accent/40">
               <CardHeader className="bg-foreground border-zinc-700">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -67,7 +82,10 @@ export default async function DomainsPage() {
                     <div>
                       <CardTitle className="text-lg">{domain.domain}</CardTitle>
                       <CardDescription>
-                        Adicionado em {new Date(domain.created_at).toLocaleDateString("pt-BR")}
+                        Adicionado em{' '}
+                        {new Date(domain.created_at).toLocaleDateString(
+                          'pt-BR'
+                        )}
                       </CardDescription>
                     </div>
                   </div>
@@ -81,17 +99,29 @@ export default async function DomainsPage() {
                 <div className="flex items-center justify-between">
                   <div className="space-y-1">
                     <p className="text-sm text-muted-foreground">
-                      Método de verificação: {domain.verification_method === "dns" ? "DNS TXT" : "Upload de arquivo"}
+                      Método de verificação:{' '}
+                      {domain.verification_method === 'dns'
+                        ? 'DNS TXT'
+                        : 'Upload de arquivo'}
                     </p>
-                    {!domain.verified && <p className="text-sm text-yellow-600">Domínio aguardando verificação</p>}
+                    {!domain.verified && (
+                      <p className="text-sm text-yellow-600">
+                        Domínio aguardando verificação
+                      </p>
+                    )}
                   </div>
                   <div className="flex gap-2">
                     {!domain.verified && (
                       <Button variant="outline" size="sm" asChild>
-                        <Link href={`/dashboard/domains/${domain.id}/verify`}>Verificar</Link>
+                        <Link href={`/dashboard/domains/${domain.id}/verify`}>
+                          Verificar
+                        </Link>
                       </Button>
                     )}
-                    <DeleteDomainButton domainId={domain.id} domainName={domain.domain} />
+                    <DeleteDomainButton
+                      domainId={domain.id}
+                      domainName={domain.domain}
+                    />
                   </div>
                 </div>
               </CardContent>
@@ -99,24 +129,26 @@ export default async function DomainsPage() {
           ))}
         </div>
       ) : (
-        <Card className="bg-foreground border-zinc-700">
-          <CardHeader>
-            <CardTitle>Nenhum domínio encontrado</CardTitle>
-            <CardDescription>
-              Você ainda não adicionou nenhum domínio. Adicione seu primeiro domínio para começar a criar links
-              personalizados.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild>
-              <Link href="/dashboard/domains/add">
-                <Plus className="h-4 w-4 mr-2" />
-                Adicionar Primeiro Domínio
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
+        <div className="max-md:px-4">
+          <Card className="bg-foreground border-accent/40">
+            <CardHeader>
+              <CardTitle>Nenhum domínio encontrado</CardTitle>
+              <CardDescription>
+                Você ainda não adicionou nenhum domínio. Adicione seu primeiro
+                domínio para começar a criar links personalizados.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild className="text-muted">
+                <Link href="/dashboard/domains/add">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Adicionar Primeiro Domínio
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
       )}
     </div>
-  )
+  );
 }
