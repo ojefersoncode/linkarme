@@ -39,7 +39,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="md:px-12 max-md:hidden pb-12">
+        <div className="md:px-12 max-md:hidden">
           <img  className="border border-accent/40 rounded-lg" src="/dashboard.png" alt="" />
         </div>
       </div>
