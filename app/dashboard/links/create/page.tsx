@@ -134,6 +134,7 @@ export default function CreateLinkPage() {
     }
   }
 
+  
   if (domains.length === 0) {
     return (
       <div className="p-6 space-y-6">

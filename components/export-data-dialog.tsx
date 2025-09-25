@@ -119,105 +119,112 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
       </DialogTrigger>
       <DialogContent className="max-w-xl pt-4 h-screen">
         <ScrollArea className="h-screen w-full">
-        <DialogHeader className='max-md:justify-start'>
-          <DialogTitle className='max-md:justify-start text-start'>Exportar Dados</DialogTitle>
-          <DialogDescription className='max-md:justify-start text-start'>
-            Exporte seus dados em formato CSV para análises externas
-          </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="space-y-2">
-            <Label htmlFor="exportType">Tipo de Dados</Label>
-            <Select value={exportType} onValueChange={setExportType}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="clicks">Dados de Cliques</SelectItem>
-                <SelectItem value="links">Lista de Links</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          <DialogHeader className="max-md:justify-start">
+            <DialogTitle className="max-md:justify-start text-start">
+              Exportar Dados
+            </DialogTitle>
+            <DialogDescription className="max-md:justify-start text-start">
+              Exporte seus dados em formato CSV para análises externas
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="exportType">Tipo de Dados</Label>
+              <Select value={exportType} onValueChange={setExportType}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="clicks">Dados de Cliques</SelectItem>
+                  <SelectItem value="links">Lista de Links</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-          {exportType === 'clicks' && (
-            <>
-              <div className="space-y-2">
-                <Label htmlFor="link">Link Específico (Opcional)</Label>
-                <Select value={selectedLink} onValueChange={setSelectedLink}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todos os links</SelectItem>
-                    {links.map((link) => (
-                      <SelectItem key={link.id} value={link.id}>
-                        {link.domains.map((d) => d.domain).join(', ')}/
-                        {link.slug} {link.title && `- ${link.title}`}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
+            {exportType === 'clicks' && (
+              <>
                 <div className="space-y-2">
-                  <Label htmlFor="startDate">Data Inicial</Label>
-                  <Input
-                    id="startDate"
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                  />
+                  <Label htmlFor="link">Link Específico (Opcional)</Label>
+                  <Select value={selectedLink} onValueChange={setSelectedLink}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos os links</SelectItem>
+                      {links.map((link) => (
+                        <SelectItem key={link.id} value={link.id}>
+                          {Array.isArray(link.domains)
+                            ? link.domains.map((d) => d.domain).join(', ')
+                            : ''}
+                          /{link.slug} {link.title && `- ${link.title}`}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="endDate">Data Final</Label>
-                  <Input
-                    id="endDate"
-                    type="date"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                  />
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="startDate">Data Inicial</Label>
+                    <Input
+                      id="startDate"
+                      type="date"
+                      value={startDate}
+                      onChange={(e) => setStartDate(e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="endDate">Data Final</Label>
+                    <Input
+                      id="endDate"
+                      type="date"
+                      value={endDate}
+                      onChange={(e) => setEndDate(e.target.value)}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="includePersonalData"
-                  checked={includePersonalData}
-                  onCheckedChange={(checked) =>
-                    setIncludePersonalData(checked as boolean)
-                  }
-                />
-                <Label htmlFor="includePersonalData" className="text-sm">
-                  Incluir dados pessoais (IP hash)
-                </Label>
-              </div>
-            </>
-          )}
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="includePersonalData"
+                    checked={includePersonalData}
+                    onCheckedChange={(checked) =>
+                      setIncludePersonalData(checked as boolean)
+                    }
+                  />
+                  <Label htmlFor="includePersonalData" className="text-sm">
+                    Incluir dados pessoais (IP hash)
+                  </Label>
+                </div>
+              </>
+            )}
 
-          <div className="p-4 bg-muted rounded-lg">
-            <h4 className="font-medium mb-2">Informações sobre Privacidade</h4>
-            <ul className="text-sm text-muted-foreground space-y-1">
-              <li>
-                • IPs são automaticamente hasheados para proteger a privacidade
-              </li>
-              <li>
-                • Dados de geolocalização são aproximados (país, estado, cidade)
-              </li>
-              <li>• Nenhuma informação pessoal identificável é coletada</li>
-            </ul>
+            <div className="p-4 bg-muted rounded-lg">
+              <h4 className="font-medium mb-2">
+                Informações sobre Privacidade
+              </h4>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>
+                  • IPs são automaticamente hasheados para proteger a
+                  privacidade
+                </li>
+                <li>
+                  • Dados de geolocalização são aproximados (país, estado,
+                  cidade)
+                </li>
+                <li>• Nenhuma informação pessoal identificável é coletada</li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <DialogFooter className=''>
-          <Button variant="outline" onClick={() => setOpen(false)}>
-            Cancelar
-          </Button>
-          <Button onClick={handleExport} disabled={isExporting}>
-            {isExporting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-            {isExporting ? 'Exportando...' : 'Exportar'}
-          </Button>
-        </DialogFooter>
-
+          <DialogFooter className="">
+            <Button variant="outline" onClick={() => setOpen(false)}>
+              Cancelar
+            </Button>
+            <Button onClick={handleExport} disabled={isExporting}>
+              {isExporting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+              {isExporting ? 'Exportando...' : 'Exportar'}
+            </Button>
+          </DialogFooter>
         </ScrollArea>
       </DialogContent>
     </Dialog>
