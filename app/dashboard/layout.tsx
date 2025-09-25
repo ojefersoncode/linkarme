@@ -3,7 +3,8 @@ import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
-import { GridBeams } from "@/components/ui/grid-beams"
+import { Analytics } from "@vercel/analytics/next"
+
 
 export default async function DashboardLayout({
   children,
@@ -22,6 +23,7 @@ export default async function DashboardLayout({
       <div className="flex min-h-screen w-full">
         <AppSidebar />
        <div className="flex-1 w-full justify-center bg-black/30">
+       <Analytics/>
           <main className="flex-1 overflow-auto">{children}</main>
        </div>
       
