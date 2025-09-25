@@ -15,6 +15,8 @@ import { ExportDataDialog } from '@/components/export-data-dialog';
 import { BarChart3, TrendingUp, Globe, Users } from 'lucide-react';
 import { MenuMobile } from '@/components/menu-mobile';
 
+
+
 export default async function AnalyticsPage({
   searchParams
 }: {
@@ -287,7 +289,7 @@ export default async function AnalyticsPage({
         </div>
 
         {/* Charts */}
-        <div className="grid gap-6 md:grid-cols-2 max-md:px-4">
+        <div className="grid gap-6 max-md:px-4">
           <Card className="bg-foreground border-accent/40">
             <CardHeader>
               <CardTitle>Cliques ao Longo do Tempo</CardTitle>

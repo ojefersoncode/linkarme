@@ -15,7 +15,7 @@ interface Link {
   id: string;
   slug: string;
   title: string | null;
-  domains: { domain: string } | null;
+  domains: { domain: string }[] 
 }
 
 interface AnalyticsFiltersProps {
@@ -49,7 +49,7 @@ export function AnalyticsFilters({
   };
 
   return (
-          <Card className="bg-foreground border-accent/40">
+    <Card className="bg-foreground border-accent/40">
       <CardContent>
         <div className="flex items-center w-full justify-between pb-4">
           <h1 className='font-bold '>Filtro</h1>
@@ -72,7 +72,6 @@ export function AnalyticsFilters({
           </Select>
 
           <Select
-        
             value={currentLinkId || 'all'}
             onValueChange={handleLinkChange}
           >
@@ -82,8 +81,8 @@ export function AnalyticsFilters({
             <SelectContent className='bg-background'>
               <SelectItem className='bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary' value="all">Todos os links</SelectItem>
               {links.map((link) => (
-                <SelectItem key={link.id} value={link.id}>
-                  {link.domains?.domain}/{link.slug}{' '}
+                <SelectItem key={link.id} value={link.id} className='bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary'>
+                  {link.domains?.[0]?.domain}/{link.slug}{' '}
                   {link.title && `- ${link.title}`}
                 </SelectItem>
               ))}

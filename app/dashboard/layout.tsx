@@ -5,7 +5,6 @@ import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { Analytics } from "@vercel/analytics/next"
 
-
 export default async function DashboardLayout({
   children,
 }: {
