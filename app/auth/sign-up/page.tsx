@@ -53,17 +53,12 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10 bg-background dark:bg-background">
       <div className="w-full max-w-sm">
         <div className="flex flex-col gap-6">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-primary">LinkShort</h1>
-            <p className="text-muted-foreground">Encurtador de Links Profissional</p>
-          </div>
-          <Card>
+          <Card className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40">
             <CardHeader>
               <CardTitle className="text-2xl">Criar Conta</CardTitle>
-              <CardDescription>Crie sua conta gratuita</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSignUp}>
@@ -77,6 +72,7 @@ export default function SignUpPage() {
                       required
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
+                      className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
                     />
                   </div>
                   <div className="grid gap-2">
@@ -88,6 +84,7 @@ export default function SignUpPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
                     />
                   </div>
                   <div className="grid gap-2">
@@ -98,6 +95,7 @@ export default function SignUpPage() {
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
                     />
                   </div>
                   <div className="grid gap-2">
@@ -108,16 +106,24 @@ export default function SignUpPage() {
                       required
                       value={repeatPassword}
                       onChange={(e) => setRepeatPassword(e.target.value)}
+                      className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
                     />
                   </div>
                   {error && <p className="text-sm text-destructive">{error}</p>}
-                  <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? "Criando conta..." : "Criar Conta"}
+                  <Button
+                    type="submit"
+                    className="w-full text-muted dark:text-muted"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Criando conta...' : 'Criar Conta'}
                   </Button>
                 </div>
                 <div className="mt-4 text-center text-sm">
-                  Já tem uma conta?{" "}
-                  <Link href="/auth/login" className="underline underline-offset-4 text-primary hover:text-primary/80">
+                  Já tem uma conta?{' '}
+                  <Link
+                    href="/auth/login"
+                    className="underline underline-offset-4 text-primary hover:text-primary/80"
+                  >
                     Entrar
                   </Link>
                 </div>
@@ -127,5 +133,5 @@ export default function SignUpPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

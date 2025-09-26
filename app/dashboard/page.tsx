@@ -67,7 +67,9 @@ export default async function DashboardPage() {
       </div>
 
       <div className="flex items-center justify-between w-full max-md:py-2 max-md:hidden">
-        <h1 className="text-base md:text-xl font-bold text-muted-foreground">Dashboard</h1>
+        <h1 className="text-base md:text-xl font-bold text-muted dark:text-muted">
+          Dashboard
+        </h1>
         <div className="max-md:justify-end max-md:w-full">
           <ExportDataDialog links={linksForExport} />
         </div>
@@ -76,12 +78,16 @@ export default async function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
         <Card className="bg-foreground border-accent/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Domínios</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted dark:text-muted">
+              Domínios
+            </CardTitle>
             <Globe className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.domains}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-muted dark:text-muted">
+              {stats.domains}
+            </div>
+            <p className="text-xs text-muted dark:text-muted">
               domínios configurados
             </p>
           </CardContent>
@@ -89,44 +95,54 @@ export default async function DashboardPage() {
 
         <Card className="bg-foreground border-accent/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Links</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted dark:text-muted">
+              Links
+            </CardTitle>
             <Link2 className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.links}</div>
-            <p className="text-xs text-muted-foreground">links criados</p>
+            <div className="text-2xl font-bold text-muted dark:text-muted">
+              {stats.links}
+            </div>
+            <p className="text-xs text-muted dark:text-muted">links criados</p>
           </CardContent>
         </Card>
 
         <Card className="bg-foreground border-accent/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Cliques</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted dark:text-muted">
+              Cliques
+            </CardTitle>
             <BarChart3 className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.clicks}</div>
-            <p className="text-xs text-muted-foreground">cliques totais</p>
+            <div className="text-2xl font-bold text-muted dark:text-muted">
+              {stats.clicks}
+            </div>
+            <p className="text-xs text-muted dark:text-muted">cliques totais</p>
           </CardContent>
         </Card>
 
         <Card className="bg-foreground border-accent/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
+            <CardTitle className="text-sm font-medium text-muted dark:text-muted">
               Taxa de Cliques
             </CardTitle>
             <TrendingUp className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold text-muted dark:text-muted">
               {stats.links > 0 ? Math.round(stats.clicks / stats.links) : 0}
             </div>
-            <p className="text-xs text-muted-foreground">cliques por link</p>
+            <p className="text-xs text-muted dark:text-muted">
+              cliques por link
+            </p>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid gap-4 max-md:px-4 pb-4 md:grid-cols-2">
-        <Card className="bg-foreground border-accent/30">
+        <Card className="bg-foreground border-accent/30 text-muted dark:text-muted">
           <CardHeader>
             <CardTitle>Primeiros Passos</CardTitle>
             <CardDescription>
@@ -143,7 +159,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-accent/30">
+        <Card className="bg-foreground border-accent/30 text-muted dark:text-muted">
           <CardHeader>
             <CardTitle>Atividade Recente</CardTitle>
             <CardDescription>Suas últimas ações na plataforma</CardDescription>

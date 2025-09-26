@@ -23,7 +23,9 @@ export default async function SettingsPage() {
     <div className="p-6 space-y-6">
       <div>
         <h1 className="text-3xl font-bold text-white">Configurações</h1>
-        <p className="text-muted-foreground">Gerencie suas configurações de conta e privacidade</p>
+        <p className="text-muted-foreground">
+          Gerencie suas configurações de conta e privacidade
+        </p>
       </div>
 
       <div className="grid gap-6 max-w-4xl">
@@ -33,7 +35,9 @@ export default async function SettingsPage() {
               <User className="h-5 w-5" />
               Perfil do Usuário
             </CardTitle>
-            <CardDescription>Atualize suas informações pessoais</CardDescription>
+            <CardDescription>
+              Atualize suas informações pessoais
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <UpdateProfileForm profile={profile} />
@@ -46,17 +50,23 @@ export default async function SettingsPage() {
               <Shield className="h-5 w-5" />
               Privacidade e Segurança
             </CardTitle>
-            <CardDescription>Configure suas preferências de privacidade</CardDescription>
+            <CardDescription>
+              Configure suas preferências de privacidade
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="font-medium">Anonimização de IPs</h4>
                 <p className="text-sm text-muted-foreground">
-                  IPs dos visitantes são automaticamente hasheados para proteger a privacidade
+                  IPs dos visitantes são automaticamente hasheados para proteger
+                  a privacidade
                 </p>
               </div>
-              <Badge variant="default" className="bg-yellow-500">
+              <Badge
+                variant="default"
+                className="bg-accent/30 dark:bg-accent/30 text-muted dark:text-muted"
+              >
                 Ativo
               </Badge>
             </div>
@@ -65,10 +75,14 @@ export default async function SettingsPage() {
               <div>
                 <h4 className="font-medium">Geolocalização</h4>
                 <p className="text-sm text-muted-foreground">
-                  Coletamos dados de localização aproximada (país, estado, cidade) para analytics
+                  Coletamos dados de localização aproximada (país, estado,
+                  cidade) para analytics
                 </p>
               </div>
-              <Badge variant="default" className="bg-yellow-500">
+              <Badge
+                variant="default"
+                className="bg-accent/30 dark:bg-accent/30 text-muted dark:text-muted"
+              >
                 Ativo
               </Badge>
             </div>
@@ -77,10 +91,16 @@ export default async function SettingsPage() {
               <div>
                 <h4 className="font-medium">Retenção de Dados</h4>
                 <p className="text-sm text-muted-foreground">
-                  Dados de cliques são mantidos indefinidamente para análises históricas
+                  Dados de cliques são mantidos indefinidamente para análises
+                  históricas
                 </p>
               </div>
-              <Badge variant="secondary">Permanente</Badge>
+              <Badge
+                variant="default"
+                className="bg-accent/30 dark:bg-accent/30 text-muted dark:text-muted"
+              >
+                Permanente
+              </Badge>
             </div>
           </CardContent>
         </Card>
@@ -97,7 +117,9 @@ export default async function SettingsPage() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <h4 className="font-medium text-sm">ID do Usuário</h4>
-                <p className="text-sm text-muted-foreground font-mono">{user.id}</p>
+                <p className="text-sm text-muted-foreground font-mono">
+                  {user.id}
+                </p>
               </div>
               <div>
                 <h4 className="font-medium text-sm">Email</h4>
@@ -105,12 +127,16 @@ export default async function SettingsPage() {
               </div>
               <div>
                 <h4 className="font-medium text-sm">Conta Criada</h4>
-                <p className="text-sm text-muted-foreground">{new Date(user.created_at).toLocaleDateString("pt-BR")}</p>
+                <p className="text-sm text-muted-foreground">
+                  {new Date(user.created_at).toLocaleDateString('pt-BR')}
+                </p>
               </div>
               <div>
                 <h4 className="font-medium text-sm">Último Login</h4>
                 <p className="text-sm text-muted-foreground">
-                  {user.last_sign_in_at ? new Date(user.last_sign_in_at).toLocaleDateString("pt-BR") : "N/A"}
+                  {user.last_sign_in_at
+                    ? new Date(user.last_sign_in_at).toLocaleDateString('pt-BR')
+                    : 'N/A'}
                 </p>
               </div>
             </div>
@@ -118,5 +144,5 @@ export default async function SettingsPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

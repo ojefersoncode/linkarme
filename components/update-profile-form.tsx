@@ -58,16 +58,23 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" value={profile?.email || ""} disabled className="bg-background" />
+        <Input
+          id="email"
+          type="email"
+          value={profile?.email || ''}
+          disabled
+          className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
+        />
         <p className="text-sm text-muted-foreground">
-          O email não pode ser alterado. Entre em contato com o suporte se necessário.
+          O email não pode ser alterado. Entre em contato com o suporte se
+          necessário.
         </p>
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="fullName">Nome Completo</Label>
         <Input
-        className="bg-background"
+          className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
           id="fullName"
           type="text"
           placeholder="Seu nome completo"
@@ -84,14 +91,22 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
 
       {success && (
         <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-          <p className="text-sm text-green-800">Perfil atualizado com sucesso!</p>
+          <p className="text-sm text-green-800">
+            Perfil atualizado com sucesso!
+          </p>
         </div>
       )}
 
-      <Button type="submit" disabled={isLoading}>
-        {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-        {isLoading ? "Salvando..." : "Salvar Alterações"}
+      <Button
+        type="submit"
+        disabled={isLoading}
+        className="text-muted dark:text-muted"
+      >
+        {isLoading && (
+          <Loader2 className="h-4 w-4 mr-2 animate-spin text-muted dark:text-muted" />
+        )}
+        {isLoading ? 'Salvando...' : 'Salvar Alterações'}
       </Button>
     </form>
-  )
+  );
 }

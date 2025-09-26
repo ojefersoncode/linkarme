@@ -16,14 +16,12 @@ import { BarChart3, TrendingUp, Globe, Users } from 'lucide-react';
 import { MenuMobile } from '@/components/menu-mobile';
 
 
-
 interface Link {
   id: string;
   slug: string;
   title: string | null;
   domains: { domain: string }[];
 }
-
 
 export default async function AnalyticsPage({
   searchParams
