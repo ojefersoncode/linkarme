@@ -22,8 +22,16 @@ export function CopyLinkButton({ url }: CopyLinkButtonProps) {
   }
 
   return (
-    <Button variant="ghost" size="sm" onClick={handleCopy} className="h-6 w-6 p-0">
-      {copied ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />}
+    <Button
+      size="sm"
+      onClick={handleCopy}
+      className="h-6 w-6 p-0 text-muted dark:text-muted bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent"
+    >
+      {copied ? (
+        <Check className="h-3 w-3 text-green-500" />
+      ) : (
+        <Copy className="h-3 w-3" />
+      )}
     </Button>
-  )
+  );
 }

@@ -173,12 +173,14 @@ export default function EditLinkPage({
             </Link>
           </Button>
           <div>
-            <h1 className="text-3xl font-bold text-white">Editar Link</h1>
+            <h1 className="text-3xl font-bold text-muted dark:text-muted">
+              Editar Link
+            </h1>
             <p className="text-muted-foreground">Carregando...</p>
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -191,28 +193,35 @@ export default function EditLinkPage({
         </Button>
         <div>
           <h1 className="text-3xl font-bold text-white">Editar Link</h1>
-          <p className="text-muted-foreground">Edite as informações do seu link</p>
+          <p className="text-muted-foreground">
+            Edite as informações do seu link
+          </p>
         </div>
       </div>
 
-      <div className="max-w-2xl">
-        <Card className="bg-foreground border-zinc-700">
+      <div className="">
+        <Card className="bg-foreground border-accent/30 dark:border-accent/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Link2 className="h-5 w-5" />
               Editar Link
             </CardTitle>
-            <CardDescription>Atualize as informações do seu link curto</CardDescription>
+            <CardDescription>
+              Atualize as informações do seu link curto
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="domain">Domínio</Label>
-                <Select value={selectedDomain} onValueChange={setSelectedDomain}>
-                  <SelectTrigger>
+                <Select
+                  value={selectedDomain}
+                  onValueChange={setSelectedDomain}
+                >
+                  <SelectTrigger className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40">
                     <SelectValue placeholder="Selecione um domínio" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40">
                     {domains.map((domain) => (
                       <SelectItem key={domain.id} value={domain.id}>
                         {domain.domain}
@@ -230,15 +239,18 @@ export default function EditLinkPage({
                   placeholder="meu-link"
                   value={slug}
                   onChange={(e) => setSlug(e.target.value)}
+                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
                   required
                 />
                 <p className="text-sm text-muted-foreground">
                   Apenas letras, números, hífens e underscores são permitidos
                 </p>
                 {selectedDomain && slug && (
-                  <div className="p-2 bg-muted rounded-lg">
+                  <div className="p-2 bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40 rounded-lg">
                     <p className="text-sm font-medium">
-                      Link final: https://{domains.find((d) => d.id === selectedDomain)?.domain}/{slug}
+                      Link final: https://
+                      {domains.find((d) => d.id === selectedDomain)?.domain}/
+                      {slug}
                     </p>
                   </div>
                 )}
@@ -252,6 +264,7 @@ export default function EditLinkPage({
                   placeholder="https://exemplo.com/pagina"
                   value={destinationUrl}
                   onChange={(e) => setDestinationUrl(e.target.value)}
+                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
                   required
                 />
               </div>
@@ -264,6 +277,7 @@ export default function EditLinkPage({
                   placeholder="Título descritivo do link"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
+                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
                 />
               </div>
 
@@ -274,12 +288,17 @@ export default function EditLinkPage({
                   placeholder="Descrição detalhada do link"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
                   rows={3}
                 />
               </div>
 
               <div className="flex items-center space-x-2">
-                <Switch id="active" checked={active} onCheckedChange={setActive} />
+                <Switch
+                  id="active"
+                  checked={active}
+                  onCheckedChange={setActive}
+                />
                 <Label htmlFor="active">Link ativo</Label>
               </div>
 
@@ -290,10 +309,17 @@ export default function EditLinkPage({
               )}
 
               <div className="flex gap-3">
-                <Button type="submit" disabled={isLoading}>
-                  {isLoading ? "Salvando..." : "Salvar Alterações"}
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="text-muted dark:text-muted"
+                >
+                  {isLoading ? 'Salvando...' : 'Salvar Alterações'}
                 </Button>
-                <Button variant="outline" asChild>
+                <Button
+                  asChild
+                  className="bg-accent/10 dark:bg-accent/10 text-muted dark:text-muted border border-accent/40 dark:border-accent/40"
+                >
                   <Link href="/dashboard/links">Cancelar</Link>
                 </Button>
               </div>
@@ -302,5 +328,5 @@ export default function EditLinkPage({
         </Card>
       </div>
     </div>
-  )
+  );
 }

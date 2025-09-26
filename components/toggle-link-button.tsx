@@ -39,7 +39,13 @@ export function ToggleLinkButton({ linkId, currentStatus }: ToggleLinkButtonProp
   }
 
   return (
-    <Button variant={currentStatus ? "outline" : "default"} size="sm" onClick={handleToggle} disabled={isToggling}>
+    <Button
+      variant={'default'}
+      className="text-muted dark:text-muted bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent"
+      size="sm"
+      onClick={handleToggle}
+      disabled={isToggling}
+    >
       {isToggling ? (
         <Loader2 className="h-4 w-4 animate-spin" />
       ) : currentStatus ? (
@@ -48,5 +54,5 @@ export function ToggleLinkButton({ linkId, currentStatus }: ToggleLinkButtonProp
         <Power className="h-4 w-4" />
       )}
     </Button>
-  )
+  );
 }
