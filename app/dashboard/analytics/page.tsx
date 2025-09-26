@@ -298,20 +298,18 @@ export default async function AnalyticsPage({
         <div className="grid gap-6 max-md:px-4">
           <Card className="bg-foreground border-accent/40">
             <CardHeader>
-              <CardTitle>Cliques ao Longo do Tempo</CardTitle>
-              <CardDescription>
-                Visualize a evolução dos cliques nos últimos {days} dias
-              </CardDescription>
+              <CardTitle className="text-muted dark:text-muted">
+                Cliques ao Longo do Tempo
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <ClicksOverTimeChart data={clicksByDay} days={days} />
+              <ClicksOverTimeChart data={clicksByDay} />
             </CardContent>
           </Card>
 
           <Card className="bg-foreground border-accent/40">
             <CardHeader>
               <CardTitle>Distribuição Geográfica</CardTitle>
-              <CardDescription>Cliques por país</CardDescription>
             </CardHeader>
             <CardContent>
               <GeographicChart data={clicksByCountry} />

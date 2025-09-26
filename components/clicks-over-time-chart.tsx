@@ -1,53 +1,100 @@
 "use client"
 
-import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis } from "recharts"
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { useMemo, useState } from 'react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/ui/table';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
 
-interface ClicksOverTimeChartProps {
-  data: Record<string, number>
-  days: number
+interface ClicksOverTimeTableProps {
+  data: Record<string, number>;
 }
 
-export function ClicksOverTimeChart({ data, days }: ClicksOverTimeChartProps) {
-  const chartData = []
-  const endDate = new Date()
+export function ClicksOverTimeChart({ data }: ClicksOverTimeTableProps) {
+  const [days, setDays] = useState<number | 'all'>(7); // valor inicial: 7 dias
 
-  for (let i = days - 1; i >= 0; i--) {
-    const date = new Date(endDate)
-    date.setDate(date.getDate() - i)
-    const dateStr = date.toISOString().split("T")[0]
+  const tableData = useMemo(() => {
+    const arr: { date: string; displayDate: string; clicks: number }[] = [];
+    const endDate = new Date();
 
-    chartData.push({
-      date: dateStr,
-      clicks: data[dateStr] || 0,
-      displayDate: date.toLocaleDateString("pt-BR", {
-        day: "numeric", // 👈 agora só o dia
-      }),
-    })
-  }
+    // pega todas as datas disponíveis se for "all"
+    const totalDays =
+      days === 'all' ? Object.keys(data).length : (days as number);
+
+    for (let i = totalDays - 1; i >= 0; i--) {
+      const date = new Date(endDate);
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+
+      arr.push({
+        date: dateStr,
+        clicks: data[dateStr] || 0,
+        displayDate: date.toLocaleDateString('pt-BR', {
+          day: 'numeric',
+          month: 'short'
+        })
+      });
+    }
+
+    return arr;
+  }, [data, days]);
 
   return (
-    <ChartContainer
-      config={{
-        clicks: {
-          label: "Cliques",
-          color: "hsl(var(--chart-1))",
-        },
-      }}
-      className="h-[300px] max-w-sm"
-    >
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={chartData}>
-          <XAxis dataKey="displayDate" tick={{ fontSize: 12 }} interval="preserveStartEnd" />
-          <YAxis tick={{ fontSize: 12 }} />
-          <ChartTooltip content={<ChartTooltipContent />} />
-          <Bar
-            dataKey="clicks"
-            fill="var(--color-clicks)"
-            radius={[6, 6, 0, 0]} // arredonda topo
-          />
-        </BarChart>
-      </ResponsiveContainer>
-    </ChartContainer>
-  )
+    <div className="w-full space-y-4">
+      {/* Select para mudar o período */}
+      <div className="flex justify-end">
+        <Select
+          onValueChange={(val) =>
+            setDays(val === 'all' ? 'all' : parseInt(val))
+          }
+          defaultValue="7"
+        >
+          <SelectTrigger className="w-[160px] bg-primary dark:bg-primary hover:bg-primary dark:hover:bg-primary">
+            <SelectValue placeholder="Selecione o período" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="1">Últimas 24 horas</SelectItem>
+            <SelectItem value="7">Últimos 7 dias</SelectItem>
+            <SelectItem value="30">Últimos 30 dias</SelectItem>
+            <SelectItem value="all">Todo período</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* Tabela */}
+      <div className="w-full border border-accent/40 dark:border-accent/40 rounded-lg">
+        <Table className="">
+          <TableHeader className="px-2">
+            <TableRow>
+              <TableHead className="text-muted dark:text-muted px-4">
+                Data
+              </TableHead>
+              <TableHead className="text-right text-muted dark:text-muted px-4">
+                Cliques
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {tableData.map((row) => (
+              <TableRow key={row.date}>
+                <TableCell className="px-4">{row.displayDate}</TableCell>
+                <TableCell className="text-right px-4">{row.clicks}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+    </div>
+  );
 }
