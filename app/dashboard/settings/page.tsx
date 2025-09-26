@@ -22,14 +22,11 @@ export default async function SettingsPage() {
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-white">Configurações</h1>
-        <p className="text-muted-foreground">
-          Gerencie suas configurações de conta e privacidade
-        </p>
+        <h1 className="text-2xl font-bold text-white">Configurações</h1>
       </div>
 
       <div className="grid gap-6 max-w-4xl">
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-foreground border-accent/30 dark:border-accent/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <User className="h-5 w-5" />
@@ -44,7 +41,7 @@ export default async function SettingsPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-foreground border-accent/30 dark:border-accent/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Shield className="h-5 w-5" />
@@ -105,7 +102,7 @@ export default async function SettingsPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-foreground border-accent/30 dark:border-accent/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Database className="h-5 w-5" />
@@ -114,7 +111,7 @@ export default async function SettingsPage() {
             <CardDescription>Detalhes técnicos da sua conta</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 max-md:flex max-md:flex-col gap-4">
               <div>
                 <h4 className="font-medium text-sm">ID do Usuário</h4>
                 <p className="text-sm text-muted-foreground font-mono">

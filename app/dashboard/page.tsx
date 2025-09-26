@@ -67,7 +67,7 @@ export default async function DashboardPage() {
       </div>
 
       <div className="flex items-center justify-between w-full max-md:py-2 max-md:hidden">
-        <h1 className="text-base md:text-xl font-bold text-muted dark:text-muted">
+        <h1 className="text-base md:text-2xl font-bold text-muted dark:text-muted">
           Dashboard
         </h1>
         <div className="max-md:justify-end max-md:w-full">

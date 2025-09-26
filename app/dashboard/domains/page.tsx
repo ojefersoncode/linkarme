@@ -9,7 +9,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Plus, Globe, CheckCircle, Clock } from 'lucide-react';
+import { Plus, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { DeleteDomainButton } from '@/components/delete-domain-button';
 import { MenuMobile } from '@/components/menu-mobile';
@@ -31,17 +31,10 @@ export default async function DomainsPage() {
     .eq('user_id', user.id)
     .order('created_at', { ascending: false });
 
-  const getStatusIcon = (verified: boolean) => {
-    if (verified) {
-      return <CheckCircle className="h-4 w-4 text-green-500" />;
-    }
-    return <Clock className="h-4 w-4 text-yellow-500" />;
-  };
-
   const getStatusBadge = (verified: boolean) => {
     if (verified) {
       return (
-        <Badge variant="default" className="bg-green-100 text-green-800">
+        <Badge variant="default" className="bg-green-200 text-green-900">
           Verificado
         </Badge>
       );
@@ -59,7 +52,7 @@ export default async function DomainsPage() {
 
       <div className="flex items-center justify-between max-md:px-4">
         <div>
-          <h1 className="text-2xl max-md:text-xl font-bold text-muted-foreground">
+          <h1 className="text-2xl max-md:text-xl font-bold text-muted dark:text-muted">
             Domínios
           </h1>
         </div>
@@ -90,7 +83,6 @@ export default async function DomainsPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    {getStatusIcon(domain.verified)}
                     {getStatusBadge(domain.verified)}
                   </div>
                 </div>

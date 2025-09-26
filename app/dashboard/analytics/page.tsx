@@ -209,7 +209,9 @@ export default async function AnalyticsPage({
 
         <div className="flex items-center justify-between max-md:hidden">
           <div>
-            <h1 className="text-3xl font-bold text-white">Analytics</h1>
+            <h1 className="text-3xl font-bold text-muted dark:text-muted">
+              Analytics
+            </h1>
           </div>
 
           <div className="flex items-center gap-4">

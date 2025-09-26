@@ -76,7 +76,7 @@ export default async function LinksPage() {
 
       <div className="flex items-center justify-between max-md:px-4">
         <div>
-          <h1 className="text-2xl max-md:text-xl font-bold text-muted-foreground">
+          <h1 className="text-2xl max-md:text-xl font-bold text-muted dark:text-muted">
             Links
           </h1>
         </div>
