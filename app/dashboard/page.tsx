@@ -59,7 +59,8 @@ export default async function DashboardPage() {
     <div className="md:p-6 space-y-6">
       <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
-          <MenuMobile /> <img src="/logo.png" alt="" className="h-6" />
+          <MenuMobile />{' '}
+          <img src="/Link.png" alt="logo-icon" className="h-6 opacity-70" />
         </div>
         <div className="px-4">
           <ExportDataDialog links={linksForExport} />

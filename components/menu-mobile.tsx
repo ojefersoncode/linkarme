@@ -41,14 +41,14 @@ export function MenuMobile() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="bg-foreground hover:bg-foreground text-muted-foreground border-none m-0 px-1 py-4">
+        <Button className="bg-foreground hover:bg-foreground text-accent dark:text-accent border-none m-0 px-1 py-4">
           <Menu className="size-5 p-0 m-0" />
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="bg-foreground pt-2 pb-4 w-64">
-        <SheetHeader className='flex w-full px-0 text-muted'>
+        <SheetHeader className="flex w-full px-0 text-muted">
           <SheetTitle className="flex items-center pb-2 text-white border-b border-accent/30 w-full">
-            <img src="/logo.png" alt=""  className='h-6 px-4'/>
+            <img src="/Linktraces.png" alt="" className="h-6 px-4 opacity-90" />
           </SheetTitle>
         </SheetHeader>
 

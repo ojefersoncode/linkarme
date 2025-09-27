@@ -25,54 +25,78 @@ export function TopLinksTable({ links }: TopLinksTableProps) {
   }
 
   return (
-    <div className="rounded-md border">
-      <Table>
+    <div className="rounded-md border border-accent/40 dark:bg-accent/40">
+      <Table className="bg-foreground">
         <TableHeader>
           <TableRow>
-            <TableHead>Link</TableHead>
-            <TableHead>Destino</TableHead>
-            <TableHead className="text-right">Cliques</TableHead>
-            <TableHead className="w-[100px]">Ações</TableHead>
+            <TableHead className="text-muted dark:text-muted">Link</TableHead>
+            <TableHead className="text-muted dark:text-muted">
+              Destino
+            </TableHead>
+            <TableHead className="text-right text-muted dark:text-muted">
+              Cliques
+            </TableHead>
+            <TableHead className="w-[100px] text-muted dark:text-muted">
+              Ações
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {links.map((link, index) => {
-            const shortUrl = `https://${link.domains?.domain}/${link.slug}`
+            const shortUrl = `https://${link.domains?.domain}/${link.slug}`;
 
             return (
               <TableRow key={link.id}>
                 <TableCell>
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-xs">
+                      <Badge
+                        variant="outline"
+                        className="text-xs text-muted dark:text-muted"
+                      >
                         #{index + 1}
                       </Badge>
-                      <span className="font-medium text-primary">{shortUrl}</span>
+                      <span className="font-medium text-muted">{shortUrl}</span>
                     </div>
-                    {link.title && <div className="text-sm text-muted-foreground">{link.title}</div>}
+                    {link.title && (
+                      <div className="text-sm text-muted">{link.title}</div>
+                    )}
                   </div>
                 </TableCell>
                 <TableCell>
-                  <div className="max-w-xs truncate text-sm text-muted-foreground">{link.destination_url}</div>
+                  <div className="max-w-xs truncate text-sm text-muted-foreground">
+                    {link.destination_url}
+                  </div>
                 </TableCell>
                 <TableCell className="text-right">
-                  <Badge variant="secondary">{link.click_count.toLocaleString()}</Badge>
+                  <Badge className="bg-transparent dark:bg-transparent text-muted dark:text-muted">
+                    {link.click_count.toLocaleString()}
+                  </Badge>
                 </TableCell>
                 <TableCell>
                   <div className="flex items-center gap-1">
                     <CopyLinkButton url={shortUrl} />
-                    <Button variant="ghost" size="sm" asChild className="h-6 w-6 p-0">
-                      <a href={shortUrl} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      asChild
+                      className="h-6 w-6 p-0"
+                    >
+                      <a
+                        href={shortUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <ExternalLink className="h-3 w-3" />
                       </a>
                     </Button>
                   </div>
                 </TableCell>
               </TableRow>
-            )
+            );
           })}
         </TableBody>
       </Table>
     </div>
-  )
+  );
 }

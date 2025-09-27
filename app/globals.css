@@ -146,9 +146,30 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 scroll-smooth;
   }
   body {
     @apply bg-background text-muted dark:text-muted;
   }
+::-webkit-scrollbar {
+  width: 1px;
+  /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+  background: #0000;
+  /* Cor do fundo */
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0000;
+  /* Cor da barra de rolagem */
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0000;
+  /* Cor ao passar o mouse */
+}
 }

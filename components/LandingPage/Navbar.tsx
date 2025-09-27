@@ -15,7 +15,11 @@ export default function Navbar() {
   return (
     <nav className="flex items-center w-full justify-between p-4 text-white">
       {/* Logo */}
-      <img className='h-8' src='/logo.png' alt='linkarme' />
+      <img
+        src="/Linktraces.png"
+        alt="logo-name"
+        className="h-8 max-md:h-5 max-md:w-32 px-0"
+      />
 
       {/* Menu Desktop */}
       <div className="hidden md:flex items-center gap-10 font-mono text-white/80">
@@ -48,7 +52,10 @@ export default function Navbar() {
       <div className="md:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <Button className='bg-transparent hover:bg-transparent text-muted dark:text-muted' size="icon">
+            <Button
+              className="bg-transparent hover:bg-transparent text-muted dark:text-muted"
+              size="icon"
+            >
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
