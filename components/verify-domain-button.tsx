@@ -43,11 +43,15 @@ export function VerifyDomainButton({ domainId }: VerifyDomainButtonProps) {
 
   return (
     <div className="space-y-2">
-      <Button onClick={handleVerify} disabled={isVerifying}>
-        {isVerifying && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-        {isVerifying ? "Verificando..." : "Verificar Domínio"}
+      <Button
+        onClick={handleVerify}
+        disabled={isVerifying}
+        className="text-muted dark:text-muted"
+      >
+        {isVerifying && <Loader2 className="h-4 w-4 mr-2 animate-spin " />}
+        {isVerifying ? 'Verificando...' : 'Verificar Domínio'}
       </Button>
       {error && <p className="text-sm text-destructive">{error}</p>}
     </div>
-  )
+  );
 }

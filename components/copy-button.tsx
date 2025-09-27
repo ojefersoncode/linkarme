@@ -22,8 +22,16 @@ export function CopyButton({ text }: CopyButtonProps) {
   }
 
   return (
-    <Button variant="ghost" size="sm" onClick={handleCopy} className="h-8 w-8 p-0">
-      {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+    <Button
+      size="sm"
+      onClick={handleCopy}
+      className="h-8 w-8 p-0 bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent text-muted dark:text-muted"
+    >
+      {copied ? (
+        <Check className="h-4 w-4 text-green-500" />
+      ) : (
+        <Copy className="h-4 w-4" />
+      )}
     </Button>
-  )
+  );
 }

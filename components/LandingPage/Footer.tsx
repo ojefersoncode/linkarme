@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:gap-8 md:grid-cols-3 lg:grid-cols-4">
         {/* Marca */}
         <Card className="border-none bg-transparent shadow-none max-w-sm">
-          <h1 className="text-xl font-bold text-white">LinKarme</h1>
+          <h1 className="text-xl font-bold text-white">Linktraces</h1>
           <p className=" text-sm text-white/70 max-w-xs">
             Plataforma de encurtamento e rastreamento de links para
             empreendedores digitais.
@@ -48,12 +48,11 @@ export default function Footer() {
       {/* Base */}
       <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-foreground/10 pt-6 text-sm text-white/80 md:flex-row">
         <span>
-          © {new Date().getFullYear()} LinKarme. Todos os direitos reservados.
+          © {new Date().getFullYear()} Linktraces. Todos os direitos reservados.
         </span>
         <div className="flex gap-4 text-white">
-          <Linkedin className="size-5 cursor-pointer hover:text-white/80" />
           <Instagram className="size-5 cursor-pointer hover:text-white/80" />
-          <Facebook className="size-5 cursor-pointer hover:text-white/80" />
+          <Linkedin className="size-5 cursor-pointer hover:text-white/80" />
           <Youtube className="size-5 cursor-pointer hover:text-white/80" />
         </div>
       </div>

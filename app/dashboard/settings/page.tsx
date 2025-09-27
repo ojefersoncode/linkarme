@@ -4,28 +4,36 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { User, Shield, Database } from "lucide-react"
 import { UpdateProfileForm } from "@/components/update-profile-form"
+import { MenuMobile } from '@/components/menu-mobile';
 
 export default async function SettingsPage() {
-  const supabase = await createClient()
+  const supabase = await createClient();
 
   const {
     data: { user },
-    error,
-  } = await supabase.auth.getUser()
+    error
+  } = await supabase.auth.getUser();
   if (error || !user) {
-    redirect("/auth/login")
+    redirect('/auth/login');
   }
 
   // Get user profile
-  const { data: profile } = await supabase.from("profiles").select("*").eq("id", user.id).single()
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single();
 
   return (
-    <div className="p-6 space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-white">Configurações</h1>
+    <div className="md:flex items-center w-full justify-center p-6 space-y-6 max-md:p-0">
+      <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+        <div className="flex items-center gap-1 px-2 py-3">
+          <MenuMobile /> <img src="/logo.png" alt="" className="h-6" />
+        </div>
+        <div className="px-4"></div>
       </div>
 
-      <div className="grid gap-6 max-w-4xl">
+      <div className="grid gap-6 w-full max-md:px-4 max-md:pb-4">
         <Card className="bg-foreground border-accent/30 dark:border-accent/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">

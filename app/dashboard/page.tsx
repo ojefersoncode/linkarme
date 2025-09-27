@@ -66,13 +66,8 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between w-full max-md:py-2 max-md:hidden">
-        <h1 className="text-base md:text-2xl font-bold text-muted dark:text-muted">
-          Dashboard
-        </h1>
-        <div className="max-md:justify-end max-md:w-full">
-          <ExportDataDialog links={linksForExport} />
-        </div>
+      <div className="flex items-center max-md:py-2 max-md:hidden">
+        <ExportDataDialog links={linksForExport} />
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
