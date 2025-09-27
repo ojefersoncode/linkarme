@@ -46,7 +46,7 @@ export function VerifyDomainButton({ domainId }: VerifyDomainButtonProps) {
       <Button
         onClick={handleVerify}
         disabled={isVerifying}
-        className="text-muted dark:text-muted"
+        className="text-muted dark:text-muted border border-accent/40 dark:border-accent/40"
       >
         {isVerifying && <Loader2 className="h-4 w-4 mr-2 animate-spin " />}
         {isVerifying ? 'Verificando...' : 'Verificar Domínio'}

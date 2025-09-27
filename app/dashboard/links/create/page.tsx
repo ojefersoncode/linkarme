@@ -137,23 +137,34 @@ export default function CreateLinkPage() {
   
   if (domains.length === 0) {
     return (
-      <div className="p-6 space-y-6">
+      <div className="p-6 space-y-6 bg-background dark:bg-background">
         <div className="flex items-center gap-2">
-          <Button className="bg-transparent hover:bg-transparent dark:bg-transparent dark:hover:bg-transparent text-muted" size="sm" asChild>
+          <Button
+            className="bg-transparent hover:bg-transparent dark:bg-transparent dark:hover:bg-transparent text-muted"
+            size="sm"
+            asChild
+          >
             <Link href="/dashboard/links">
               <ArrowLeft className="size-5 text-white" />
             </Link>
           </Button>
           <div>
-            <h1 className="text-3xl max-md:text-xl font-bold text-muted">Criar Link</h1>
-            <p className="text-muted-foreground max-md:text-sm">Crie um novo link personalizado</p>
+            <h1 className="text-3xl max-md:text-xl font-bold text-muted">
+              Criar Link
+            </h1>
+            <p className="text-muted-foreground max-md:text-sm">
+              Crie um novo link personalizado
+            </p>
           </div>
         </div>
 
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-foreground dark:bg-foreground border-accent/40">
           <CardHeader>
             <CardTitle>Nenhum domínio verificado</CardTitle>
-            <CardDescription>Você precisa ter pelo menos um domínio verificado para criar links.</CardDescription>
+            <CardDescription>
+              Você precisa ter pelo menos um domínio verificado para criar
+              links.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Button asChild className="text-muted max-md:text-sm">
@@ -162,37 +173,45 @@ export default function CreateLinkPage() {
           </CardContent>
         </Card>
       </div>
-    )
+    );
   }
 
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="sm" asChild>
+        <Button
+          className="bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent text-muted dark:text-muted"
+          size="sm"
+          asChild
+        >
           <Link href="/dashboard/links">
             <ArrowLeft className="h-4 w-4" />
           </Link>
         </Button>
         <div>
-          <h1 className="text-3xl font-bold">Criar Link</h1>
-          <p className="text-muted-foreground">Crie um novo link curto personalizado</p>
+          <h1 className="text-2xl max-md:text-xl font-bold">Criar Link</h1>
         </div>
       </div>
 
-      <div className="max-w-2xl">
-        <Card>
+      <div className="w-full">
+        <Card className="bg-foreground dark:bg-foreground border-accent/40">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Link2 className="h-5 w-5" />
               Configurar Link
             </CardTitle>
-            <CardDescription>Preencha as informações do seu link curto</CardDescription>
+            <CardDescription>
+              Preencha as informações do seu link curto
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="domain">Domínio</Label>
-                <Select value={selectedDomain} onValueChange={setSelectedDomain}>
+                <Select
+                  value={selectedDomain}
+                  onValueChange={setSelectedDomain}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione um domínio" />
                   </SelectTrigger>
@@ -215,9 +234,14 @@ export default function CreateLinkPage() {
                     placeholder="meu-link"
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
+                    className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
                     required
                   />
-                  <Button type="button" variant="outline" onClick={generateRandomSlug}>
+                  <Button
+                    type="button"
+                    className="text-muted dark:text-muted"
+                    onClick={generateRandomSlug}
+                  >
                     <Shuffle className="h-4 w-4" />
                   </Button>
                 </div>
@@ -227,7 +251,9 @@ export default function CreateLinkPage() {
                 {selectedDomain && slug && (
                   <div className="p-2 bg-muted rounded-lg">
                     <p className="text-sm font-medium">
-                      Link final: https://{domains.find((d) => d.id === selectedDomain)?.domain}/{slug}
+                      Link final: https://
+                      {domains.find((d) => d.id === selectedDomain)?.domain}/
+                      {slug}
                     </p>
                   </div>
                 )}
@@ -241,9 +267,12 @@ export default function CreateLinkPage() {
                   placeholder="https://exemplo.com/pagina"
                   value={destinationUrl}
                   onChange={(e) => setDestinationUrl(e.target.value)}
+                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
                   required
                 />
-                <p className="text-sm text-muted-foreground">URL completa para onde o link deve redirecionar</p>
+                <p className="text-sm text-muted-foreground">
+                  URL completa para onde o link deve redirecionar
+                </p>
               </div>
 
               <div className="space-y-2">
@@ -254,6 +283,7 @@ export default function CreateLinkPage() {
                   placeholder="Título descritivo do link"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
+                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
                 />
               </div>
 
@@ -264,6 +294,7 @@ export default function CreateLinkPage() {
                   placeholder="Descrição detalhada do link"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
                   rows={3}
                 />
               </div>
@@ -275,10 +306,17 @@ export default function CreateLinkPage() {
               )}
 
               <div className="flex gap-3">
-                <Button type="submit" disabled={isLoading}>
-                  {isLoading ? "Criando..." : "Criar Link"}
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="text-muted dark:text-muted"
+                >
+                  {isLoading ? 'Criando...' : 'Criar Link'}
                 </Button>
-                <Button variant="outline" asChild>
+                <Button
+                  className="bg-red-600 dark:bg-red-600 hover:bg-red-700 dark:hover:bg-red-700 text-muted dark:text-muted"
+                  asChild
+                >
                   <Link href="/dashboard/links">Cancelar</Link>
                 </Button>
               </div>
@@ -287,5 +325,5 @@ export default function CreateLinkPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

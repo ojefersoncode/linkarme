@@ -104,7 +104,11 @@ export default async function DomainsPage() {
                   </div>
                   <div className="flex gap-2">
                     {!domain.verified && (
-                      <Button variant="outline" size="sm" asChild>
+                      <Button
+                        className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40 text-muted dark:text-muted"
+                        size="sm"
+                        asChild
+                      >
                         <Link href={`/dashboard/domains/${domain.id}/verify`}>
                           Verificar
                         </Link>

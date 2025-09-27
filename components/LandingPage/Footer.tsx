@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { Card } from '../ui/card';
+import { GridBeams } from '../ui/grid-beams';
 
 export default function Footer() {
   return (
@@ -34,15 +35,18 @@ export default function Footer() {
           </div>
         </Card>
 
-        {/* Contato */}
-        <Card className="p-4 border border-accent/50 bg-accent/40 rounded-md dark:bg-accent/20 shadow-none h-min">
-          <h2 className="font-semibold text-white">Entre em contato</h2>
+        <GridBeams className="h-28 px-4 pt-4 border border-accent/60 dark:border-accent/60 rounded-lg">
+          <div>
+            <h2 className="font-semibold text-white">Entre em contato</h2>
 
-          <div className="flex flex-col gap-2">
-            <p className="text-sm text-white/80">Email: contato@linkarme.com</p>
-            <p className="text-sm text-white/80">WhatsApp: (99) 9999-9999</p>
+            <div className="flex flex-col gap-2">
+              <p className="text-sm text-white/80">
+                Email: contato@linkarme.com
+              </p>
+              <p className="text-sm text-white/80">WhatsApp: (99) 9999-9999</p>
+            </div>
           </div>
-        </Card>
+        </GridBeams>
       </div>
 
       {/* Base */}
