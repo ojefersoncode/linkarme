@@ -77,10 +77,9 @@ export function TopLinksTable({ links }: TopLinksTableProps) {
                   <div className="flex items-center gap-1">
                     <CopyLinkButton url={shortUrl} />
                     <Button
-                      variant="ghost"
                       size="sm"
                       asChild
-                      className="h-6 w-6 p-0"
+                      className="h-6 w-6 p-0 bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent text-muted dark:text-muted"
                     >
                       <a
                         href={shortUrl}
