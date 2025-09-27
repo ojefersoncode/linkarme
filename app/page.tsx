@@ -22,7 +22,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex w-full justify-center items-center py-4">
-              <ShimmerButton className="shadow-2xl max-md:w-sm">
+              <ShimmerButton className="shadow-2xl">
                 <span className="whitespace-pre-wrap text-center text-base max-md:text-sm font-medium leading-none tracking-tight bg-blue-600/5 dark:bg-blue-600/5 text-white/90 dark:from-white dark:to-slate-900/10">
                   Teste gratis por 14 dias
                 </span>
