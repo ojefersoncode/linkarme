@@ -85,9 +85,9 @@ export function AppSidebar() {
         </div>
       </SidebarContent>
 
-      <SidebarFooter className="border-t p-4 bg-foreground border-accent/40">
+      <SidebarFooter className="border-t bg-foreground border-accent/40">
         <Button
-          className="w-full justify-start bg-transparent hover:bg-transparent text-white"
+          className="w-full justify-start bg-transparent cursor-pointer py-6 hover:bg-transparent text-white"
           onClick={handleLogout}
         >
           <LogOut className="h-4 w-4 mr-2" />
