@@ -46,7 +46,7 @@ export default async function DomainsPage() {
     <div className="p-6 max-md:p-0 space-y-6">
       <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
         <div className="flex items-center gap-1 py-3">
-          <MenuMobile /> <img src="/logo.png" alt="" className="h-6" />
+          <MenuMobile /> <img src="/Linklogo.png" alt="" className="h-5" />
         </div>
       </div>
 
