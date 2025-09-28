@@ -117,9 +117,9 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
           <span className="max-md:text-xs"> Exportar Dados </span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-xl pt-4 h-screen">
-        <ScrollArea className="h-screen w-full">
-          <DialogHeader className="max-md:justify-start">
+      <DialogContent className="md:max-w-xl md:h-screen py-2">
+        <ScrollArea className="h-screen py-4 w-full">
+          <DialogHeader className="max-md:justify-start py-">
             <DialogTitle className="max-md:justify-start text-start">
               Exportar Dados
             </DialogTitle>
@@ -127,7 +127,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
               Exporte seus dados em formato CSV para análises externas
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4 py-4">
+          <div className="grid gap-4 py-6">
             <div className="space-y-2">
               <Label htmlFor="exportType">Tipo de Dados</Label>
               <Select value={exportType} onValueChange={setExportType}>
