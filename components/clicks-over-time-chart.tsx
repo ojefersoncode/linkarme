@@ -60,14 +60,34 @@ export function ClicksOverTimeChart({ data }: ClicksOverTimeTableProps) {
           }
           defaultValue="7"
         >
-          <SelectTrigger className="w-[160px] bg-primary dark:bg-primary hover:bg-primary dark:hover:bg-primary">
+          <SelectTrigger className="w-[160px] bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40">
             <SelectValue placeholder="Selecione o período" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="1">Últimas 24 horas</SelectItem>
-            <SelectItem value="7">Últimos 7 dias</SelectItem>
-            <SelectItem value="30">Últimos 30 dias</SelectItem>
-            <SelectItem value="all">Todo período</SelectItem>
+          <SelectContent className="bg-foreground dark:bg-foreground">
+            <SelectItem
+              className="hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted"
+              value="1"
+            >
+              Últimas 24 horas
+            </SelectItem>
+            <SelectItem
+              className="hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted"
+              value="7"
+            >
+              Últimos 7 dias
+            </SelectItem>
+            <SelectItem
+              className="hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted"
+              value="30"
+            >
+              Últimos 30 dias
+            </SelectItem>
+            <SelectItem
+              className="hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted"
+              value="all"
+            >
+              Todo período
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>

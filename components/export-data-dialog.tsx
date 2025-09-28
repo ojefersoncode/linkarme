@@ -112,7 +112,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="flex items-center justify-center cursor-pointer text-muted-foreground bg-foreground hover:bg-foreground border border-accent/30">
+        <Button className="flex items-center justify-center cursor-pointer text-muted bg-accent/40 hover:bg-accent/49 border border-muted-foreground/40">
           <Download className="h-4 w-4 md:mr-2" />
           <span className="max-md:text-xs"> Exportar Dados </span>
         </Button>
@@ -199,7 +199,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
               </>
             )}
 
-            <div className="p-4 bg-muted rounded-lg">
+            <div className="p-4 bg-foreground rounded-lg">
               <h4 className="font-medium mb-2">
                 Informações sobre Privacidade
               </h4>
@@ -217,11 +217,20 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
             </div>
           </div>
           <DialogFooter className="">
-            <Button variant="outline" onClick={() => setOpen(false)}>
+            <Button
+              className="bg-accent/10 hover:bg-accent/10 dark:hover:bg-accent/10 border border-muted-foreground/40 text-muted dark:text-muted"
+              onClick={() => setOpen(false)}
+            >
               Cancelar
             </Button>
-            <Button onClick={handleExport} disabled={isExporting}>
-              {isExporting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+            <Button
+              onClick={handleExport}
+              disabled={isExporting}
+              className="text-muted dark:text-muted bg-accent/40 hover:bg-accent/40"
+            >
+              {isExporting && (
+                <Loader2 className="h-4 w-4 mr-2 animate-spin text-muted dark:text-muted" />
+              )}
               {isExporting ? 'Exportando...' : 'Exportar'}
             </Button>
           </DialogFooter>

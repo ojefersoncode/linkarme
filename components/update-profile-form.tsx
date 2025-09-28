@@ -100,7 +100,7 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
       <Button
         type="submit"
         disabled={isLoading}
-        className="text-muted dark:text-muted"
+        className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted"
       >
         {isLoading && (
           <Loader2 className="h-4 w-4 mr-2 animate-spin text-muted dark:text-muted" />

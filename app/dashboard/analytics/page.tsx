@@ -234,7 +234,7 @@ export default async function AnalyticsPage({
               <CardTitle className="text-sm font-medium">
                 Total de Cliques
               </CardTitle>
-              <BarChart3 className="h-4 w-4 text-primary" />
+              <BarChart3 className="h-4 w-4 text-accent" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -251,7 +251,7 @@ export default async function AnalyticsPage({
               <CardTitle className="text-sm font-medium">
                 Visitantes Únicos
               </CardTitle>
-              <Users className="h-4 w-4 text-primary" />
+              <Users className="h-4 w-4 text-accent" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -268,7 +268,7 @@ export default async function AnalyticsPage({
               <CardTitle className="text-sm font-medium">
                 Taxa de Cliques
               </CardTitle>
-              <TrendingUp className="h-4 w-4 text-primary" />
+              <TrendingUp className="h-4 w-4 text-accent" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -285,7 +285,7 @@ export default async function AnalyticsPage({
           <Card className="bg-foreground border-accent/40">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Países</CardTitle>
-              <Globe className="h-4 w-4 text-primary" />
+              <Globe className="h-4 w-4 text-accent" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">

@@ -239,7 +239,7 @@ export default function CreateLinkPage() {
                   />
                   <Button
                     type="button"
-                    className="text-muted dark:text-muted"
+                    className="text-muted dark:text-muted bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40"
                     onClick={generateRandomSlug}
                   >
                     <Shuffle className="h-4 w-4" />
@@ -309,7 +309,7 @@ export default function CreateLinkPage() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="text-muted dark:text-muted"
+                  className="text-muted dark:text-muted bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40"
                 >
                   {isLoading ? 'Criando...' : 'Criar Link'}
                 </Button>

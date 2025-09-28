@@ -48,7 +48,7 @@ export default async function LinksPage() {
       return (
         <Badge
           variant="default"
-          className="bg-green-300 text-green-800 dark:bg-green-300 dark:text-green-800"
+          className="bg-green-700 text-muted dark:bg-green-700 dark:text-muted"
         >
           Ativo
         </Badge>
@@ -82,7 +82,10 @@ export default async function LinksPage() {
         </div>
         <div className="flex gap-2">
           <ExportDataDialog links={linksForExport} />
-          <Button asChild className="text-muted max-md:text-sm">
+          <Button
+            asChild
+            className="text-muted dark:text-muted bg-foreground dark:bg-foreground hover:bg-foreground dark:hover:bg-foreground border border-muted/50 dark:border-muted/50 font-semibold max-md:text-sm"
+          >
             <Link href="/dashboard/links/create">
               <Plus className="h-4 w-4 mr-2" />
               Criar Link
@@ -104,16 +107,17 @@ export default async function LinksPage() {
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="space-y-2 flex-1">
+                      <div>{getStatusBadge(link.active)}</div>
                       <div className="flex items-center gap-2">
                         <Link2 className="h-4 w-4 text-muted-foreground" />
-                        <CardTitle className="text-lg">
+                        <CardTitle className="text-lg truncate block max-md:w-52">
                           {link.title || link.slug}
                         </CardTitle>
-                        {getStatusBadge(link.active)}
                       </div>
+
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-sm">
-                          <span className="font-medium text-primary dark:text-primary">
+                          <span className="font-medium text-primary dark:text-primary truncate block max-md:w-52">
                             {shortUrl}
                           </span>
                           <CopyLinkButton url={shortUrl} />

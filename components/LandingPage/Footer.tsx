@@ -10,9 +10,9 @@ export default function Footer() {
         {/* Marca */}
         <Card className="border-none bg-transparent shadow-none max-w-sm">
           <img
-            src="/Linktraces.png"
+            src="/Linklogo.png"
             alt="logo-name"
-            className="h-12 max-md:h-6 max-md:w-32 px-0"
+            className="h-12 max-md:h-5 max-md:w-32 px-0"
           />
           <p className=" text-sm text-white/70 max-w-xs">
             Plataforma de encurtamento e rastreamento de links para
@@ -41,28 +41,32 @@ export default function Footer() {
 
         <GridBeams className="h-28 px-4 pt-4 border border-accent/60 dark:border-accent/60 rounded-lg">
           <div>
-            <h2 className="font-semibold text-white">Entre em contato</h2>
+            <h2 className="font-bold text-white dark:text-white">
+              Entre em contato
+            </h2>
 
-            <div className="flex flex-col gap-2">
-              <p className="text-sm text-white/80">
+            <div className="flex flex-col gap-2 mt-2">
+              <p className="text-sm font-normal text-muted">
                 Email: contato@linkarme.com
               </p>
-              <p className="text-sm text-white/80">WhatsApp: (99) 9999-9999</p>
+              <p className="text-sm font-normal text-muted">
+                WhatsApp: (99) 9999-9999
+              </p>
             </div>
           </div>
         </GridBeams>
       </div>
 
       {/* Base */}
-      <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-foreground/10 pt-6 text-sm text-white/80 md:flex-row">
-        <span>
+      <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-foreground/10 pt-6 text-sm md:flex-row">
+        <div className="flex gap-4">
+          <Instagram className="size-5 cursor-pointer text-muted dark:text-muted hover:text-muted/80" />
+          <Linkedin className="size-5 cursor-pointer text-muted dark:text-muted hover:text-muted/80" />
+          <Youtube className="size-5 cursor-pointer text-muted dark:text-muted hover:text-muted/80" />
+        </div>
+        <span className="text-muted-foreground">
           © {new Date().getFullYear()} Linktraces. Todos os direitos reservados.
         </span>
-        <div className="flex gap-4 text-white">
-          <Instagram className="size-5 cursor-pointer hover:text-white/80" />
-          <Linkedin className="size-5 cursor-pointer hover:text-white/80" />
-          <Youtube className="size-5 cursor-pointer hover:text-white/80" />
-        </div>
       </div>
     </footer>
   );

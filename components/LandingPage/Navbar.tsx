@@ -16,9 +16,9 @@ export default function Navbar() {
     <nav className="flex items-center w-full justify-between p-4 text-white">
       {/* Logo */}
       <img
-        src="/Linktraces.png"
+        src="/Linklogo.png"
         alt="logo-name"
-        className="h-8 max-md:h-5 max-md:w-32 px-0"
+        className="h-8 max-md:h-5 max-md:w-32"
       />
 
       {/* Menu Desktop */}

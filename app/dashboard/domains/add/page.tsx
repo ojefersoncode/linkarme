@@ -72,12 +72,15 @@ export default function AddDomainPage() {
   return (
     <div className="p-6 space-y-6 flex flex-col justify-center  w-full">
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="sm" asChild>
+        <Button
+          className="text-muted dark:text-muted bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent"
+          size="sm"
+          asChild
+        >
           <Link href="/dashboard/domains">
             <ArrowLeft className="h-4 w-4" />
           </Link>
         </Button>
-  
       </div>
 
       <div className="flex justify-center w-full">
@@ -87,7 +90,9 @@ export default function AddDomainPage() {
               <Globe className="h-5 w-5" />
               Adicionar Domínio
             </CardTitle>
-            <CardDescription>Digite seu domínio e escolha o método de verificação</CardDescription>
+            <CardDescription>
+              Digite seu domínio e escolha o método de verificação
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -102,12 +107,17 @@ export default function AddDomainPage() {
                   required
                   className="bg-background dark:bg-background"
                 />
-                <p className="text-sm text-muted-foreground">Digite apenas o domínio, sem http:// ou https://</p>
+                <p className="text-sm text-muted-foreground">
+                  Digite apenas o domínio, sem http:// ou https://
+                </p>
               </div>
 
               <div className="space-y-3">
                 <Label>Método de Verificação</Label>
-                <RadioGroup value={verificationMethod} onValueChange={setVerificationMethod}>
+                <RadioGroup
+                  value={verificationMethod}
+                  onValueChange={setVerificationMethod}
+                >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="dns" id="dns" />
                     <Label htmlFor="dns" className="cursor-pointer">
@@ -122,20 +132,21 @@ export default function AddDomainPage() {
                   </div>
                 </RadioGroup>
 
-                {verificationMethod === "dns" && (
+                {verificationMethod === 'dns' && (
                   <div className="p-4 bg-background border border-zinc-700 rounded-lg my-4 py-4">
                     <p className="text-sm">
-                      <strong>DNS TXT:</strong> Você precisará adicionar um registro TXT no seu provedor de DNS. Este
-                      método é mais seguro e recomendado.
+                      <strong>DNS TXT:</strong> Você precisará adicionar um
+                      registro TXT no seu provedor de DNS. Este método é mais
+                      seguro e recomendado.
                     </p>
                   </div>
                 )}
 
-                {verificationMethod === "file" && (
+                {verificationMethod === 'file' && (
                   <div className="p-4 bg-background border border-zinc-700 rounded-lg my-4 py-4">
                     <p className="text-sm">
-                      <strong>Upload de Arquivo:</strong> Você precisará fazer upload de um arquivo específico para o
-                      seu servidor web.
+                      <strong>Upload de Arquivo:</strong> Você precisará fazer
+                      upload de um arquivo específico para o seu servidor web.
                     </p>
                   </div>
                 )}
@@ -148,10 +159,17 @@ export default function AddDomainPage() {
               )}
 
               <div className="flex gap-3">
-                <Button type="submit" disabled={isLoading}>
-                  {isLoading ? "Adicionando..." : "Adicionar Domínio"}
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="text-muted dark:text-muted bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40"
+                >
+                  {isLoading ? 'Adicionando...' : 'Adicionar Domínio'}
                 </Button>
-                <Button className="bg-red-600 hover:bg-red-600 border border-red-400 text-white" asChild>
+                <Button
+                  className="bg-red-600 hover:bg-red-600 border border-red-400 text-white"
+                  asChild
+                >
                   <Link href="/dashboard/domains">Cancelar</Link>
                 </Button>
               </div>
@@ -160,5 +178,5 @@ export default function AddDomainPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

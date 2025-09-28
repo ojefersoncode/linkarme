@@ -18,12 +18,12 @@ import {
   SheetTrigger
 } from '@/components/ui/sheet';
 import { createClient } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 const menuItems = [
   { title: 'Dashboard', url: '/dashboard', icon: Home },
-  { title: 'Domínios', url: '/dashboard/domains', icon: Globe },
+  { title: 'Domínios', url: '/dashboard/domains', icon: Globe }, // corrigido
   { title: 'Links', url: '/dashboard/links', icon: Link2 },
   { title: 'Analytics', url: '/dashboard/analytics', icon: BarChart3 },
   { title: 'Configurações', url: '/dashboard/settings', icon: Settings }
@@ -31,6 +31,7 @@ const menuItems = [
 
 export function MenuMobile() {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleLogout = async () => {
     const supabase = createClient();
@@ -45,32 +46,47 @@ export function MenuMobile() {
           <Menu className="size-5 p-0 m-0" />
         </Button>
       </SheetTrigger>
+
       <SheetContent side="right" className="bg-foreground pt-2 pb-4 w-64">
         <SheetHeader className="flex w-full px-0 text-muted">
-          <SheetTitle className="flex items-center pb-2 text-white border-b border-accent/30 w-full">
-            <img src="/Linktraces.png" alt="" className="h-6 px-4 opacity-90" />
+          <SheetTitle className="flex items-center px-4 pb-4 text-white border-b border-accent/30 w-full">
+            <h1 className="text-muted dark:text-muted font-bold text-sm">
+              Menu
+            </h1>
           </SheetTitle>
         </SheetHeader>
 
         <div className="flex flex-col w-full h-screen justify-between px-2">
           <nav className="flex flex-col gap-2 mb-4">
-            {menuItems.map((item) => (
-              <Link
-                key={item.title}
-                href={item.url}
-                className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-white hover:text-muted/80 transition-all duration-300"
-              >
-                <item.icon className="size-4" />
-                {item.title}
-              </Link>
-            ))}
+            {menuItems.map((item) => {
+              const isActive =
+                item.url === '/dashboard'
+                  ? pathname === '/dashboard' // dashboard só ativa na raiz
+                  : pathname === item.url ||
+                    pathname.startsWith(item.url + '/');
+
+              return (
+                <Link
+                  key={item.title}
+                  href={item.url}
+                  className={`flex items-center gap-2 px-3 py-2 text-sm font-semibold rounded-md transition-all duration-300 ${
+                    isActive
+                      ? 'bg-accent/40 text-white hover:bg-accent/40'
+                      : 'text-white hover:text-muted/80 hover:bg-accent/30'
+                  }`}
+                >
+                  <item.icon className="size-4" />
+                  {item.title}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex flex-col px-2">
             <div>
               <Button
                 variant="ghost"
-                className="w-full mb-4 justify-center text-background border-none bg-white hover:bg-background dark:hover:bg-white/80 hover:text-background"
+                className="w-full mb-4 justify-center text-white border-none bg-accent/40 hover:bg-background dark:hover:bg-accent/50 hover:text-white"
               >
                 Gerenciar plano
               </Button>
