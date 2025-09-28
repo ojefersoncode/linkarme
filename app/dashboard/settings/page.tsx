@@ -26,7 +26,7 @@ export default async function SettingsPage() {
 
   return (
     <div className="md:flex items-center w-full justify-center p-6 space-y-6 max-md:p-0">
-      <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+      <div className="flex items-center justify-between bg-foreground border-b border-accent/20 md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
           <MenuMobile /> <img src="/Linklogo.png" alt="" className="h-5" />
         </div>
