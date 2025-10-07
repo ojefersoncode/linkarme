@@ -115,7 +115,7 @@ export default function LoginPage() {
                   Não tem uma conta?{' '}
                   <Link
                     href="/auth/sign-up"
-                    className="underline underline-offset-4 text-primary hover:text-primary/80"
+                    className="underline underline-offset-4 text-accent hover:text-accent/80"
                   >
                     Criar conta
                   </Link>

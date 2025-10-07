@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -21,7 +22,7 @@ import {
 } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Download, Loader2 } from 'lucide-react';
-import { ScrollArea } from './ui/scroll-area';
+import { ScrollArea } from '@/components/ui/scroll-area'; // ajuste conforme seu projeto
 
 interface Link {
   id: string;
@@ -45,29 +46,16 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
 
   const handleExport = async () => {
     setIsExporting(true);
-
     try {
       const params = new URLSearchParams();
-
       if (exportType === 'clicks') {
-        if (selectedLink !== 'all') {
-          params.append('link_id', selectedLink);
-        }
-        if (startDate) {
-          params.append('start_date', startDate);
-        }
-        if (endDate) {
-          params.append('end_date', endDate);
-        }
-        if (includePersonalData) {
-          params.append('include_personal_data', 'true');
-        }
+        if (selectedLink !== 'all') params.append('link_id', selectedLink);
+        if (startDate) params.append('start_date', startDate);
+        if (endDate) params.append('end_date', endDate);
+        if (includePersonalData) params.append('include_personal_data', 'true');
 
         const response = await fetch(`/api/export/clicks?${params.toString()}`);
-
-        if (!response.ok) {
-          throw new Error('Erro ao exportar dados');
-        }
+        if (!response.ok) throw new Error('Erro ao exportar dados');
 
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
@@ -80,12 +68,9 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
         a.click();
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
-      } else if (exportType === 'links') {
+      } else {
         const response = await fetch('/api/export/links');
-
-        if (!response.ok) {
-          throw new Error('Erro ao exportar dados');
-        }
+        if (!response.ok) throw new Error('Erro ao exportar dados');
 
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
@@ -99,7 +84,6 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
       }
-
       setOpen(false);
     } catch (error) {
       console.error('Export error:', error);
@@ -117,21 +101,21 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
           <span className="max-md:text-xs"> Exportar Dados </span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="md:max-w-xl md:h-screen py-2">
-        <ScrollArea className="h-screen py-4 w-full">
-          <DialogHeader className="max-md:justify-start py-">
-            <DialogTitle className="max-md:justify-start text-start">
-              Exportar Dados
-            </DialogTitle>
-            <DialogDescription className="max-md:justify-start text-start">
-              Exporte seus dados em formato CSV para análises externas
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-6">
+
+      <DialogContent className="w-full border-primary sm:m-0 sm:max-w-xl max-h-[calc(100vh-3.5rem)] sm:max-h-[90vh] flex flex-col">
+        <DialogHeader>
+          <DialogTitle>Exportar Dados</DialogTitle>
+          <DialogDescription>
+            Exporte seus dados em formato CSV
+          </DialogDescription>
+        </DialogHeader>
+
+        <ScrollArea className="flex-1 min-h-0 overflow-y-auto">
+          <div className="grid gap-4 py-4">
             <div className="space-y-2">
               <Label htmlFor="exportType">Tipo de Dados</Label>
               <Select value={exportType} onValueChange={setExportType}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-primary/30 dark:bg-primary/30 hover:bg-primary/40 hover:dark:bg-primary/40">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -146,7 +130,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                 <div className="space-y-2">
                   <Label htmlFor="link">Link Específico (Opcional)</Label>
                   <Select value={selectedLink} onValueChange={setSelectedLink}>
-                    <SelectTrigger>
+                    <SelectTrigger className="bg-primary/30 dark:bg-primary/30 hover:bg-primary/40 hover:dark:bg-primary/40">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -156,7 +140,8 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                           {Array.isArray(link.domains)
                             ? link.domains.map((d) => d.domain).join(', ')
                             : ''}
-                          /{link.slug} {link.title && `- ${link.title}`}
+                          /{link.slug}
+                          {link.title ? ` - ${link.title}` : ''}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -171,6 +156,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                       type="date"
                       value={startDate}
                       onChange={(e) => setStartDate(e.target.value)}
+                      className="bg-primary/30 dark:bg-primary/30 hover:bg-primary/40 hover:dark:bg-primary/40"
                     />
                   </div>
                   <div className="space-y-2">
@@ -180,12 +166,14 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                       type="date"
                       value={endDate}
                       onChange={(e) => setEndDate(e.target.value)}
+                      className="bg-primary/30 dark:bg-primary/30 hover:bg-primary/40 hover:dark:bg-primary/40"
                     />
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-2">
                   <Checkbox
+                    className="bg-accent/70 dark:bg-accent/70"
                     id="includePersonalData"
                     checked={includePersonalData}
                     onCheckedChange={(checked) =>
@@ -193,7 +181,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                     }
                   />
                   <Label htmlFor="includePersonalData" className="text-sm">
-                    Incluir dados pessoais (IP hash)
+                    Incluir dados geograficos (IP hash)
                   </Label>
                 </div>
               </>
@@ -216,25 +204,26 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
               </ul>
             </div>
           </div>
-          <DialogFooter className="">
-            <Button
-              className="bg-accent/10 hover:bg-accent/10 dark:hover:bg-accent/10 border border-muted-foreground/40 text-muted dark:text-muted"
-              onClick={() => setOpen(false)}
-            >
-              Cancelar
-            </Button>
-            <Button
-              onClick={handleExport}
-              disabled={isExporting}
-              className="text-muted dark:text-muted bg-accent/40 hover:bg-accent/40"
-            >
-              {isExporting && (
-                <Loader2 className="h-4 w-4 mr-2 animate-spin text-muted dark:text-muted" />
-              )}
-              {isExporting ? 'Exportando...' : 'Exportar'}
-            </Button>
-          </DialogFooter>
         </ScrollArea>
+
+        <DialogFooter>
+          <Button
+            className="bg-accent/10 hover:bg-accent/10 dark:hover:bg-accent/10 border border-muted-foreground/40 text-muted dark:text-muted"
+            onClick={() => setOpen(false)}
+          >
+            Cancelar
+          </Button>
+          <Button
+            onClick={handleExport}
+            disabled={isExporting}
+            className="text-muted dark:text-muted bg-accent/40 hover:bg-accent/40"
+          >
+            {isExporting && (
+              <Loader2 className="h-4 w-4 mr-2 animate-spin text-muted dark:text-muted" />
+            )}
+            {isExporting ? 'Exportando...' : 'Exportar'}
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

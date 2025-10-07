@@ -122,7 +122,7 @@ export default function SignUpPage() {
                   Já tem uma conta?{' '}
                   <Link
                     href="/auth/login"
-                    className="underline underline-offset-4 text-primary hover:text-primary/80"
+                    className="underline underline-offset-4 text-accent hover:text-accent/80"
                   >
                     Entrar
                   </Link>
