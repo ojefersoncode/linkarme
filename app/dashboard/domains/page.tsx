@@ -70,7 +70,7 @@ export default async function DomainsPage() {
       {domains && domains.length > 0 ? (
         <div className="grid gap-4 max-md:px-4">
           {domains.map((domain) => (
-            <Card key={domain.id} className="bg-foreground border-accent/40">
+            <Card key={domain.id} className="bg-foreground border-accent">
               <CardHeader className="bg-foreground border-zinc-700">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">

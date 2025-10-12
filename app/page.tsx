@@ -29,7 +29,7 @@ export default function HomePage() {
               </ShimmerButton>
             </div>
 
-            <div className="py-4 px-2 md:hidden">
+            <div className="py-4 px-2 md:hidden flex  w-full justify-center">
               <img
                 className="border border-accent/40 rounded-md"
                 src="/dashboard.png"
@@ -39,7 +39,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="md:px-12 max-md:hidden pb-12">
+        <div className=" max-md:hidden pb-12 flex w-full justify-center">
           <img
             className="border border-accent/40 rounded-lg"
             src="/dashboard.png"

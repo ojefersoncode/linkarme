@@ -3,15 +3,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import {
-  Plus,
-  Link2,
-  ExternalLink,
-  BarChart3,
-  ArrowRight,
-  Globe,
-  Pen
-} from 'lucide-react';
+import { Plus, Link2, ExternalLink, BarChart3, Globe, Pen } from 'lucide-react';
 import Link from 'next/link';
 import { DeleteLinkButton } from '@/components/delete-link-button';
 import { CopyLinkButton } from '@/components/copy-link-button';
@@ -103,13 +95,13 @@ export default async function LinksPage() {
             const shortUrl = `https://${link.domains?.domain}/${link.slug}`;
 
             return (
-              <Card key={link.id} className="bg-foreground border-accent/40">
+              <Card key={link.id} className="bg-foreground border-accent">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="space-y-2 flex-1">
                       <div>{getStatusBadge(link.active)}</div>
                       <div className="flex items-center gap-2">
-                        <Link2 className="h-4 w-4 text-muted-foreground" />
+                        <Link2 className="h-4 w-4 text-accent" />
                         <CardTitle className="text-lg truncate block max-md:w-52">
                           {link.title || link.slug}
                         </CardTitle>
@@ -150,8 +142,8 @@ export default async function LinksPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="text-right">
-                        <div className="flex items-center gap-1 text-sm font-medium text-muted-foreground">
-                          <BarChart3 className="h-4 w-4 text-muted-foreground" />
+                        <div className="flex items-center gap-1 text-sm font-medium text-secondary">
+                          <BarChart3 className="h-4 w-4 text-accent" />
                           {clickCount}
                         </div>
                       </div>

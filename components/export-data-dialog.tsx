@@ -96,13 +96,13 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="flex items-center justify-center cursor-pointer text-muted bg-accent/40 hover:bg-accent/49 border border-muted-foreground/40">
+        <Button className="flex items-center justify-center cursor-pointer text-muted bg-accent/40 hover:bg-accent/50 border border-secondary">
           <Download className="h-4 w-4 md:mr-2" />
           <span className="max-md:text-xs"> Exportar Dados </span>
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="w-full border-primary sm:m-0 sm:max-w-xl max-h-[calc(100vh-3.5rem)] sm:max-h-[90vh] flex flex-col">
+      <DialogContent className="w-full border-secondary/40 sm:m-0 sm:max-w-xl max-h-[calc(100vh-3.5rem)] sm:max-h-[90vh] flex flex-col">
         <DialogHeader>
           <DialogTitle>Exportar Dados</DialogTitle>
           <DialogDescription>
@@ -115,12 +115,22 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
             <div className="space-y-2">
               <Label htmlFor="exportType">Tipo de Dados</Label>
               <Select value={exportType} onValueChange={setExportType}>
-                <SelectTrigger className="bg-primary/30 dark:bg-primary/30 hover:bg-primary/40 hover:dark:bg-primary/40">
+                <SelectTrigger className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="clicks">Dados de Cliques</SelectItem>
-                  <SelectItem value="links">Lista de Links</SelectItem>
+                <SelectContent className="bg-background">
+                  <SelectItem
+                    className="bg-background dark:bg-background hover:bg-accent/40 dark:hover:bg-accent/40"
+                    value="clicks"
+                  >
+                    Dados de Cliques
+                  </SelectItem>
+                  <SelectItem
+                    className="bg-background dark:bg-background hover:bg-accent/40 dark:hover:bg-accent/40"
+                    value="links"
+                  >
+                    Lista de Links
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -130,13 +140,22 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                 <div className="space-y-2">
                   <Label htmlFor="link">Link Específico (Opcional)</Label>
                   <Select value={selectedLink} onValueChange={setSelectedLink}>
-                    <SelectTrigger className="bg-primary/30 dark:bg-primary/30 hover:bg-primary/40 hover:dark:bg-primary/40">
+                    <SelectTrigger className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">Todos os links</SelectItem>
+                    <SelectContent className="bg-background">
+                      <SelectItem
+                        className="bg-background dark:bg-background hover:bg-accent/40 dark:hover:bg-accent/40"
+                        value="all"
+                      >
+                        Todos os links
+                      </SelectItem>
                       {links.map((link) => (
-                        <SelectItem key={link.id} value={link.id}>
+                        <SelectItem
+                          className="bg-background dark:bg-background hover:bg-accent/40 dark:hover:bg-accent/40"
+                          key={link.id}
+                          value={link.id}
+                        >
                           {Array.isArray(link.domains)
                             ? link.domains.map((d) => d.domain).join(', ')
                             : ''}
@@ -156,7 +175,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                       type="date"
                       value={startDate}
                       onChange={(e) => setStartDate(e.target.value)}
-                      className="bg-primary/30 dark:bg-primary/30 hover:bg-primary/40 hover:dark:bg-primary/40"
+                      className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60"
                     />
                   </div>
                   <div className="space-y-2">
@@ -166,14 +185,14 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                       type="date"
                       value={endDate}
                       onChange={(e) => setEndDate(e.target.value)}
-                      className="bg-primary/30 dark:bg-primary/30 hover:bg-primary/40 hover:dark:bg-primary/40"
+                      className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60"
                     />
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-2">
                   <Checkbox
-                    className="bg-accent/70 dark:bg-accent/70"
+                    className="bg-accent/70 dark:bg-accent/70 text-white dark:text-white"
                     id="includePersonalData"
                     checked={includePersonalData}
                     onCheckedChange={(checked) =>
@@ -187,7 +206,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
               </>
             )}
 
-            <div className="p-4 bg-foreground rounded-lg">
+            <div className="p-4 border border-popover bg-foreground/60 rounded-lg">
               <h4 className="font-medium mb-2">
                 Informações sobre Privacidade
               </h4>
@@ -208,7 +227,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
 
         <DialogFooter>
           <Button
-            className="bg-accent/10 hover:bg-accent/10 dark:hover:bg-accent/10 border border-muted-foreground/40 text-muted dark:text-muted"
+            className="bg-popover hover:bg-popover border border-popover-foreground dark:hover:bg-popover/80 text-muted dark:text-muted"
             onClick={() => setOpen(false)}
           >
             Cancelar
@@ -216,7 +235,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
           <Button
             onClick={handleExport}
             disabled={isExporting}
-            className="text-muted dark:text-muted bg-accent/40 hover:bg-accent/40"
+            className="text-muted dark:text-muted border border-secondary bg-accent/50 hover:bg-accent/40"
           >
             {isExporting && (
               <Loader2 className="h-4 w-4 mr-2 animate-spin text-muted dark:text-muted" />

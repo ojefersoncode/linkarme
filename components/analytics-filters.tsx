@@ -49,18 +49,18 @@ export function AnalyticsFilters({
   };
 
   return (
-    <Card className="bg-foreground border-accent/40">
+    <Card className="bg-foreground border-border/40">
       <CardContent>
         <div className="flex items-center w-full justify-between pb-4">
           <h1 className="font-bold ">Filtro</h1>
-          <Filter className="h-4 w-4 text-accent dark:text-accent" />
+          <Filter className="h-4 w-4 text-secondary dark:text-secondary" />
         </div>
         <div className="flex w-full items-center gap-4">
           <Select
             value={currentDays.toString()}
             onValueChange={handleDaysChange}
           >
-            <SelectTrigger className="w-[180px] bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted">
+            <SelectTrigger className="w-[180px] bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="bg-background">
@@ -95,7 +95,7 @@ export function AnalyticsFilters({
             value={currentLinkId || 'all'}
             onValueChange={handleLinkChange}
           >
-            <SelectTrigger className="w-[250px] truncate block bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted">
+            <SelectTrigger className="w-[250px] truncate block bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="bg-background">

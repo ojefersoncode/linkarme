@@ -22,7 +22,7 @@ export default function Navbar() {
       />
 
       {/* Menu Desktop */}
-      <div className="hidden md:flex items-center gap-10 font-mono text-white/80">
+      <div className="hidden md:flex items-center gap-10 font-semibold text-white/80">
         <span>Início</span>
         <span>Preços</span>
         <span>Contatos</span>
@@ -32,7 +32,7 @@ export default function Navbar() {
       {/* Botões Desktop */}
       <div className="hidden md:flex items-center gap-4">
         <Link href="/auth/sign-up" className="flex w-full">
-          <Button className="flex w-full rounded-sm bg-accent/50 hover:bg-accent/50 text-muted">
+          <Button className="flex w-full rounded-sm bg-popover/50 hover:bg-popover/50 text-muted border border-popover-foreground">
             <span className="whitespace-pre-wrap text-center text-sm font-medium">
               Cadastrar
             </span>
@@ -40,7 +40,7 @@ export default function Navbar() {
         </Link>
 
         <Link href="/auth/login" className="flex w-full">
-          <Button className="flex w-full bg-accent/50 hover:bg-accent/50 text-muted">
+          <Button className="flex w-full bg-accent/85 hover:bg-accent/75 text-muted border border-secondary">
             <span className="whitespace-pre-wrap text-center text-sm font-bold">
               Entrar
             </span>

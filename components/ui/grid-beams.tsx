@@ -139,12 +139,12 @@ export const GridBeams: React.FC<GridBeamsProps> = ({
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-(--bg-color) bg-[radial-gradient(ellipse_at_50%_-20%,#34414B,transparent_70%)]",
-        className,
+        'relative overflow-hidden bg-(--bg-color) bg-[radial-gradient(ellipse_at_50%_-20%,#313041,transparent_70%)]',
+        className
       )}
       style={
         {
-          "--bg-color": backgroundColor,
+          '--bg-color': backgroundColor
         } as React.CSSProperties
       }
       {...props}
@@ -153,9 +153,9 @@ export const GridBeams: React.FC<GridBeamsProps> = ({
         className="absolute inset-0 pointer-events-none bg-[linear-gradient(var(--grid-color)_1px,transparent_1px),linear-gradient(90deg,var(--grid-color)_1px,transparent_1px)] bg-size-[var(--grid-size)_var(--grid-size)] mask-(--grid-mask) [webkit-mask-image:var(--grid-mask)]"
         style={
           {
-            "--grid-color": gridColor,
-            "--grid-size": `${gridSize}px`,
-            "--grid-mask": gridMask,
+            '--grid-color': gridColor,
+            '--grid-size': `${gridSize}px`,
+            '--grid-mask': gridMask
           } as React.CSSProperties
         }
       />

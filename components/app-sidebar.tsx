@@ -38,11 +38,11 @@ export function AppSidebar() {
   return (
     <Sidebar className="bg-foreground border-accent/40">
       <SidebarHeader className="bg-foreground border-b border-accent/40 p-4">
-        <div className="flex items-center ">
+        <div className="flex items-center justify-center">
           <img
             src="/Linklogo.png"
             alt="logo-name"
-            className="h-8 px-0 opacity-80"
+            className="px-0 opacity-90"
           />
         </div>
       </SidebarHeader>
@@ -59,7 +59,7 @@ export function AppSidebar() {
                       asChild
                       className={`transition-all duration-200 ${
                         isActive
-                          ? 'bg-accent/40 text-white hover:bg-accent/50'
+                          ? 'bg-accent/40 text-white hover:bg-accent/50 border border-secondary/80'
                           : 'hover:bg-accent/30 text-muted-foreground hover:text-white'
                       }`}
                     >
@@ -76,10 +76,7 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <div className="p-4 justify-end">
-          <Button
-            variant="ghost"
-            className="w-full justify-center bg-accent/40 text-white hover:bg-white dark:hover:bg-accent/40 hover:text-muted"
-          >
+          <Button className="w-full justify-center bg-accent/50 text-white hover:bg-white dark:hover:bg-accent/40 hover:text-muted border border-secondary">
             Gerenciar plano
           </Button>
         </div>
