@@ -39,7 +39,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className=" max-md:hidden pb-12 flex w-full justify-center">
+        <div className=" max-md:hidden px-12 pb-12 flex w-full justify-center">
           <img
             className="border border-accent/40 rounded-lg"
             src="/dashboard.png"
