@@ -57,7 +57,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="md:p-6 space-y-6">
-      <div className="flex items-center justify-between bg-foreground border-b border-accent/20 md:hidden">
+      <div className="flex items-center justify-between bg-foreground border-b border-popover/20 md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
           <MenuMobile />{' '}
           <img src="/Linklogo.png" alt="logo-icon" className="h-5" />
@@ -72,7 +72,7 @@ export default async function DashboardPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
-        <Card className="bg-foreground ">
+        <Card className="bg-background/70 border-popover-foreground">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted dark:text-muted">
               Domínios
@@ -89,7 +89,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground">
+        <Card className="bg-background/70 border-popover-foreground">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted dark:text-muted">
               Links
@@ -104,7 +104,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground">
+        <Card className="bg-background/70 border-popover-foreground">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted dark:text-muted">
               Cliques
@@ -119,7 +119,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground">
+        <Card className="bg-background/70 border-popover-foreground">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted dark:text-muted">
               Taxa de Cliques
@@ -138,7 +138,7 @@ export default async function DashboardPage() {
       </div>
 
       <div className="grid gap-4 max-md:px-4 pb-4 md:grid-cols-2">
-        <Card className="bg-foreground text-muted dark:text-muted">
+        <Card className="bg-background/70 border-popover-foreground text-muted dark:text-muted ">
           <CardHeader>
             <CardTitle>Primeiros Passos</CardTitle>
             <CardDescription>
@@ -155,7 +155,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground text-muted dark:text-muted">
+        <Card className="bg-background/70 border-popover-foreground text-muted dark:text-muted ">
           <CardHeader>
             <CardTitle>Atividade Recente</CardTitle>
             <CardDescription>Suas últimas ações na plataforma</CardDescription>

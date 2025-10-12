@@ -31,7 +31,7 @@ export default function HomePage() {
 
             <div className="py-4 px-2 md:hidden flex  w-full justify-center">
               <img
-                className="border border-accent/40 rounded-md"
+                className="border border-popover rounded-md"
                 src="/dashboard.png"
                 alt=""
               />
@@ -39,9 +39,9 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className=" max-md:hidden px-12 pb-12 flex w-full justify-center">
+        <div className="max-md:hidden px-12 pb-12 flex w-full justify-center">
           <img
-            className="border border-accent/40 rounded-lg"
+            className="border border-popover-foreground rounded-lg"
             src="/dashboard.png"
             alt=""
           />

@@ -51,7 +51,7 @@ export default function LoginPage() {
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm">
         <div className="flex flex-col gap-6">
-          <Card className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40">
+          <Card className="bg-background dark:bg-background border-popover dark:border-popover">
             <CardHeader>
               <CardTitle className="text-2xl">Entrar</CardTitle>
               <CardDescription>
@@ -71,7 +71,7 @@ export default function LoginPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
+                      className="bg-primary/20 dark:bg-primary/20 border-popover dark:border-popover"
                     />
                   </div>
 
@@ -85,7 +85,7 @@ export default function LoginPage() {
                         required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="pr-10 bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
+                        className="pr-10 bg-primary/20 dark:bg-primary/20 border-popover dark:border-popoverr"
                       />
                       <button
                         type="button"
@@ -105,7 +105,7 @@ export default function LoginPage() {
 
                   <Button
                     type="submit"
-                    className="w-full text-muted dark:text-muted"
+                    className="w-full border border-secondary bg-accent/60 dark:bg-accent/60 text-muted dark:text-muted"
                     disabled={isLoading}
                   >
                     {isLoading ? 'Entrando...' : 'Entrar'}
@@ -115,7 +115,7 @@ export default function LoginPage() {
                   Não tem uma conta?{' '}
                   <Link
                     href="/auth/sign-up"
-                    className="underline underline-offset-4 text-accent hover:text-accent/80"
+                    className="underline underline-offset-4 text-accent hover:text-accent"
                   >
                     Criar conta
                   </Link>

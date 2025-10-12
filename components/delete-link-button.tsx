@@ -54,8 +54,9 @@ export function DeleteLinkButton({ linkId, linkTitle }: DeleteLinkButtonProps) {
         <AlertDialogHeader>
           <AlertDialogTitle>Excluir Link</AlertDialogTitle>
           <AlertDialogDescription>
-            Tem certeza que deseja excluir o link <strong>{linkTitle}</strong>? Esta ação não pode ser desfeita e todas
-            as estatísticas associadas serão perdidas.
+            Tem certeza que deseja excluir o link <strong>{linkTitle}</strong>?
+            Esta ação não pode ser desfeita e todas as estatísticas associadas
+            serão perdidas.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -63,13 +64,13 @@ export function DeleteLinkButton({ linkId, linkTitle }: DeleteLinkButtonProps) {
           <AlertDialogAction
             onClick={handleDelete}
             disabled={isDeleting}
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            className="bg-destructive text-white hover:bg-destructive/90"
           >
             {isDeleting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-            {isDeleting ? "Excluindo..." : "Excluir"}
+            {isDeleting ? 'Excluindo...' : 'Excluir'}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }

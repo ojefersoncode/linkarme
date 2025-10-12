@@ -56,7 +56,7 @@ export default function SignUpPage() {
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10 bg-background dark:bg-background">
       <div className="w-full max-w-sm">
         <div className="flex flex-col gap-6">
-          <Card className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40">
+          <Card className="bg-background dark:bg-background border-popovers dark:border-popover">
             <CardHeader>
               <CardTitle className="text-2xl">Criar Conta</CardTitle>
             </CardHeader>
@@ -72,7 +72,7 @@ export default function SignUpPage() {
                       required
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
+                      className="bg-primary/20 dark:bg-primary/20 border-popover dark:border-popover"
                     />
                   </div>
                   <div className="grid gap-2">
@@ -84,7 +84,7 @@ export default function SignUpPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
+                      className="bg-primary/20 dark:bg-primary/20 border-popover dark:border-popover"
                     />
                   </div>
                   <div className="grid gap-2">
@@ -95,7 +95,7 @@ export default function SignUpPage() {
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
+                      className="bg-primary/20 dark:bg-primary/20 border-popover dark:border-popover"
                     />
                   </div>
                   <div className="grid gap-2">
@@ -106,13 +106,13 @@ export default function SignUpPage() {
                       required
                       value={repeatPassword}
                       onChange={(e) => setRepeatPassword(e.target.value)}
-                      className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
+                      className="bg-primary/20 dark:bg-primary/20 border-popover dark:border-popover"
                     />
                   </div>
                   {error && <p className="text-sm text-destructive">{error}</p>}
                   <Button
                     type="submit"
-                    className="w-full text-muted dark:text-muted"
+                    className="w-full border border-secondary bg-accent/60 dark:bg-accent/60 text-muted dark:text-muted"
                     disabled={isLoading}
                   >
                     {isLoading ? 'Criando conta...' : 'Criar Conta'}
@@ -122,7 +122,7 @@ export default function SignUpPage() {
                   Já tem uma conta?{' '}
                   <Link
                     href="/auth/login"
-                    className="underline underline-offset-4 text-accent hover:text-accent/80"
+                    className="underline underline-offset-4 text-accent hover:text-accents"
                   >
                     Entrar
                   </Link>

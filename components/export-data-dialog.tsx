@@ -102,7 +102,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="w-full border-secondary/40 sm:m-0 sm:max-w-xl max-h-[calc(100vh-3.5rem)] sm:max-h-[90vh] flex flex-col">
+      <DialogContent className="w-full border-popover-foreground sm:m-0 sm:max-w-xl max-h-[calc(100vh-3.5rem)] sm:max-h-[90vh] flex flex-col">
         <DialogHeader>
           <DialogTitle>Exportar Dados</DialogTitle>
           <DialogDescription>

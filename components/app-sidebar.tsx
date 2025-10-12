@@ -36,8 +36,8 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar className="bg-foreground border-accent/40">
-      <SidebarHeader className="bg-foreground border-b border-accent/40 p-4">
+    <Sidebar className="bg-background/70s border-popover-foreground">
+      <SidebarHeader className="bg-foreground border-b border-popover-foreground p-4 mb-4">
         <div className="flex items-center justify-center">
           <img
             src="/Linklogo.png"
@@ -47,7 +47,7 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="justify-between bg-foreground">
+      <SidebarContent className="justify-between bg-background/70">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -82,7 +82,7 @@ export function AppSidebar() {
         </div>
       </SidebarContent>
 
-      <SidebarFooter className="border-t bg-foreground border-accent/40">
+      <SidebarFooter className="border-t bg-background/70 border-popover-foreground">
         <Button
           className="w-full justify-start bg-transparent cursor-pointer py-6 hover:bg-transparent text-white"
           onClick={handleLogout}

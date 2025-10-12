@@ -42,17 +42,20 @@ export function MenuMobile() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="bg-foreground hover:bg-foreground text-accent dark:text-accent border-none m-0 px-1 py-4">
+        <Button className="bg-transparent hover:bg-transparent text-muted dark:text-muted border-none m-0 px-1 py-4">
           <Menu className="size-5 p-0 m-0" />
         </Button>
       </SheetTrigger>
 
-      <SheetContent side="right" className="bg-foreground pt-2 pb-4 w-64">
+      <SheetContent
+        side="right"
+        className="bg-background border-popover pt-2 pb-4 w-64"
+      >
         <SheetHeader className="flex w-full px-0 text-muted">
-          <SheetTitle className="flex items-center px-4 pb-4 text-white border-b border-accent/30 w-full">
-            <h1 className="text-muted dark:text-muted font-bold text-sm">
+          <SheetTitle className="flex items-center px-4 pb-4 text-white border-b border-popover-foreground w-full">
+            <span className="text-muted dark:text-muted font-bold text-sm">
               Menu
-            </h1>
+            </span>
           </SheetTitle>
         </SheetHeader>
 
@@ -71,8 +74,8 @@ export function MenuMobile() {
                   href={item.url}
                   className={`flex items-center gap-2 px-3 py-2 text-sm font-semibold rounded-md transition-all duration-300 ${
                     isActive
-                      ? 'bg-accent/40 text-white hover:bg-accent/40'
-                      : 'text-white hover:text-muted/80 hover:bg-accent/30'
+                      ? 'bg-accent/40 text-white hover:bg-accent/50'
+                      : 'text-white hover:text-muted/80 hover:bg-accent/40'
                   }`}
                 >
                   <item.icon className="size-4" />
@@ -84,10 +87,7 @@ export function MenuMobile() {
 
           <div className="flex flex-col px-2">
             <div>
-              <Button
-                variant="ghost"
-                className="w-full mb-4 justify-center text-white border-none bg-accent/40 hover:bg-background dark:hover:bg-accent/50 hover:text-white"
-              >
+              <Button className="w-full mb-4 text-muted bg-accent/60 hover:bg-accent/50 border border-secondary">
                 Gerenciar plano
               </Button>
             </div>
