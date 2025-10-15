@@ -115,25 +115,25 @@ export const GridBeams: React.FC<GridBeamsProps> = ({
   children,
   className,
   gridSize = 40,
-  gridColor = "rgba(200, 220, 255, 0.2)",
+  gridColor = 'rgba(200, 220, 255, .2)',
   rayCount = 15,
   rayOpacity = 0.35,
   raySpeed = 1,
-  rayLength = "45vh",
+  rayLength = '45vh',
   gridFadeStart = 30,
-  gridFadeEnd = 90,
-  backgroundColor = "transparente",
+  gridFadeEnd = 0,
+  backgroundColor = 'transparente',
   ...props
 }) => {
   const rayConfigs = useMemo(() => {
     return Array.from({ length: rayCount }, (_, i) =>
-      generateRayConfig(i, rayCount),
+      generateRayConfig(i, rayCount)
     );
   }, [rayCount]);
 
   const gridMask = useMemo(
     () => createGridMask(gridFadeStart, gridFadeEnd),
-    [gridFadeStart, gridFadeEnd],
+    [gridFadeStart, gridFadeEnd]
   );
 
   return (

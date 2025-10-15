@@ -32,7 +32,7 @@ export default function Navbar() {
       {/* Botões Desktop */}
       <div className="hidden md:flex items-center gap-4">
         <Link href="/auth/sign-up" className="flex w-full">
-          <Button className="flex w-full rounded-sm bg-popover/50 hover:bg-popover/50 text-muted border border-popover-foreground">
+          <Button className="flex w-full rounded-sm bg-popover/80 hover:bg-popover/90 text-muted border border-popover-foreground">
             <span className="whitespace-pre-wrap text-center text-sm font-medium">
               Cadastrar
             </span>
