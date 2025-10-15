@@ -12,7 +12,7 @@ export default function HomePage() {
         <div className="flex flex-col items-center justify-center mx-auto px-4 md:h-[400px] max-md:h-[600px]">
           <div className="text-center space-y-4">
             <div className="space-y-4 w-full flex flex-col justify-center items-center text-center">
-              <h1 className="text-2xl md:text-6xl md:max-w-5xl text-center max-md:max-w-sm font-bold bg-[linear-gradient(to_right,var(--popover),var(--muted),var(--muted),var(--popovers))] bg-clip-text text-transparent">
+              <h1 className="text-2xl md:text-6xl md:max-w-5xl text-center max-md:max-w-sm font-bold bg-[linear-gradient(to_right,var(--popover),var(--muted),var(--muted),var(--popover))] bg-clip-text text-transparent">
                 Dashboard completa para rastrear os clicks nos seus links
               </h1>
               <p className="text-base font-semibold md:text-2xl text-muted-foreground max-md:max-w-sm md:max-w-2xl mx-auto">
