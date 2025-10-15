@@ -57,7 +57,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="md:p-6 space-y-6 bg-background">
-      <div className="flex items-center justify-between bg-foreground border-b border-popover/20 md:hidden">
+      <div className="flex items-center justify-between bg-background/70 border-b border-popover md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
           <MenuMobile />{' '}
           <img src="/Linklogo.png" alt="logo-icon" className="h-5" />

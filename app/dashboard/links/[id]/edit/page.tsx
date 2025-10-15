@@ -184,23 +184,24 @@ export default function EditLinkPage({
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center gap-4">
-        <Button variant="ghost" size="sm" asChild>
+    <div className="p-6 space-y-6 bg-background">
+      <div className="flex items-center gap-1">
+        <Button
+          className="text-muted bg-transparent dark:bg-transparent hover:bg-transparent hover:dark:bg-transparent"
+          size="sm"
+          asChild
+        >
           <Link href="/dashboard/links">
             <ArrowLeft className="h-4 w-4" />
           </Link>
         </Button>
         <div>
-          <h1 className="text-3xl font-bold text-white">Editar Link</h1>
-          <p className="text-muted-foreground">
-            Edite as informações do seu link
-          </p>
+          <h1 className="text-xl font-bold text-white">Editar Link</h1>
         </div>
       </div>
 
       <div className="">
-        <Card className="bg-foreground border-accent/30 dark:border-accent/30">
+        <Card className="bg-background/70 dark:bg-background/70 border-popover">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Link2 className="h-5 w-5" />
@@ -239,14 +240,14 @@ export default function EditLinkPage({
                   placeholder="meu-link"
                   value={slug}
                   onChange={(e) => setSlug(e.target.value)}
-                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
+                  className="bg-background/70 dark:bg-background/70 border border-popover dark:border-popover"
                   required
                 />
                 <p className="text-sm text-muted-foreground">
                   Apenas letras, números, hífens e underscores são permitidos
                 </p>
                 {selectedDomain && slug && (
-                  <div className="p-2 bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40 rounded-lg">
+                  <div className="p-2 bg-background/70 dark:bg-background/70 border border-popover dark:border-popover rounded-lg">
                     <p className="text-sm font-medium">
                       Link final: https://
                       {domains.find((d) => d.id === selectedDomain)?.domain}/
@@ -264,7 +265,7 @@ export default function EditLinkPage({
                   placeholder="https://exemplo.com/pagina"
                   value={destinationUrl}
                   onChange={(e) => setDestinationUrl(e.target.value)}
-                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
+                  className="bg-background/70 dark:bg-background/70 border border-popover dark:border-popover"
                   required
                 />
               </div>
@@ -277,7 +278,7 @@ export default function EditLinkPage({
                   placeholder="Título descritivo do link"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
+                  className="bg-background/70 dark:bg-background/70 border border-popover dark:border-popover"
                 />
               </div>
 
@@ -288,7 +289,7 @@ export default function EditLinkPage({
                   placeholder="Descrição detalhada do link"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40"
+                  className="bg-background/70 dark:bg-background/70 border border-popover dark:border-popover resize-none"
                   rows={3}
                 />
               </div>
@@ -312,13 +313,13 @@ export default function EditLinkPage({
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="text-muted dark:text-muted"
+                  className="text-muted dark:text-muted bg-accent/50 dark:bg-accent/50 border border-accent"
                 >
                   {isLoading ? 'Salvando...' : 'Salvar Alterações'}
                 </Button>
                 <Button
                   asChild
-                  className="bg-accent/10 dark:bg-accent/10 text-muted dark:text-muted border border-accent/40 dark:border-accent/40"
+                  className="bg-red-500 dark:bg-red-500 text-muted dark:text-muted border border-red-600 dark:border-red-600"
                 >
                   <Link href="/dashboard/links">Cancelar</Link>
                 </Button>

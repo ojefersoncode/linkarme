@@ -26,7 +26,7 @@ export default async function SettingsPage() {
 
   return (
     <div className="md:flex items-center w-full justify-center p-6 space-y-6 max-md:p-0">
-      <div className="flex items-center justify-between bg-foreground border-b border-accent/20 md:hidden">
+      <div className="flex items-center justify-between bg-background/70 border-b border-popover md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
           <MenuMobile /> <img src="/Linklogo.png" alt="" className="h-5" />
         </div>
@@ -34,7 +34,7 @@ export default async function SettingsPage() {
       </div>
 
       <div className="grid gap-6 w-full max-md:px-4 max-md:pb-4">
-        <Card className="bg-foreground border-accent/30 dark:border-accent/30">
+        <Card className="bg-background/70 border-popover">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <User className="h-5 w-5" />
@@ -49,7 +49,7 @@ export default async function SettingsPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-accent/30 dark:border-accent/30">
+        <Card className="bg-background/70 border-popover">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Shield className="h-5 w-5" />
@@ -70,7 +70,7 @@ export default async function SettingsPage() {
               </div>
               <Badge
                 variant="default"
-                className="bg-accent/30 dark:bg-accent/30 text-muted dark:text-muted"
+                className="bg-accent/50 dark:bg-accent/50 border-accent text-muted dark:text-muted"
               >
                 Ativo
               </Badge>
@@ -86,7 +86,7 @@ export default async function SettingsPage() {
               </div>
               <Badge
                 variant="default"
-                className="bg-accent/30 dark:bg-accent/30 text-muted dark:text-muted"
+                className="bg-accent/50 dark:bg-accent/50 border-accent text-muted dark:text-muted"
               >
                 Ativo
               </Badge>
@@ -102,7 +102,7 @@ export default async function SettingsPage() {
               </div>
               <Badge
                 variant="default"
-                className="bg-accent/30 dark:bg-accent/30 text-muted dark:text-muted"
+                className="bg-accent/50 dark:bg-accent/50 border-accent text-muted dark:text-muted"
               >
                 Permanente
               </Badge>
@@ -110,7 +110,7 @@ export default async function SettingsPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-accent/30 dark:border-accent/30">
+        <Card className="bg-background/70 border-popover">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Database className="h-5 w-5" />

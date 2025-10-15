@@ -197,8 +197,8 @@ export default async function AnalyticsPage({
     const userLinks = userLinksResult.data || [];
 
     return (
-      <div className="p-6 max-md:p-0 space-y-6">
-        <div className="flex items-center justify-between bg-foreground border-b border-popover md:hidden">
+      <div className="p-6 max-md:p-0 space-y-6 bg-background">
+        <div className="flex items-center justify-between bg-background/70 border-b border-popover md:hidden">
           <div className="flex items-center gap-1 py-3">
             <MenuMobile /> <img src="/Linklogo.png" alt="" className="h-5" />
           </div>
@@ -209,7 +209,7 @@ export default async function AnalyticsPage({
 
         <div className="flex items-center justify-between max-md:hidden">
           <div>
-            <h1 className="text-3xl font-bold text-muted dark:text-muted">
+            <h1 className="text-xl font-bold text-muted dark:text-muted">
               Analytics
             </h1>
           </div>

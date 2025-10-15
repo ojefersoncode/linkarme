@@ -60,7 +60,7 @@ export default async function LinksPage() {
 
   return (
     <div className="p-6 max-md:p-0 space-y-6">
-      <div className="flex items-center justify-between bg-foreground border-b border-accent/20 md:hidden">
+      <div className="flex items-center justify-between bg-background/70 border-b border-popover md:hidden">
         <div className="flex items-center gap-1 py-3">
           <MenuMobile /> <img src="/Linklogo.png" alt="" className="h-5" />
         </div>
@@ -68,7 +68,7 @@ export default async function LinksPage() {
 
       <div className="flex items-center justify-between max-md:px-4">
         <div>
-          <h1 className="text-2xl max-md:text-xl font-bold text-muted dark:text-muted">
+          <h1 className="text-xl max-md:text-xl font-bold text-muted dark:text-muted">
             Links
           </h1>
         </div>

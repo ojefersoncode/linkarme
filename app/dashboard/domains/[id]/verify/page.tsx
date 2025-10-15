@@ -36,7 +36,7 @@ export default async function VerifyDomainPage({
   const fileContent = domain.verification_token
 
   return (
-    <div className="p-6 space-y-6 bg-background ">
+    <div className="p-6 space-y-6 bg-background">
       <div className="flex items-center gap-4">
         <Button
           className="text-muted dark:text-muted bg-transparent dark:bg-transparent hover:bg-transparent dark:hover:bg-transparent"
@@ -58,7 +58,7 @@ export default async function VerifyDomainPage({
       </div>
 
       <div className="max-w-4xl space-y-6">
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-background/70 dark:bg-background/70 border-popover">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
@@ -100,7 +100,7 @@ export default async function VerifyDomainPage({
         {!domain.verified && (
           <>
             {domain.verification_method === 'dns' && (
-              <Card className="bg-foreground border-zinc-700">
+              <Card className="bg-background/70 dark:bg-background/70 border-popover">
                 <CardHeader>
                   <CardTitle>Verificação via DNS TXT</CardTitle>
                   <CardDescription>
@@ -157,7 +157,7 @@ export default async function VerifyDomainPage({
             )}
 
             {domain.verification_method === 'file' && (
-              <Card className="bg-foreground border-zinc-700">
+              <Card className="bg-background/70 dark:bg-background/70 border-popover">
                 <CardHeader>
                   <CardTitle>Verificação via Upload de Arquivo</CardTitle>
                   <CardDescription>
@@ -196,7 +196,7 @@ export default async function VerifyDomainPage({
                     </div>
                   </div>
 
-                  <div className="p-4 bg-background border border-zinc-700 rounded-lg">
+                  <div className="p-4 bg-background/70 dark:bg-background/70 border-popover rounded-lg">
                     <h4 className="font-medium text-white mb-2">Instruções:</h4>
                     <ol className="text-sm text-zinc-300 space-y-1 list-decimal list-inside">
                       <li>Crie um arquivo com o nome especificado</li>
@@ -214,7 +214,7 @@ export default async function VerifyDomainPage({
               </Card>
             )}
 
-            <Card className="bg-foreground border-zinc-700">
+            <Card className="bg-background/70 dark:bg-background/70 border-popover">
               <CardContent>
                 <div className="flex w-full justify-between gap-12">
                   <VerifyDomainButton domainId={domain.id} />
