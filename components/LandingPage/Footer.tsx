@@ -3,7 +3,7 @@ import { Card } from '../ui/card';
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-accent bg-background p-6">
+    <footer className="w-full border-t border-popover bg-background p-6">
       {/* Topo */}
       <div className="grid grid-cols-1 md:gap-8 md:grid-cols-3 lg:grid-cols-4">
         {/* Marca */}

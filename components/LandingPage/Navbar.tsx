@@ -53,7 +53,7 @@ export default function Navbar() {
         <Sheet>
           <SheetTrigger asChild>
             <Button
-              className="bg-transparent hover:bg-transparent text-muted dark:text-muted"
+              className="bg-transparent hover:bg-transparent text-secondary dark:text-secondary"
               size="icon"
             >
               <Menu className="h-6 w-6" />
@@ -61,12 +61,12 @@ export default function Navbar() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="flex flex-col bg-background text-white"
+            className="flex flex-col bg-background text-white border-popover/50"
           >
             <SheetHeader className="text-text-muted">
               <SheetTitle className="text-muted">Menu</SheetTitle>
             </SheetHeader>
-            <div className="flex flex-col gap-4 font-mono text-white/80 px-4">
+            <div className="flex flex-col gap-4 font-semibold text-white/80 px-4">
               <span>Início</span>
               <span>Preços</span>
               <span>Contatos</span>
@@ -74,8 +74,8 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col gap-4 mt-auto p-4 w-full">
               <Link href="/auth/sign-up" className="flex w-full">
-                <Button className="flex w-full rounded-sm bg-accent/50 hover:bg-accent/50 text-white">
-                  <span className="whitespace-pre-wrap text-center text-sm font-medium text-muted">
+                <Button className="flex w-full rounded-sm bg-popover/50 hover:bg-popover/50 text-muted border border-popover-foreground">
+                  <span className="whitespace-pre-wrap text-center text-sm font-medium">
                     Cadastrar
                   </span>
                 </Button>
