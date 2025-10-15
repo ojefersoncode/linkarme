@@ -40,7 +40,7 @@ export default async function LinksPage() {
       return (
         <Badge
           variant="default"
-          className="bg-green-700 text-muted dark:bg-green-700 dark:text-muted"
+          className="bg-accent/50 text-green-100 dark:bg-accent/50 dark:text-green-100 border border-accent"
         >
           Ativo
         </Badge>
@@ -76,7 +76,7 @@ export default async function LinksPage() {
           <ExportDataDialog links={linksForExport} />
           <Button
             asChild
-            className="text-muted dark:text-muted bg-foreground dark:bg-foreground hover:bg-foreground dark:hover:bg-foreground border border-muted/50 dark:border-muted/50 font-semibold max-md:text-sm"
+            className="text-muted dark:text-muted bg-popover/80 dark:bg-popover/90 hover:bg-popover/85 dark:hover:bg-popover-85 border border-popover-foreground dark:border-popover-foreground font-semibold max-md:text-sm"
           >
             <Link href="/dashboard/links/create">
               <Plus className="h-4 w-4 mr-2" />
@@ -95,7 +95,7 @@ export default async function LinksPage() {
             const shortUrl = `https://${link.domains?.domain}/${link.slug}`;
 
             return (
-              <Card key={link.id} className="bg-foreground border-accent">
+              <Card key={link.id} className="bg-background/70 border-popover">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="space-y-2 flex-1">
@@ -109,7 +109,7 @@ export default async function LinksPage() {
 
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-sm">
-                          <span className="font-medium text-primary dark:text-primary truncate block max-md:w-52">
+                          <span className="font-medium text-muted-foreground dark:text-muted-foreground truncate block max-md:w-52">
                             {shortUrl}
                           </span>
                           <CopyLinkButton url={shortUrl} />
@@ -127,7 +127,7 @@ export default async function LinksPage() {
                             </a>
                           </Button>
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-2 text-sm text-muted">
                           <Globe className="size-4" />
                           <span className="truncate block max-md:w-64">
                             {link.destination_url}
@@ -135,7 +135,7 @@ export default async function LinksPage() {
                         </div>
                       </div>
                       {link.description && (
-                        <CardDescription className="mt-2">
+                        <CardDescription className="mt-2 text-muted">
                           {link.description}
                         </CardDescription>
                       )}

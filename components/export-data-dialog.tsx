@@ -102,7 +102,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="w-full border-popover-foreground sm:m-0 sm:max-w-xl max-h-[calc(100vh-3.5rem)] sm:max-h-[90vh] flex flex-col">
+      <DialogContent className="w-full border-popover/80 sm:m-0 sm:max-w-xl max-h-[calc(100vh-3.5rem)] sm:max-h-[90vh] flex flex-col">
         <DialogHeader>
           <DialogTitle>Exportar Dados</DialogTitle>
           <DialogDescription>
@@ -118,7 +118,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                 <SelectTrigger className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-background">
+                <SelectContent className="bg-background text-muted">
                   <SelectItem
                     className="bg-background dark:bg-background hover:bg-accent/40 dark:hover:bg-accent/40"
                     value="clicks"
@@ -143,7 +143,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                     <SelectTrigger className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-background">
+                    <SelectContent className="bg-background text-muted">
                       <SelectItem
                         className="bg-background dark:bg-background hover:bg-accent/40 dark:hover:bg-accent/40"
                         value="all"
@@ -175,7 +175,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                       type="date"
                       value={startDate}
                       onChange={(e) => setStartDate(e.target.value)}
-                      className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60"
+                      className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted border border-secondary/60"
                     />
                   </div>
                   <div className="space-y-2">
@@ -185,7 +185,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
                       type="date"
                       value={endDate}
                       onChange={(e) => setEndDate(e.target.value)}
-                      className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60"
+                      className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted border border-secondary/60"
                     />
                   </div>
                 </div>

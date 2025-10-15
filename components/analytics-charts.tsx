@@ -33,11 +33,12 @@ export function AnalyticsCharts({ clicksByDay, clicksByCountry, days }: Analytic
 
   return (
     <div className="grid gap-6 md:grid-cols-2">
-      <Card>
+      <Card className="border-popover">
         <CardHeader>
           <CardTitle>Cliques ao Longo do Tempo</CardTitle>
           <CardDescription>
-            Evolução dos cliques nos últimos {days} dias (Total: {totalClicksByDay} cliques)
+            Evolução dos cliques nos últimos {days} dias (Total:{' '}
+            {totalClicksByDay} cliques)
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -52,14 +53,21 @@ export function AnalyticsCharts({ clicksByDay, clicksByCountry, days }: Analytic
               </thead>
               <tbody>
                 {dayEntries.map(([day, clicks]) => {
-                  const percentage = totalClicksByDay > 0 ? (clicks / totalClicksByDay * 100).toFixed(1) : '0.0'
+                  const percentage =
+                    totalClicksByDay > 0
+                      ? ((clicks / totalClicksByDay) * 100).toFixed(1)
+                      : '0.0';
                   return (
                     <tr key={day} className="border-b hover:bg-muted/50">
                       <td className="py-2 px-3">{formatDate(day)}</td>
-                      <td className="text-right py-2 px-3 font-mono">{clicks}</td>
-                      <td className="text-right py-2 px-3 text-muted-foreground">{percentage}%</td>
+                      <td className="text-right py-2 px-3 font-mono">
+                        {clicks}
+                      </td>
+                      <td className="text-right py-2 px-3 text-muted-foreground">
+                        {percentage}%
+                      </td>
                     </tr>
-                  )
+                  );
                 })}
               </tbody>
             </table>
@@ -91,16 +99,21 @@ export function AnalyticsCharts({ clicksByDay, clicksByCountry, days }: Analytic
               </thead>
               <tbody>
                 {countryEntries.map(([country, clicks]) => {
-                  const percentage = totalClicksByCountry > 0 ? (clicks / totalClicksByCountry * 100).toFixed(1) : '0.0'
+                  const percentage =
+                    totalClicksByCountry > 0
+                      ? ((clicks / totalClicksByCountry) * 100).toFixed(1)
+                      : '0.0';
                   return (
                     <tr key={country} className="border-b hover:bg-muted/50">
-                      <td className="py-2 px-3">
-                        {country || 'Desconhecido'}
+                      <td className="py-2 px-3">{country || 'Desconhecido'}</td>
+                      <td className="text-right py-2 px-3 font-mono">
+                        {clicks}
                       </td>
-                      <td className="text-right py-2 px-3 font-mono">{clicks}</td>
-                      <td className="text-right py-2 px-3 text-muted-foreground">{percentage}%</td>
+                      <td className="text-right py-2 px-3 text-muted-foreground">
+                        {percentage}%
+                      </td>
                     </tr>
-                  )
+                  );
                 })}
               </tbody>
             </table>
@@ -113,5 +126,5 @@ export function AnalyticsCharts({ clicksByDay, clicksByCountry, days }: Analytic
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

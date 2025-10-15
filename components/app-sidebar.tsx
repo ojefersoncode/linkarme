@@ -36,9 +36,9 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar className="bg-background/70s border-popover-foreground">
-      <SidebarHeader className="bg-foreground border-b border-popover-foreground p-4 mb-4">
-        <div className="flex items-center justify-center">
+    <Sidebar className="bg-background/70  dark:bg-background border-popover">
+      <SidebarHeader className="bg-background/70 border-b border-popover px-4 ">
+        <div className="flex items-center justify-center bg-background/70 px-4">
           <img
             src="/Linklogo.png"
             alt="logo-name"
@@ -47,10 +47,10 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="justify-between bg-background/70">
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu>
+      <SidebarContent className="justify-between bg-background/70 pt-2">
+        <SidebarGroup className="bg-background/70">
+          <SidebarGroupContent className="bg-background/70">
+            <SidebarMenu className="bg-background/70">
               {menuItems.map((item) => {
                 const isActive = pathname === item.url;
                 return (
@@ -82,7 +82,7 @@ export function AppSidebar() {
         </div>
       </SidebarContent>
 
-      <SidebarFooter className="border-t bg-background/70 border-popover-foreground">
+      <SidebarFooter className="border-t bg-background/70 border-popover">
         <Button
           className="w-full justify-start bg-transparent cursor-pointer py-6 hover:bg-transparent text-white"
           onClick={handleLogout}

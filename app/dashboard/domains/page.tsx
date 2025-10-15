@@ -34,7 +34,10 @@ export default async function DomainsPage() {
   const getStatusBadge = (verified: boolean) => {
     if (verified) {
       return (
-        <Badge variant="default" className="bg-green-200 text-green-900">
+        <Badge
+          variant="default"
+          className="bg-accent/50 border border-accent text-green-1s00"
+        >
           Verificado
         </Badge>
       );
@@ -70,11 +73,11 @@ export default async function DomainsPage() {
       {domains && domains.length > 0 ? (
         <div className="grid gap-4 max-md:px-4">
           {domains.map((domain) => (
-            <Card key={domain.id} className="bg-foreground border-accent">
-              <CardHeader className="bg-foreground border-zinc-700">
+            <Card key={domain.id} className="bg-background/70 border-popover">
+              <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Globe className="h-5 w-5 text-muted-foreground" />
+                    <Globe className="h-5 w-5 text-accent" />
                     <div>
                       <CardTitle className="text-lg">{domain.domain}</CardTitle>
                       <CardDescription>

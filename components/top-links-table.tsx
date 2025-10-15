@@ -25,10 +25,10 @@ export function TopLinksTable({ links }: TopLinksTableProps) {
   }
 
   return (
-    <div className="rounded-md border border-accent/40 dark:bg-accent/40">
-      <Table className="bg-foreground">
-        <TableHeader>
-          <TableRow>
+    <div className="">
+      <Table className="border border-popover dark:border-popover rounded-lg">
+        <TableHeader className="border border-popover dark:border-popover">
+          <TableRow className="border border-popover dark:border-popover">
             <TableHead className="text-muted dark:text-muted">Link</TableHead>
             <TableHead className="text-muted dark:text-muted">
               Destino
@@ -41,19 +41,19 @@ export function TopLinksTable({ links }: TopLinksTableProps) {
             </TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        <TableBody className="border border-popover dark:border-popover">
           {links.map((link, index) => {
             const shortUrl = `https://${link.domains?.domain}/${link.slug}`;
 
             return (
-              <TableRow key={link.id}>
+              <TableRow
+                key={link.id}
+                className="border border-popover dark:border-popover"
+              >
                 <TableCell>
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <Badge
-                        variant="outline"
-                        className="text-xs text-muted dark:text-muted"
-                      >
+                      <Badge className="text-xs text-muted dark:text-muted bg-accent/40 border border-secondary dark:border-secondary">
                         #{index + 1}
                       </Badge>
                       <span className="font-medium text-muted">{shortUrl}</span>

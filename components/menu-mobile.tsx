@@ -49,10 +49,10 @@ export function MenuMobile() {
 
       <SheetContent
         side="right"
-        className="bg-background border-popover pt-2 pb-4 w-64"
+        className="bg-background border-popover/20 pt-2 pb-4 w-64"
       >
         <SheetHeader className="flex w-full px-0 text-muted">
-          <SheetTitle className="flex items-center px-4 pb-4 text-white border-b border-popover-foreground w-full">
+          <SheetTitle className="flex items-center px-4 pb-4 text-white border-b border-popover/20 w-full">
             <span className="text-muted dark:text-muted font-bold text-sm">
               Menu
             </span>
@@ -74,8 +74,8 @@ export function MenuMobile() {
                   href={item.url}
                   className={`flex items-center gap-2 px-3 py-2 text-sm font-semibold rounded-md transition-all duration-300 ${
                     isActive
-                      ? 'bg-accent/40 text-white hover:bg-accent/50'
-                      : 'text-white hover:text-muted/80 hover:bg-accent/40'
+                      ? 'bg-accent/40 text-white hover:bg-accent/50  border border-secondary'
+                      : 'text-white hover:text-muted/80 hover:bg-accent/40 '
                   }`}
                 >
                   <item.icon className="size-4" />

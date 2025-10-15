@@ -93,10 +93,10 @@ export function ClicksOverTimeChart({ data }: ClicksOverTimeTableProps) {
       </div>
 
       {/* Tabela */}
-      <div className="w-full border border-accent/40 dark:border-accent/40 rounded-lg">
-        <Table className="">
-          <TableHeader className="px-2">
-            <TableRow>
+      <div className="w-full">
+        <Table className="border border-popover dark:border-popover rounded-xl">
+          <TableHeader className="px-2 border border-popover dark:border-popover">
+            <TableRow className="border border-popover dark:border-popover">
               <TableHead className="text-muted dark:text-muted px-4">
                 Data
               </TableHead>
@@ -105,9 +105,12 @@ export function ClicksOverTimeChart({ data }: ClicksOverTimeTableProps) {
               </TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className="border border-popover dark:border-popover">
             {tableData.map((row) => (
-              <TableRow key={row.date}>
+              <TableRow
+                key={row.date}
+                className="border border-popover dark:border-popover"
+              >
                 <TableCell className="px-4">{row.displayDate}</TableCell>
                 <TableCell className="text-right px-4">{row.clicks}</TableCell>
               </TableRow>

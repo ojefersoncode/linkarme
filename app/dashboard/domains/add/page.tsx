@@ -84,10 +84,10 @@ export default function AddDomainPage() {
       </div>
 
       <div className="flex justify-center w-full">
-        <Card className="bg-foreground border-zinc-700 max-w-2xl">
+        <Card className="bg-background/70 border-popover max-w-2xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Globe className="h-5 w-5" />
+              <Globe className="h-5 w-5 text-accent" />
               Adicionar Domínio
             </CardTitle>
             <CardDescription>
@@ -105,7 +105,7 @@ export default function AddDomainPage() {
                   value={domain}
                   onChange={(e) => setDomain(e.target.value)}
                   required
-                  className="bg-background dark:bg-background"
+                  className="bg-background/70 dark:bg-background/70 border-popover"
                 />
                 <p className="text-sm text-muted-foreground">
                   Digite apenas o domínio, sem http:// ou https://
@@ -133,7 +133,7 @@ export default function AddDomainPage() {
                 </RadioGroup>
 
                 {verificationMethod === 'dns' && (
-                  <div className="p-4 bg-background border border-zinc-700 rounded-lg my-4 py-4">
+                  <div className="p-4 bg-background border border-popover/70 rounded-lg my-4 py-4">
                     <p className="text-sm">
                       <strong>DNS TXT:</strong> Você precisará adicionar um
                       registro TXT no seu provedor de DNS. Este método é mais
@@ -143,7 +143,7 @@ export default function AddDomainPage() {
                 )}
 
                 {verificationMethod === 'file' && (
-                  <div className="p-4 bg-background border border-zinc-700 rounded-lg my-4 py-4">
+                  <div className="p-4 bg-background border border-popover/70 rounded-lg my-4 py-4">
                     <p className="text-sm">
                       <strong>Upload de Arquivo:</strong> Você precisará fazer
                       upload de um arquivo específico para o seu servidor web.
@@ -162,12 +162,12 @@ export default function AddDomainPage() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="text-muted dark:text-muted bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40"
+                  className="text-muted dark:text-muted bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 border border-accent dark:border-accent"
                 >
                   {isLoading ? 'Adicionando...' : 'Adicionar Domínio'}
                 </Button>
                 <Button
-                  className="bg-red-600 hover:bg-red-600 border border-red-400 text-white"
+                  className="bg-red-500 hover:bg-red-500 border border-red-600 text-white"
                   asChild
                 >
                   <Link href="/dashboard/domains">Cancelar</Link>

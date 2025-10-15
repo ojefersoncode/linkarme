@@ -49,7 +49,7 @@ export function AnalyticsFilters({
   };
 
   return (
-    <Card className="bg-foreground border-border/40">
+    <Card className="bg-background/70 border-popover">
       <CardContent>
         <div className="flex items-center w-full justify-between pb-4">
           <h1 className="font-bold ">Filtro</h1>
@@ -60,10 +60,10 @@ export function AnalyticsFilters({
             value={currentDays.toString()}
             onValueChange={handleDaysChange}
           >
-            <SelectTrigger className="w-[180px] bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60">
+            <SelectTrigger className="w-[180px] bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted border border-secondary/60">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-background">
+            <SelectContent className="bg-background text-muted border-secondary/60">
               <SelectItem
                 className="dark:bg-background hover:bg-accent/40 dark:hover:bg-accent/40"
                 value="7"
@@ -95,10 +95,10 @@ export function AnalyticsFilters({
             value={currentLinkId || 'all'}
             onValueChange={handleLinkChange}
           >
-            <SelectTrigger className="w-[250px] truncate block bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:*:text-muted border border-secondary/60">
+            <SelectTrigger className="w-[250px] truncate block bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted border border-secondary/60">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-background">
+            <SelectContent className="bg-background text-muted">
               <SelectItem
                 className="bg-background dark:bg-background hover:bg-accent/40 dark:hover:bg-accent/40"
                 value="all"

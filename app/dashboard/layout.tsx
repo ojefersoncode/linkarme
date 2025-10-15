@@ -19,14 +19,13 @@ export default async function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen w-full">
+      <div className="flex min-h-screen w-full bg-background">
         <AppSidebar />
-       <div className="flex-1 w-full justify-center bg-black/30">
-       <Analytics/>
+        <div className="flex-1 w-full justify-center bg-background">
+          <Analytics />
           <main className="flex-1 overflow-auto">{children}</main>
-       </div>
-      
+        </div>
       </div>
     </SidebarProvider>
-  )
+  );
 }

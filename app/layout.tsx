@@ -10,29 +10,21 @@ import './globals.css';
 import { getURL } from '../lib/helpers';
 
 const meta = {
-  title: 'Linkarme',
-  description: 'Crie links curtos personalizados com seu próprio domínio e acompanhe estatísticas detalhadas',
+  title: 'Linktraces',
+  description:
+    'Crie links curtos personalizados com seu próprio domínio e acompanhe estatísticas detalhadas',
   robots: 'follow, index',
   favicon: '/favicon.png',
   url: getURL()
 };
-
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: meta.title,
     description: meta.description,
     referrer: 'origin-when-cross-origin',
-    keywords: [
-      'link',
-      'marketing',
-      'trace',
-      'url',
-      'short',
-      'pixel',
-      'Ativo',
-    ],
-    authors: [{ name: 'Bronk', url: 'https://Nexprotocol.com/' }],
+    keywords: ['link', 'marketing', 'trace', 'url', 'short', 'pixel', 'Ativo'],
+    authors: [{ name: 'Bronk', url: 'https://Linktracess.com/' }],
     creator: 'OjersonCode',
     publisher: 'OjefersonCode',
     robots: meta.robots,
@@ -47,10 +39,10 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@nexprotocol',
+      site: '@linktraces',
       creator: 'ojefersoncode',
       title: meta.title,
-      description: meta.description,
+      description: meta.description
     }
   };
 }

@@ -198,7 +198,7 @@ export default async function AnalyticsPage({
 
     return (
       <div className="p-6 max-md:p-0 space-y-6">
-        <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+        <div className="flex items-center justify-between bg-foreground border-b border-popover md:hidden">
           <div className="flex items-center gap-1 py-3">
             <MenuMobile /> <img src="/Linklogo.png" alt="" className="h-5" />
           </div>
@@ -229,7 +229,7 @@ export default async function AnalyticsPage({
 
         {/* Overview Cards */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
-          <Card className="bg-foreground">
+          <Card className="bg-background/70 border-popover">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Total de Cliques
@@ -246,7 +246,7 @@ export default async function AnalyticsPage({
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground">
+          <Card className="bg-background/70 border-popover">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Visitantes Únicos
@@ -263,7 +263,7 @@ export default async function AnalyticsPage({
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground">
+          <Card className="bg-background/70 border-popover">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Taxa de Cliques
@@ -282,7 +282,7 @@ export default async function AnalyticsPage({
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground">
+          <Card className="bg-background/70 border-popover">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Países</CardTitle>
               <Globe className="h-4 w-4 text-secondary" />
@@ -298,7 +298,7 @@ export default async function AnalyticsPage({
 
         {/* Charts */}
         <div className="grid gap-6 max-md:px-4">
-          <Card className="bg-foreground border-accent/40">
+          <Card className="bg-background/70 border-popover">
             <CardHeader>
               <CardTitle className="text-muted dark:text-muted">
                 Cliques ao Longo do Tempo
@@ -309,7 +309,7 @@ export default async function AnalyticsPage({
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground border-accent/40">
+          <Card className="bg-background/70 border-popover">
             <CardHeader>
               <CardTitle>Distribuição Geográfica</CardTitle>
             </CardHeader>
@@ -321,7 +321,7 @@ export default async function AnalyticsPage({
 
         {/* Top Links Table */}
         <div className="max-md:px-4 max-md:pb-4">
-          <Card className="bg-foreground border-accent/40">
+          <Card className="bg-background/70 border-popover">
             <CardHeader>
               <CardTitle>Links Mais Acessados</CardTitle>
               <CardDescription>
