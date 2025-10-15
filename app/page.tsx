@@ -6,7 +6,7 @@ import { ShimmerButton } from '@/components/ui/shimmer-button';
 export default function HomePage() {
   return (
     <GridBeams>
-      <div className="min-h-screen">
+      <div>
         <Navbar />
 
         <div className="flex flex-col items-center justify-center mx-auto px-4 md:h-[400px] max-md:h-[600px]">
