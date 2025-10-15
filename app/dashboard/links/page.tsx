@@ -46,7 +46,11 @@ export default async function LinksPage() {
         </Badge>
       );
     }
-    return <Badge variant="secondary">Inativo</Badge>;
+    return (
+      <Badge className="bg-popover/40 text-green-100 dark:bg-popover/40 dark:text-green-100 border border-popover-foreground">
+        Inativo
+      </Badge>
+    );
   };
 
   // Prepare links for export dialog
@@ -101,7 +105,7 @@ export default async function LinksPage() {
                     <div className="space-y-2 flex-1">
                       <div>{getStatusBadge(link.active)}</div>
                       <div className="flex items-center gap-2">
-                        <Link2 className="h-4 w-4 text-accent" />
+                        <Link2 className="h-4 w-4 text-secondary" />
                         <CardTitle className="text-lg truncate block max-md:w-52">
                           {link.title || link.slug}
                         </CardTitle>
@@ -123,13 +127,13 @@ export default async function LinksPage() {
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              <ExternalLink className="h-3 w-3" />
+                              <ExternalLink className="h-3 w-3 text-secondary" />
                             </a>
                           </Button>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-muted">
-                          <Globe className="size-4" />
-                          <span className="truncate block max-md:w-64">
+                          <Globe className="size-4 text-secondary" />
+                          <span className="truncate block max-md:w-64 text-accent">
                             {link.destination_url}
                           </span>
                         </div>
