@@ -219,10 +219,10 @@ export default function EditLinkPage({
                   value={selectedDomain}
                   onValueChange={setSelectedDomain}
                 >
-                  <SelectTrigger className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40">
+                  <SelectTrigger className="bg-accent/50 dark:bg-accent/50 hover:bg-accent/40 hover:dark:bg-accent/40 border border-accent dark:border-accent">
                     <SelectValue placeholder="Selecione um domínio" />
                   </SelectTrigger>
-                  <SelectContent className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40">
+                  <SelectContent className="bg-foreground dark:bg-foreground border border-accent dark:border-accent text-muted dark:text-muted">
                     {domains.map((domain) => (
                       <SelectItem key={domain.id} value={domain.id}>
                         {domain.domain}

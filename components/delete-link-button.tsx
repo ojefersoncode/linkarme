@@ -59,7 +59,7 @@ export function DeleteLinkButton({ linkId, linkTitle }: DeleteLinkButtonProps) {
             serão perdidas.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
+        <AlertDialogFooter className="gap-4">
           <AlertDialogCancel className="bg-popover/60 dark:bg-popover/60 border-popover-foreground dark:border-popover-foreground hover:bg-popover/50 dark:hover:bg-popover/50">
             Cancelar
           </AlertDialogCancel>

@@ -225,7 +225,7 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
           </div>
         </ScrollArea>
 
-        <DialogFooter>
+        <DialogFooter className="gap-4">
           <Button
             className="bg-popover hover:bg-popover border border-popover-foreground dark:hover:bg-popover/80 text-muted dark:text-muted"
             onClick={() => setOpen(false)}
