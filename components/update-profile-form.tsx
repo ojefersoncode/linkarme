@@ -63,7 +63,7 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
           type="email"
           value={profile?.email || ''}
           disabled
-          className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
+          className="bg-background/70 dark:bg-background/70 border-popover dark:border-popover"
         />
         <p className="text-sm text-muted-foreground">
           O email não pode ser alterado. Entre em contato com o suporte se
@@ -74,7 +74,7 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
       <div className="space-y-2">
         <Label htmlFor="fullName">Nome Completo</Label>
         <Input
-          className="bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40"
+          className="bg-background/70 dark:bg-background/70 border-popover dark:border-popover"
           id="fullName"
           type="text"
           placeholder="Seu nome completo"
@@ -100,7 +100,7 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
       <Button
         type="submit"
         disabled={isLoading}
-        className="bg-accent/40 dark:bg-accent/40 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted"
+        className="bg-accent/50 dark:bg-accent/50 hover:bg-accent/40 dark:hover:bg-accent/40 text-muted dark:text-muted border border-accent dark:border-accent"
       >
         {isLoading && (
           <Loader2 className="h-4 w-4 mr-2 animate-spin text-muted dark:text-muted" />

@@ -50,7 +50,7 @@ export function DeleteLinkButton({ linkId, linkTitle }: DeleteLinkButtonProps) {
           <Trash2 className="h-4 w-4" />
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="bg-background dark:bg-background border border-popover dark:border-popover">
         <AlertDialogHeader>
           <AlertDialogTitle>Excluir Link</AlertDialogTitle>
           <AlertDialogDescription>
@@ -60,7 +60,9 @@ export function DeleteLinkButton({ linkId, linkTitle }: DeleteLinkButtonProps) {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogCancel className="bg-popover/60 dark:bg-popover/60 border-popover-foreground dark:border-popover-foreground hover:bg-popover/50 dark:hover:bg-popover/50">
+            Cancelar
+          </AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDelete}
             disabled={isDeleting}

@@ -50,26 +50,31 @@ export function DeleteDomainButton({ domainId, domainName }: DeleteDomainButtonP
           <Trash2 className="h-4 w-4" />
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-foreground border-zinc-700">
+      <AlertDialogContent className="bg-background dark:bg-background border border-popover dark:border-popover">
         <AlertDialogHeader>
-          <AlertDialogTitle className="text-white">Excluir Domínio</AlertDialogTitle>
+          <AlertDialogTitle className="text-white">
+            Excluir Domínio
+          </AlertDialogTitle>
           <AlertDialogDescription>
-            Tem certeza que deseja excluir o domínio <strong>{domainName}</strong>? Esta ação não pode ser desfeita e
+            Tem certeza que deseja excluir o domínio{' '}
+            <strong>{domainName}</strong>? Esta ação não pode ser desfeita e
             todos os links associados a este domínio serão removidos.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="text-white bg-background dark:bg-background hover:bg-background hover:dark:bg-background">Cancelar</AlertDialogCancel>
+          <AlertDialogCancel className="bg-popover/60 dark:bg-popover/60 border-popover-foreground dark:border-popover-foreground hover:bg-popover/50 dark:hover:bg-popover/50">
+            Cancelar
+          </AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDelete}
             disabled={isDeleting}
             className="bg-destructive text-white hover:bg-destructive/90"
           >
             {isDeleting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-            {isDeleting ? "Excluindo..." : "Excluir"}
+            {isDeleting ? 'Excluindo...' : 'Excluir'}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }
