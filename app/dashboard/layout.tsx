@@ -19,7 +19,7 @@ export default async function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen w-full bg-background">
+      <div className="flex min-h-screen w-full bg-background touch-pan-x touch-pan-y">
         <AppSidebar />
         <div className="flex-1 w-full justify-center bg-background">
           <Analytics />
