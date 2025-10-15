@@ -56,7 +56,7 @@ export default async function DashboardPage() {
     })) || [];
 
   return (
-    <div className="md:p-6 space-y-6 bg-background">
+    <div className="md:p-6 space-y-6 bg-background touch-pan-x touch-pan-y">
       <div className="flex items-center justify-between bg-background/70 border-b border-popover md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
           <MenuMobile />{' '}
