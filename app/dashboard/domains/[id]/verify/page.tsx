@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react"
+import { ArrowLeft, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import { VerifyDomainButton } from "@/components/verify-domain-button"
 import { CopyButton } from "@/components/copy-button"
@@ -31,8 +31,8 @@ export default async function VerifyDomainPage({
     notFound()
   }
 
-  const dnsRecord = `linkshort-verify=${domain.verification_token}`
-  const fileName = `linkshort-verify-${domain.verification_token}.txt`
+  const dnsRecord = `linktraces-verify=${domain.verification_token}`
+  const fileName = `linktraces-verify-${domain.verification_token}.txt`
   const fileContent = domain.verification_token
 
   return (
@@ -70,16 +70,15 @@ export default async function VerifyDomainPage({
                   <>
                     <CheckCircle className="h-5 w-5 text-green-500" />
                     <Badge
-                      variant="default"
-                      className="bg-green-100 text-green-800"
+                   
+                      className="bg-accent/40 dark:bg-accent/40 border border-accent dark:border-accent text-white dark:text-white"
                     >
                       Verificado
                     </Badge>
                   </>
                 ) : (
                   <>
-                    <AlertCircle className="h-5 w-5 text-yellow-500" />
-                    <Badge variant="secondary">Pendente</Badge>
+                    <Badge className="bg-popover dark:bg-popover text-white dark:text-white">Pendente</Badge>
                   </>
                 )}
               </div>
@@ -107,18 +106,18 @@ export default async function VerifyDomainPage({
                     Adicione o seguinte registro TXT no seu provedor de DNS
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 ">
                   <div className="space-y-2">
                     <Label className="text-sm font-medium">Nome/Host:</Label>
-                    <div className="flex items-center gap-2 p-3 bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40 rounded-lg">
-                      <code className="flex-1 text-sm">_linkshort-verify</code>
-                      <CopyButton text="_linkshort-verify" />
+                    <div className="flex items-center gap-2 p-3 bg-background dark:bg-background border border-popover dark:border-popover rounded-lg">
+                      <code className="flex-1 text-sm">_linktraces-verify</code>
+                      <CopyButton text="_linktraces-verify" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label className="text-sm font-medium">Valor:</Label>
-                    <div className="flex items-center gap-2 p-3 bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40 rounded-lg">
+                    <div className="flex items-center gap-2 p-3 bg-background dark:bg-background border border-popover dark:border-popover rounded-lg">
                       <code className="flex-1 text-sm break-all">
                         {domain.verification_token}
                       </code>
@@ -128,12 +127,12 @@ export default async function VerifyDomainPage({
 
                   <div className="space-y-2">
                     <Label className="text-sm font-medium">Tipo:</Label>
-                    <div className="p-3 bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40 rounded-lg">
+                    <div className="p-3 bg-background dark:bg-background border border-popover dark:border-popover rounded-lg">
                       <code className="text-sm">TXT</code>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-foreground dark:bg-foreground border-accent/40 dark:border-accent/40 rounded-lg">
+                  <div className="p-4 bg-popover/40 dark:bg-popover/40 rounded-lg">
                     <h4 className="font-medium text-muted dark:text-muted mb-2">
                       Instruções:
                     </h4>
@@ -214,12 +213,12 @@ export default async function VerifyDomainPage({
               </Card>
             )}
 
-            <Card className="bg-background/70 dark:bg-background/70 border-popover">
-              <CardContent>
+            <Card className="bg-background/70 dark:bg-background/70 border-none">
+              <CardContent className="px-0">
                 <div className="flex w-full justify-between gap-12">
                   <VerifyDomainButton domainId={domain.id} />
                   <Button
-                    className="max-sm:flex-1 bg-red-600 text-muted dark:text-muted hover:bg-red-700"
+                    className=" bg-red-600 text-muted dark:text-muted hover:bg-red-700"
                     asChild
                   >
                     <Link href="/dashboard/domains">Voltar</Link>

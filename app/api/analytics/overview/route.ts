@@ -5,11 +5,12 @@ export async function GET(request: NextRequest) {
   try {
     const supabase = await createClient()
 
-    // Get current user
+    // Obter usuário autenticado
     const {
       data: { user },
       error: userError,
     } = await supabase.auth.getUser()
+
     if (userError || !user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
@@ -19,18 +20,40 @@ export async function GET(request: NextRequest) {
     const startDate = new Date()
     startDate.setDate(startDate.getDate() - days)
 
-    // Get total clicks in period
+    // Buscar IDs dos links do usuário
+    const { data: userLinks, error: linksQueryError } = await supabase
+      .from("links")
+      .select("id")
+      .eq("user_id", user.id)
+
+    if (linksQueryError) {
+      return NextResponse.json({ error: linksQueryError.message }, { status: 500 })
+    }
+
+    const linkIds = userLinks?.map((l) => l.id) || []
+
+    // Caso o usuário não tenha links ainda
+    if (linkIds.length === 0) {
+      return NextResponse.json({
+        total_clicks: 0,
+        clicks_by_day: {},
+        clicks_by_country: {},
+        top_links: [],
+      })
+    }
+
+    // Total de cliques no período
     const { data: totalClicks, error: totalError } = await supabase
       .from("clicks")
       .select("id", { count: "exact" })
-      .in("link_id", supabase.from("links").select("id").eq("user_id", user.id))
+      .in("link_id", linkIds)
       .gte("clicked_at", startDate.toISOString())
 
     if (totalError) {
       return NextResponse.json({ error: totalError.message }, { status: 500 })
     }
 
-    // Get clicks by day
+    // Cliques por dia
     const { data: clicksByDay, error: dayError } = await supabase
       .from("clicks")
       .select(`
@@ -45,7 +68,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: dayError.message }, { status: 500 })
     }
 
-    // Group clicks by day
     const clicksGrouped =
       clicksByDay?.reduce((acc: Record<string, number>, click) => {
         const date = new Date(click.clicked_at).toISOString().split("T")[0]
@@ -53,7 +75,7 @@ export async function GET(request: NextRequest) {
         return acc
       }, {}) || {}
 
-    // Get clicks by country
+    // Cliques por país
     const { data: clicksByCountry, error: countryError } = await supabase
       .from("clicks")
       .select(`
@@ -68,7 +90,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: countryError.message }, { status: 500 })
     }
 
-    // Group clicks by country
     const countryGrouped =
       clicksByCountry?.reduce((acc: Record<string, number>, click) => {
         const country = click.country || "Unknown"
@@ -76,7 +97,7 @@ export async function GET(request: NextRequest) {
         return acc
       }, {}) || {}
 
-    // Get top links
+    // Top links
     const { data: topLinks, error: linksError } = await supabase
       .from("links")
       .select(`
@@ -94,7 +115,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: linksError.message }, { status: 500 })
     }
 
-    // Calculate click counts and sort
     const linksWithCounts =
       topLinks
         ?.map((link) => ({
@@ -104,6 +124,7 @@ export async function GET(request: NextRequest) {
         .sort((a, b) => b.click_count - a.click_count)
         .slice(0, 10) || []
 
+    // Retornar tudo consolidado
     return NextResponse.json({
       total_clicks: totalClicks?.length || 0,
       clicks_by_day: clicksGrouped,

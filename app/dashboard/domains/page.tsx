@@ -42,7 +42,7 @@ export default async function DomainsPage() {
         </Badge>
       );
     }
-    return <Badge variant="secondary">Pendente</Badge>;
+    return <Badge className='bg-red-800/80 dark:bg-red-800/80 text-white dark:text-white'>Pendente</Badge>;
   };
 
   return (
@@ -111,7 +111,7 @@ export default async function DomainsPage() {
                   <div className="flex gap-2">
                     {!domain.verified && (
                       <Button
-                        className="bg-foreground dark:bg-foreground border border-accent/40 dark:border-accent/40 text-muted dark:text-muted"
+                        className="bg-popover/40 dark:bg-popover/40 border border-popover dark:border-popovertext-muted dark:text-muted"
                         size="sm"
                         asChild
                       >

@@ -83,7 +83,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         `<!DOCTYPE html>
         <html>
         <head>
-          <title>Link não encontrado - LinkShort</title>
+          <title>Link não encontrado - Linktraces</title>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <style>
@@ -156,7 +156,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         `<!DOCTYPE html>
         <html>
         <head>
-          <title>Domínio não verificado - LinkShort</title>
+          <title>Domínio não verificado - Linktraces</title>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <style>
@@ -258,7 +258,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       `<!DOCTYPE html>
       <html>
       <head>
-        <title>Erro interno - LinkShort</title>
+        <title>Erro interno - Linktraces</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
