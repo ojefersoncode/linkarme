@@ -50,7 +50,7 @@
     "lucide": "^0.544.0",
     "lucide-react": "^0.544.0",
     "motion": "^12.23.16",
-    "next": "^14.2.33",
+    "next": "14.2.35",
     "next-themes": "latest",
     "react": "^18",
     "react-day-picker": "9.8.0",
