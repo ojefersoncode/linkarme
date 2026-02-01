@@ -1,180 +1,211 @@
-"use client"
+'use client';
 
-import type React from "react"
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { createClient } from "@/lib/supabase/client"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowLeft, Link2, Shuffle } from "lucide-react"
-import Link from "next/link"
+import type React from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+import { ArrowLeft, Link2, Shuffle } from 'lucide-react';
+import Link from 'next/link';
 
 interface Domain {
-  id: string
-  domain: string
-  verified: boolean
+  id: string;
+  domain: string;
+  verified: boolean;
 }
 
 export default function CreateLinkPage() {
-  const [domains, setDomains] = useState<Domain[]>([])
-  const [selectedDomain, setSelectedDomain] = useState("")
-  const [slug, setSlug] = useState("")
-  const [destinationUrl, setDestinationUrl] = useState("")
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
+  const [domains, setDomains] = useState<Domain[]>([]);
+  const [selectedDomain, setSelectedDomain] = useState('');
+  const [slug, setSlug] = useState('');
+  const [destinationUrl, setDestinationUrl] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    loadDomains()
-  }, [])
+    loadDomains();
+  }, []);
 
   const loadDomains = async () => {
-    const supabase = createClient()
-    const { data } = await supabase.from("domains").select("id, domain, verified").eq("verified", true).order("domain")
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('domains')
+      .select('id, domain, verified')
+      .eq('verified', true)
+      .order('domain');
 
     if (data) {
-      setDomains(data)
+      setDomains(data);
       if (data.length > 0) {
-        setSelectedDomain(data[0].id)
+        setSelectedDomain(data[0].id);
       }
     }
-  }
+  };
 
   const generateRandomSlug = () => {
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    let result = ""
+    const chars =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
     for (let i = 0; i < 6; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length))
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-    setSlug(result)
-  }
+    setSlug(result);
+  };
 
   const validateUrl = (url: string) => {
     try {
-      new URL(url)
-      return true
+      new URL(url);
+      return true;
     } catch {
-      return false
+      return false;
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
 
-    const supabase = createClient()
+    const supabase = createClient();
 
     try {
       // Validate inputs
       if (!selectedDomain) {
-        throw new Error("Selecione um domínio")
+        throw new Error('Selecione um domínio');
       }
 
       if (!slug.trim()) {
-        throw new Error("Digite um slug para o link")
+        throw new Error('Digite um slug para o link');
       }
 
       if (!destinationUrl.trim()) {
-        throw new Error("Digite a URL de destino")
+        throw new Error('Digite a URL de destino');
       }
 
       if (!validateUrl(destinationUrl)) {
-        throw new Error("URL de destino inválida")
+        throw new Error('URL de destino inválida');
       }
 
       // Validate slug format
-      const slugRegex = /^[a-zA-Z0-9_-]+$/
+      const slugRegex = /^[a-zA-Z0-9_-]+$/;
       if (!slugRegex.test(slug)) {
-        throw new Error("Slug deve conter apenas letras, números, hífens e underscores")
+        throw new Error(
+          'Slug deve conter apenas letras, números, hífens e underscores'
+        );
       }
 
       // Get current user
       const {
-        data: { user },
-      } = await supabase.auth.getUser()
-      if (!user) throw new Error("Usuário não autenticado")
+        data: { user }
+      } = await supabase.auth.getUser();
+      if (!user) throw new Error('Usuário não autenticado');
 
       // Check if slug already exists for this domain
       const { data: existingLink } = await supabase
-        .from("links")
-        .select("id")
-        .eq("domain_id", selectedDomain)
-        .eq("slug", slug.toLowerCase())
-        .single()
+        .from('links')
+        .select('id')
+        .eq('domain_id', selectedDomain)
+        .eq('slug', slug.toLowerCase())
+        .single();
 
       if (existingLink) {
-        throw new Error("Este slug já existe para o domínio selecionado")
+        throw new Error('Este slug já existe para o domínio selecionado');
       }
 
       // Insert link
-      const { error: insertError } = await supabase.from("links").insert({
+      const { error: insertError } = await supabase.from('links').insert({
         user_id: user.id,
         domain_id: selectedDomain,
         slug: slug.toLowerCase(),
         destination_url: destinationUrl.trim(),
         title: title.trim() || null,
         description: description.trim() || null,
-        active: true,
-      })
+        active: true
+      });
 
-      if (insertError) throw insertError
+      if (insertError) throw insertError;
 
-      router.push("/dashboard/links")
+      router.push('/dashboard/links');
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "Ocorreu um erro")
+      setError(error instanceof Error ? error.message : 'Ocorreu um erro');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   if (domains.length === 0) {
     return (
       <div className="p-6 space-y-6">
-        <div className="flex items-center gap-2">
-          <Button className="bg-transparent hover:bg-transparent dark:bg-transparent dark:hover:bg-transparent text-muted" size="sm" asChild>
+        <div className="flex items-center gap-1">
+          <Button
+            className="bg-foreground/25 hover:bg-foreground/20 dark:hover:bg-foreground/20 dark:hover:text-foreground text-foreground hover:text-foreground"
+            size="sm"
+            asChild
+          >
             <Link href="/dashboard/links">
-              <ArrowLeft className="size-5 text-white" />
+              <ArrowLeft className="size-5 " />
             </Link>
           </Button>
-          <div>
-            <h1 className="text-3xl max-md:text-xl font-bold text-muted">Criar Link</h1>
-            <p className="text-muted-foreground max-md:text-sm">Crie um novo link personalizado</p>
-          </div>
         </div>
 
-        <Card className="bg-foreground border-zinc-700">
+        <Card className="bg-foreground border-none">
           <CardHeader>
-            <CardTitle>Nenhum domínio verificado</CardTitle>
-            <CardDescription>Você precisa ter pelo menos um domínio verificado para criar links.</CardDescription>
+            <CardTitle className="text-white">
+              Nenhum domínio verificado
+            </CardTitle>
+            <CardDescription>
+              Você precisa ter pelo menos um domínio verificado para criar
+              links.
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button asChild className="text-muted max-md:text-sm">
+            <Button
+              asChild
+              className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-foreground max-md:text-sm"
+            >
               <Link href="/dashboard/domains">Gerenciar Domínios</Link>
             </Button>
           </CardContent>
         </Card>
       </div>
-    )
+    );
   }
 
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="sm" asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          asChild
+          className="bg-transparent hover:bg-transparent dark:hover:bg-transparent dark:hover:text-foreground text-foreground"
+        >
           <Link href="/dashboard/links">
             <ArrowLeft className="h-4 w-4" />
           </Link>
         </Button>
         <div>
-          <h1 className="text-3xl font-bold">Criar Link</h1>
-          <p className="text-muted-foreground">Crie um novo link curto personalizado</p>
+          <h1 className="text-2xl font-bold">Criar Link</h1>
         </div>
       </div>
 
@@ -185,13 +216,18 @@ export default function CreateLinkPage() {
               <Link2 className="h-5 w-5" />
               Configurar Link
             </CardTitle>
-            <CardDescription>Preencha as informações do seu link curto</CardDescription>
+            <CardDescription>
+              Preencha as informações do seu link curto
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="domain">Domínio</Label>
-                <Select value={selectedDomain} onValueChange={setSelectedDomain}>
+                <Select
+                  value={selectedDomain}
+                  onValueChange={setSelectedDomain}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione um domínio" />
                   </SelectTrigger>
@@ -216,7 +252,11 @@ export default function CreateLinkPage() {
                     onChange={(e) => setSlug(e.target.value)}
                     required
                   />
-                  <Button type="button" variant="outline" onClick={generateRandomSlug}>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={generateRandomSlug}
+                  >
                     <Shuffle className="h-4 w-4" />
                   </Button>
                 </div>
@@ -226,7 +266,9 @@ export default function CreateLinkPage() {
                 {selectedDomain && slug && (
                   <div className="p-2 bg-muted rounded-lg">
                     <p className="text-sm font-medium">
-                      Link final: https://{domains.find((d) => d.id === selectedDomain)?.domain}/{slug}
+                      Link final: https://
+                      {domains.find((d) => d.id === selectedDomain)?.domain}/
+                      {slug}
                     </p>
                   </div>
                 )}
@@ -242,7 +284,9 @@ export default function CreateLinkPage() {
                   onChange={(e) => setDestinationUrl(e.target.value)}
                   required
                 />
-                <p className="text-sm text-muted-foreground">URL completa para onde o link deve redirecionar</p>
+                <p className="text-sm text-muted-foreground">
+                  URL completa para onde o link deve redirecionar
+                </p>
               </div>
 
               <div className="space-y-2">
@@ -274,10 +318,17 @@ export default function CreateLinkPage() {
               )}
 
               <div className="flex gap-3">
-                <Button type="submit" disabled={isLoading}>
-                  {isLoading ? "Criando..." : "Criar Link"}
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-foreground max-md:text-sm"
+                >
+                  {isLoading ? 'Criando...' : 'Criar Link'}
                 </Button>
-                <Button variant="outline" asChild>
+                <Button
+                  className="bg-red-600 hover:bg-red-600 border-none px-8 text-white"
+                  asChild
+                >
                   <Link href="/dashboard/links">Cancelar</Link>
                 </Button>
               </div>
@@ -286,5 +337,5 @@ export default function CreateLinkPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

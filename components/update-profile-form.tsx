@@ -1,73 +1,84 @@
-"use client"
+'use client';
 
-import type React from "react"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { createClient } from "@/lib/supabase/client"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Loader2 } from "lucide-react"
+import type React from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Loader2 } from 'lucide-react';
 
 interface Profile {
-  id: string
-  email: string
-  full_name: string | null
+  id: string;
+  email: string;
+  full_name: string | null;
 }
 
 interface UpdateProfileFormProps {
-  profile: Profile | null
+  profile: Profile | null;
 }
 
 export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
-  const [fullName, setFullName] = useState(profile?.full_name || "")
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState(false)
-  const router = useRouter()
+  const [fullName, setFullName] = useState(profile?.full_name || '');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
-    setSuccess(false)
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+    setSuccess(false);
 
-    const supabase = createClient()
+    const supabase = createClient();
 
     try {
       const { error: updateError } = await supabase
-        .from("profiles")
+        .from('profiles')
         .update({
           full_name: fullName.trim() || null,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
-        .eq("id", profile?.id)
+        .eq('id', profile?.id);
 
-      if (updateError) throw updateError
+      if (updateError) throw updateError;
 
-      setSuccess(true)
-      router.refresh()
+      setSuccess(true);
+      router.refresh();
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "Ocorreu um erro")
+      setError(error instanceof Error ? error.message : 'Ocorreu um erro');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" value={profile?.email || ""} disabled className="bg-background" />
+        <Label htmlFor="email" className="text-white font-semibold">
+          Email
+        </Label>
+        <Input
+          id="email"
+          type="email"
+          value={profile?.email || ''}
+          disabled
+          className="bg-background dark:bg-background border-none text-foreground placeholder:text-foreground"
+        />
         <p className="text-sm text-muted-foreground">
-          O email não pode ser alterado. Entre em contato com o suporte se necessário.
+          O email não pode ser alterado. Entre em contato com o suporte se
+          necessário.
         </p>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="fullName">Nome Completo</Label>
+        <Label htmlFor="fullName" className="text-white font-semibold">
+          Nome Completo
+        </Label>
         <Input
-        className="bg-background"
+          className="bg-background dark:bg-background border-none text-foreground placeholder:text-foreground"
           id="fullName"
           type="text"
           placeholder="Seu nome completo"
@@ -84,14 +95,20 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
 
       {success && (
         <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-          <p className="text-sm text-green-800">Perfil atualizado com sucesso!</p>
+          <p className="text-sm text-green-800">
+            Perfil atualizado com sucesso!
+          </p>
         </div>
       )}
 
-      <Button type="submit" disabled={isLoading}>
+      <Button
+        type="submit"
+        disabled={isLoading}
+        className="bg-white hover:bg-white/80 text-foreground"
+      >
         {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-        {isLoading ? "Salvando..." : "Salvar Alterações"}
+        {isLoading ? 'Salvando...' : 'Salvar Alterações'}
       </Button>
     </form>
-  )
+  );
 }

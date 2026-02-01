@@ -10,6 +10,8 @@ import {
 import { Globe, Link2, BarChart3, TrendingUp } from 'lucide-react';
 import { ExportDataDialog } from '@/components/export-data-dialog';
 import { MenuMobile } from '@/components/menu-mobile';
+import DemographicMap from '@/components/Map/DemographicMap';
+import DemographicCard from '@/components/Map/DemographicCard';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -56,10 +58,11 @@ export default async function DashboardPage() {
     })) || [];
 
   return (
-    <div className="md:p-6 space-y-6">
-      <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+    <div className="md:p-6 space-y-6 bg-background h-screen">
+      <div className="flex items-center justify-between bg-accent border-b border-accent/30 md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
-          <MenuMobile /> <img src="/logo.png" alt="" className="h-6" />
+          <MenuMobile />
+          <h1 className="text-white font-bold text-sm">Dashboard</h1>
         </div>
         <div className="px-4">
           <ExportDataDialog links={linksForExport} />
@@ -67,93 +70,76 @@ export default async function DashboardPage() {
       </div>
 
       <div className="flex items-center justify-between w-full max-md:py-2 max-md:hidden">
-        <h1 className="text-base md:text-xl font-bold text-muted-foreground">Dashboard</h1>
+        <h1 className="text-base md:text-xl font-bold text-foreground">
+          Dashboard
+        </h1>
         <div className="max-md:justify-end max-md:w-full">
           <ExportDataDialog links={linksForExport} />
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
-        <Card className="bg-foreground border-accent/30">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Domínios</CardTitle>
-            <Globe className="h-4 w-4 text-primary" />
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4 bg-background">
+        <Card className="bg-foreground border-none">
+          <CardHeader className="flex flex-row items-center justify-between pb-0">
+            <CardTitle className="text-sm text-white font-medium py-0">
+              Domínios
+            </CardTitle>
+            <div className="bg-background/40 p-1 rounded-sm">
+              <Globe className="h-4 w-4 text-background" />
+            </div>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.domains}</div>
-            <p className="text-xs text-muted-foreground">
-              domínios configurados
-            </p>
+          <CardContent className="pt-0">
+            <div className="text-2xl font-bold text-white">{stats.domains}</div>
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-accent/30">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Links</CardTitle>
-            <Link2 className="h-4 w-4 text-primary" />
+        <Card className="bg-foreground border-none">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <CardTitle className="text-sm text-white font-medium">
+              Links
+            </CardTitle>
+            <div className="bg-background/40 p-1 rounded-sm">
+              <Link2 className="h-4 w-4 text-background" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.links}</div>
-            <p className="text-xs text-muted-foreground">links criados</p>
+            <div className="text-2xl font-bold text-white">{stats.links}</div>
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-accent/30">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Cliques</CardTitle>
-            <BarChart3 className="h-4 w-4 text-primary" />
+        <Card className="bg-foreground border-none">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <CardTitle className="text-sm text-white font-medium">
+              Cliques
+            </CardTitle>
+            <div className="bg-background/40 p-1 rounded-sm">
+              <BarChart3 className="h-4 w-4 text-background" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.clicks}</div>
-            <p className="text-xs text-muted-foreground">cliques totais</p>
+            <div className="text-2xl font-bold text-white">{stats.clicks}</div>
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-accent/30">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
+        <Card className="bg-foreground border-none">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <CardTitle className="text-white text-sm font-medium">
               Taxa de Cliques
             </CardTitle>
-            <TrendingUp className="h-4 w-4 text-primary" />
+            <div className="bg-background/40 p-1 rounded-sm">
+              <TrendingUp className="h-4 w-4 text-background" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold text-white">
               {stats.links > 0 ? Math.round(stats.clicks / stats.links) : 0}
             </div>
-            <p className="text-xs text-muted-foreground">cliques por link</p>
           </CardContent>
         </Card>
       </div>
 
-      <div className="grid gap-4 max-md:px-4 pb-4 md:grid-cols-2">
-        <Card className="bg-foreground border-accent/30">
-          <CardHeader>
-            <CardTitle>Primeiros Passos</CardTitle>
-            <CardDescription>
-              Configure seu primeiro domínio para começar a criar links
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              <p className="text-sm">1. Adicione um domínio personalizado</p>
-              <p className="text-sm">2. Verifique a propriedade do domínio</p>
-              <p className="text-sm">3. Crie seus primeiros links curtos</p>
-              <p className="text-sm">4. Acompanhe as estatísticas</p>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-foreground border-accent/30">
-          <CardHeader>
-            <CardTitle>Atividade Recente</CardTitle>
-            <CardDescription>Suas últimas ações na plataforma</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              Nenhuma atividade recente encontrada.
-            </p>
-          </CardContent>
-        </Card>
+      <div className="pb-6 flex-1 w-full">
+        <DemographicCard />
       </div>
     </div>
   );

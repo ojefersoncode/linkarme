@@ -41,14 +41,14 @@ export function MenuMobile() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="bg-foreground hover:bg-foreground text-muted-foreground border-none m-0 px-1 py-4">
+        <Button className="bg-transparent hover:bg-transparent text-white border-none m-0 p-2 cursor-pointer">
           <Menu className="size-5 p-0 m-0" />
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="bg-foreground pt-2 pb-4 w-64">
-        <SheetHeader className='flex w-full px-0 text-muted'>
+        <SheetHeader className="flex w-full px-0 text-muted">
           <SheetTitle className="flex items-center pb-2 text-white border-b border-accent/30 w-full">
-            <img src="/logo.png" alt=""  className='h-6 px-4'/>
+            <img src="/logo.png" alt="" className="h-6 px-4" />
           </SheetTitle>
         </SheetHeader>
 
@@ -66,11 +66,11 @@ export function MenuMobile() {
             ))}
           </nav>
 
-          <div className="flex flex-col px-2">
+          <div className="flex flex-col px-2 gap-4">
             <div>
               <Button
                 variant="ghost"
-                className="w-full mb-4 justify-center text-background border-none bg-white hover:bg-background dark:hover:bg-white/80 hover:text-background"
+                className="w-full justify-center bg-white text-black hover:bg-white/80 dark:hover:bg-white hover:text-black/80 transition-all duration-300"
               >
                 Gerenciar plano
               </Button>
@@ -78,7 +78,7 @@ export function MenuMobile() {
 
             <Button
               variant="ghost"
-              className="w-full justify-start text-white bg-red-600 hover:bg-red-500 dark:hover:bg-red-500"
+              className="w-full justify-start text-white hover:text-white bg-red-600 hover:bg-red-500 dark:hover:bg-red-500 transition-all duration-300"
               onClick={handleLogout}
             >
               <LogOut className="h-4 w-4 mr-2" />

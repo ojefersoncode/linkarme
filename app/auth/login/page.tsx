@@ -1,61 +1,61 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { createClient } from "@/lib/supabase/client"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { createClient } from '@/lib/supabase/client';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import Image from 'next/image';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState<string | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const supabase = createClient()
-    setIsLoading(true)
-    setError(null)
+    e.preventDefault();
+    const supabase = createClient();
+    setIsLoading(true);
+    setError(null);
 
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email,
-        password,
-      })
-      if (error) throw error
-      router.push("/dashboard")
+        password
+      });
+      if (error) throw error;
+      router.push('/dashboard');
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "Ocorreu um erro")
+      setError(error instanceof Error ? error.message : 'Ocorreu um erro');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm">
-        <div className="flex flex-col gap-6">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-primary">LinkShort</h1>
-            <p className="text-muted-foreground">Encurtador de Links Profissional</p>
-          </div>
-          <Card>
+      <div className="w-full max-w-md">
+        <div className="flex flex-col space-y-6">
+          <Card className="bg-white border-none">
             <CardHeader>
-              <CardTitle className="text-2xl">Entrar</CardTitle>
-              <CardDescription>Digite seu email e senha para acessar sua conta</CardDescription>
+              <CardTitle className="text-2xl text-accent">
+                Acesse sua conta
+              </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="bg-white">
               <form onSubmit={handleLogin}>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className="text-foreground">
+                      Email
+                    </Label>
                     <Input
                       id="email"
                       type="email"
@@ -63,28 +63,51 @@ export default function LoginPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      className="bg-white dark:bg-white text-primary border-primary"
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="password">Senha</Label>
+                    <Label htmlFor="password" className="text-foreground">
+                      Senha
+                    </Label>
                     <Input
                       id="password"
                       type="password"
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      className="bg-white dark:bg-white text-primary border-primary"
                     />
                   </div>
                   {error && <p className="text-sm text-destructive">{error}</p>}
-                  <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? "Entrando..." : "Entrar"}
+                  <Button
+                    type="submit"
+                    className="w-full text-sm text-white bg-foreground hover:bg-foreground/80"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Entrando...' : 'Entrar'}
+                  </Button>
+
+                  <Button
+                    type="submit"
+                    className="flex items-center w-full text-sm text-foreground bg-white hover:bg-white/80 border border-primary/70 cursor-pointer"
+                    disabled={isLoading}
+                  >
+                    <Image
+                      width="100"
+                      height="100"
+                      src={'/google-icon.svg'}
+                      alt={'Google icon'}
+                      className="size-4"
+                    />
+                    Entrar com o Google
                   </Button>
                 </div>
-                <div className="mt-4 text-center text-sm">
-                  Não tem uma conta?{" "}
+                <div className="flex w-full items-center justify-center gap-2 mt-4 text-center text-black text-sm">
+                  Não tem uma conta?
                   <Link
                     href="/auth/sign-up"
-                    className="underline underline-offset-4 text-primary hover:text-primary/80"
+                    className="font-semibold text-sm text-foreground hover:text-primary/80"
                   >
                     Criar conta
                   </Link>
@@ -95,5 +118,5 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
