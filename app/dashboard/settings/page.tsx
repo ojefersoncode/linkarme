@@ -46,13 +46,13 @@ export default async function SettingsPage() {
           </h1>
         </div>
 
-        <div className="grid gap-6">
+        <div className="grid gap-6 bg-foreground rounded-lg">
           <Card className="bg-foreground border-none">
             <CardHeader>
               <CardTitle className="flex items-center justify-between gap-2">
-                <h1 className="font-bold"> Perfil do Usuário</h1>
+                <h1 className="font-bold text-white"> Perfil do Usuário</h1>
                 <div className="bg-background/40 p-1 rounded-sm">
-                  <User className="h-5 w-5" />
+                  <User className="h-5 w-5 text-white" />
                 </div>
               </CardTitle>
             </CardHeader>
@@ -64,16 +64,20 @@ export default async function SettingsPage() {
           <Card className="bg-foreground border-none">
             <CardHeader>
               <CardTitle className="flex items-center justify-between gap-2">
-                <h1 className="font-bold"> Privacidade e Segurança</h1>
+                <h1 className="font-bold text-white">
+                  Privacidade e Segurança
+                </h1>
                 <div className="bg-background/40 p-1 rounded-sm">
-                  <Shield className="h-5 w-5" />
+                  <Shield className="h-5 w-5 text-white" />
                 </div>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-semibold">Anonimização de IPs</h4>
+                  <h4 className="font-semibold text-white">
+                    Anonimização de IPs
+                  </h4>
                   <p className="text-sm text-muted-foreground">
                     IPs dos visitantes são automaticamente hasheados para
                     proteger a privacidade
@@ -86,7 +90,7 @@ export default async function SettingsPage() {
 
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-semibold">Geolocalização</h4>
+                  <h4 className="font-semibold text-white">Geolocalização</h4>
                   <p className="text-sm text-muted-foreground">
                     Coletamos dados de localização aproximada (país, estado,
                     cidade) para analytics
@@ -99,7 +103,9 @@ export default async function SettingsPage() {
 
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-semibold">Retenção de Dados</h4>
+                  <h4 className="font-semibold text-white">
+                    Retenção de Dados
+                  </h4>
                   <p className="text-sm text-muted-foreground">
                     Dados de cliques são mantidos indefinidamente para análises
                     históricas
@@ -113,32 +119,38 @@ export default async function SettingsPage() {
           <Card className="bg-foreground border-none">
             <CardHeader>
               <CardTitle className="flex items-center justify-between gap-2">
-                <h1 className="font-bold"> Informações da conta</h1>
+                <h1 className="font-bold text-white"> Informações da conta</h1>
                 <div className="bg-background/40 p-1 rounded-sm">
-                  <Database className="h-5 w-5" />
+                  <Database className="h-5 w-5 text-white" />
                 </div>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <h4 className="font-semibold text-sm">ID do Usuário</h4>
+                  <h4 className="font-semibold text-sm text-white">
+                    ID do Usuário
+                  </h4>
                   <p className="text-sm text-muted-foreground font-mono">
                     {user.id}
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-sm">Email</h4>
+                  <h4 className="font-semibold text-sm text-white">Email</h4>
                   <p className="text-sm text-muted-foreground">{user.email}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-sm">Conta Criada</h4>
+                  <h4 className="font-semibold text-sm text-white">
+                    Conta Criada
+                  </h4>
                   <p className="text-sm text-muted-foreground">
                     {new Date(user.created_at).toLocaleDateString('pt-BR')}
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-sm">Último Login</h4>
+                  <h4 className="font-semibold text-sm text-white">
+                    Último Login
+                  </h4>
                   <p className="text-sm text-muted-foreground">
                     {user.last_sign_in_at
                       ? new Date(user.last_sign_in_at).toLocaleDateString(
