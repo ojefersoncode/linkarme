@@ -28,9 +28,9 @@ export function CopyButton({ text }: CopyButtonProps) {
       className="bg-foreground hover:bg-foreground h-8 w-8 p-0"
     >
       {copied ? (
-        <Check className="h-4 w-4 text-green-200" />
+        <Check className="h-4 w-4 text-green-200 dark:text-green-200" />
       ) : (
-        <Copy className="h-4 w-4" />
+        <Copy className="h-4 w-4 text-white dark:text-white" />
       )}
     </Button>
   );
