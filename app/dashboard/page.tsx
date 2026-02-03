@@ -138,7 +138,7 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
-      <div className="pb-6 flex-1 w-full">
+      <div className="md:pb-6 max-md:p-4 flex-1 w-full">
         <DemographicCard />
       </div>
     </div>
