@@ -62,7 +62,7 @@ export function DeleteLinkButton({ linkId, linkTitle }: DeleteLinkButtonProps) {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="bg-background hover:bg-background text-accent dark:text-accent">
+          <AlertDialogCancel className="bg-background hover:bg-background dark:bg-background hover:bg-background text-accent dark:text-accent">
             Cancelar
           </AlertDialogCancel>
           <AlertDialogAction
