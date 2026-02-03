@@ -42,8 +42,8 @@ export default async function VerifyDomainPage({
     notFound();
   }
 
-  const dnsRecord = `linkshort-verify=${domain.verification_token}`;
-  const fileName = `linkshort-verify-${domain.verification_token}.txt`;
+  const dnsRecord = `linktraces-verify=${domain.verification_token}`;
+  const fileName = `linktraces-verify-${domain.verification_token}.txt`;
   const fileContent = domain.verification_token;
 
   return (
@@ -129,7 +129,7 @@ export default async function VerifyDomainPage({
                       <code className="flex-1 text-sm text-foreground dark:text-foreground">
                         _linkshort-verify
                       </code>
-                      <CopyButton text="_linkshort-verify" />
+                      <CopyButton text="_linktraces-verify" />
                     </div>
                   </div>
 
