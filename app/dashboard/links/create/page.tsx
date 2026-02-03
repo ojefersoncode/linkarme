@@ -215,12 +215,9 @@ export default function CreateLinkPage() {
             <CardTitle className="flex w-full justify-between items-center">
               <span> Configurar Link </span>
               <div className="bg-background p-1 rounded-sm">
-                <Link2 className="h-5 w-5" />
+                <Link2 className="h-5 w-5 text-accent" />
               </div>
             </CardTitle>
-            <CardDescription>
-              Preencha as informações do seu link curto
-            </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
