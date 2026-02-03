@@ -12,15 +12,15 @@ export default function DemographicCard() {
             Dados demográficos
           </h3>
           <div className="flex items-center gap-2">
-            <Button className="bg-background hover:bg-background/80 transition-all duration-200 cursor-pointer text-accent font-medium text-xs md:text-sm ">
-              24h
-            </Button>
-            <Button className="bg-background hover:bg-background/80 transition-all duration-200 cursor-pointer text-accent font-medium text-xs md:text-sm ">
+            <button className="bg-background hover:bg-background/80 transition-all duration-200 cursor-pointer rounded-sm text-accent font-medium text-xs md:text-sm py-1 px-2">
+              1d
+            </button>
+            <button className="bg-background hover:bg-background/80 transition-all duration-200 cursor-pointer rounded-sm text-accent font-medium text-xs md:text-sm py-1 px-2">
               7d
-            </Button>
-            <Button className="bg-background hover:bg-background/80 transition-all duration-200 cursor-pointer text-accent font-medium text-xs md:text-sm ">
+            </button>
+            <button className="bg-background hover:bg-background/80 transition-all duration-200 cursor-pointer rounded-sm text-accent font-medium text-xs md:text-sm py-1 px-2">
               30d
-            </Button>
+            </button>
           </div>
         </div>
         <div className="w-full flex-1 py-6 overflow-hidden">
