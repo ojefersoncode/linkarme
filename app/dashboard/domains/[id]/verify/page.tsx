@@ -127,7 +127,7 @@ export default async function VerifyDomainPage({
                     </Label>
                     <div className="flex items-center gap-2 py-1 px-3 bg-background rounded-lg">
                       <code className="flex-1 text-sm text-foreground dark:text-foreground">
-                        _linkshort-verify
+                        _linktraces-verify
                       </code>
                       <CopyButton text="_linktraces-verify" />
                     </div>
