@@ -210,7 +210,7 @@ export default function CreateLinkPage() {
       </div>
 
       <div className="flex w-full ">
-        <Card className="w-full bg-foreground text-white">
+        <Card className="w-full bg-foreground border-none text-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Link2 className="h-5 w-5" />
@@ -228,10 +228,10 @@ export default function CreateLinkPage() {
                   value={selectedDomain}
                   onValueChange={setSelectedDomain}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className="border-none text-foreground bg-white dark:bg-white hover:bg-white hover:dark:bg-white">
                     <SelectValue placeholder="Selecione um domínio" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white dark:bg-white text-foreground dark:text-foreground border-bone">
                     {domains.map((domain) => (
                       <SelectItem key={domain.id} value={domain.id}>
                         {domain.domain}
@@ -251,10 +251,11 @@ export default function CreateLinkPage() {
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
                     required
+                    className="bg-background text-foreground placeholder:text-foreground"
                   />
                   <Button
                     type="button"
-                    variant="outline"
+                    className="bg-white hover:bg-white/90 text-foreground"
                     onClick={generateRandomSlug}
                   >
                     <Shuffle className="h-4 w-4" />
@@ -283,6 +284,7 @@ export default function CreateLinkPage() {
                   value={destinationUrl}
                   onChange={(e) => setDestinationUrl(e.target.value)}
                   required
+                  className="bg-background text-foreground placeholder:text-foreground"
                 />
                 <p className="text-sm text-muted-foreground">
                   URL completa para onde o link deve redirecionar
@@ -297,6 +299,7 @@ export default function CreateLinkPage() {
                   placeholder="Título descritivo do link"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
+                  className="bg-background text-foreground placeholder:text-foreground"
                 />
               </div>
 
@@ -308,6 +311,7 @@ export default function CreateLinkPage() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={3}
+                  className="bg-background text-foreground placeholder:text-foreground"
                 />
               </div>
 
