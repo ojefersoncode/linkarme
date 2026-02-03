@@ -251,7 +251,7 @@ export default function CreateLinkPage() {
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
                     required
-                    className="bg-background text-foreground placeholder:text-foreground"
+                    className="border-none bg-background dark:bg-background text-foreground dark:text-foreground placeholder:text-foreground dark:placeholder:text-foreground"
                   />
                   <Button
                     type="button"
@@ -284,7 +284,7 @@ export default function CreateLinkPage() {
                   value={destinationUrl}
                   onChange={(e) => setDestinationUrl(e.target.value)}
                   required
-                  className="bg-background text-foreground placeholder:text-foreground"
+                  className="border-none bg-background dark:bg-background text-foreground dark:text-foreground placeholder:text-foreground dark:placeholder:text-foreground"
                 />
                 <p className="text-sm text-muted-foreground">
                   URL completa para onde o link deve redirecionar
@@ -299,7 +299,7 @@ export default function CreateLinkPage() {
                   placeholder="Título descritivo do link"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="bg-background text-foreground placeholder:text-foreground"
+                  className="border-none bg-background dark:bg-background text-foreground dark:text-foreground placeholder:text-foreground dark:placeholder:text-foreground"
                 />
               </div>
 
@@ -311,7 +311,7 @@ export default function CreateLinkPage() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={3}
-                  className="bg-background text-foreground placeholder:text-foreground"
+                  className="border-none bg-background dark:bg-background text-foreground dark:text-foreground placeholder:text-foreground dark:placeholder:text-foreground"
                 />
               </div>
 
