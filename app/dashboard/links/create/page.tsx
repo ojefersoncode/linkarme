@@ -212,9 +212,11 @@ export default function CreateLinkPage() {
       <div className="flex w-full ">
         <Card className="w-full bg-foreground border-none text-white">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Link2 className="h-5 w-5" />
-              Configurar Link
+            <CardTitle className="flex w-full justify-between items-center">
+              <span> Configurar Link </span>
+              <div className="bg-background p-1 rounded-sm">
+                <Link2 className="h-5 w-5" />
+              </div>
             </CardTitle>
             <CardDescription>
               Preencha as informações do seu link curto
