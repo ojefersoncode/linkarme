@@ -1,9 +1,9 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { createClient } from "@/lib/supabase/client"
-import { Button } from "@/components/ui/button"
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
+import { Button } from '@/components/ui/button';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,35 +13,41 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { Trash2, Loader2 } from "lucide-react"
+  AlertDialogTrigger
+} from '@/components/ui/alert-dialog';
+import { Trash2, Loader2 } from 'lucide-react';
 
 interface DeleteDomainButtonProps {
-  domainId: string
-  domainName: string
+  domainId: string;
+  domainName: string;
 }
 
-export function DeleteDomainButton({ domainId, domainName }: DeleteDomainButtonProps) {
-  const [isDeleting, setIsDeleting] = useState(false)
-  const router = useRouter()
+export function DeleteDomainButton({
+  domainId,
+  domainName
+}: DeleteDomainButtonProps) {
+  const [isDeleting, setIsDeleting] = useState(false);
+  const router = useRouter();
 
   const handleDelete = async () => {
-    setIsDeleting(true)
+    setIsDeleting(true);
 
     try {
-      const supabase = createClient()
-      const { error } = await supabase.from("domains").delete().eq("id", domainId)
+      const supabase = createClient();
+      const { error } = await supabase
+        .from('domains')
+        .delete()
+        .eq('id', domainId);
 
-      if (error) throw error
+      if (error) throw error;
 
-      router.refresh()
+      router.refresh();
     } catch (error) {
-      console.error("Error deleting domain:", error)
+      console.error('Error deleting domain:', error);
     } finally {
-      setIsDeleting(false)
+      setIsDeleting(false);
     }
-  }
+  };
 
   return (
     <AlertDialog>
@@ -50,26 +56,31 @@ export function DeleteDomainButton({ domainId, domainName }: DeleteDomainButtonP
           <Trash2 className="h-4 w-4" />
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-foreground border-zinc-700">
+      <AlertDialogContent className="bg-foreground border-none">
         <AlertDialogHeader>
-          <AlertDialogTitle className="text-white">Excluir Domínio</AlertDialogTitle>
+          <AlertDialogTitle className="text-white">
+            Excluir Domínio
+          </AlertDialogTitle>
           <AlertDialogDescription>
-            Tem certeza que deseja excluir o domínio <strong>{domainName}</strong>? Esta ação não pode ser desfeita e
+            Tem certeza que deseja excluir o domínio{' '}
+            <strong>{domainName}</strong>? Esta ação não pode ser desfeita e
             todos os links associados a este domínio serão removidos.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="text-white bg-background dark:bg-background hover:bg-background hover:dark:bg-background">Cancelar</AlertDialogCancel>
+          <AlertDialogCancel className="bg-background hover:bg-background dark:bg-background dark:hover:bg-background text-accent dark:text-accent">
+            Cancelar
+          </AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDelete}
             disabled={isDeleting}
             className="bg-destructive text-white hover:bg-destructive/90"
           >
             {isDeleting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-            {isDeleting ? "Excluindo..." : "Excluir"}
+            {isDeleting ? 'Excluindo...' : 'Excluir'}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }
