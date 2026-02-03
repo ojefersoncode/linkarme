@@ -84,8 +84,8 @@ export default async function DashboardPage() {
             <CardTitle className="text-sm text-white font-medium py-0">
               Domínios
             </CardTitle>
-            <div className="bg-background/40 p-1 rounded-sm">
-              <Globe className="h-4 w-4 text-background" />
+            <div className="bg-background p-1 rounded-sm">
+              <Globe className="h-4 w-4 text-accent" />
             </div>
           </CardHeader>
           <CardContent className="pt-0">
@@ -98,8 +98,8 @@ export default async function DashboardPage() {
             <CardTitle className="text-sm text-white font-medium">
               Links
             </CardTitle>
-            <div className="bg-background/40 p-1 rounded-sm">
-              <Link2 className="h-4 w-4 text-background" />
+            <div className="bg-background p-1 rounded-sm">
+              <Link2 className="h-4 w-4 text-accent" />
             </div>
           </CardHeader>
           <CardContent>
@@ -112,8 +112,8 @@ export default async function DashboardPage() {
             <CardTitle className="text-sm text-white font-medium">
               Cliques
             </CardTitle>
-            <div className="bg-background/40 p-1 rounded-sm">
-              <BarChart3 className="h-4 w-4 text-background" />
+            <div className="bg-background p-1 rounded-sm">
+              <BarChart3 className="h-4 w-4 text-accent" />
             </div>
           </CardHeader>
           <CardContent>
@@ -126,8 +126,8 @@ export default async function DashboardPage() {
             <CardTitle className="text-white text-sm font-medium">
               Taxa de Cliques
             </CardTitle>
-            <div className="bg-background/40 p-1 rounded-sm">
-              <TrendingUp className="h-4 w-4 text-background" />
+            <div className="bg-background p-1 rounded-sm">
+              <TrendingUp className="h-4 w-4 text-accent" />
             </div>
           </CardHeader>
           <CardContent>
@@ -138,7 +138,7 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
-      <div className="md:pb-6 max-md:p-4 flex-1 w-full">
+      <div className="pb-6 max-md:px-4 flex-1 w-full">
         <DemographicCard />
       </div>
     </div>
