@@ -209,8 +209,8 @@ export default function CreateLinkPage() {
         </div>
       </div>
 
-      <div className="max-w-2xl">
-        <Card>
+      <div className="flex w-full ">
+        <Card className="w-full bg-foreground text-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Link2 className="h-5 w-5" />
