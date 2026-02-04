@@ -30,7 +30,7 @@ export function ProfileButton() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-60 md:mr-4 bg-white text-accent border-none"
+        className="w-60 mr-4 bg-white text-accent border-none"
         align="start"
       >
         <DropdownMenuGroup>
