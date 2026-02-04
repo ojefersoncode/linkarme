@@ -39,7 +39,7 @@ const menuItems = [
   },
   {
     title: 'QR code',
-    url: '/dashboard/links',
+    url: '/dashboard/qrcode',
     icon: QrCode
   }
 ];
