@@ -30,21 +30,19 @@ export function ProfileButton() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-56 mx-4 bg-white text-accent border-none"
+        className="w-60 mx-4 bg-white text-accent border-none"
         align="start"
       >
         <DropdownMenuGroup>
           <DropdownMenuLabel className="bg-white hover:bg-white">
             <div className="flex flex-col">
               <div className="flex items-center justify-between">
-                <h2 className="font-semibold text-[0.70rem] pb-1">
-                  Email@mail.com
-                </h2>
+                <h2 className="font-bold text-xs pb-1">Email@mail.com</h2>
                 <div className="bg-foreground cursor-pointer rounded px-1 text-white text-[0.60rem]">
                   Atualizar
                 </div>
               </div>
-              <h2 className="font-normal text-[0.60rem]">Plano gratuito</h2>
+              <h2 className="font-semibold text-[0.70rem]">Plano gratuito</h2>
             </div>
           </DropdownMenuLabel>
         </DropdownMenuGroup>
