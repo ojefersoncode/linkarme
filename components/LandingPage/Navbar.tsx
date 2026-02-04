@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <nav className="flex items-center w-full justify-between p-4 text-white">
       {/* Logo */}
-      <h1 className="text-accent font-bold text-2xl">Linkarme</h1>
+      <h1 className="text-accent font-bold text-2xl">Linktraces</h1>
 
       {/* Menu Desktop */}
       <div className="hidden md:flex items-center gap-10 font-semibold text-white/80">
@@ -49,10 +49,10 @@ export default function Navbar() {
         <Sheet>
           <SheetTrigger asChild>
             <Button
-              className="bg-transparent hover:bg-transparent text-foreground dark:text-foreground"
+              className="bg-transparent hover:bg-transparent text-accent dark:text-accent"
               size="icon"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-8 w-8" />
             </Button>
           </SheetTrigger>
           <SheetContent
