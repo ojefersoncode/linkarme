@@ -10,28 +10,20 @@ import './globals.css';
 import { getURL } from '../lib/helpers';
 
 const meta = {
-  title: 'Linkarme',
-  description: 'Crie links curtos personalizados com seu próprio domínio e acompanhe estatísticas detalhadas',
+  title: 'Linktraces',
+  description:
+    'Crie links curtos personalizados com seu próprio domínio e acompanhe estatísticas detalhadas',
   robots: 'follow, index',
   favicon: '/favicon.png',
   url: getURL()
 };
-
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: meta.title,
     description: meta.description,
     referrer: 'origin-when-cross-origin',
-    keywords: [
-      'link',
-      'marketing',
-      'trace',
-      'url',
-      'short',
-      'pixel',
-      'Ativo',
-    ],
+    keywords: ['link', 'marketing', 'trace', 'url', 'short', 'pixel', 'Ativo'],
     authors: [{ name: 'Bronk', url: 'https://Nexprotocol.com/' }],
     creator: 'OjersonCode',
     publisher: 'OjefersonCode',
@@ -50,12 +42,10 @@ export async function generateMetadata(): Promise<Metadata> {
       site: '@nexprotocol',
       creator: 'ojefersoncode',
       title: meta.title,
-      description: meta.description,
+      description: meta.description
     }
   };
 }
-
-
 
 export default function RootLayout({
   children
