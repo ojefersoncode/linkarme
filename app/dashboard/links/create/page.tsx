@@ -209,7 +209,7 @@ export default function CreateLinkPage() {
         </div>
       </div>
 
-      <div className="flex w-full ">
+      <div className="flex w-full">
         <Card className="w-full bg-foreground border-none text-white">
           <CardHeader>
             <CardTitle className="flex w-full justify-between items-center">

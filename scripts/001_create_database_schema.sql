@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Enable RLS for profiles
+-- RLS for profiles
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 
 -- Profiles policies

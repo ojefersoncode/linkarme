@@ -18,6 +18,7 @@ import {
   SheetTrigger
 } from '@/components/ui/sheet';
 import { createClient } from '@/lib/supabase/client';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -42,13 +43,21 @@ export function MenuMobile() {
     <Sheet>
       <SheetTrigger asChild>
         <Button className="bg-transparent hover:bg-transparent text-white border-none m-0 p-2 cursor-pointer">
-          <Menu className="size-5 p-0 m-0" />
+          <Menu className="size-8 p-0 m-0" />
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="bg-foreground pt-2 pb-4 w-64">
         <SheetHeader className="flex w-full px-0 text-muted">
           <SheetTitle className="flex items-center pb-2 text-white border-b border-accent/30 w-full">
-            <img src="/logo.png" alt="" className="h-6 px-4" />
+            <div className="px-4">
+              <Image
+                src={'favicon.png'}
+                height={1024}
+                width={1024}
+                alt="Linktraces"
+                className="w-8 h-8"
+              />
+            </div>
           </SheetTitle>
         </SheetHeader>
 
