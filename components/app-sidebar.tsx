@@ -80,10 +80,12 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="bg-foreground">
-        <Button className="w-full justify-start bg-transparent hover:bg-background/20 text-white cursor-pointer">
-          <Settings className="h-4 w-4 mr-2" />
-          Configurações
-        </Button>
+        <Link href={'/dashboard/settings'}>
+          <Button className="w-full justify-start bg-transparent hover:bg-background/20 text-white cursor-pointer">
+            <Settings className="h-4 w-4 mr-2" />
+            Configurações
+          </Button>
+        </Link>
       </SidebarFooter>
     </Sidebar>
   );

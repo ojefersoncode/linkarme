@@ -1,16 +1,12 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { User, Shield, Database } from 'lucide-react';
 import { UpdateProfileForm } from '@/components/update-profile-form';
 import { MenuMobile } from '@/components/menu-mobile';
+import Image from 'next/image';
+import { ProfileButton } from '@/components/profile-button';
 
 export default async function SettingsPage() {
   const supabase = await createClient();
@@ -33,17 +29,27 @@ export default async function SettingsPage() {
   return (
     <main>
       <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
-        <div className="flex items-center gap-1 py-3">
+        <div className="flex items-center gap-1 px-2 py-3">
           <MenuMobile />
-          <h1 className="text-white font-bold text-xl">Linkarme</h1>
+          <Image
+            src={'favicon.png'}
+            height={1024}
+            width={1024}
+            alt="Linktraces"
+            className="w-8 h-8"
+          />
+        </div>
+        <div className="pr-4">
+          <ProfileButton />
         </div>
       </div>
 
       <div className="p-4 md:p-6 space-y-6">
-        <div>
-          <h1 className="text-3xl max-md:text-xl font-bold text-foreground">
-            Configurações
-          </h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-xl font-bold text-foreground">Configurações</h1>
+          <div className="max-md:hidden">
+            <ProfileButton />
+          </div>
         </div>
 
         <div className="grid gap-6 bg-foreground rounded-lg">
