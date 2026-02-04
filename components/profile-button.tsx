@@ -12,7 +12,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { ChevronDown, Plus } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { LogoutButton } from './Dashboard/Logout';
 
 export function ProfileButton() {
@@ -49,9 +49,7 @@ export function ProfileButton() {
         <DropdownMenuSeparator className="bg-green-200" />
         <DropdownMenuGroup>
           <DropdownMenuItem>Projetos</DropdownMenuItem>
-          <DropdownMenuItem>
-            Novo projeto <Plus className="w-4 h-4 " />
-          </DropdownMenuItem>
+          <DropdownMenuItem>Novo projeto</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Convidar usuarios</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
