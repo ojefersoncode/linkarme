@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -21,7 +20,6 @@ import {
 } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Download, Loader2 } from 'lucide-react';
-import { ScrollArea } from './ui/scroll-area';
 
 interface Link {
   id: string;
@@ -117,129 +115,115 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
           <span className="max-md:text-xs font-semibold"> Exportar Dados </span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-xl h-screen bg-foreground border-none text-white">
-        <ScrollArea className="max-md:h-screen w-full bg-foreground">
-          <DialogHeader className="max-md:justify-start">
-            <DialogTitle className="max-md:justify-start text-start">
-              Exportar Dados
-            </DialogTitle>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
+      <DialogContent className="p-4 bg-white border-none text-black">
+        <DialogHeader className="max-md:justify-start">
+          <DialogTitle className="max-md:justify-start text-start">
+            Exportar Dados
+          </DialogTitle>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="link" className="font-semibold">
+                Link Específico (Opcional)
+              </Label>
+              <Select value={selectedLink} onValueChange={setSelectedLink}>
+                <SelectTrigger className="border-black/40 text-black bg-white dark:bg-white hover:bg-white hover:dark:bg-white w-full">
+                  <SelectValue className="text-foreground" />
+                </SelectTrigger>
+                <SelectContent className="bg-white dark:bg-white text-black dark:text-black border-bone">
+                  <SelectItem value="all">Todos os links</SelectItem>
+                  {links.map((link) => (
+                    <SelectItem key={link.id} value={link.id}>
+                      {Array.isArray(link.domains)
+                        ? link.domains.map((d) => d.domain).join(', ')
+                        : typeof link.domains === 'object'
+                          ? link.domains.domain
+                          : link.domains}
+                      /{link.slug} {link.title && `- ${link.title}`}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="exportType" className="font-semibold">
                 Tipo de Dados
               </Label>
               <Select value={exportType} onValueChange={setExportType}>
-                <SelectTrigger className="border-none text-foreground bg-white dark:bg-white hover:bg-white hover:dark:bg-white">
+                <SelectTrigger className="border-black/40 text-black bg-white dark:bg-white hover:bg-white hover:dark:bg-white w-full">
                   <SelectValue className="text-foreground" />
                 </SelectTrigger>
-                <SelectContent className="bg-white dark:bg-white text-foreground dark:text-foreground border-bone">
+                <SelectContent className="bg-white dark:bg-white text-black dark:text-black border-bone">
                   <SelectItem value="clicks">Dados de Cliques</SelectItem>
                   <SelectItem value="links">Lista de Links</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-
-            {exportType === 'clicks' && (
-              <>
-                <div className="space-y-2">
-                  <Label htmlFor="link" className="font-semibold">
-                    Link Específico (Opcional)
-                  </Label>
-                  <Select value={selectedLink} onValueChange={setSelectedLink}>
-                    <SelectTrigger className="border-none text-foreground bg-white dark:bg-white hover:bg-white hover:dark:bg-white">
-                      <SelectValue className="text-foreground" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white dark:bg-white text-foreground dark:text-foreground border-bone">
-                      <SelectItem value="all">Todos os links</SelectItem>
-                      {links.map((link) => (
-                        <SelectItem key={link.id} value={link.id}>
-                          {Array.isArray(link.domains)
-                            ? link.domains.map((d) => d.domain).join(', ')
-                            : typeof link.domains === 'object'
-                              ? link.domains.domain
-                              : link.domains}
-                          /{link.slug} {link.title && `- ${link.title}`}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="startDate" className="font-semibold">
-                      Data Inicial
-                    </Label>
-                    <Input
-                      id="startDate"
-                      type="date"
-                      value={startDate}
-                      onChange={(e) => setStartDate(e.target.value)}
-                      className="font-semibold bg-white dark:bg-white text-foreground"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="endDate" className="font-semibold">
-                      Data Final
-                    </Label>
-                    <Input
-                      id="endDate"
-                      type="date"
-                      value={endDate}
-                      onChange={(e) => setEndDate(e.target.value)}
-                      className="font-semibold bg-white dark:bg-white text-foreground"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="includePersonalData"
-                    checked={includePersonalData}
-                    onCheckedChange={(checked) =>
-                      setIncludePersonalData(checked as boolean)
-                    }
-                  />
-                  <Label htmlFor="includePersonalData" className="text-sm">
-                    Incluir dados pessoais (IP hash)
-                  </Label>
-                </div>
-              </>
-            )}
-
-            <div className="p-4 bg-white text-foreground rounded-lg">
-              <h4 className="font-bold mb-2">Informações sobre Privacidade</h4>
-              <ul className="text-sm text-foreground space-y-1">
-                <li>
-                  • IPs são automaticamente hasheados para proteger a
-                  privacidade
-                </li>
-                <li>
-                  • Dados de geolocalização são aproximados (país, estado,
-                  cidade)
-                </li>
-                <li>• Nenhuma informação pessoal identificável é coletada</li>
-              </ul>
-            </div>
           </div>
-          <DialogFooter className="">
-            <Button
-              className="bg-red-600 hover:bg-red-600 border-none px-8 text-white"
-              onClick={() => setOpen(false)}
-            >
-              Cancelar
-            </Button>
-            <Button
-              onClick={handleExport}
-              disabled={isExporting}
-              className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-foreground max-md:text-sm"
-            >
-              {isExporting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-              {isExporting ? 'Exportando...' : 'Exportar'}
-            </Button>
-          </DialogFooter>
-        </ScrollArea>
+
+          {exportType === 'clicks' && (
+            <>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="startDate" className="font-semibold">
+                    Data Inicial
+                  </Label>
+                  <Input
+                    id="startDate"
+                    type="date"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    className="font-semibold border-black/40 bg-white dark:bg-white text-black"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="endDate" className="font-semibold">
+                    Data Final
+                  </Label>
+                  <Input
+                    id="endDate"
+                    type="date"
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    className="font-semibold border-black/40 bg-white dark:bg-white text-black"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  className="border-none text-green-500"
+                  id="includePersonalData"
+                  checked={includePersonalData}
+                  onCheckedChange={(checked) =>
+                    setIncludePersonalData(checked as boolean)
+                  }
+                />
+                <Label htmlFor="includePersonalData" className="text-sm">
+                  Incluir dados demograficos
+                </Label>
+              </div>
+            </>
+          )}
+        </div>
+        <DialogFooter className="">
+          <Button
+            className="bg-red-600 hover:bg-red-600 cursor-pointer border-none px-8 text-white"
+            onClick={() => setOpen(false)}
+          >
+            Cancelar
+          </Button>
+          <Button
+            onClick={handleExport}
+            disabled={isExporting}
+            className="bg-foreground hover:bg-foreground/80 transition-all duration-300 px-8 text-white max-md:text-sm cursor-pointer"
+          >
+            {isExporting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+            {isExporting ? 'Exportando...' : 'Exportar'}
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

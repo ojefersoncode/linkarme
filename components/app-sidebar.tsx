@@ -16,11 +16,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const menuItems = [
-  { title: 'Dashboard', url: '/dashboard', icon: Home },
+  { title: 'Inicio', url: '/dashboard', icon: Home },
+  { title: 'Links', url: '/dashboard/links', icon: Link2 },
+  { title: 'QR codes', url: '/dashboard/qrcode', icon: QrCode },
   { title: 'Analytics', url: '/dashboard/analytics', icon: BarChart3 },
   { title: 'Domínios', url: '/dashboard/domains', icon: Globe },
-  { title: 'Links', url: '/dashboard/links', icon: Link2 },
-  { title: 'QR code', url: '/dashboard/qrcode', icon: QrCode },
   { title: 'Configurações', url: '/dashboard/settings', icon: Settings }
 ];
 
@@ -32,13 +32,14 @@ export function AppSidebar() {
       <SidebarHeader className="bg-secondary pb-4 p-4">
         <div className="flex items-center">
           <Image
-            src={'favicon.png'}
+            src={'whiteicon.png'}
             height={1024}
             width={1024}
             alt="Linktraces"
+            priority
             className="w-8 h-8"
           />
-          <h1 className="ml-2 font-medium text-background text-xl">
+          <h1 className="ml-2 font-extralight text-white/90 text-xl">
             Linktraces
           </h1>
         </div>

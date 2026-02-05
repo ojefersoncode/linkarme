@@ -11,6 +11,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Plus, Globe, CheckCircle, Clock } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { DeleteDomainButton } from '@/components/delete-domain-button';
 import { MenuMobile } from '@/components/menu-mobile';
 
@@ -50,15 +51,26 @@ export default async function DomainsPage() {
   };
 
   return (
-    <div className="p-6 max-md:p-0 space-y-6">
-      <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+    <div className="max-md:p-0 space-y-6">
+      <div className="flex items-center gap-1 bg-white border-b border-accent/30 md:hidden">
         <div className="flex items-center gap-1 py-3">
           <MenuMobile />
-          <h1 className="text-white font-bold text-xl">Linkarme</h1>
+        </div>
+        <div className="flex items-center px-4">
+          <Image
+            src={'favicon.png'}
+            height={1024}
+            width={1024}
+            alt="Linktraces"
+            className="w-8 h-8"
+          />
+          <h1 className="ml-2 font-extralight text-foreground/90 text-xl">
+            Linktraces
+          </h1>
         </div>
       </div>
 
-      <div className="flex items-center justify-between max-md:px-4">
+      <div className="flex items-center md:bg-white justify-between md:p-4 max-md:px-4">
         <div>
           <h1 className="text-2xl max-md:text-xl font-bold text-foreground">
             Domínios
@@ -66,7 +78,7 @@ export default async function DomainsPage() {
         </div>
         <Button
           asChild
-          className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-foreground max-md:text-sm"
+          className="bg-white hover:bg-white/80 md:border border-black/40 transition-all duration-300 px-8 text-foreground max-md:text-sm shadow-xl/40 shadow-primary"
         >
           <Link href="/dashboard/domains/add">
             <Plus className="h-4 w-4 mr-2" />
@@ -76,7 +88,7 @@ export default async function DomainsPage() {
       </div>
 
       {domains && domains.length > 0 ? (
-        <div className="grid gap-4 max-md:px-4">
+        <div className="grid gap-4 px-4">
           {domains.map((domain) => (
             <Card key={domain.id} className="bg-foreground border-none">
               <CardHeader className="bg-foreground">
@@ -117,7 +129,7 @@ export default async function DomainsPage() {
                   <div className="flex gap-2">
                     {!domain.verified && (
                       <Button
-                        className="bg-white hover:bg-white text-foreground hover:text-shadow-orange-50"
+                        className="bg-foreground hover:bg-foreground/80 transition-all duration-300 text-white max-md:text-sm"
                         size="sm"
                         asChild
                       >
@@ -137,13 +149,13 @@ export default async function DomainsPage() {
           ))}
         </div>
       ) : (
-        <div className="max-md:px-4">
-          <Card className="bg-foreground border-accent/40">
+        <div className="px-4">
+          <Card className="bg-white border-none shadow-xl/40 shadow-primary">
             <CardHeader>
-              <CardTitle className="text-green-100 dark:text-green-100">
+              <CardTitle className="text-black dark:text-black">
                 Nenhum domínio encontrado
               </CardTitle>
-              <CardDescription className="text-green-100 dark:text-green-100">
+              <CardDescription className="text-black dark:text-black">
                 Você ainda não adicionou nenhum domínio. Adicione seu primeiro
                 domínio para começar a criar links personalizados.
               </CardDescription>
@@ -151,7 +163,7 @@ export default async function DomainsPage() {
             <CardContent>
               <Button
                 asChild
-                className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-foreground max-md:text-sm"
+                className="bg-foreground hover:bg-foreground/80 transition-all duration-300 text-white max-md:text-sm"
               >
                 <Link href="/dashboard/domains/add">
                   <Plus className="h-4 w-4 mr-2" />

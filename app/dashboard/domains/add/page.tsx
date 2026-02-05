@@ -77,7 +77,7 @@ export default function AddDomainPage() {
           variant="ghost"
           size="sm"
           asChild
-          className="bg-foreground/25 hover:bg-foreground/20 dark:hover:bg-foreground/20 dark:hover:text-foreground text-foreground hover:text-foreground"
+          className="bg-white hover:bg-white/90 dark:hover:bg-white/80 dark:hover:text-foreground text-foreground hover:text-foreground shadow-xl/40 shadow-primary"
         >
           <Link href="/dashboard/domains">
             <ArrowLeft className="h-5 w-5" />
@@ -86,19 +86,19 @@ export default function AddDomainPage() {
       </div>
 
       <div className="flex justify-center w-full">
-        <Card className="bg-foreground border-none max-w-2xl">
+        <Card className="bg-white text-black border-none max-w-2xl shadow-xl/40 shadow-primary">
           <CardHeader>
             <CardTitle className="flex items-center justify-between text-white gap-2">
-              <h1>Adicionar Domínio</h1>
-              <div className="bg-background/40 p-1 rounded-sm">
-                <Globe className="h-5 w-5" />
+              <h1 className="text-black">Adicionar Domínio</h1>
+              <div className="bg-background p-2 rounded-lg">
+                <Globe className="h-5 w-5 text-foreground" />
               </div>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label className="text-white" htmlFor="domain">
+                <Label className="text-black" htmlFor="domain">
                   Domínio
                 </Label>
                 <Input
@@ -108,36 +108,44 @@ export default function AddDomainPage() {
                   value={domain}
                   onChange={(e) => setDomain(e.target.value)}
                   required
-                  className="bg-background dark:bg-background border-none placeholder:text-foreground/70 text-foreground"
+                  className="bg-white dark:bg-white border-black/40 placeholder:text-black/80 text-foreground"
                 />
-                <p className="text-sm text-white/80">
+                <p className="text-sm text-black/70">
                   Digite apenas o domínio, sem http:// ou https://
                 </p>
               </div>
 
               <div className="space-y-3 text-white">
-                <Label>Método de Verificação</Label>
+                <Label className="text-black">Método de Verificação</Label>
                 <RadioGroup
                   value={verificationMethod}
                   onValueChange={setVerificationMethod}
                 >
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="dns" id="dns" />
-                    <Label htmlFor="dns" className="cursor-pointer">
+                    <RadioGroupItem
+                      className="border-none bg-secondary dark:bg-secondary"
+                      value="dns"
+                      id="dns"
+                    />
+                    <Label htmlFor="dns" className="cursor-pointer text-black">
                       DNS TXT Record (Recomendado)
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="file" id="file" />
-                    <Label htmlFor="file" className="cursor-pointer">
+                    <RadioGroupItem
+                      className="border-none bg-secondary dark:bg-secondary"
+                      value="file"
+                      id="file"
+                    />
+                    <Label htmlFor="file" className="cursor-pointer text-black">
                       Upload de Arquivo
                     </Label>
                   </div>
                 </RadioGroup>
 
                 {verificationMethod === 'dns' && (
-                  <div className="p-4 bg-background rounded-lg my-4 py-4">
-                    <p className="text-sm text-foreground dark:text-foreground">
+                  <div className="p-4 bg-white border border-black/40 rounded-lg my-4 py-4">
+                    <p className="text-sm text-black/70 dark:text-black/70">
                       <strong>DNS TXT:</strong> Você precisará adicionar um
                       registro TXT no seu provedor de DNS. Este método é mais
                       seguro e recomendado.
@@ -146,8 +154,8 @@ export default function AddDomainPage() {
                 )}
 
                 {verificationMethod === 'file' && (
-                  <div className="p-4 bg-background text-foreground rounded-lg my-4 py-4">
-                    <p className="text-sm text-foreground dark:text-foreground">
+                  <div className="p-4 bg-white border border-black/40 rounded-lg my-4 py-4">
+                    <p className="text-sm text-black/70 dark:text-black/70">
                       <strong>Upload de Arquivo:</strong> Você precisará fazer
                       upload de um arquivo específico para o seu servidor web.
                     </p>
@@ -165,7 +173,7 @@ export default function AddDomainPage() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-foreground max-md:text-sm"
+                  className="bg-foreground hover:bg-foreground/80 transition-all duration-300 px-8 text-white max-md:text-sm"
                 >
                   {isLoading ? 'Adicionando...' : 'Adicionar Domínio'}
                 </Button>

@@ -7,7 +7,8 @@ import {
   Settings,
   Globe,
   LogOut,
-  Menu
+  Menu,
+  QrCode
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -23,10 +24,11 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const menuItems = [
-  { title: 'Dashboard', url: '/dashboard', icon: Home },
-  { title: 'Domínios', url: '/dashboard/domains', icon: Globe },
+  { title: 'Inicio', url: '/dashboard', icon: Home },
   { title: 'Links', url: '/dashboard/links', icon: Link2 },
+  { title: 'QR codes', url: '/dashboard/qrcode', icon: QrCode },
   { title: 'Analytics', url: '/dashboard/analytics', icon: BarChart3 },
+  { title: 'Domínios', url: '/dashboard/domains', icon: Globe },
   { title: 'Configurações', url: '/dashboard/settings', icon: Settings }
 ];
 
@@ -49,7 +51,7 @@ export function MenuMobile() {
       <SheetContent side="left" className="bg-secondary w-64">
         <SheetHeader className="flex w-full px-0 text-muted">
           <SheetTitle className="flex items-center pb-3 text-white border-b border-foreground/40 w-full">
-            <div className="px-4">
+            <div className="flex items-center px-4">
               <Image
                 src={'favicon.png'}
                 height={1024}
@@ -57,6 +59,9 @@ export function MenuMobile() {
                 alt="Linktraces"
                 className="w-8 h-8"
               />
+              <h1 className="ml-2 font-extralight text-white/90 text-xl">
+                Linktraces
+              </h1>
             </div>
           </SheetTitle>
         </SheetHeader>

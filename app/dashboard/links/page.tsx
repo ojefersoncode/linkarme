@@ -11,6 +11,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Plus, Link2, ExternalLink, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { DeleteLinkButton } from '@/components/delete-link-button';
 import { CopyLinkButton } from '@/components/copy-link-button';
 import { ToggleLinkButton } from '@/components/toggle-link-button';
@@ -62,17 +63,29 @@ export default async function LinksPage() {
     })) || [];
 
   return (
-    <div className="p-6 max-md:p-0 space-y-6">
-      <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+    <div className=" space-y-6">
+      <div className="flex items-center justify-between bg-white border-b border-accent/30 md:hidden">
         <div className="flex items-center gap-1 py-3">
           <MenuMobile />
-          <h1 className="text-white font-bold text-xl">Linkarme</h1>
+
+          <div className="flex items-center px-4">
+            <Image
+              src={'favicon.png'}
+              height={1024}
+              width={1024}
+              alt="Linktraces"
+              className="w-8 h-8"
+            />
+            <h1 className="ml-2 font-extralight text-white/90 text-xl">
+              Linktraces
+            </h1>
+          </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-between max-md:px-4">
+      <div className="flex items-center md:bg-white justify-between md:p-4 max-md:px-4 md:shadow-xl/40 shadow-primary">
         <div>
-          <h1 className="text-2xl max-md:text-xl font-bold text-foreground">
+          <h1 className="text-2xl max-md:text-xl font-bold text-foreground max-md:invisible">
             Links
           </h1>
         </div>
@@ -80,7 +93,7 @@ export default async function LinksPage() {
           <ExportDataDialog links={linksForExport} />
           <Button
             asChild
-            className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-foreground max-md:text-sm"
+            className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-black max-md:text-sm md:border md:border-black/40 max-md:shadow-lg shadow-primary"
           >
             <Link href="/dashboard/links/create">
               <Plus className="h-4 w-4 mr-1" />
@@ -91,7 +104,7 @@ export default async function LinksPage() {
       </div>
 
       {links && links.length > 0 ? (
-        <div className="grid gap-4">
+        <div className="grid gap-4 px-6">
           {links.map((link) => {
             const clickCount = Array.isArray(link.clicks)
               ? link.clicks.length
@@ -191,13 +204,13 @@ export default async function LinksPage() {
           })}
         </div>
       ) : (
-        <div className="max-md:px-4">
-          <Card className="bg-foreground border border-accent/40">
+        <div className="px-4">
+          <Card className="bg-white border-none shadow-xl shadow-primary">
             <CardHeader>
-              <CardTitle className="text-white">
+              <CardTitle className="text-black">
                 Nenhum link encontrado
               </CardTitle>
-              <CardDescription className="text-white">
+              <CardDescription className="text-black">
                 Você ainda não criou nenhum link. Crie seu primeiro link curto
                 personalizado.
               </CardDescription>
@@ -205,7 +218,7 @@ export default async function LinksPage() {
             <CardContent>
               <Button
                 asChild
-                className="bg-white hover:bg-white/80 transition-all duration-300 text-foreground max-md:text-sm"
+                className="bg-foreground hover:bg-foreground/80 transition-all duration-300 text-white max-md:text-sm"
               >
                 <Link href="/dashboard/links/create">
                   <Plus className="h-4 w-4 mr-2" />
