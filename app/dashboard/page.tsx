@@ -7,6 +7,7 @@ import { MenuMobile } from '@/components/menu-mobile';
 import DemographicCard from '@/components/Map/DemographicCard';
 import { ProfileButton } from '@/components/profile-button';
 import Image from 'next/image';
+import { Search } from '@/components/Dashboard/Search';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -54,18 +55,20 @@ export default async function DashboardPage() {
 
   return (
     <div className="md:p-6 space-y-6 bg-background h-screen">
-      <div className="flex items-center justify-between bg-accent border-b border-accent/30 md:hidden">
+      <div className="flex items-center justify-between bg-white shadow-xl/40 shadow-primary border-b border-accent/30 md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
           <MenuMobile />
           <Image
-            src={'favicon.png'}
+            src={'icon.png'}
             height={100}
             width={100}
             alt="logo"
             className="w-8 h-8"
           />
         </div>
-        <div className="pr-4">
+
+        <div className="flex items-center gap-4 pr-4">
+          <Search />
           <ProfileButton />
         </div>
       </div>
@@ -74,7 +77,10 @@ export default async function DashboardPage() {
         <h1 className="text-base md:text-xl font-bold text-foreground">
           Dashboard
         </h1>
+
         <div className="flex items-center gap-4 max-md:justify-end max-md:w-full">
+          <Search />
+
           <ExportDataDialog links={linksForExport} />
 
           <ProfileButton />
@@ -85,9 +91,9 @@ export default async function DashboardPage() {
         <div className="md:hidden">
           <ExportDataDialog links={linksForExport} />
         </div>
-        <Card className="bg-foreground border-none gap-2">
+        <Card className="bg-white shadow-xl/40 shadow-primary border-none gap-2">
           <CardHeader className="flex flex-row items-center justify-between pb-0">
-            <CardTitle className="text-sm text-white font-medium py-0">
+            <CardTitle className="text-sm text-accent font-medium py-0">
               Domínios
             </CardTitle>
             <div className="bg-background p-1 rounded-sm">
@@ -95,13 +101,15 @@ export default async function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent className="pt-0">
-            <div className="text-2xl font-bold text-white">{stats.domains}</div>
+            <div className="text-2xl font-bold text-foreground">
+              {stats.domains}
+            </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-none gap-2">
+        <Card className="bg-white shadow-xl/40 shadow-primary border-none gap-2">
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="text-sm text-white font-medium">
+            <CardTitle className="text-sm text-accent font-medium">
               Links
             </CardTitle>
             <div className="bg-background p-1 rounded-sm">
@@ -109,13 +117,15 @@ export default async function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-white">{stats.links}</div>
+            <div className="text-2xl font-bold text-foreground">
+              {stats.links}
+            </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-none gap-2">
+        <Card className="bg-white shadow-xl/40 shadow-primary border-none gap-2">
           <CardHeader className="flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-sm text-white font-medium">
+            <CardTitle className="text-sm text-accent font-medium">
               Cliques
             </CardTitle>
             <div className="bg-background p-1 rounded-sm">
@@ -123,13 +133,15 @@ export default async function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-white">{stats.clicks}</div>
+            <div className="text-2xl font-bold text-foreground">
+              {stats.clicks}
+            </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-foreground border-none gap-2">
+        <Card className="bg-white shadow-xl/40 shadow-primary border-none gap-2">
           <CardHeader className="flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-white text-sm font-medium">
+            <CardTitle className="text-accent text-sm font-medium">
               Taxa de Cliques
             </CardTitle>
             <div className="bg-background p-1 rounded-sm">
@@ -137,7 +149,7 @@ export default async function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-white">
+            <div className="text-2xl font-bold text-foreground">
               {stats.links > 0 ? Math.round(stats.clicks / stats.links) : 0}
             </div>
           </CardContent>

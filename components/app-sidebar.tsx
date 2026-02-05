@@ -46,11 +46,11 @@ const menuItems = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="bg-foreground border-accent/40">
-      <SidebarHeader className="bg-foreground p-4">
+    <Sidebar className="bg-white shadow-xl/40 shadow-primary border-foreground/20">
+      <SidebarHeader className="bg-white p-4">
         <div className="flex items-center">
           <Image
-            src={'favicon.png'}
+            src={'icon.png'}
             height={1024}
             width={1024}
             alt="Linktraces"
@@ -58,7 +58,7 @@ export function AppSidebar() {
           />
         </div>
       </SidebarHeader>
-      <SidebarContent className="justify-between bg-foreground">
+      <SidebarContent className="justify-between bg-white">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -66,7 +66,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
                     asChild
-                    className="text-white hover:text-white hover:bg-background/20  transition-all duration-200"
+                    className="text-foreground hover:text-foreground hover:bg-background/80  transition-all duration-200"
                   >
                     <Link href={item.url}>
                       <item.icon className="h-4 w-4" />
@@ -79,9 +79,9 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="bg-foreground">
+      <SidebarFooter className="bg-white">
         <Link href={'/dashboard/settings'}>
-          <Button className="w-full justify-start bg-transparent hover:bg-background/20 text-white cursor-pointer">
+          <Button className="w-full justify-start bg-transparent hover:bg-background/80 text-foreground cursor-pointer">
             <Settings className="h-4 w-4 mr-2" />
             Configurações
           </Button>

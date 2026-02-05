@@ -13,7 +13,7 @@ export function LogoutButton() {
   };
   return (
     <span className="flex w-full" onClick={handleLogout}>
-      Sair{' '}
+      Sair
     </span>
   );
 }

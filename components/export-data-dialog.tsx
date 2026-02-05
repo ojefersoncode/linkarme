@@ -112,9 +112,9 @@ export function ExportDataDialog({ links }: ExportDataDialogProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="flex items-center justify-center cursor-pointer text-white bg-foreground hover:bg-foreground border border-accent/30">
+        <Button className="flex items-center justify-center cursor-pointer text-white bg-foreground hover:bg-foreground shadow-xl/40 shadow-primary border-none">
           <Download className="h-4 w-4 md:mr-1" />
-          <span className="max-md:text-xs font-bold"> Exportar Dados </span>
+          <span className="max-md:text-xs font-semibold"> Exportar Dados </span>
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-xl h-screen bg-foreground border-none text-white">

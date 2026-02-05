@@ -91,20 +91,20 @@ export default async function Qrcode() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 max-md:p-4 bg-background">
-        <Card className="bg-foreground border-none gap-2 w-full">
+        <Card className="bg-white border-none gap-2 w-full rounded">
           <CardHeader className="flex flex-col pb-0">
-            <CardTitle className="text-lg text-white font-bold py-0">
+            <CardTitle className="text-lg text-black font-bold py-0">
               Detalhes
             </CardTitle>
-            <CardDescription className="text-sm text-white font-bold py-0">
+            <CardDescription className="text-sm text-black font-bold py-0">
               Você pode criar 10 qrcodes por mês. Faça o upgrade para mais.
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-4 space-y-6">
             <div className="flex flex-col gap-2">
-              <Label>Url de destino</Label>
+              <Label className="text-black">Url de destino</Label>
               <Input
-                className="bg-background dark:bg-background border-none text-foreground placeholder:text-foreground"
+                className="bg-white dark:bg-white rounded border-black/40 text-black placeholder:text-black/80"
                 id="fullName"
                 type="text"
                 placeholder="https://exemplo.com"
@@ -112,27 +112,29 @@ export default async function Qrcode() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label>Titulo do Url</Label>
+              <Label className="text-black">Titulo do Url</Label>
               <Input
-                className="bg-background dark:bg-background border-none text-foreground placeholder:text-foreground"
+                className="bg-white dark:bg-white rounded border-black/40 text-black placeholder:text-black/60"
                 id="fullName"
                 type="text"
               />
             </div>
             <div>
-              <Button className="bg-white hover:bg-white">Gerar QRcode</Button>
+              <Button className="text-white hover:text-white rounded bg-foreground hover:bg-foreground">
+                Gerar QRcode
+              </Button>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="flex flex-col items-center bg-foreground border-none gap-2 ">
+        <Card className="flex flex-col bg-white dark:bg-white border-none gap-2 rounded">
           <CardHeader className="flex items-center justify-center">
-            <CardTitle className="flex justify-center text-center text-lg text-white font-bold">
+            <CardTitle className="flex justify-center text-center text-lg text-black font-bold">
               Visualizar
             </CardTitle>
           </CardHeader>
           <CardContent className="flex items-center justify-center">
-            <div className="w-40 h-40 text-2xl font-bold text-white">
+            <div className="w-40 h-40 text-2xl font-bold text-black">
               Code gerado
             </div>
           </CardContent>

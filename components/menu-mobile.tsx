@@ -42,7 +42,7 @@ export function MenuMobile() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="bg-transparent hover:bg-transparent text-white border-none m-0 p-2 cursor-pointer">
+        <Button className="bg-white hover:bg-white text-black border-none m-0 p-2 cursor-pointer">
           <Menu className="size-8 p-0 m-0" />
         </Button>
       </SheetTrigger>
