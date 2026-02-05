@@ -19,7 +19,7 @@ export function ProfileButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="bg-white hover:bg-white text-accent shadow-xl/20 shadow-foreground max-md:border border-accent/30 max-md:px-3">
+        <Button className="bg-white hover:bg-white text-accent border border-accent/30 max-md:px-3">
           <div className="flex items-center gap-2">
             <div className="flex justify-center items-center text-center rounded-full w-6 h-6 bg-foreground">
               <span className="text-white text-sm font-bold"> J </span>

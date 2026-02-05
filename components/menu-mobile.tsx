@@ -46,9 +46,9 @@ export function MenuMobile() {
           <Menu className="size-8 p-0 m-0" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="bg-foreground pt-2 pb-4 w-64">
+      <SheetContent side="left" className="bg-secondary w-64">
         <SheetHeader className="flex w-full px-0 text-muted">
-          <SheetTitle className="flex items-center pb-2 text-white border-b border-accent/30 w-full">
+          <SheetTitle className="flex items-center pb-3 text-white border-b border-foreground/40 w-full">
             <div className="px-4">
               <Image
                 src={'favicon.png'}
@@ -75,7 +75,7 @@ export function MenuMobile() {
             ))}
           </nav>
 
-          <div className="flex flex-col px-2 gap-4">
+          <div className="flex flex-col pb-4 px-2 gap-4">
             <div>
               <Button
                 variant="ghost"

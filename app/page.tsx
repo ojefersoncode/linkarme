@@ -28,7 +28,7 @@ export default function HomePage() {
 
           <div className="pb-4 px-2 md:hidden">
             <img
-              className="border-0.5 border-foreground shadow-lg rounded-md"
+              className="border-0.5 shadow-lg shadow-primary rounded-md"
               src="/dashboard.png"
               alt=""
             />
@@ -37,7 +37,7 @@ export default function HomePage() {
       </div>
       <div className="md:p-12 max-md:hidden">
         <img
-          className="border border-foreground shadow-xl rounded-lg"
+          className="shadow-xl shadow-primary rounded-lg"
           src="/dashboard.png"
           alt=""
         />

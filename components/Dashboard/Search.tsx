@@ -14,7 +14,7 @@ export function Search() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="bg-white hover:bg-white md:shadow-lg/40 md:shadow-primary text-foreground px-3 border-none">
+        <Button className="bg-white hover:bg-white text-foreground px-3 border-none">
           <div className="flex items-center gap-2">
             <SearchIcon />
           </div>

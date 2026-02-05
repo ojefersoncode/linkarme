@@ -4,7 +4,6 @@ import { Home, Link2, BarChart3, Settings, Globe, QrCode } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
@@ -12,81 +11,65 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar';
-import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const menuItems = [
-  {
-    title: 'Dashboard',
-    url: '/dashboard',
-    icon: Home
-  },
-  {
-    title: 'Analytics',
-    url: '/dashboard/analytics',
-    icon: BarChart3
-  },
-  {
-    title: 'Domínios',
-    url: '/dashboard/domains',
-    icon: Globe
-  },
-  {
-    title: 'Links',
-    url: '/dashboard/links',
-    icon: Link2
-  },
-  {
-    title: 'QR code',
-    url: '/dashboard/qrcode',
-    icon: QrCode
-  }
+  { title: 'Dashboard', url: '/dashboard', icon: Home },
+  { title: 'Analytics', url: '/dashboard/analytics', icon: BarChart3 },
+  { title: 'Domínios', url: '/dashboard/domains', icon: Globe },
+  { title: 'Links', url: '/dashboard/links', icon: Link2 },
+  { title: 'QR code', url: '/dashboard/qrcode', icon: QrCode },
+  { title: 'Configurações', url: '/dashboard/settings', icon: Settings }
 ];
 
 export function AppSidebar() {
+  const pathname = usePathname();
+
   return (
-    <Sidebar className="bg-white shadow-xl/40 shadow-primary border-foreground/20">
-      <SidebarHeader className="bg-white p-4">
+    <Sidebar className="shadow-xl/40 shadow-primary">
+      <SidebarHeader className="bg-secondary pb-4 p-4">
         <div className="flex items-center">
           <Image
-            src={'icon.png'}
+            src={'favicon.png'}
             height={1024}
             width={1024}
             alt="Linktraces"
             className="w-8 h-8"
           />
+          <h1 className="ml-2 font-medium text-background text-xl">
+            Linktraces
+          </h1>
         </div>
       </SidebarHeader>
-      <SidebarContent className="justify-between bg-white">
+
+      <SidebarContent className="justify-between bg-secondary">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    className="text-foreground hover:text-foreground hover:bg-background/80  transition-all duration-200"
-                  >
-                    <Link href={item.url}>
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {menuItems.map((item) => {
+                const isActive = pathname === item.url;
+
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      className={`text-white/70 hover:text-white hover:bg-background/10 transition-all duration-200 py-5 px-3
+                        ${isActive ? 'bg-background/20 hover:bg-background/15 text-white hover:text-white/80 transition-all duration-200' : ''}`}
+                    >
+                      <Link href={item.url}>
+                        <item.icon className="h-4 w-4" />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="bg-white">
-        <Link href={'/dashboard/settings'}>
-          <Button className="w-full justify-start bg-transparent hover:bg-background/80 text-foreground cursor-pointer">
-            <Settings className="h-4 w-4 mr-2" />
-            Configurações
-          </Button>
-        </Link>
-      </SidebarFooter>
     </Sidebar>
   );
 }
