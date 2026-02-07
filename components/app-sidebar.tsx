@@ -11,7 +11,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -51,7 +50,7 @@ export function AppSidebar() {
                     <SidebarMenuButton
                       asChild
                       className={`text-foreground hover:text-foreground hover:bg-primary/40 transition-all duration-200 gap-3 py-4 px-3
-                        ${isActive ? 'bg-primary/70 hover:bg-primary/65 text-foreground hover:text-foreground shadow/70 shadow-primary transition-all duration-200' : ''}`}
+                        ${isActive ? 'bg-primary/70 dark:bg-primary/70 hover:bg-primary/65 dark:hover:bg-primary/65 text-foreground hover:text-foreground shadow/70 shadow-primary transition-all duration-200' : ''}`}
                     >
                       <Link href={item.url}>
                         <item.icon className="h-4 w-4" />

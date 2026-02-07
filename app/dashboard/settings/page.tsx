@@ -4,9 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { User, Shield, Database } from 'lucide-react';
 import { UpdateProfileForm } from '@/components/update-profile-form';
-import { MenuMobile } from '@/components/menu-mobile';
-import Image from 'next/image';
-import { ProfileButton } from '@/components/profile-button';
+import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 
 export default async function SettingsPage() {
   const supabase = await createClient();
@@ -28,24 +26,9 @@ export default async function SettingsPage() {
 
   return (
     <main>
-      <div className="flex items-center justify-between bg-white shadow shadow-primary md:hidden">
-        <div className="flex items-center gap-1 px-2 py-3">
-          <MenuMobile />
-          <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
-        </div>
-        <div className="pr-4">
-          <ProfileButton />
-        </div>
-      </div>
+      <NavbarDashboard />
 
       <div className="p-4 md:p-6 space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold text-black">Configurações</h1>
-          <div className="max-md:hidden">
-            <ProfileButton />
-          </div>
-        </div>
-
         <div className="grid gap-6 bg-white shadow shadow-primary rounded-lg">
           <Card className="bg-white border-none shadow-none">
             <CardHeader>

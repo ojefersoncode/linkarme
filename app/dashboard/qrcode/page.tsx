@@ -14,6 +14,8 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/Dashboard/Search';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 
 export default async function Qrcode() {
   const supabase = await createClient();
@@ -29,23 +31,7 @@ export default async function Qrcode() {
 
   return (
     <div className="space-y-6 bg-background h-screen">
-      <div className="flex items-center justify-between bg-white shadow-xl/40 shadow-primary border-b border-accent/30 md:hidden">
-        <div className="flex items-center gap-1 px-2 py-3">
-          <MenuMobile />
-          <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
-        </div>
-        <div className="flex items-center gap-4 pr-4">
-          <Search />
-          <ProfileButton />
-        </div>
-      </div>
-
-      <div className="flex items-center justify-end bg-white shadow shadow-primary w-full p-4 max-md:hidden">
-        <div className="flex items-center gap-4 max-md:justify-end max-md:w-full">
-          <Search />
-          <ProfileButton />
-        </div>
-      </div>
+      <NavbarDashboard />
 
       <div className="grid gap-4 md:grid-cols-2 p-4 bg-background">
         <Card className="bg-white shadow shadow-primary border-none gap-2 w-full">

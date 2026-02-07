@@ -8,6 +8,7 @@ import DemographicCard from '@/components/Map/DemographicCard';
 import { ProfileButton } from '@/components/profile-button';
 import Image from 'next/image';
 import { Search } from '@/components/Dashboard/Search';
+import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -55,25 +56,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-6 bg-[#eeeeee] h-screen">
-      <div className="flex items-center justify-between bg-white shadow/40 shadow-primary border-b border-accent/30  md:hidden">
-        <div className="flex items-center gap-1 px-2 py-3">
-          <MenuMobile />
-          <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
-        </div>
-
-        <div className="flex items-center gap-4 pr-4">
-          <Search />
-          <ProfileButton />
-        </div>
-      </div>
-
-      <div className="flex w-full items-center justify-between bg-white shadow/40 shadow-primary p-4 max-md:hidden">
-        <div className="flex items-center justify-end gap-4 w-full">
-          <Search />
-
-          <ProfileButton />
-        </div>
-      </div>
+      <NavbarDashboard />
 
       <div className=" space-y-4 md:px-6">
         <div className="flex max-md:px-4 justify-end">

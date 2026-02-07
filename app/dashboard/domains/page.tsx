@@ -11,9 +11,8 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Plus, Globe, CheckCircle, Clock } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { DeleteDomainButton } from '@/components/delete-domain-button';
-import { MenuMobile } from '@/components/menu-mobile';
+import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 
 export default async function DomainsPage() {
   const supabase = await createClient();
@@ -52,24 +51,11 @@ export default async function DomainsPage() {
 
   return (
     <div className="max-md:p-0 space-y-6">
-      <div className="flex items-center gap-1 bg-white border-b border-accent/30 md:hidden">
-        <div className="flex items-center gap-1 py-3">
-          <MenuMobile />
-        </div>
-        <div className="flex items-center">
-          <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
-        </div>
-      </div>
-
-      <div className="flex items-center md:bg-white justify-between md:p-4 max-md:px-4">
-        <div>
-          <h1 className="text-2xl max-md:text-xl font-bold text-foreground">
-            Domínios
-          </h1>
-        </div>
+      <NavbarDashboard />
+      <div className="flex items-center justify-end px-4">
         <Button
           asChild
-          className="bg-white hover:bg-white/80 md:border border-black/40 transition-all duration-300 px-8 text-foreground max-md:text-sm shadow-xl/40 shadow-primary"
+          className="bg-foreground hover:bg-foreground/80 transition-all duration-300 px-8 text-white max-md:text-sm shadow shadow-primary"
         >
           <Link href="/dashboard/domains/add">
             <Plus className="h-4 w-4 mr-2" />

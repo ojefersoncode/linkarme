@@ -11,12 +11,10 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Plus, Link2, ExternalLink, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { DeleteLinkButton } from '@/components/delete-link-button';
 import { CopyLinkButton } from '@/components/copy-link-button';
 import { ToggleLinkButton } from '@/components/toggle-link-button';
-import { ExportDataDialog } from '@/components/export-data-dialog';
-import { MenuMobile } from '@/components/menu-mobile';
+import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 
 export default async function LinksPage() {
   const supabase = await createClient();
@@ -53,38 +51,15 @@ export default async function LinksPage() {
     return <Badge variant="secondary">Inativo</Badge>;
   };
 
-  // Prepare links for export dialog
-  const linksForExport =
-    links?.map((link) => ({
-      id: link.id,
-      slug: link.slug,
-      title: link.title,
-      domains: link.domains
-    })) || [];
-
   return (
-    <div className=" space-y-6">
-      <div className="flex items-center justify-between bg-white shadow shadow-primary md:hidden">
-        <div className="flex items-center gap-1 py-3">
-          <MenuMobile />
+    <div className="space-y-6">
+      <NavbarDashboard />
 
-          <div className="flex items-center">
-            <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
-          </div>
-        </div>
-      </div>
-
-      <div className="flex items-center md:bg-white justify-between md:p-4 max-md:px-4 md:shadow shadow-primary">
-        <div>
-          <h1 className="text-2xl max-md:text-xl font-bold text-foreground max-md:invisible">
-            Links
-          </h1>
-        </div>
+      <div className="flex items-center justify-end px-4">
         <div className="flex gap-4">
-          <ExportDataDialog links={linksForExport} />
           <Button
             asChild
-            className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-black max-md:text-sm md:border md:border-black/40 max-md:shadow-lg shadow-primary"
+            className="bg-foreground hover:bg-foreground/80 transition-all duration-300 px-8 text-white max-md:text-sm shadow shadow-primary"
           >
             <Link href="/dashboard/links/create">
               <Plus className="h-4 w-4 mr-1" />
