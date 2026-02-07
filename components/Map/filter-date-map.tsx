@@ -13,7 +13,7 @@ export function FilterDateMap() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="bg-background hover:bg-background shadow-lg/40 shadow-primary text-foreground px-3 border-none">
+        <Button className="bg-primary hover:bg-primary shadow shadow-primary text-foreground px-3 border-none">
           <div className="flex items-center gap-2">
             <Filter />
           </div>

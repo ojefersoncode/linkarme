@@ -61,7 +61,7 @@ export default function SignUpPage() {
         <Card className="bg-white border-none">
           <CardHeader>
             <CardTitle className="text-2xl text-accent">
-              Criar sua conta Linktraces
+              Criar sua conta
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -78,7 +78,7 @@ export default function SignUpPage() {
                     required
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    className="bg-white dark:bg-white text-primary border-primary"
+                    className="bg-white dark:bg-white text-black border-black/40"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -92,7 +92,7 @@ export default function SignUpPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-white dark:bg-white text-primary border-primary"
+                    className="bg-white dark:bg-white text-black border-black/40"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -105,7 +105,7 @@ export default function SignUpPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="bg-white dark:bg-white text-primary border-primary"
+                    className="bg-white dark:bg-white text-black border-black/40"
                   />
                 </div>
 
@@ -118,16 +118,16 @@ export default function SignUpPage() {
                   {isLoading ? 'Criando conta...' : 'Criar Conta'}
                 </Button>
 
-                <div className="flex flex-col w-full justify-center gap-2 ">
+                <div className="flex flex-col w-full justify-center gap-3 ">
                   <div className="flex w-full items-center gap-2">
-                    <div className="h-px flex-1 bg-accent/70"></div>
+                    <div className="h-px flex-1 bg-black/40"></div>
                     <span className="text-foreground text-sm">OU</span>
                     <div className="h-px flex-1 bg-accent/70"></div>
                   </div>
 
                   <Button
                     type="submit"
-                    className="flex items-center w-full text-sm text-foreground bg-white hover:bg-white/80 border border-primary/70 cursor-pointer"
+                    className="flex items-center w-full text-sm text-foreground bg-white hover:bg-white/80 border border-black/40 cursor-pointer"
                     disabled={isLoading}
                   >
                     <Image

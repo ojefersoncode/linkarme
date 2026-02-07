@@ -4,13 +4,13 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #dad7cd;
+  --background: #eeeeee;
   --foreground: #588157;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #74c69d;
+  --primary: #d8f3dc;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: #1B211A;
   --secondary-foreground: oklch(0.205 0 0);
@@ -40,13 +40,13 @@
 }
 
 .dark {
-  --background: #d8f3dc;
+  --background: #eeeeee;
   --foreground: #588157;
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: #74c69d;
+  --primary: #d8f3dc;
   --primary-foreground: oklch(0.205 0 0);
   --secondary: #1B211A;
   --secondary-foreground: oklch(0.985 0 0);

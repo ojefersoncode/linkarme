@@ -9,13 +9,22 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
+import Image from 'next/image';
+
 import { Menu } from 'lucide-react';
 
 export default function Navbar() {
   return (
     <nav className="flex items-center w-full justify-between p-4 text-white">
       {/* Logo */}
-      <h1 className="text-accent font-bold text-2xl">Linktraces</h1>
+      <Image
+        src={'icon.png'}
+        height={1024}
+        width={1024}
+        alt="Linktraces"
+        priority
+        className="w-8 h-8"
+      />
 
       {/* Menu Desktop */}
       <div className="hidden md:flex items-center gap-10 font-semibold text-white/80">
@@ -28,7 +37,7 @@ export default function Navbar() {
       {/* Botões Desktop */}
       <div className="hidden md:flex items-center gap-4">
         <Link href="/auth/sign-up" className="flex w-full">
-          <Button className="flex w-full rounded-sm bg-white hover:bg-white/80 text-accent">
+          <Button className="flex w-full cursor-pointer bg-white hover:bg-white/80 shadow/10 shadow-black text-accent">
             <span className="whitespace-pre-wrap text-center text-sm font-bold px-4">
               Cadastrar
             </span>
@@ -36,7 +45,7 @@ export default function Navbar() {
         </Link>
 
         <Link href="/auth/login" className="flex w-full">
-          <Button className="flex w-full bg-accent hover:bg-accent/80 text-white">
+          <Button className="flex w-full cursor-pointer bg-foreground hover:bg-foreground/80 text-white">
             <span className="whitespace-pre-wrap text-center text-sm font-bold px-4">
               Entrar
             </span>

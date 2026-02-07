@@ -28,26 +28,26 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar className="shadow-xl/40 shadow-primary">
-      <SidebarHeader className="bg-secondary pb-4 p-4">
+    <Sidebar className="shadow shadow-primary border-none">
+      <SidebarHeader className="bg-white px-4 pt-4 pb-5">
         <div className="flex items-center">
           <Image
-            src={'whiteicon.png'}
+            src={'icon.png'}
             height={1024}
             width={1024}
             alt="Linktraces"
             priority
             className="w-8 h-8"
           />
-          <h1 className="ml-2 font-extralight text-white/90 text-xl">
+          <h1 className="ml-2 font-extralight text-foreground text-xl">
             Linktraces
           </h1>
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="justify-between bg-secondary">
+      <SidebarContent className="justify-between bg-white border-t pt-1 border-primary">
         <SidebarGroup>
-          <SidebarGroupContent>
+          <SidebarGroupContent className="px-2">
             <SidebarMenu>
               {menuItems.map((item) => {
                 const isActive = pathname === item.url;
@@ -56,8 +56,8 @@ export function AppSidebar() {
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
                       asChild
-                      className={`text-white/70 hover:text-white hover:bg-background/10 transition-all duration-200 py-5 px-3
-                        ${isActive ? 'bg-background/20 hover:bg-background/15 text-white hover:text-white/80 transition-all duration-200' : ''}`}
+                      className={`text-foreground hover:text-foreground hover:bg-primary/40 transition-all duration-200 gap-3 py-4 px-3
+                        ${isActive ? 'bg-primary/70 hover:bg-primary/65 text-foreground hover:text-foreground shadow/70 shadow-primary transition-all duration-200' : ''}`}
                     >
                       <Link href={item.url}>
                         <item.icon className="h-4 w-4" />

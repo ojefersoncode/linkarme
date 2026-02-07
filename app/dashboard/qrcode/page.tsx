@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Search } from '@/components/Dashboard/Search';
 
 export default async function Qrcode() {
   const supabase = await createClient();
@@ -39,27 +40,26 @@ export default async function Qrcode() {
             className="w-8 h-8"
           />
         </div>
-        <div className="pr-4">
+        <div className="flex items-center gap-4 pr-4">
+          <Search />
           <ProfileButton />
         </div>
       </div>
 
-      <div className="flex items-center justify-between bg-white  shadow-xl/40 shadow-primary w-full p-4 max-md:hidden">
-        <h1 className="text-base md:text-xl font-bold text-foreground">
-          Gerar QRcode
-        </h1>
+      <div className="flex items-center justify-end bg-white shadow shadow-primary w-full p-4 max-md:hidden">
         <div className="flex items-center gap-4 max-md:justify-end max-md:w-full">
+          <Search />
           <ProfileButton />
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 p-4 bg-background">
-        <Card className="bg-white shadow-xl/40 shadow-primary border-none gap-2 w-full">
+        <Card className="bg-white shadow shadow-primary border-none gap-2 w-full">
           <CardHeader className="flex flex-col pb-0">
             <CardTitle className="text-lg text-black font-bold py-0">
               Detalhes
             </CardTitle>
-            <CardDescription className="text-sm text-black font-bold py-0">
+            <CardDescription className="text-sm text-black font-semibold py-0">
               Você pode criar 10 qrcodes por mês. Faça o upgrade para mais.
             </CardDescription>
           </CardHeader>
@@ -83,14 +83,14 @@ export default async function Qrcode() {
               />
             </div>
             <div>
-              <Button className="text-white hover:text-white rounded bg-foreground hover:bg-foreground">
+              <Button className="text-white hover:text-white bg-foreground hover:bg-foreground">
                 Gerar QRcode
               </Button>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="flex flex-col bg-white dark:bg-white shadow-xl/40 shadow-primary border-none gap-2">
+        <Card className="flex flex-col bg-white dark:bg-white shadow shadow-primary border-none gap-2">
           <CardHeader className="flex items-center justify-center">
             <CardTitle className="flex justify-center text-center text-lg text-black font-bold">
               Visualizar

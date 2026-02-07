@@ -4,22 +4,22 @@ import { ShimmerButton } from '@/components/ui/shimmer-button';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b to-35% from-background to-white">
+    <div className="min-h-screen bg-gradient-to-b to-35% from-primary to-white">
       <Navbar />
       <div className="flex flex-col items-center justify-center mx-auto px-4 md:h-[400px] max-md:min-h-screen">
         <div className="text-center space-y-4">
           <div className="space-y-4">
-            <h1 className="text-2xl md:text-6xl md:max-w-5xl max-md:max-w-md font-bold text-foreground">
+            <h1 className="text-2xl md:text-6xl md:max-w-5xl max-md:px-8 font-bold text-accent">
               Dashboard completa para rastreia os clicks nos seus anuncios
             </h1>
-            <p className="text-lg md:text-2xl font-semibold text-primary max-md:max-w-sm md:max-w-2xl mx-auto">
-              Crie links curtos personalizados com seu próprio domínio e
-              acompanhe estatísticas detalhadas sobre seus leads.
+            <p className="text-lg md:text-2xl font-semibold text-foreground max-md:max-w-sm md:max-w-2xl mx-auto">
+              links curtos personalizados com seu próprio domínio e acompanhe
+              estatísticas detalhadas sobre seus leads.
             </p>
           </div>
 
           <div className="flex w-full justify-center items-center max-md:py-4">
-            <ShimmerButton className="shadow-2xlmax-md:w-sm">
+            <ShimmerButton className="shadow-2xl max-md:w-sm">
               <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight bg-accent dark:bg-accent text-white/90 dark:from-white dark:to-accent">
                 Teste gratis por 14 dias
               </span>

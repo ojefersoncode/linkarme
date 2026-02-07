@@ -64,7 +64,7 @@ export default async function LinksPage() {
 
   return (
     <div className=" space-y-6">
-      <div className="flex items-center justify-between bg-white border-b border-accent/30 md:hidden">
+      <div className="flex items-center justify-between bg-white shadow shadow-primary md:hidden">
         <div className="flex items-center gap-1 py-3">
           <MenuMobile />
 
@@ -83,7 +83,7 @@ export default async function LinksPage() {
         </div>
       </div>
 
-      <div className="flex items-center md:bg-white justify-between md:p-4 max-md:px-4 md:shadow-xl/40 shadow-primary">
+      <div className="flex items-center md:bg-white justify-between md:p-4 max-md:px-4 md:shadow shadow-primary">
         <div>
           <h1 className="text-2xl max-md:text-xl font-bold text-foreground max-md:invisible">
             Links
