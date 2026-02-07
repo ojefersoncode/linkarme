@@ -7,14 +7,9 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { MenuMobile } from '@/components/menu-mobile';
-import { ProfileButton } from '@/components/profile-button';
-import Image from 'next/image';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search } from '@/components/Dashboard/Search';
-import { SidebarTrigger } from '@/components/ui/sidebar';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 
 export default async function Qrcode() {

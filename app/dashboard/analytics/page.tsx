@@ -12,16 +12,10 @@ import { TopLinksTable } from '@/components/top-links-table';
 import { ClicksOverTimeChart } from '@/components/clicks-over-time-chart';
 import { GeographicChart } from '@/components/geographic-chart';
 import { ExportDataDialog } from '@/components/export-data-dialog';
-import {
-  BarChart3,
-  TrendingUp,
-  Globe,
-  Users,
-  FileChartLine
-} from 'lucide-react';
-import { MenuMobile } from '@/components/menu-mobile';
+import { BarChart3, TrendingUp, Globe, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 
 interface Link {
   id: string;
@@ -206,10 +200,7 @@ export default async function AnalyticsPage({
     return (
       <div className="p-6 max-md:p-0 space-y-6">
         <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
-          <div className="flex items-center gap-1 py-3">
-            <MenuMobile />
-            <h1 className="text-white font-bold text-xl">Linkarme</h1>
-          </div>
+          <NavbarDashboard />
 
           <div className="flex items-center px-4">
             <ExportDataDialog links={userLinks} />

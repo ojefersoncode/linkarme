@@ -10,7 +10,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, CheckCircle, AlertCircle } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { VerifyDomainButton } from '@/components/verify-domain-button';
 import { CopyButton } from '@/components/copy-button';

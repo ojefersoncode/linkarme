@@ -3,11 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Globe, Link2, BarChart3, TrendingUp } from 'lucide-react';
 import { ExportDataDialog } from '@/components/export-data-dialog';
-import { MenuMobile } from '@/components/menu-mobile';
 import DemographicCard from '@/components/Map/DemographicCard';
-import { ProfileButton } from '@/components/profile-button';
-import Image from 'next/image';
-import { Search } from '@/components/Dashboard/Search';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 
 export default async function DashboardPage() {
