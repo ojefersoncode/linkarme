@@ -31,13 +31,7 @@ export default async function SettingsPage() {
       <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
           <MenuMobile />
-          <Image
-            src={'favicon.png'}
-            height={1024}
-            width={1024}
-            alt="Linktraces"
-            className="w-8 h-8"
-          />
+          <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
         </div>
         <div className="pr-4">
           <ProfileButton />

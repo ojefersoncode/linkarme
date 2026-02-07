@@ -58,13 +58,7 @@ export default async function DashboardPage() {
       <div className="flex items-center justify-between bg-white shadow/40 shadow-primary border-b border-accent/30  md:hidden">
         <div className="flex items-center gap-1 px-2 py-3">
           <MenuMobile />
-          <Image
-            src={'icon.png'}
-            height={100}
-            width={100}
-            alt="logo"
-            className="w-8 h-8"
-          />
+          <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
         </div>
 
         <div className="flex items-center gap-4 pr-4">

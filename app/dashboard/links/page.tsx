@@ -69,13 +69,8 @@ export default async function LinksPage() {
           <MenuMobile />
 
           <div className="flex items-center px-4">
-            <Image
-              src={'favicon.png'}
-              height={1024}
-              width={1024}
-              alt="Linktraces"
-              className="w-8 h-8"
-            />
+            <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
+
             <h1 className="ml-2 font-extralight text-white/90 text-xl">
               Linktraces
             </h1>

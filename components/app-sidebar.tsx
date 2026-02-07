@@ -31,14 +31,8 @@ export function AppSidebar() {
     <Sidebar className="shadow shadow-primary border-none">
       <SidebarHeader className="bg-white px-4 pt-4 pb-5">
         <div className="flex items-center">
-          <Image
-            src={'icon.png'}
-            height={1024}
-            width={1024}
-            alt="Linktraces"
-            priority
-            className="w-8 h-8"
-          />
+          <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
+
           <h1 className="ml-2 font-extralight text-foreground text-xl">
             Linktraces
           </h1>

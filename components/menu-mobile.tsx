@@ -6,7 +6,6 @@ import {
   BarChart3,
   Settings,
   Globe,
-  LogOut,
   Menu,
   QrCode
 } from 'lucide-react';
@@ -21,7 +20,6 @@ import {
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { LogoutButton } from './Dashboard/Logout';
 
 const menuItems = [
   { title: 'Inicio', url: '/dashboard', icon: Home },
@@ -48,13 +46,7 @@ export function MenuMobile() {
         <SheetHeader className="flex w-full px-0 dark:text-black text-black">
           <SheetTitle className="flex items-center pb-3 dark:text-black text-black border-b border-primary/50 w-full">
             <div className="flex items-center px-4">
-              <Image
-                src={'icon.png'}
-                height={1024}
-                width={1024}
-                alt="Linktraces"
-                className="w-8 h-8"
-              />
+              <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
               <h1 className="ml-2 font-extralight text-white/90 text-xl">
                 Linktraces
               </h1>
