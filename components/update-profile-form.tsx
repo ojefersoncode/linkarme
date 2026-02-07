@@ -57,7 +57,7 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="email" className="text-white font-semibold">
+        <Label htmlFor="email" className="text-black font-semibold">
           Email
         </Label>
         <Input
@@ -65,20 +65,20 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
           type="email"
           value={profile?.email || ''}
           disabled
-          className="bg-background dark:bg-background border-none text-foreground placeholder:text-foreground"
+          className="bg-white dark:bg-white border border-black/40 text-black placeholder:text-black/60 py-5"
         />
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-black/70">
           O email não pode ser alterado. Entre em contato com o suporte se
           necessário.
         </p>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="fullName" className="text-white font-semibold">
+        <Label htmlFor="fullName" className="text-black font-semibold">
           Nome Completo
         </Label>
         <Input
-          className="bg-background dark:bg-background border-none text-foreground placeholder:text-foreground"
+          className="bg-white dark:bg-white border border-black/40 text-black placeholder:text-black/60 py-5"
           id="fullName"
           type="text"
           placeholder="Seu nome completo"
@@ -104,7 +104,7 @@ export function UpdateProfileForm({ profile }: UpdateProfileFormProps) {
       <Button
         type="submit"
         disabled={isLoading}
-        className="bg-white hover:bg-white/80 text-foreground"
+        className="bg-foreground hover:bg-foreground/80 text-white"
       >
         {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
         {isLoading ? 'Salvando...' : 'Salvar Alterações'}

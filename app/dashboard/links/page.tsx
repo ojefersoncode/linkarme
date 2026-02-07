@@ -68,12 +68,8 @@ export default async function LinksPage() {
         <div className="flex items-center gap-1 py-3">
           <MenuMobile />
 
-          <div className="flex items-center px-4">
+          <div className="flex items-center">
             <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
-
-            <h1 className="ml-2 font-extralight text-white/90 text-xl">
-              Linktraces
-            </h1>
           </div>
         </div>
       </div>
