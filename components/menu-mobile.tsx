@@ -68,7 +68,7 @@ export function MenuMobile() {
               const isActive = pathname === item.url;
 
               return (
-                <Link className="w-full" key={item.title} href={item.url}>
+                <Link className="w-full px-2" key={item.title} href={item.url}>
                   <Button
                     className={`w-full justify-start text-foreground bg-white hover:text-foreground hover:bg-primary/50 transition-all duration-200
         ${isActive ? 'bg-primary hover:bg-primary/85 text-foreground hover:text-foreground shadow shadow-primary' : ''}`}
