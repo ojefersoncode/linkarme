@@ -1,147 +1,169 @@
-"use client"
+'use client';
 
-import type React from "react"
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { createClient } from "@/lib/supabase/client"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Switch } from "@/components/ui/switch"
-import { ArrowLeft, Link2 } from "lucide-react"
-import Link from "next/link"
+import type React from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+import { Switch } from '@/components/ui/switch';
+import { ArrowLeft, Link2 } from 'lucide-react';
+import Link from 'next/link';
 
 interface Domain {
-  id: string
-  domain: string
-  verified: boolean
+  id: string;
+  domain: string;
+  verified: boolean;
 }
 
 interface LinkData {
-  id: string
-  domain_id: string
-  slug: string
-  destination_url: string
-  title: string | null
-  description: string | null
-  active: boolean
+  id: string;
+  domain_id: string;
+  slug: string;
+  destination_url: string;
+  title: string | null;
+  description: string | null;
+  active: boolean;
 }
 
 export default function EditLinkPage({
-  params,
+  params
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{ id: string }>;
 }) {
-  const [linkId, setLinkId] = useState<string>("")
-  const [domains, setDomains] = useState<Domain[]>([])
-  const [linkData, setLinkData] = useState<LinkData | null>(null)
-  const [selectedDomain, setSelectedDomain] = useState("")
-  const [slug, setSlug] = useState("")
-  const [destinationUrl, setDestinationUrl] = useState("")
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [active, setActive] = useState(true)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
+  const [linkId, setLinkId] = useState<string>('');
+  const [domains, setDomains] = useState<Domain[]>([]);
+  const [linkData, setLinkData] = useState<LinkData | null>(null);
+  const [selectedDomain, setSelectedDomain] = useState('');
+  const [slug, setSlug] = useState('');
+  const [destinationUrl, setDestinationUrl] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [active, setActive] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const initPage = async () => {
-      const resolvedParams = await params
-      setLinkId(resolvedParams.id)
-      await Promise.all([loadDomains(), loadLinkData(resolvedParams.id)])
-    }
-    initPage()
-  }, [params])
+      const resolvedParams = await params;
+      setLinkId(resolvedParams.id);
+      await Promise.all([loadDomains(), loadLinkData(resolvedParams.id)]);
+    };
+    initPage();
+  }, [params]);
 
   const loadDomains = async () => {
-    const supabase = createClient()
-    const { data } = await supabase.from("domains").select("id, domain, verified").eq("verified", true).order("domain")
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('domains')
+      .select('id, domain, verified')
+      .eq('verified', true)
+      .order('domain');
 
     if (data) {
-      setDomains(data)
+      setDomains(data);
     }
-  }
+  };
 
   const loadLinkData = async (id: string) => {
-    const supabase = createClient()
-    const { data, error } = await supabase.from("links").select("*").eq("id", id).single()
+    const supabase = createClient();
+    const { data, error } = await supabase
+      .from('links')
+      .select('*')
+      .eq('id', id)
+      .single();
 
     if (error) {
-      setError("Link não encontrado")
-      return
+      setError('Link não encontrado');
+      return;
     }
 
     if (data) {
-      setLinkData(data)
-      setSelectedDomain(data.domain_id)
-      setSlug(data.slug)
-      setDestinationUrl(data.destination_url)
-      setTitle(data.title || "")
-      setDescription(data.description || "")
-      setActive(data.active)
+      setLinkData(data);
+      setSelectedDomain(data.domain_id);
+      setSlug(data.slug);
+      setDestinationUrl(data.destination_url);
+      setTitle(data.title || '');
+      setDescription(data.description || '');
+      setActive(data.active);
     }
-  }
+  };
 
   const validateUrl = (url: string) => {
     try {
-      new URL(url)
-      return true
+      new URL(url);
+      return true;
     } catch {
-      return false
+      return false;
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
 
-    const supabase = createClient()
+    const supabase = createClient();
 
     try {
       // Validate inputs
       if (!selectedDomain) {
-        throw new Error("Selecione um domínio")
+        throw new Error('Selecione um domínio');
       }
 
       if (!slug.trim()) {
-        throw new Error("Digite um slug para o link")
+        throw new Error('Digite um slug para o link');
       }
 
       if (!destinationUrl.trim()) {
-        throw new Error("Digite a URL de destino")
+        throw new Error('Digite a URL de destino');
       }
 
       if (!validateUrl(destinationUrl)) {
-        throw new Error("URL de destino inválida")
+        throw new Error('URL de destino inválida');
       }
 
       // Validate slug format
-      const slugRegex = /^[a-zA-Z0-9_-]+$/
+      const slugRegex = /^[a-zA-Z0-9_-]+$/;
       if (!slugRegex.test(slug)) {
-        throw new Error("Slug deve conter apenas letras, números, hífens e underscores")
+        throw new Error(
+          'Slug deve conter apenas letras, números, hífens e underscores'
+        );
       }
 
       // Check if slug already exists for this domain (excluding current link)
       const { data: existingLink } = await supabase
-        .from("links")
-        .select("id")
-        .eq("domain_id", selectedDomain)
-        .eq("slug", slug.toLowerCase())
-        .neq("id", linkId)
-        .single()
+        .from('links')
+        .select('id')
+        .eq('domain_id', selectedDomain)
+        .eq('slug', slug.toLowerCase())
+        .neq('id', linkId)
+        .single();
 
       if (existingLink) {
-        throw new Error("Este slug já existe para o domínio selecionado")
+        throw new Error('Este slug já existe para o domínio selecionado');
       }
 
       // Update link
       const { error: updateError } = await supabase
-        .from("links")
+        .from('links')
         .update({
           domain_id: selectedDomain,
           slug: slug.toLowerCase(),
@@ -149,19 +171,19 @@ export default function EditLinkPage({
           title: title.trim() || null,
           description: description.trim() || null,
           active,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
-        .eq("id", linkId)
+        .eq('id', linkId);
 
-      if (updateError) throw updateError
+      if (updateError) throw updateError;
 
-      router.push("/dashboard/links")
+      router.push('/dashboard/links');
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "Ocorreu um erro")
+      setError(error instanceof Error ? error.message : 'Ocorreu um erro');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   if (!linkData) {
     return (
@@ -178,7 +200,7 @@ export default function EditLinkPage({
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -191,7 +213,9 @@ export default function EditLinkPage({
         </Button>
         <div>
           <h1 className="text-3xl font-bold text-white">Editar Link</h1>
-          <p className="text-muted-foreground">Edite as informações do seu link</p>
+          <p className="text-muted-foreground">
+            Edite as informações do seu link
+          </p>
         </div>
       </div>
 
@@ -202,13 +226,18 @@ export default function EditLinkPage({
               <Link2 className="h-5 w-5" />
               Editar Link
             </CardTitle>
-            <CardDescription>Atualize as informações do seu link curto</CardDescription>
+            <CardDescription>
+              Atualize as informações do seu link curto
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="domain">Domínio</Label>
-                <Select value={selectedDomain} onValueChange={setSelectedDomain}>
+                <Select
+                  value={selectedDomain}
+                  onValueChange={setSelectedDomain}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione um domínio" />
                   </SelectTrigger>
@@ -238,7 +267,9 @@ export default function EditLinkPage({
                 {selectedDomain && slug && (
                   <div className="p-2 bg-muted rounded-lg">
                     <p className="text-sm font-medium">
-                      Link final: https://{domains.find((d) => d.id === selectedDomain)?.domain}/{slug}
+                      Link final: https://
+                      {domains.find((d) => d.id === selectedDomain)?.domain}/
+                      {slug}
                     </p>
                   </div>
                 )}
@@ -279,7 +310,11 @@ export default function EditLinkPage({
               </div>
 
               <div className="flex items-center space-x-2">
-                <Switch id="active" checked={active} onCheckedChange={setActive} />
+                <Switch
+                  id="active"
+                  checked={active}
+                  onCheckedChange={setActive}
+                />
                 <Label htmlFor="active">Link ativo</Label>
               </div>
 
@@ -291,7 +326,7 @@ export default function EditLinkPage({
 
               <div className="flex gap-3">
                 <Button type="submit" disabled={isLoading}>
-                  {isLoading ? "Salvando..." : "Salvar Alterações"}
+                  {isLoading ? 'Salvando...' : 'Salvar Alterações'}
                 </Button>
                 <Button variant="outline" asChild>
                   <Link href="/dashboard/links">Cancelar</Link>
@@ -302,5 +337,5 @@ export default function EditLinkPage({
         </Card>
       </div>
     </div>
-  )
+  );
 }

@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { ChevronDown } from 'lucide-react';
 import { LogoutButton } from './Dashboard/Logout';
+import Link from 'next/link';
 
 export function ProfileButton() {
   return (
@@ -36,12 +37,15 @@ export function ProfileButton() {
           <DropdownMenuLabel className="bg-white hover:bg-white">
             <div className="flex flex-col">
               <h2 className="font-bold text-xs pb-1">Email@mail.com</h2>
-              <div className="flex items-center justify-between">
+              <Link
+                href={'/dashboard/checkout'}
+                className="flex items-center justify-between"
+              >
                 <h2 className="font-semibold text-[0.70rem]">Plano gratuito</h2>
                 <div className="bg-foreground cursor-pointer rounded py-0.5 px-2 text-white text-[0.70rem]">
                   Atualizar
                 </div>
-              </div>
+              </Link>
             </div>
           </DropdownMenuLabel>
         </DropdownMenuGroup>

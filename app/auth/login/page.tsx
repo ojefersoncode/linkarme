@@ -98,7 +98,7 @@ export default function LoginPage() {
 
                   <Button
                     type="submit"
-                    className="flex items-center w-full text-sm text-foreground bg-white hover:bg-white/80 border border-black/40 cursor-pointer"
+                    className="flex items-center w-full text-sm font-semibold text-foreground bg-white hover:bg-white/80 border border-black/40 cursor-pointer"
                     disabled={isLoading}
                   >
                     <Image
@@ -108,11 +108,11 @@ export default function LoginPage() {
                       alt={'Google icon'}
                       className="size-4"
                     />
-                    Registre-se com o Google
+                    Entrar com o Google
                   </Button>
                 </div>
 
-                <div className="flex w-full items-center justify-center gap-2 mt-4 text-center text-black text-sm">
+                <div className="flex w-full items-center justify-center gap-2 mt-4 text-center text-black text-sm ">
                   Não tem uma conta?
                   <Link
                     href="/auth/sign-up"

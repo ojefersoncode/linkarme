@@ -46,7 +46,7 @@ const DemographicMap: React.FC<CountryMapProps> = ({ mapColor }) => {
           } // Type assertion to bypass strict CSS property checks
         } as MarkerStyle
       }
-      markersSelectable={true}
+      markersSelectable={false}
       markers={
         [
           {
@@ -54,29 +54,8 @@ const DemographicMap: React.FC<CountryMapProps> = ({ mapColor }) => {
             name: 'United States',
             style: {
               fill: '#588157',
-              borderWidth: 1,
               borderColor: 'white',
               stroke: '#383f47'
-            }
-          },
-          {
-            latLng: [20.7504374, 73.7276105],
-            name: 'India',
-            style: { fill: '#588157', borderWidth: 1, borderColor: 'white' }
-          },
-          {
-            latLng: [53.613, -11.6368],
-            name: 'United Kingdom',
-            style: { fill: '#588157', borderWidth: 1, borderColor: 'white' }
-          },
-          {
-            latLng: [-25.0304388, 115.2092761],
-            name: 'Sweden',
-            style: {
-              fill: '#588157',
-              borderWidth: 1,
-              borderColor: 'white',
-              strokeOpacity: 0
             }
           }
         ] as Marker[]

@@ -32,7 +32,7 @@ export function AppSidebar() {
         <div className="flex items-center">
           <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
 
-          <h1 className="ml-2 font-extralight text-foreground text-xl">
+          <h1 className="ml-2 text-foreground font-semibold text-lg">
             Linktraces
           </h1>
         </div>

@@ -200,7 +200,7 @@ export default function CreateLinkPage() {
           asChild
           className="bg-transparent hover:bg-transparent dark:hover:bg-transparent dark:hover:text-foreground text-foreground"
         >
-          <Link href="/dashboard/links">
+          <Link href="/home/links">
             <ArrowLeft className="h-4 w-4" />
           </Link>
         </Button>

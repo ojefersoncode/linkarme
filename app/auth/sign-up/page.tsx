@@ -127,7 +127,7 @@ export default function SignUpPage() {
 
                   <Button
                     type="submit"
-                    className="flex items-center w-full text-sm text-foreground bg-white hover:bg-white/80 border border-black/40 cursor-pointer"
+                    className="flex items-center w-full text-sm font-semibold text-foreground bg-white hover:bg-white/80 border border-black/40 cursor-pointer"
                     disabled={isLoading}
                   >
                     <Image
