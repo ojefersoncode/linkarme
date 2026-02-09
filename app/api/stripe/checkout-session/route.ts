@@ -5,18 +5,18 @@ import Stripe from 'stripe';
 const plans = {
   basico: {
     name: 'Básico',
-    price_monthly: 2990, // R$ 29.90 em centavos
-    price_annual: 29900, // R$ 299.00 em centavos
+    price_monthly: 2990, // R$ 29.90
+    price_annual: 29900, // R$ 299.00
   },
   pro: {
     name: 'Pro',
-    price_monthly: 4990, // R$ 49.90 em centavos
-    price_annual: 49900, // R$ 499.00 em centavos
+    price_monthly: 4990, // R$ 49.90
+    price_annual: 49900, // R$ 499.00
   },
   premium: {
     name: 'Premium',
-    price_monthly: 19990, // R$ 199.90 em centavos
-    price_annual: 199900, // R$ 1999.00 em centavos
+    price_monthly: 19990, // R$ 199.90
+    price_annual: 199900, // R$ 1999.00
   },
 };
 
