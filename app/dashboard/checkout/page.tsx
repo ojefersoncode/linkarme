@@ -23,11 +23,11 @@ const plans = [
     price: 29.9,
     color: 'foreground',
     features: [
-      '500 links',
-      '10 QR Codes personalizados',
-      'Domínio personalizado',
+      '100 links',
+      'QR Codes personalizados',
+      '3 Domínios personalizados',
       'Organize seus links',
-      'Tenha métricas reais'
+      '30 dias de histórico de cliques'
     ]
   },
   {
@@ -36,11 +36,11 @@ const plans = [
     price: 49.9,
     color: 'white',
     features: [
-      '1000 links',
-      '20 QR Codes personalizados',
-      'Domínio personalizado',
-      'Organize seus links',
-      'Tenha métricas reais'
+      '500 links',
+      'Exportar dados',
+      '10 Domínios personalizados',
+      '3 Contas colaboração',
+      '3 meses de histórico de cliques'
     ]
   },
   {
@@ -50,10 +50,10 @@ const plans = [
     color: 'white',
     features: [
       'Links ilimitados',
-      '50 QR Codes personalizados',
-      'Domínio personalizado',
-      'Organize seus links',
-      'Tenha métricas reais'
+      'Estatísticas de cliques por tipo de dispositivo',
+      '50 Domínios personalizados',
+      '10 Contas colaboração',
+      '1 ano de histórico de cliques'
     ]
   }
 ];
