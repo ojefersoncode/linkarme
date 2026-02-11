@@ -47,6 +47,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
+    "color": "^5.0.3",
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.5.1",
     "geist": "latest",
@@ -56,6 +57,7 @@
     "motion": "^12.23.16",
     "next": "^14.2.35",
     "next-themes": "latest",
+    "qr-code-styling": "^1.9.2",
     "radix-ui": "^1.4.3",
     "react": "^18",
     "react-day-picker": "9.8.0",
@@ -72,6 +74,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.13",
+    "@types/color": "^4.2.0",
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
