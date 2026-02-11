@@ -124,7 +124,7 @@ export default function Checkout() {
         <NavbarDashboard />
       </div>
 
-      <div className="px-6 md:pt-4 flex justify-start">
+      <div className="px-6 md:pt-4 flex justify-start max-md:hidden">
         <Button
           className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none"
           onClick={() => router.back()}
