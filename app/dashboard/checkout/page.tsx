@@ -25,7 +25,7 @@ const plans = [
     features: [
       '50 Links',
       'QR Codes Personalizados',
-      '3 Domínios Personalizados',
+      'Ate 3 Domínios Personalizados',
       'Organize seus Links',
       '30 Dias de Histórico de Cliques'
     ]
@@ -38,7 +38,7 @@ const plans = [
     features: [
       '100 Links',
       'Exportar dados',
-      '10 Domínios Personalizados',
+      'Ate 5 Domínios Personalizados',
       '3 Contas Colaboração',
       '3 Meses de Histórico de Cliques'
     ]
@@ -50,10 +50,10 @@ const plans = [
     color: 'white',
     features: [
       'Links Ilimitados',
-      'Estatísticas de Cliques por Tipo de Dispositivo',
-      '50 Domínios Personalizados',
+      'Estatísticas por Tipo de Dispositivo',
+      '10 Domínios Personalizados',
       '10 Contas Colaboração',
-      '1 Ano de Histórico'
+      '1 Ano de Histórico de Cliques'
     ]
   }
 ];
@@ -215,7 +215,7 @@ export default function Checkout() {
                 className={`cursor-pointer text-base font-semibold py-6 w-full ${
                   plan.color === 'foreground'
                     ? '   bg-foreground text-white hover:bg-foreground  '
-                    : '   bg-background border-0.5 text-black hover:bg-background'
+                    : '   bg-black border-0.5 text-white hover:bg-black'
                 }`}
               >
                 {loading === plan.id ? (
