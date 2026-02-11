@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Card,
@@ -11,10 +11,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 import { Switch } from '@/components/ui/switch';
-import { toast } from 'sonner';
-import { Loader2, Check, ArrowLeft } from 'lucide-react';
 
 const plans = [
   {
@@ -58,103 +55,16 @@ const plans = [
   }
 ];
 
-export default function Checkout() {
+export default function Prices() {
   const router = useRouter();
   const [billingCycle, setBillingCycle] = useState('monthly');
-  const [loading, setLoading] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Verificar se vem de um sucesso na URL
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('success') === 'true') {
-      setSuccess(true);
-      toast.success('Pagamento realizado com sucesso!');
-      // Limpar URL
-      window.history.replaceState({}, document.title, '/dashboard/checkout');
-    }
-    if (params.get('cancelled') === 'true') {
-      toast.error('Pagamento cancelado');
-      window.history.replaceState({}, document.title, '/dashboard/checkout');
-    }
-  }, []);
-
-  async function handleSelectPlan(planId: string) {
-    try {
-      setLoading(planId);
-      setError(null);
-
-      const response = await fetch('/api/stripe/checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          planId,
-          billingCycle
-        })
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Erro ao criar sessão de pagamento');
-      }
-
-      const { url } = await response.json();
-
-      if (url) {
-        // Redirecionar para o Stripe Checkout
-        window.location.href = url;
-      } else {
-        throw new Error('Erro ao gerar URL de checkout');
-      }
-    } catch (err: any) {
-      const errorMessage = err.message || 'Erro ao processar pagamento';
-      setError(errorMessage);
-      toast.error(errorMessage);
-    } finally {
-      setLoading(null);
-    }
+  function handleSelectPlan() {
+    router.push('/auth/login');
   }
 
   return (
-    <div className="space-y-6 md:p-4 md:items-center bg-background min-h-screen">
-      <div className="md:hidden">
-        <NavbarDashboard />
-      </div>
-
-      <div className="px-6 md:pt-4 flex justify-start">
-        <Button
-          className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none"
-          onClick={() => router.back()}
-        >
-          <span className="text-white">
-            <ArrowLeft className="w-5 h-5" />
-          </span>
-        </Button>
-      </div>
-
-      {success && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4 mx-28 flex items-center gap-3">
-          <Check className="text-green-600" />
-          <div>
-            <h3 className="font-semibold text-green-900">
-              Pagamento realizado com sucesso!
-            </h3>
-            <p className="text-sm text-foreground">
-              Sua assinatura foi ativada. Você pode acessar todos os recursos.
-            </p>
-          </div>
-        </div>
-      )}
-
-      {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mx-28">
-          <p className="text-red-700">{error}</p>
-        </div>
-      )}
-
+    <div className="space-y-6 p-4 md:items-center bg-transparent min-h-screen">
       <div className="flex flex-col pt-4 text-black justify-center items-center w-full">
         <h1 className="font-bold text-3xl max-md:text-xl">
           Atualize sua assinatura
@@ -175,7 +85,7 @@ export default function Checkout() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 pb-8 px-8 md:px-12 bg-background">
+      <div className="grid md:grid-cols-3 gap-8 pb-8 px-8 md:px-12 bg-transparent">
         {plans.map((plan) => (
           <Card
             key={plan.id}
@@ -210,22 +120,14 @@ export default function Checkout() {
 
             <CardFooter className="flex w-full pb-4 justify-center items-center">
               <Button
-                onClick={() => handleSelectPlan(plan.id)}
-                disabled={loading !== null}
+                onClick={handleSelectPlan}
                 className={`cursor-pointer text-base font-semibold py-6 w-full ${
                   plan.color === 'foreground'
-                    ? '   bg-foreground text-white hover:bg-foreground  '
-                    : '   bg-background border-0.5 text-black hover:bg-background'
+                    ? 'bg-foreground text-white hover:bg-foreground'
+                    : 'bg-background border-0.5 text-black hover:bg-background'
                 }`}
               >
-                {loading === plan.id ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Processando...
-                  </>
-                ) : (
-                  'Escolha seu plano'
-                )}
+                Escolher seu plano
               </Button>
             </CardFooter>
           </Card>
