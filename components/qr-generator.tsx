@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import QRCodeStyling from 'qr-code-styling';
+import { ImageIcon } from 'lucide-react';
 import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
-
 import {
   Dialog,
   DialogContent,
@@ -13,7 +13,6 @@ import {
   DialogTitle,
   DialogTrigger
 } from './ui/dialog';
-import { ImageIcon } from 'lucide-react';
 
 export function QrGenerator() {
   const ref = useRef<HTMLDivElement | null>(null);

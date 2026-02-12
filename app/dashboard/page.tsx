@@ -1,10 +1,12 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Globe, Link2, BarChart3, TrendingUp } from 'lucide-react';
 import { ExportDataDialog } from '@/components/export-data-dialog';
-import DemographicCard from '@/components/Map/DemographicCard';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
+import Climate from '@/components/Dashboard/Climate';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Activities } from '@/components/Dashboard/Activities';
+import { CalendarDashboard } from '@/components/Dashboard/Calendar';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -54,10 +56,11 @@ export default async function DashboardPage() {
     <div className="space-y-6 bg-[#eeeeee] h-screen">
       <NavbarDashboard />
 
+      <div className="px-4 md:px-6">
+        <Climate />
+      </div>
+
       <div className=" space-y-4 md:px-6">
-        <div className="flex max-md:px-4 justify-end">
-          <ExportDataDialog links={linksForExport} />
-        </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
           <Card className="bg-white shadow shadow-primary border-none gap-2">
             <CardHeader className="flex flex-row items-center justify-between pb-0">
@@ -124,8 +127,14 @@ export default async function DashboardPage() {
           </Card>
         </div>
 
-        <div className="pb-6 max-md:px-4 flex-1 w-full shadow shadow-primary">
-          <DemographicCard />
+        <div className="grid md:grid-cols-2 gap-4 pb-6 max-md:px-4 shadow shadow-primary">
+          <Card className="bg-white shadow shadow-primary p-4 border-none">
+            <Activities />
+          </Card>
+
+          <Card className="bg-white shadow shadow-primary border-none p-4">
+            <CalendarDashboard />
+          </Card>
         </div>
       </div>
     </div>

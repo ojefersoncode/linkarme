@@ -1,12 +1,6 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 import { QrGenerator } from '@/components/qr-generator';
 
