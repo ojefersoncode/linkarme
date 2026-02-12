@@ -4,6 +4,10 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@supabase/supabase-js'],
   },
+
+    images: {
+    domains: ['openweathermap.org'],
+  },
   
   // Optimize for redirects
   async rewrites() {

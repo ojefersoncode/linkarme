@@ -1,12 +1,11 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { Globe, Link2, BarChart3, TrendingUp } from 'lucide-react';
-import { ExportDataDialog } from '@/components/export-data-dialog';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 import Climate from '@/components/Dashboard/Climate';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activities } from '@/components/Dashboard/Activities';
 import { CalendarDashboard } from '@/components/Dashboard/Calendar';
+import Activities from '@/components/Dashboard/Activities';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -56,7 +55,7 @@ export default async function DashboardPage() {
     <div className="space-y-6 bg-[#eeeeee] h-screen">
       <NavbarDashboard />
 
-      <div className="px-4 md:px-6">
+      <div className=" space-y-4 px-4 md:px-6">
         <Climate />
       </div>
 
@@ -129,6 +128,9 @@ export default async function DashboardPage() {
 
         <div className="grid md:grid-cols-2 gap-4 pb-6 max-md:px-4 shadow shadow-primary">
           <Card className="bg-white shadow shadow-primary p-4 border-none">
+            <CardHeader className="p-0">
+              <h1 className="text-xl font-bold text-black py-0">Seus Links</h1>
+            </CardHeader>
             <Activities />
           </Card>
 
