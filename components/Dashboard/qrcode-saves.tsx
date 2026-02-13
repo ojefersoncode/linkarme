@@ -13,8 +13,6 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 
-import { ExportDataDialog } from '../export-data-dialog';
-
 const links = [
   {
     link: 'miiurl.com/abc123',
@@ -23,22 +21,10 @@ const links = [
   {
     link: 'Imiiurl.com/teste',
     linkData: '09/02/2026'
-  },
-  {
-    link: 'Imiiurl.com/teste2',
-    linkData: '08/02/2026'
-  },
-  {
-    link: 'Imiiurl.com/site1',
-    linkData: '18/01/2026'
-  },
-  {
-    link: 'miiurl.com/abc123',
-    linkData: '01/01/2026'
   }
 ];
 
-export default async function Activities() {
+export default async function QrcodeSaves() {
   const supabase = await createClient();
 
   const {
@@ -50,37 +36,6 @@ export default async function Activities() {
     redirect('/auth/login');
   }
 
-  // Buscar domínios e links em paralelo
-  const [domainsResult, linksResult] = await Promise.all([
-    supabase.from('domains').select('id').eq('user_id', user.id),
-    supabase
-      .from('links')
-      .select('id, slug, title, domains (domain)')
-      .eq('user_id', user.id)
-  ]);
-
-  // Extrair ids dos links
-  const linkIds = linksResult.data?.map((l) => l.id) || [];
-
-  // Buscar cliques
-  const clicksResult = linkIds.length
-    ? await supabase.from('clicks').select('id').in('link_id', linkIds)
-    : { data: [], error: null };
-
-  const stats = {
-    domains: domainsResult.data?.length || 0,
-    links: linksResult.data?.length || 0,
-    clicks: clicksResult.data?.length || 0
-  };
-
-  // Links para exportação
-  const linksForExport =
-    linksResult.data?.map((link) => ({
-      id: link.id,
-      slug: link.slug,
-      title: link.title,
-      domains: link.domains
-    })) || [];
   return (
     <Tabs defaultValue="overview" className="bg-white">
       <TabsList className="w-full bg-background ">
@@ -100,9 +55,6 @@ export default async function Activities() {
       <TabsContent value="overview">
         <Card className="bg-white text-black shadow-none border-none py-2">
           <CardContent className="text-black text-sm p-0">
-            <div className="flex w-full justify-end px-2 pt-2 pb-4">
-              <ExportDataDialog links={linksForExport} />
-            </div>
             <Table className="py-0">
               <TableBody className="border-b border-gray-400">
                 {links.map((links) => (
@@ -135,9 +87,9 @@ export default async function Activities() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <Link href="/dashboard/links">
+                  <Link href="/dashboard/qrcode">
                     <Button className="px-8 cursor-pointer text-white dark:text-white bg-foreground dark:bg-foreground hover:bg-foreground/90 dark:hover:bg-foreground/90">
-                      <Plus /> <span>Novo link</span>
+                      <Plus /> <span>Novo Qrcode</span>
                     </Button>
                   </Link>
                 </div>
