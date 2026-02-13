@@ -54,45 +54,53 @@ export default async function SettingsPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div>
+              <div className="flex flex-col">
+                <div className="flex items-center justify-between">
                   <h4 className="font-semibold text-black">
                     Anonimização de IPs
                   </h4>
-                  <p className="text-sm w-xs text-black/50">
-                    IPs dos visitantes são automaticamente hasheados para
-                    proteger a privacidade
-                  </p>
+                  <Badge
+                    variant="default"
+                    className="bg-primary text-foreground"
+                  >
+                    Ativo
+                  </Badge>
                 </div>
-                <Badge variant="default" className="bg-primary text-foreground">
-                  Ativo
-                </Badge>
+                <p className="text-sm w-xs text-black/50">
+                  IPs dos visitantes são automaticamente hasheados para proteger
+                  a privacidade
+                </p>
               </div>
 
-              <div className="flex items-center justify-between">
-                <div>
+              <div className="flex flex-col">
+                <div className="flex items-center justify-between">
                   <h4 className="font-semibold text-black">Geolocalização</h4>
-                  <p className="text-sm w-xs text-black/50">
-                    Coletamos dados de localização aproximada (país, estado,
-                    cidade) para analytics
-                  </p>
+                  <Badge
+                    variant="default"
+                    className="bg-primary text-foreground"
+                  >
+                    Ativo
+                  </Badge>
                 </div>
-                <Badge variant="default" className="bg-primary text-foreground">
-                  Ativo
-                </Badge>
+                <p className="text-sm w-xs text-black/50">
+                  Coletamos dados de localização aproximada (país, estado,
+                  cidade) para analytics
+                </p>
               </div>
 
-              <div className="flex items-center justify-between">
-                <div>
+              <div className="flex flex-col">
+                <div className="flex items-center justify-between">
                   <h4 className="font-semibold text-black">
                     Retenção de Dados
                   </h4>
-                  <p className="text-sm w-xs text-black/50">
-                    Dados de cliques são mantidos indefinidamente para análises
-                    históricas
-                  </p>
+                  <Badge className="bg-primary text-foreground">
+                    Permanente
+                  </Badge>
                 </div>
-                <Badge className="bg-primary text-foreground">Permanente</Badge>
+                <p className="text-sm w-xs text-black/50">
+                  Dados de cliques são mantidos indefinidamente para análises
+                  históricas
+                </p>
               </div>
             </CardContent>
           </Card>
