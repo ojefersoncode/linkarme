@@ -64,13 +64,13 @@ export default async function DashboardPage() {
           <div className="bg-foreground shadow shadow-primary pr-1 rounded-2xl">
             <Card className="bg-white border-none gap-2">
               <CardHeader className="flex flex-row items-center justify-between pb-0">
-                <CardTitle className="text-sm text-accent font-medium py-0">
+                <CardTitle className="text-sm text-black font-medium py-0">
                   Domínios
                 </CardTitle>
-                <Globe className="h-4 w-4 text-foreground" />
+                <Globe className="h-5 w-5 text-foreground" />
               </CardHeader>
               <CardContent className="pt-0">
-                <div className="text-2xl font-bold text-accent">
+                <div className="text-2xl font-bold text-black">
                   {stats.domains}
                 </div>
               </CardContent>
@@ -80,13 +80,13 @@ export default async function DashboardPage() {
           <div className="bg-foreground shadow shadow-primary pr-1 rounded-2xl">
             <Card className="bg-white border-none gap-2">
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-sm text-accent font-medium">
+                <CardTitle className="text-sm text-black font-medium">
                   Links
                 </CardTitle>
-                <Link2 className="h-4 w-4 text-foreground" />
+                <Link2 className="h-5 w-5 text-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-accent">
+                <div className="text-2xl font-bold text-black">
                   {stats.links}
                 </div>
               </CardContent>
@@ -96,14 +96,14 @@ export default async function DashboardPage() {
           <div className="bg-foreground pr-1 rounded-2xl">
             <Card className="bg-white border-none gap-2">
               <CardHeader className="flex flex-row items-center justify-between space-y-0">
-                <CardTitle className="text-sm text-accent font-medium">
+                <CardTitle className="text-sm text-black font-medium">
                   Cliques
                 </CardTitle>
 
-                <BarChart3 className="h-4 w-4 text-foreground" />
+                <BarChart3 className="h-5 w-5 text-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-accent">
+                <div className="text-2xl font-bold text-black">
                   {stats.clicks}
                 </div>
               </CardContent>
@@ -113,13 +113,13 @@ export default async function DashboardPage() {
           <div className="bg-foreground shadow shadow-primary pr-1 rounded-2xl">
             <Card className="bg-white border-none gap-2">
               <CardHeader className="flex flex-row items-center justify-between space-y-0">
-                <CardTitle className="text-accent text-sm font-medium">
+                <CardTitle className="text-black text-sm font-medium">
                   Taxa de Cliques
                 </CardTitle>
-                <TrendingUp className="h-4 w-4 text-foreground" />
+                <TrendingUp className="h-5 w-5 text-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-accent">
+                <div className="text-2xl font-bold text-black">
                   {stats.links > 0 ? Math.round(stats.clicks / stats.links) : 0}
                 </div>
               </CardContent>

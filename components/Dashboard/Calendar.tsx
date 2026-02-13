@@ -11,7 +11,7 @@ export function CalendarDashboard() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="rounded-lg bg-white border-none w-full"
+      className="rounded-lg bg-white text-black border-none w-full"
       captionLayout="dropdown"
     />
   );

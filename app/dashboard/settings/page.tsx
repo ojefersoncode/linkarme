@@ -34,9 +34,7 @@ export default async function SettingsPage() {
             <CardHeader>
               <CardTitle className="flex items-center justify-between gap-2">
                 <h1 className="font-bold text-black"> Perfil do Usuário</h1>
-                <div className="bg-primary p-1 rounded-sm">
-                  <User className="h-5 w-5 text-foreground" />
-                </div>
+                <User className="h-5 w-5 text-foreground" />
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -48,9 +46,7 @@ export default async function SettingsPage() {
             <CardHeader>
               <CardTitle className="flex items-center justify-between gap-2">
                 <h1 className="font-bold">Privacidade e Segurança</h1>
-                <div className="bg-primary p-1 rounded-sm">
-                  <Shield className="h-5 w-5 text-foreground" />
-                </div>
+                <Shield className="h-5 w-5 text-foreground" />
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -111,17 +107,11 @@ export default async function SettingsPage() {
                 <h1 className="font-bold text-black/50">
                   Informações da conta
                 </h1>
-                <div className="bg-primary p-1 rounded-sm">
-                  <Database className="h-5 w-5 text-foreground" />
-                </div>
+                <Database className="h-5 w-5 text-foreground" />
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-semibold text-sm">ID do Usuário</h4>
-                  <p className="text-sm text-black/50 font-mono">{user.id}</p>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <h4 className="font-semibold text-sm">Email</h4>
                   <p className="text-sm text-black/50">{user.email}</p>
