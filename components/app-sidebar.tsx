@@ -49,8 +49,8 @@ export function AppSidebar() {
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
                       asChild
-                      className={`text-foreground hover:text-foreground hover:bg-primary/40 transition-all duration-200 gap-3 py-4 px-3
-                        ${isActive ? 'bg-primary/70 dark:bg-primary/70 hover:bg-primary/65 dark:hover:bg-primary/65 text-foreground hover:text-foreground shadow/70 shadow-primary transition-all duration-200' : ''}`}
+                      className={`text-foreground dark:text-foreground hover:text-foreground bg-transparent dark:bg-transparent hover:bg-primary/40 transition-all duration-200 gap-3 py-4 px-3
+                        ${isActive ? 'bg-primary/70 dark:bg-primary/70 hover:bg-primary/65 dark:hover:bg-primary/65 text-foreground/70 hover:text-foreground/70 shadow/70 shadow-primary transition-all duration-200' : ''}`}
                     >
                       <Link href={item.url}>
                         <item.icon className="h-4 w-4" />
