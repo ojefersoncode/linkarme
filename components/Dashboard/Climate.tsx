@@ -93,10 +93,10 @@ export default function HeaderClima() {
     <Card className="bg-gradient-to-bl md:bg-gradient-to-l to-40%  md:to-30% from-cyan-200 to-white text-black shadow shadow-primary border-none px-4 md:px-6">
       <div className="flex justify-between w-full ">
         <div className="flex flex-col">
-          <h1 className="text-2xl max-md:text-xl font-bold">
+          <h1 className="text-2xl max-md:text-lg font-bold">
             Bem vindo, Jeferson!
           </h1>
-          <h2 className="text-sm font-medium">
+          <h2 className="text-xs md:text-sm font-medium">
             Vamos para mais um dia produtivo!
           </h2>
           <div className="flex gap-2 pt-8">
@@ -105,23 +105,23 @@ export default function HeaderClima() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
           <div className="flex items-center gap-4 justify-end">
             <span className="text-5xl max-md:text-4xl">
               {weather?.icon ?? '🌡️'}
             </span>
-            <h2 className="text-6xl max-md:text-5xl font-bold">
+            <h2 className="text-5xl max-md:text-4xl font-bold">
               {weather?.temp !== undefined ? `${weather.temp}°` : '--°'}
             </h2>
           </div>
           <div className="flex flex-col">
-            <span className="text-end text-sm md:text-base font-medium text-black">
+            <span className="text-end text-xs md:text-sm font-medium text-black">
               {weather?.desc ?? ''}
             </span>
-            <span className="text-end text-sm md:text-base font-medium">
+            <span className="text-end text-xs md:text-sm font-medium">
               Ponte Nova
             </span>
-            <span className="text-end text-nowrap text-sm md:text-base font-medium text-black">
+            <span className="text-end text-nowrap text-xs md:text-sm font-medium text-black">
               {time.toLocaleDateString('pt-BR', {
                 weekday: 'long',
                 day: '2-digit',

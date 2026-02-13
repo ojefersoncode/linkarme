@@ -53,9 +53,9 @@ export default async function SettingsPage() {
                 </div>
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6">
               <div className="flex flex-col">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between py-2">
                   <h4 className="font-semibold text-black">
                     Anonimização de IPs
                   </h4>
@@ -73,7 +73,7 @@ export default async function SettingsPage() {
               </div>
 
               <div className="flex flex-col">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between py-2">
                   <h4 className="font-semibold text-black">Geolocalização</h4>
                   <Badge
                     variant="default"
@@ -89,7 +89,7 @@ export default async function SettingsPage() {
               </div>
 
               <div className="flex flex-col">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between py-2">
                   <h4 className="font-semibold text-black">
                     Retenção de Dados
                   </h4>
@@ -109,7 +109,6 @@ export default async function SettingsPage() {
             <CardHeader>
               <CardTitle className="flex items-center justify-between gap-2">
                 <h1 className="font-bold text-black/50">
-                  {' '}
                   Informações da conta
                 </h1>
                 <div className="bg-primary p-1 rounded-sm">
