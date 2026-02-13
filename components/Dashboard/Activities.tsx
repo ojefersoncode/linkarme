@@ -100,6 +100,9 @@ export default async function Activities() {
       <TabsContent value="overview">
         <Card className="bg-white text-black shadow-none border-none py-2">
           <CardContent className="text-black text-sm p-0">
+            <div className="flex w-full justify-end px-2 py-4">
+              <ExportDataDialog links={linksForExport} />
+            </div>
             <Table className="py-0">
               <TableBody className="border-b border-gray-400">
                 {links.map((links) => (
@@ -111,8 +114,8 @@ export default async function Activities() {
                     <TableCell className="font-medium">
                       {links.linkData}
                     </TableCell>
-                    <TableCell className="text-right cursor-pointer">
-                      <Button className="text-white dark:text-white bg-foreground dark:bg-foreground hover:bg-foreground/90 dark:hover:bg-foreground/90">
+                    <TableCell className="text-right ">
+                      <Button className="cursor-pointer text-accent dark:text-accent bg-background dark:bg-background hover:bg-white dark:hover:bg-white">
                         <Copy />
                       </Button>
                     </TableCell>
@@ -132,8 +135,6 @@ export default async function Activities() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <ExportDataDialog links={linksForExport} />
-
                   <Link href="/dashboard/links">
                     <Button className="px-8 cursor-pointer text-white dark:text-white bg-foreground dark:bg-foreground hover:bg-foreground/90 dark:hover:bg-foreground/90">
                       <Plus /> <span>Novo link</span>
@@ -159,8 +160,8 @@ export default async function Activities() {
                     <TableCell className="font-medium">
                       {links.linkData}
                     </TableCell>
-                    <TableCell className="text-right cursor-pointer">
-                      <Button className="text-white dark:text-white bg-foreground dark:bg-foreground hover:bg-foreground/90 dark:hover:bg-foreground/90">
+                    <TableCell className="text-right">
+                      <Button className="cursor-pointer text-accent dark:text-accent bg-background dark:bg-background hover:bg-white dark:hover:bg-white">
                         <Copy />
                       </Button>
                     </TableCell>

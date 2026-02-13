@@ -67,8 +67,8 @@ export default async function DomainsPage() {
       {domains && domains.length > 0 ? (
         <div className="grid gap-4 px-4">
           {domains.map((domain) => (
-            <Card key={domain.id} className="bg-foreground border-none">
-              <CardHeader className="bg-foreground">
+            <Card key={domain.id} className="bg-white text-black border-none">
+              <CardHeader className="bg-white">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div>

@@ -50,9 +50,9 @@ const plans = [
     color: 'white',
     features: [
       'Links Ilimitados',
-      'Estatísticas por Tipo de Dispositivo',
+      'Estatísticas por Dispositivo',
       '10 Domínios Personalizados',
-      '10 Contas Colaboração',
+      '5 Contas Colaboração',
       '1 Ano de Histórico de Cliques'
     ]
   }
@@ -120,11 +120,7 @@ export default function Checkout() {
 
   return (
     <div className="space-y-6 md:p-4 md:items-center bg-background min-h-screen">
-      <div className="md:hidden">
-        <NavbarDashboard />
-      </div>
-
-      <div className="px-6 md:pt-4 flex justify-start max-md:hidden">
+      <div className="p-6 flex justify-start">
         <Button
           className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none"
           onClick={() => router.back()}
@@ -175,7 +171,7 @@ export default function Checkout() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 pb-8 px-8 md:px-12 bg-background">
+      <div className="grid md:grid-cols-3 gap-8 pb-8 px-8 bg-background">
         {plans.map((plan) => (
           <Card
             key={plan.id}
@@ -185,11 +181,13 @@ export default function Checkout() {
                 : 'bg-white text-black border-none  shadow-xl/20 shadow-foreground'
             }  space-y-4 w-full `}
           >
-            <CardHeader className="flex flex-col justify-center items-center pb-0">
-              <CardTitle className="text-lg font-bold py-0">
-                {plan.title}
+            <CardHeader className="flex flex-col justify-start pb-0">
+              <CardTitle className="text-lg font-bold py-4">
+                <div className="bg-primary text-black rounded-xl py-1 px-6">
+                  {plan.title}
+                </div>
               </CardTitle>
-              <CardDescription className="text-center flex justify-center items-center text-2xl text-nowrap text-black font-extrabold py-0 w-full">
+              <CardDescription className="flex justify-start items-center text-4xl text-nowrap text-black font-extrabold py-0 px-1 w-full">
                 R$:
                 {billingCycle === 'monthly'
                   ? plan.price.toFixed(2)
@@ -200,10 +198,13 @@ export default function Checkout() {
               </CardDescription>
             </CardHeader>
 
-            <CardContent className="py-2 px-12 w-full justify-start space-y-6">
-              <ul className="flex flex-col w-full justify-start gap-4 list-disc text-sm font-medium text-black/70">
+            <CardContent className="px-6 w-full justify-start space-y-6">
+              <ul className="flex flex-col w-full justify-start gap-4 text-sm font-medium text-black/70">
                 {plan.features.map((f) => (
-                  <li key={f}>{f}</li>
+                  <li key={f} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-green-500" />
+                    {f}
+                  </li>
                 ))}
               </ul>
             </CardContent>

@@ -168,12 +168,12 @@ export default function CreateLinkPage() {
           </Button>
         </div>
 
-        <Card className="bg-foreground border-none">
+        <Card className="bg-white border-none">
           <CardHeader>
-            <CardTitle className="text-white">
+            <CardTitle className="text-black">
               Nenhum domínio verificado
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-black">
               Você precisa ter pelo menos um domínio verificado para criar
               links.
             </CardDescription>
@@ -181,7 +181,7 @@ export default function CreateLinkPage() {
           <CardContent>
             <Button
               asChild
-              className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-foreground max-md:text-sm"
+              className="bg-foreground hover:bg-foreground/80 transition-all duration-300 px-8 text-white max-md:text-sm"
             >
               <Link href="/dashboard/domains">Gerenciar Domínios</Link>
             </Button>

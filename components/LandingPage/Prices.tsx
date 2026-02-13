@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
+import { Check } from 'lucide-react';
 
 const plans = [
   {
@@ -95,11 +96,13 @@ export default function Prices() {
                 : 'bg-white text-black border-none  shadow-xl/20 shadow-foreground'
             }  space-y-4 w-full `}
           >
-            <CardHeader className="flex flex-col justify-center items-center pb-0">
-              <CardTitle className="text-lg font-bold py-0">
-                {plan.title}
+            <CardHeader className="flex flex-col justify-start pb-0">
+              <CardTitle className="text-lg font-bold py-4">
+                <div className="bg-primary text-black rounded-xl py-1 px-6">
+                  {plan.title}
+                </div>
               </CardTitle>
-              <CardDescription className="text-center flex justify-center items-center text-2xl text-nowrap text-black font-extrabold py-0 w-full">
+              <CardDescription className="flex justify-start items-center text-4xl text-nowrap text-black font-extrabold py-0 px-1 w-full">
                 R$:
                 {billingCycle === 'monthly'
                   ? plan.price.toFixed(2)
@@ -110,10 +113,13 @@ export default function Prices() {
               </CardDescription>
             </CardHeader>
 
-            <CardContent className="py-2 px-12 w-full justify-start space-y-6">
-              <ul className="flex flex-col w-full justify-start gap-4 list-disc text-sm font-medium text-black/70">
+            <CardContent className="px-6 w-full justify-start space-y-6">
+              <ul className="flex flex-col w-full justify-start gap-4 text-sm font-medium text-black/70">
                 {plan.features.map((f) => (
-                  <li key={f}>{f}</li>
+                  <li key={f} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-green-500" />
+                    {f}
+                  </li>
                 ))}
               </ul>
             </CardContent>
@@ -124,7 +130,7 @@ export default function Prices() {
                 className={`cursor-pointer text-base font-semibold py-6 w-full ${
                   plan.color === 'foreground'
                     ? 'bg-foreground text-white hover:bg-foreground'
-                    : 'bg-background border-0.5 text-black hover:bg-background'
+                    : 'bg-black border-0.5 text-white hover:bg-black/90'
                 }`}
               >
                 Escolher seu plano

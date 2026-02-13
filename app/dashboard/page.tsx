@@ -61,80 +61,88 @@ export default async function DashboardPage() {
 
       <div className=" space-y-4 md:px-6">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
-          <Card className="bg-white shadow shadow-primary border-none gap-2">
-            <CardHeader className="flex flex-row items-center justify-between pb-0">
-              <CardTitle className="text-sm text-accent font-medium py-0">
-                Domínios
-              </CardTitle>
-              <div className="bg-primary p-1 rounded-sm">
+          <div className="bg-foreground shadow shadow-primary pr-1 rounded-2xl">
+            <Card className="bg-white border-none gap-2">
+              <CardHeader className="flex flex-row items-center justify-between pb-0">
+                <CardTitle className="text-sm text-accent font-medium py-0">
+                  Domínios
+                </CardTitle>
                 <Globe className="h-4 w-4 text-foreground" />
-              </div>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <div className="text-2xl font-bold text-accent">
-                {stats.domains}
-              </div>
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <div className="text-2xl font-bold text-accent">
+                  {stats.domains}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-          <Card className="bg-white shadow shadow-primary border-none gap-2">
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-sm text-accent font-medium">
-                Links
-              </CardTitle>
-              <div className="bg-primary p-1 rounded-sm">
+          <div className="bg-foreground shadow shadow-primary pr-1 rounded-2xl">
+            <Card className="bg-white border-none gap-2">
+              <CardHeader className="flex flex-row items-center justify-between">
+                <CardTitle className="text-sm text-accent font-medium">
+                  Links
+                </CardTitle>
                 <Link2 className="h-4 w-4 text-foreground" />
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-accent">
-                {stats.links}
-              </div>
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-accent">
+                  {stats.links}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-          <Card className="bg-white shadow shadow-primary border-none gap-2">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0">
-              <CardTitle className="text-sm text-accent font-medium">
-                Cliques
-              </CardTitle>
-              <div className="bg-primary p-1 rounded-sm">
+          <div className="bg-foreground pr-1 rounded-2xl">
+            <Card className="bg-white border-none gap-2">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0">
+                <CardTitle className="text-sm text-accent font-medium">
+                  Cliques
+                </CardTitle>
+
                 <BarChart3 className="h-4 w-4 text-foreground" />
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-accent">
-                {stats.clicks}
-              </div>
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-accent">
+                  {stats.clicks}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-          <Card className="bg-white shadow shadow-primary border-none gap-2">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0">
-              <CardTitle className="text-accent text-sm font-medium">
-                Taxa de Cliques
-              </CardTitle>
-              <div className="bg-primary p-1 rounded-sm">
+          <div className="bg-foreground shadow shadow-primary pr-1 rounded-2xl">
+            <Card className="bg-white border-none gap-2">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0">
+                <CardTitle className="text-accent text-sm font-medium">
+                  Taxa de Cliques
+                </CardTitle>
                 <TrendingUp className="h-4 w-4 text-foreground" />
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-accent">
-                {stats.links > 0 ? Math.round(stats.clicks / stats.links) : 0}
-              </div>
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-accent">
+                  {stats.links > 0 ? Math.round(stats.clicks / stats.links) : 0}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4 pb-6 max-md:px-4 shadow shadow-primary">
           <Card className="bg-white shadow shadow-primary p-4 border-none">
             <CardHeader className="p-0">
-              <h1 className="text-xl font-bold text-black py-0">Seus Links</h1>
+              <h1 className="text-xl px-2 pt-2 md:text-3xl font-semibold text-black">
+                Seus Links
+              </h1>
             </CardHeader>
             <Activities />
           </Card>
 
           <Card className="bg-white shadow shadow-primary border-none p-4">
+            <CardHeader className="p-0">
+              <h1 className="text-xl px-2 pt-2 md:text-3xl font-semibold text-black">
+                Calendário
+              </h1>
+            </CardHeader>
             <CalendarDashboard />
           </Card>
         </div>
