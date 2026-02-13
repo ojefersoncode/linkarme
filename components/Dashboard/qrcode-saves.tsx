@@ -67,7 +67,7 @@ export default async function QrcodeSaves() {
                       {links.linkData}
                     </TableCell>
                     <TableCell className="text-right ">
-                      <Button className="cursor-pointer text-accent dark:text-accent bg-background dark:bg-background hover:bg-white dark:hover:bg-white">
+                      <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
                         <Copy />
                       </Button>
                     </TableCell>
@@ -113,7 +113,7 @@ export default async function QrcodeSaves() {
                       {links.linkData}
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button className="cursor-pointer text-accent dark:text-accent bg-background dark:bg-background hover:bg-white dark:hover:bg-white">
+                      <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
                         <Copy />
                       </Button>
                     </TableCell>
