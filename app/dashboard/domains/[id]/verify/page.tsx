@@ -98,7 +98,7 @@ export default async function VerifyDomainPage({
           </CardHeader>
           {domain.verified && (
             <CardContent>
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-white text-black rounded-lg">
                 <p className="text-sm text-green-800">
                   Seu domínio foi verificado com sucesso! Agora você pode criar
                   links usando este domínio.

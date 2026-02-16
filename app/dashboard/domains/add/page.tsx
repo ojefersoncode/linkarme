@@ -88,7 +88,7 @@ export default function AddDomainPage() {
       <div className="flex justify-center w-full">
         <Card className="bg-white text-black border-none max-w-2xl shadow-xl/40 shadow-primary">
           <CardHeader>
-            <CardTitle className="flex items-center justify-between text-white gap-2">
+            <CardTitle className="flex items-center justify-between gap-2">
               <h1 className="text-black">Adicionar Domínio</h1>
               <div className="bg-background p-2 rounded-lg">
                 <Globe className="h-5 w-5 text-foreground" />

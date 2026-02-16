@@ -41,12 +41,19 @@ export default async function DomainsPage() {
   const getStatusBadge = (verified: boolean) => {
     if (verified) {
       return (
-        <Badge variant="default" className="bg-green-100 text-green-800">
+        <Badge
+          variant="default"
+          className="bg-primary text-foreground dark:bg-primary dark:text-foreground"
+        >
           Verificado
         </Badge>
       );
     }
-    return <Badge variant="secondary">Pendente</Badge>;
+    return (
+      <Badge className="bg-yellow-600 dark:bg-yellow-600 text-white dark:text-white">
+        Pendente
+      </Badge>
+    );
   };
 
   return (
@@ -65,17 +72,20 @@ export default async function DomainsPage() {
       </div>
 
       {domains && domains.length > 0 ? (
-        <div className="grid gap-4 px-4">
+        <div className="grid gap-4 px-4 pb-8">
           {domains.map((domain) => (
-            <Card key={domain.id} className="bg-white text-black border-none">
+            <Card
+              key={domain.id}
+              className="bg-white text-black border-none shadow-xl/20 shadow-foreground"
+            >
               <CardHeader className="bg-white">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div>
-                      <CardTitle className="text-lg text-white">
-                        <Globe className="h-5 w-5 text-white" /> {domain.domain}
+                      <CardTitle className="text-lg font-medium flex items-center gap-2">
+                        <Globe className="h-5 w-5 text-black" /> {domain.domain}
                       </CardTitle>
-                      <CardDescription className="text-green-100">
+                      <CardDescription className="text-black/70">
                         Adicionado em{' '}
                         {new Date(domain.created_at).toLocaleDateString(
                           'pt-BR'
@@ -91,14 +101,14 @@ export default async function DomainsPage() {
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div className="space-y-1">
-                    <p className="text-sm text-green-100">
+                    <p className="text-sm text-black/70">
                       Método de verificação:{' '}
                       {domain.verification_method === 'dns'
                         ? 'DNS TXT'
                         : 'Upload de arquivo'}
                     </p>
                     {!domain.verified && (
-                      <p className="text-sm text-green-100">
+                      <p className="text-sm text-black/70">
                         Domínio aguardando verificação
                       </p>
                     )}
