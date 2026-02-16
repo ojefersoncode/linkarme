@@ -3,9 +3,8 @@ import { createClient } from '@/lib/supabase/server';
 import { Globe, Link2, BarChart3, TrendingUp } from 'lucide-react';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CalendarDashboard } from '@/components/Dashboard/Calendar';
 import Activities from '@/components/Dashboard/Activities';
-import QrcodeSaves from '@/components/Dashboard/qrcode-saves';
+import Campaigns from '@/components/Dashboard/Campaigns';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -124,22 +123,21 @@ export default async function DashboardPage() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-4 pb-6 max-md:px-4 shadow shadow-primary">
-          <Card className="bg-white shadow shadow-primary p-4 border-none">
-            <CardHeader className="p-0">
-              <h1 className="text-xl px-2 pt-2 md:text-3xl font-semibold text-black">
-                Seus Links
-              </h1>
-            </CardHeader>
-            <Activities />
-          </Card>
-
           <Card className="bg-white shadow shadow-primary border-none p-4">
             <CardHeader className="p-0">
               <h1 className="text-xl px-2 pt-2 md:text-3xl font-semibold text-black">
-                Seus Qrcodes
+                Suas Campanhas
               </h1>
             </CardHeader>
-            <QrcodeSaves />
+            <Campaigns />
+          </Card>
+          <Card className="bg-white shadow shadow-primary p-4 border-none">
+            <CardHeader className="p-0">
+              <h1 className="text-xl px-2 pt-2 md:text-3xl font-semibold text-black">
+                Atividades Recentes
+              </h1>
+            </CardHeader>
+            <Activities />
           </Card>
         </div>
       </div>

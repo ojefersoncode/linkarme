@@ -8,7 +8,14 @@ import {
   TableRow
 } from '@/components/ui/table';
 import { Button } from '../ui/button';
-import { ArrowLeft, ArrowRight, Copy, Plus } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  Copy,
+  Download,
+  Pencil,
+  Plus
+} from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
@@ -17,24 +24,16 @@ import { ExportDataDialog } from '../export-data-dialog';
 
 const links = [
   {
-    link: 'miiurl.com/abc123',
+    link: 'Minhaurl.com/abc123',
     linkData: '12/02/2026'
   },
   {
-    link: 'Imiiurl.com/teste',
+    link: 'Minhaurl.com/teste',
     linkData: '09/02/2026'
   },
   {
-    link: 'Imiiurl.com/teste2',
+    link: 'Minhaurl.com/teste2',
     linkData: '08/02/2026'
-  },
-  {
-    link: 'Imiiurl.com/site1',
-    linkData: '18/01/2026'
-  },
-  {
-    link: 'miiurl.com/abc123',
-    linkData: '01/01/2026'
   }
 ];
 
@@ -88,13 +87,13 @@ export default async function Activities() {
           className="border-none text-black/80 dark:text-black/80 data-[state=active]:bg-foreground dark:data-[state=active]:bg-foreground data-[state=active]:text-white dark:data-[state=active]:text-white"
           value="overview"
         >
-          Ativos
+          Links
         </TabsTrigger>
         <TabsTrigger
           className="border-none text-black/80 dark:text-black/80 data-[state=active]:bg-foreground dark:data-[state=active]:bg-foreground data-[state=active]:text-white dark:data-[state=active]:text-white"
           value="analytics"
         >
-          Arquivados
+          Qrcodes
         </TabsTrigger>
       </TabsList>
       <TabsContent value="overview">
@@ -117,6 +116,11 @@ export default async function Activities() {
                     <TableCell className="text-right ">
                       <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
                         <Copy />
+                      </Button>
+                    </TableCell>
+                    <TableCell className="text-right ">
+                      <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
+                        <Pencil />
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -162,7 +166,7 @@ export default async function Activities() {
                     </TableCell>
                     <TableCell className="text-right">
                       <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
-                        <Copy />
+                        <Download />
                       </Button>
                     </TableCell>
                   </TableRow>
