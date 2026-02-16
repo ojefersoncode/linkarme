@@ -2,13 +2,13 @@ import { Instagram, Phone } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-white  px-6">
+    <footer className="w-full bg-foreground px-6">
       {/* Base */}
-      <div className="flex flex-col max-md:flex-col-reverse items-center justify-between py-8 gap-4 text-sm text-black md:flex-row">
+      <div className="flex flex-col max-md:flex-col-reverse items-center justify-between py-8 gap-4 text-sm text-white md:flex-row">
         <span>
           © {new Date().getFullYear()} Linktraces. Todos os direitos reservados.
         </span>
-        <div className="flex gap-4 text-black">
+        <div className="flex gap-4 text-white">
           <Phone className="size-5 cursor-pointer" />
           <Instagram className="size-5 cursor-pointer" />
         </div>
