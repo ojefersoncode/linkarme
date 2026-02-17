@@ -115,12 +115,12 @@ export default async function Activities() {
                     </TableCell>
                     <TableCell className="text-right ">
                       <div className="flex flex-row justify-end items-center gap-4">
-                        <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
-                          <Copy />
+                        <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
+                          <Copy className="w-5 h-5 text-white" />
                         </Button>
 
-                        <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
-                          <Pencil />
+                        <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
+                          <Pencil className="w-5 h-5 text-white" />
                         </Button>
                       </div>
                     </TableCell>
@@ -166,8 +166,8 @@ export default async function Activities() {
                       {links.linkData}
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
-                        <Download />
+                      <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
+                        <Download className="w-5 h-5 text-white" />
                       </Button>
                     </TableCell>
                   </TableRow>

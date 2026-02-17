@@ -29,7 +29,7 @@ const menuItems = [
   { title: 'QR codes', url: '/dashboard/qrcode', icon: QrCode },
   { title: 'Domínios', url: '/dashboard/domains', icon: Globe },
   { title: 'Analytics', url: '/dashboard/analytics', icon: BarChart3 },
-  { title: 'Campanhas', url: '/dashboard/analytics', icon: Layers },
+  { title: 'Campanhas', url: '/dashboard/campaigns', icon: Layers },
   { title: 'Configurações', url: '/dashboard/settings', icon: Settings }
 ];
 
