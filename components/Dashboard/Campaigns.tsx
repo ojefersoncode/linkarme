@@ -1,14 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableRow
-} from '@/components/ui/table';
+import { Card, CardContent } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Button } from '../ui/button';
-import { ArrowLeft, ArrowRight, Copy, Eye, Pencil, Plus } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Eye, Pencil, Plus } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
@@ -46,14 +39,15 @@ export default async function Campaigns() {
                 <TableCell className="font-medium">{links.link}</TableCell>
                 <TableCell className="font-medium">{links.linkData}</TableCell>
                 <TableCell className="text-right ">
-                  <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
-                    <Eye />
-                  </Button>
-                </TableCell>
-                <TableCell className="text-right ">
-                  <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
-                    <Pencil />
-                  </Button>
+                  <div className="flex flex-row justify-end items-center gap-4">
+                    <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
+                      <Eye />
+                    </Button>
+
+                    <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
+                      <Pencil />
+                    </Button>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}

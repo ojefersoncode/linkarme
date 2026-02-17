@@ -122,10 +122,10 @@ export default function Checkout() {
     <div className="space-y-6 md:p-4 md:items-center bg-background min-h-screen">
       <div className="p-6 flex justify-start">
         <Button
-          className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none"
+          className="bg-white hover:bg-white/80 transition-all duration-300 cursor-pointer border-none"
           onClick={() => router.back()}
         >
-          <span className="text-white">
+          <span className="text-foreground">
             <ArrowLeft className="w-5 h-5" />
           </span>
         </Button>
@@ -187,7 +187,7 @@ export default function Checkout() {
                   {plan.title}
                 </div>
               </CardTitle>
-              <CardDescription className="flex justify-start items-center text-4xl text-nowrap text-black font-extrabold py-0 px-1 w-full">
+              <CardDescription className="flex justify-start items-center text-4xl md:text-3xl text-nowrap text-black font-extrabold py-0 px-1 w-full">
                 R$:
                 {billingCycle === 'monthly'
                   ? plan.price.toFixed(2)
@@ -202,7 +202,7 @@ export default function Checkout() {
               <ul className="flex flex-col w-full justify-start gap-4 text-sm font-medium text-black/70">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-green-500" />
+                    <Check className="h-4 w-4 text-foreground" />
                     {f}
                   </li>
                 ))}
@@ -213,10 +213,10 @@ export default function Checkout() {
               <Button
                 onClick={() => handleSelectPlan(plan.id)}
                 disabled={loading !== null}
-                className={`cursor-pointer text-base font-semibold py-6 w-full ${
+                className={`cursor-pointer text-sm md:text-base font-semibold py-4 md:py-6 w-full ${
                   plan.color === 'foreground'
-                    ? '   bg-foreground text-white hover:bg-foreground  '
-                    : '   bg-black border-0.5 text-white hover:bg-black'
+                    ? 'bg-foreground text-white hover:bg-foreground'
+                    : 'bg-white border md:border-2 border-black text-black hover:bg-white/90'
                 }`}
               >
                 {loading === plan.id ? (

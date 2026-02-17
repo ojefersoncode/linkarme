@@ -48,7 +48,7 @@ export function VerifyDomainButton({ domainId }: VerifyDomainButtonProps) {
   return (
     <div className="space-y-2">
       <Button
-        className="bg-white hover:bg-white/80 text-foreground"
+        className="bg-foreground hover:bg-foreground/80 text-white dark:text-white dark:bg-foreground dark:hover:bg-foreground/80 cursor-pointer"
         onClick={handleVerify}
         disabled={isVerifying}
       >

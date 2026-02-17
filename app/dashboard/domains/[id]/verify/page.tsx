@@ -47,32 +47,32 @@ export default async function VerifyDomainPage({
   const fileContent = domain.verification_token;
 
   return (
-    <div className="p-4 md:p-6 space-y-6 bg-background ">
+    <div className="p-4 md:p-6 space-y-6 bg-background">
       <div className="flex items-center gap-4">
         <Button
-          className="bg-foreground/25 hover:bg-foreground/20 dark:hover:bg-foreground/20 dark:hover:text-foreground text-foreground hover:text-foreground"
+          className="bg-white hover:bg-white/80 dark:hover:bg-white/80"
           size="sm"
           asChild
         >
           <Link href="/dashboard/domains">
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-4 w-4 text-black" />
           </Link>
         </Button>
 
-        <h1 className="text-xl font-bold text-accent/90">
+        <h1 className="text-xl font-bold text-black/90">
           Verificar Seu Domínio
         </h1>
       </div>
 
-      <div className="w-full bg-foreground rounded-lg">
-        <Card className="bg-foreground border-none">
+      <div className="w-full bg-white rounded-lg">
+        <Card className="bg-transparent shadow-none text-black border-none">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-white">
+                <CardTitle className="text-black">
                   Status da Verificação
                 </CardTitle>
-                <CardDescription className="text-white">
+                <CardDescription className="text-black">
                   Domínio: {domain.domain}
                 </CardDescription>
               </div>
@@ -111,22 +111,22 @@ export default async function VerifyDomainPage({
         {!domain.verified && (
           <>
             {domain.verification_method === 'dns' && (
-              <Card className="bg-foreground border-none">
+              <Card className="bg-transparent shadow-none text-black border-none">
                 <CardHeader>
-                  <CardTitle className="text-white">
+                  <CardTitle className="text-black">
                     Verificação via DNS TXT
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-black/70">
                     Adicione o seguinte registro TXT no seu provedor de DNS
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label className="text-sm text-white font-medium">
+                    <Label className="text-sm pb-2 text-black font-medium">
                       Nome/Host:
                     </Label>
-                    <div className="flex items-center gap-2 py-1 px-3 bg-background rounded-lg">
-                      <code className="flex-1 text-sm text-foreground dark:text-foreground">
+                    <div className="flex items-center mt-2 gap-2 py-1 px-3 bg-background rounded-lg">
+                      <code className="flex-1 text-sm text-black dark:text-black">
                         _linktraces-verify
                       </code>
                       <CopyButton text="_linktraces-verify" />
@@ -134,11 +134,11 @@ export default async function VerifyDomainPage({
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-sm text-white font-medium">
+                    <Label className="text-sm mb-2 text-black font-medium">
                       Valor:
                     </Label>
-                    <div className="flex items-center gap-2 py-1 px-3 bg-background rounded-lg">
-                      <code className="flex-1 text-sm text-foreground dark:text-foreground break-all">
+                    <div className="flex items-center mt-2 gap-2 py-1 px-3 bg-background rounded-lg">
+                      <code className="flex-1 text-sm text-black dark:text-black break-all">
                         {domain.verification_token}
                       </code>
                       <CopyButton text={domain.verification_token} />
@@ -146,24 +146,24 @@ export default async function VerifyDomainPage({
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-sm text-white font-medium">
+                    <Label className="text-sm text-black font-medium">
                       Tipo:
                     </Label>
-                    <div className="py-2 px-3 bg-background rounded-lg">
-                      <code className="text-sm text-foreground dark:text-foreground">
+                    <div className="py-2 mt-2 px-3 bg-background rounded-lg">
+                      <code className="text-sm text-black dark:text-black">
                         TXT
                       </code>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-background rounded-lg">
-                    <h4 className="font-bold text-foreground dark:text-foreground mb-2">
+                  <div className="py-4">
+                    <h4 className="font-bold text-black dark:text-black mb-2">
                       Instruções:
                     </h4>
-                    <ol className="text-sm text-foreground dark:text-foreground space-y-1 list-decimal list-inside">
+                    <ol className="text-sm text-black dark:text-black space-y-1 list-decimal list-inside">
                       <li>
                         Acesse o painel do seu provedor de DNS (Cloudflare,
-                        GoDaddy, etc.)
+                        Hostinger, etc.)
                       </li>
                       <li>Adicione um novo registro TXT</li>
                       <li>Use "_linkshort-verify" como nome/host</li>
@@ -180,18 +180,18 @@ export default async function VerifyDomainPage({
             )}
 
             {domain.verification_method === 'file' && (
-              <Card className="bg-foreground border-none">
+              <Card className="bg-transparent shadow-none text-black border-none">
                 <CardHeader>
-                  <CardTitle className="text-white dark:text-white">
+                  <CardTitle className="text-black dark:text-black">
                     Verificação via Upload de Arquivo
                   </CardTitle>
-                  <CardDescription className="text-white dark:text-white">
+                  <CardDescription className="text-black dark:text-black">
                     Faça upload do arquivo de verificação para seu servidor
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label className="text-sm text-white dark:text-white font-medium">
+                    <Label className="text-sm text-black font-medium">
                       Nome do arquivo:
                     </Label>
                     <div className="flex items-center gap-2 py-2 px-3 bg-background rounded-lg">
@@ -201,7 +201,7 @@ export default async function VerifyDomainPage({
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-sm text-white font-medium">
+                    <Label className="text-sm text-black font-medium">
                       Conteúdo do arquivo:
                     </Label>
                     <div className="flex items-center gap-2 py-2 px-3 bg-background rounded-lg">
@@ -213,21 +213,21 @@ export default async function VerifyDomainPage({
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-sm text-white font-medium">
+                    <Label className="text-sm text-black font-medium">
                       URL de acesso:
                     </Label>
                     <div className="py-2 px-3 bg-background rounded-lg">
-                      <code className="text-sm text-foreground dark:text-foreground">
+                      <code className="text-sm text-black dark:text-black">
                         https://{domain.domain}/.well-known/{fileName}
                       </code>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-background rounded-lg">
-                    <h4 className="font-medium text-foreground dark:text-foreground mb-2">
+                  <div className="py-4">
+                    <h4 className="font-medium text-black dark:text-black mb-2">
                       Instruções:
                     </h4>
-                    <ol className="text-sm text-foreground dark:text-foreground space-y-1 list-decimal list-inside">
+                    <ol className="text-sm text-black dark:text-black space-y-1 list-decimal list-inside">
                       <li>Crie um arquivo com o nome especificado</li>
                       <li>Adicione o token como conteúdo do arquivo</li>
                       <li>
@@ -243,12 +243,12 @@ export default async function VerifyDomainPage({
               </Card>
             )}
 
-            <Card className="bg-foreground border-none">
+            <Card className="bg-transparent shadow-none text-black border-none">
               <CardContent>
                 <div className="flex w-full justify-between gap-12">
                   <VerifyDomainButton domainId={domain.id} />
                   <Button
-                    className="bg-white text-foreground dark:text-foreground hover:bg-white"
+                    className="bg-foreground text-white dark:text-white hover:bg-foreground/90 dark:hover:bg-foreground/90 cursor-pointer"
                     asChild
                   >
                     <Link href="/dashboard/domains">Voltar</Link>

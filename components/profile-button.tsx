@@ -35,24 +35,22 @@ export function ProfileButton() {
       >
         <DropdownMenuGroup>
           <DropdownMenuLabel className="bg-white hover:bg-white">
-            <div className="flex flex-col">
-              <h2 className="font-bold text-xs pb-1">Email@mail.com</h2>
+            <div className="flex flex-col gap-2">
+              <h2 className="font-bold text-sm">Email@mail.com</h2>
               <Link
                 href={'/dashboard/checkout'}
                 className="flex items-center justify-between"
               >
-                <h2 className="font-semibold text-[0.70rem]">Plano gratuito</h2>
-                <div className="bg-foreground cursor-pointer rounded py-0.5 px-2 text-white text-[0.70rem]">
+                <h2 className="font-semibold text-xs">Plano gratuito</h2>
+                <div className="bg-foreground cursor-pointer rounded py-1 px-4 text-white text-[0.70rem]">
                   Atualizar
                 </div>
               </Link>
             </div>
           </DropdownMenuLabel>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator className="bg-green-200" />
+        <DropdownMenuSeparator className="bg-primary" />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Campanhas</DropdownMenuItem>
-          <DropdownMenuItem>Nova campanha</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Convidar usuarios</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
@@ -66,7 +64,7 @@ export function ProfileButton() {
           <DropdownMenuItem>Termos de uso</DropdownMenuItem>
           <DropdownMenuItem>Ajuda e suporte</DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator className="bg-green-200" />
+        <DropdownMenuSeparator className="bg-primary" />
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <LogoutButton />

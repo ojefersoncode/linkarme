@@ -10,7 +10,7 @@ import './globals.css';
 import { getURL } from '../lib/helpers';
 
 const meta = {
-  title: 'Linktraces',
+  title: 'Crie links curtos personalizados',
   description:
     'Crie links curtos personalizados com seu próprio domínio e acompanhe estatísticas detalhadas',
   robots: 'follow, index',

@@ -92,8 +92,8 @@ export default function Prices() {
             key={plan.id}
             className={`${
               plan.color === 'foreground'
-                ? 'bg-white text-black border-2 border-foreground '
-                : 'bg-white text-black border-none  shadow-xl/20 shadow-foreground'
+                ? 'bg-white text-black border-2 border-foreground'
+                : 'bg-white text-black border-primary'
             }  space-y-4 w-full `}
           >
             <CardHeader className="flex flex-col justify-start pb-0">
@@ -117,7 +117,7 @@ export default function Prices() {
               <ul className="flex flex-col w-full justify-start gap-4 text-sm font-medium text-black/70">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-green-500" />
+                    <Check className="h-4 w-4 text-foreground" />
                     {f}
                   </li>
                 ))}
@@ -127,10 +127,10 @@ export default function Prices() {
             <CardFooter className="flex w-full pb-4 justify-center items-center">
               <Button
                 onClick={handleSelectPlan}
-                className={`cursor-pointer text-base font-semibold py-6 w-full ${
+                className={`cursor-pointer text-sm md:text-base font-semibold py-4 md:py-6 w-full ${
                   plan.color === 'foreground'
                     ? 'bg-foreground text-white hover:bg-foreground'
-                    : 'bg-black border-0.5 text-white hover:bg-black/90'
+                    : 'bg-white border md:border-2 border-black text-black hover:bg-white/90'
                 }`}
               >
                 Escolher seu plano

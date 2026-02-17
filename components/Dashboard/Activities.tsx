@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Table,
@@ -114,14 +114,15 @@ export default async function Activities() {
                       {links.linkData}
                     </TableCell>
                     <TableCell className="text-right ">
-                      <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
-                        <Copy />
-                      </Button>
-                    </TableCell>
-                    <TableCell className="text-right ">
-                      <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
-                        <Pencil />
-                      </Button>
+                      <div className="flex flex-row justify-end items-center gap-4">
+                        <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
+                          <Copy />
+                        </Button>
+
+                        <Button className="cursor-pointer text-accent dark:text-accent bg-primary dark:bg-primary hover:bg-primary/40 dark:hover:bg-primary/40 transition-all duration-300">
+                          <Pencil />
+                        </Button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}

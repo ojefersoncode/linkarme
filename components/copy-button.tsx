@@ -25,10 +25,10 @@ export function CopyButton({ text }: CopyButtonProps) {
     <Button
       size="sm"
       onClick={handleCopy}
-      className="bg-foreground hover:bg-foreground h-8 w-8 p-0"
+      className="bg-foreground hover:bg-foreground/80 cursor-pointer h-8 w-8 p-2"
     >
       {copied ? (
-        <Check className="h-4 w-4 text-green-200 dark:text-green-200" />
+        <Check className="h-4 w-4 text-white dark:text-white" />
       ) : (
         <Copy className="h-4 w-4 text-white dark:text-white" />
       )}

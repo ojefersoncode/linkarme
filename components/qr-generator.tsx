@@ -2,7 +2,14 @@
 
 import { useEffect, useRef, useState } from 'react';
 import QRCodeStyling from 'qr-code-styling';
-import { ImageIcon } from 'lucide-react';
+import {
+  Building,
+  Component,
+  ImageIcon,
+  LayoutTemplate,
+  Loader,
+  QrCode
+} from 'lucide-react';
 import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
@@ -13,6 +20,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from './ui/dialog';
+import { Card } from './ui/card';
 
 export function QrGenerator() {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -66,22 +74,23 @@ export function QrGenerator() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
       <div className="flex flex-col gap-4">
         <div className="text-black">
-          <h1 className="text-xl font-semibold">Detalhes</h1>
-          <h2 className="text-base font-medium">10 QRcodes restantes</h2>
+          <h1 className="text-xl font-semibold">Gerar QR codes</h1>
         </div>
 
-        <Label className="text-black font-medium">URL de destino</Label>
+        <Card className="flex bg-transparent border-none shadow-none flex-col py-2 gap-2">
+          <Label className="text-black font-medium">URL de destino</Label>
 
-        <Input
-          className="py-3 bg-white dark:bg-white border text-black placeholder:text-black/50 border-black/40"
-          placeholder="https://exemplo.com"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-        />
+          <Input
+            className="py-3 bg-white dark:bg-white border text-black placeholder:text-black/50 border-black/40"
+            placeholder="https://exemplo.com"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+        </Card>
 
-        <div className="flex flex-col gap-2 pt-4">
-          <div className="grid grid-cols-2 max-md:grid-cols-1 gap-4 items-center ">
-            <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
+          <div className="grid md:grid-cols-2 items-center">
+            <Card className="flex bg-transparent border-none shadow-none flex-col py-2 gap-2">
               <Label className="text-black font-medium">
                 Definir uma imagem
               </Label>
@@ -111,26 +120,26 @@ export function QrGenerator() {
                   <span>Selecionar imagem</span>
                 </Button>
               </div>
-            </div>
-            <div className="flex flex-col gap-2">
+            </Card>
+
+            <Card className="flex bg-transparent border-none shadow-none flex-col py-2 gap-2">
               <Label className="text-black font-medium">Definir uma cor</Label>
 
               <input
-                className="w-8 h-8 rounded-full border-none cursor-pointer bg-white dark:bg-white"
+                className="h-12 w-12 md:w-8 md:h-8 rounded-full border-none cursor-pointer bg-white dark:bg-white"
                 type="color"
                 value={color}
                 onChange={(e) => setColor(e.target.value)}
               />
+            </Card>
+            <div className="pt-4">
+              <Button
+                onClick={generate}
+                className="bg-foreground text-white w-44 py-3 hover:bg-foreground/80"
+              >
+                Gerar QR Code
+              </Button>
             </div>
-          </div>
-
-          <div className="pt-4">
-            <Button
-              onClick={generate}
-              className="bg-foreground text-white w-44 py-3 hover:bg-foreground/80"
-            >
-              Gerar QR Code
-            </Button>
           </div>
         </div>
       </div>

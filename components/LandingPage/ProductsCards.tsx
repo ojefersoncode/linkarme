@@ -4,13 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 export default function ProductsCards() {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 py-12 px-6 max-md:px-4">
-      <Card className="bg-white border-none shadow-xl/10 shadow-foreground gap-4">
-        <CardHeader className="flex flex-row items-center gap-2">
-          <div className="bg-primary p-1 rounded-lg">
+      <Card className="bg-white border-2 border-primary shadow-none gap-4">
+        <CardHeader className="flex flex-col gap-2">
+          <div className="bg-primary p-2 rounded-lg">
             <Scissors className="h-5 w-5 text-foreground" />
           </div>
 
-          <CardTitle className="text-sm text-black font-semibold py-0">
+          <CardTitle className="text-xl text-black font-semibold py-0">
             Encurtador
           </CardTitle>
         </CardHeader>
@@ -22,12 +22,12 @@ export default function ProductsCards() {
         </CardContent>
       </Card>
 
-      <Card className="bg-white border-none shadow-xl/10 shadow-foreground gap-4">
-        <CardHeader className="flex flex-row items-center gap-2">
-          <div className="bg-primary p-1 rounded-lg">
+      <Card className="bg-white border-2 border-primary shadow-none gap-4">
+        <CardHeader className="flex flex-col gap-2">
+          <div className="bg-primary p-2 rounded-lg">
             <QrCode className="h-5 w-5 text-foreground" />
           </div>
-          <CardTitle className="text-sm text-black font-semibold py-0">
+          <CardTitle className="text-xl text-black font-semibold py-0">
             Qrcodes
           </CardTitle>
         </CardHeader>
@@ -40,12 +40,12 @@ export default function ProductsCards() {
         </CardContent>
       </Card>
 
-      <Card className="bg-white border-none shadow-xl/10 shadow-foreground gap-4">
-        <CardHeader className="flex flex-row items-center gap-2">
-          <div className="bg-primary p-1 rounded-lg">
+      <Card className="bg-white border-2 border-primary shadow-none gap-4">
+        <CardHeader className="flex flex-col gap-2">
+          <div className="bg-primary p-2 rounded-lg">
             <Link className="h-5 w-5 text-foreground" />
           </div>
-          <CardTitle className="text-sm text-black font-semibold py-0">
+          <CardTitle className="text-xl text-black font-semibold py-0">
             Linkbio
           </CardTitle>
         </CardHeader>
