@@ -68,7 +68,7 @@ export function EditCampaig() {
               type="submit"
               className="bg-foreground hover:bg-foreground text-white dark:text-white cursor-pointer border-none"
             >
-              Criar Campanha
+              Salvar alterações
             </Button>
           </DialogFooter>
         </DialogContent>
