@@ -11,42 +11,41 @@ import {
   TableRow
 } from '@/components/ui/table';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
-import { NewCampaig } from '@/components/CampaignsComponents/NewCampaig';
-import { EditCampaig } from '@/components/CampaignsComponents/EditCampaig';
+import { EditPost } from '@/components/SocialMediaComponents/EditPost';
+import { NewPost } from '@/components/SocialMediaComponents/NewPost';
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
+import Link from 'next/link';
 
 const mycampaigns = [
   {
-    Title: 'Campanha 1',
-    paymentStatus: 'Desativado',
-    paymentMethod: 'Luiz, matheus, carla, maria, jose camila'
+    Title: 'Post 1',
+    postStatus: 'Arquivado',
+    postData: '29/01/2025'
   },
   {
-    Title: 'Campanha 2',
-    paymentStatus: 'Desativado',
-    paymentMethod:
-      'Luiz, matheus, carla, maria, jose, pedro, ana, lucas, sophia, rafael, camila'
+    Title: 'Post 2',
+    postStatus: 'Arquivado',
+    postData: '29/01/2025'
   },
   {
-    Title: 'Campanha 3',
-    paymentStatus: 'Ativo',
-    paymentMethod:
-      'Hiago, maria, jose, pedro, ana, lucas, sophia, rafael, camila'
+    Title: 'Post 3',
+    postStatus: 'Ativo',
+    postData: '29/01/2025'
   },
   {
-    Title: 'Campanha 4',
-    paymentStatus: 'Ativo',
-    paymentMethod:
-      'Luiz, matheus, carla, maria, jose, pedro, ana, lucas, camila'
+    Title: 'Post 4',
+    postStatus: 'Ativo',
+    postData: '29/01/2025'
   },
   {
-    Title: 'Campanha 5',
-    paymentStatus: 'Ativo',
-    paymentMethod:
-      'Luiz, matheus, carla, maria, jose, ana, lucas, sophia, rafael'
+    Title: 'Post 5',
+    postStatus: 'Em breve',
+    postData: '29/02/2025'
   }
 ];
 
-export default function Campaigns() {
+export default function SociaMedia() {
   const router = useRouter();
 
   return (
@@ -54,26 +53,32 @@ export default function Campaigns() {
       <NavbarDashboard />
 
       <div className="px-4 md:px-6">
-        <Card className="flex flex-col p-4 bg-white border-none text-black w-full">
+        <Card className="flex flex-col py-4 bg-white border-none text-black w-full">
           <CardHeader className="flex items-center w-full justify-between font-bold text-xl max-md:text-xl">
             <h1>Suas campanhas</h1>
 
-            <NewCampaig />
+            <Link href="/dashboard/social-media/new-post">
+              <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
+                <div className="flex items-center gap-2 text-white">
+                  <Plus className="w-5 h-5" /> Novo Post
+                </div>
+              </Button>
+            </Link>
           </CardHeader>
           <CardContent className="font-medium text-black text-xl max-md:text-base">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-black dark:text-black font-bold w-[100px]">
-                    Nome da campanha
+                  <TableHead className="text-black dark:text-black font-bold">
+                    Post
                   </TableHead>
                   <TableHead className="text-black dark:text-black font-bold">
                     Status
                   </TableHead>
                   <TableHead className="text-black dark:text-black font-bold">
-                    Membros
+                    Data do post
                   </TableHead>
-                  <TableHead className="text-black dark:text-black font-bold">
+                  <TableHead className="justify-end text-black dark:text-black font-bold">
                     Editar
                   </TableHead>
                 </TableRow>
@@ -84,11 +89,11 @@ export default function Campaigns() {
                     <TableCell className="font-medium">
                       {campaign.Title}
                     </TableCell>
-                    <TableCell>{campaign.paymentStatus}</TableCell>
-                    <TableCell>{campaign.paymentMethod}</TableCell>
+                    <TableCell>{campaign.postStatus}</TableCell>
+                    <TableCell>{campaign.postData}</TableCell>
 
-                    <TableCell>
-                      <EditCampaig />
+                    <TableCell className="justify-end">
+                      <EditPost />
                     </TableCell>
                   </TableRow>
                 ))}

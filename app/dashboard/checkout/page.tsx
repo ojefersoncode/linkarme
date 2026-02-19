@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import {
   Card,
   CardContent,
@@ -11,10 +10,10 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 import { Switch } from '@/components/ui/switch';
 import { toast } from 'sonner';
-import { Loader2, Check, ArrowLeft } from 'lucide-react';
+import { Loader2, Check } from 'lucide-react';
+import ArrowBack from '@/components/Dashboard/ArrowBack';
 
 const plans = [
   {
@@ -59,7 +58,6 @@ const plans = [
 ];
 
 export default function Checkout() {
-  const router = useRouter();
   const [billingCycle, setBillingCycle] = useState('monthly');
   const [loading, setLoading] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -121,14 +119,7 @@ export default function Checkout() {
   return (
     <div className="space-y-6 md:p-4 md:items-center bg-background min-h-screen">
       <div className="p-6 flex justify-start">
-        <Button
-          className="bg-white hover:bg-white/80 transition-all duration-300 cursor-pointer border-none"
-          onClick={() => router.back()}
-        >
-          <span className="text-foreground">
-            <ArrowLeft className="w-5 h-5" />
-          </span>
-        </Button>
+        <ArrowBack />
       </div>
 
       {success && (

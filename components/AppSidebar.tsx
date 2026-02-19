@@ -8,7 +8,9 @@ import {
   Globe,
   QrCode,
   ChartNoAxesCombined,
-  Layers
+  Layers,
+  CircleFadingPlus,
+  Radio
 } from 'lucide-react';
 import {
   Sidebar,
@@ -25,11 +27,12 @@ import { usePathname } from 'next/navigation';
 
 const menuItems = [
   { title: 'Inicio', url: '/dashboard', icon: Home },
-  { title: 'Links', url: '/dashboard/links', icon: Link2 },
+  { title: 'Metricas', url: '/dashboard/analytics', icon: BarChart3 },
+  { title: 'Social Media', url: '/dashboard/social-media', icon: Radio },
+  { title: 'Encurtar links', url: '/dashboard/links', icon: Link2 },
+  { title: 'Campanhas', url: '/dashboard/campaigns', icon: Layers },
   { title: 'QR codes', url: '/dashboard/qrcode', icon: QrCode },
   { title: 'Domínios', url: '/dashboard/domains', icon: Globe },
-  { title: 'Analytics', url: '/dashboard/analytics', icon: BarChart3 },
-  { title: 'Campanhas', url: '/dashboard/campaigns', icon: Layers },
   { title: 'Configurações', url: '/dashboard/settings', icon: Settings }
 ];
 
