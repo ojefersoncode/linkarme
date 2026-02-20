@@ -1,23 +1,19 @@
 'use client';
 
-import ArrowBack from '@/components/Dashboard/ArrowBack';
 import { NewPost } from '@/components/SocialMediaComponents/NewPost';
 import { PreviewPost } from '@/components/SocialMediaComponents/PreviewPost';
 import { PreviewVideo } from '@/components/SocialMediaComponents/PreviewShortVideo';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function NewPostPage() {
   return (
     <div className="w-full p-4 md:p-6 bg-background min-h-screen">
-      <div className="pb-4">
-        <ArrowBack />
-      </div>
       <Card className="grid md:grid-cols-2 px-4 border-none shadow-none bg-white dark:bg-white">
         <NewPost />
 
-        <Card className="border-none shadow-none p-4 gap-2 bg-white text-black w-full">
-          <CardHeader className="pb-4 px-0 text-xl font-bold">
+        <Card className="border-none shadow-none px-4 pt-0 gap-2 bg-white text-black w-full">
+          <CardHeader className="pb-0 px-0 md:hidden text-xl font-bold">
             Preview
           </CardHeader>
           <Tabs defaultValue="preview-post" className="bg-white">

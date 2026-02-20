@@ -15,11 +15,12 @@ import {
 } from 'lucide-react';
 import { Textarea } from '../ui/textarea';
 import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
+import Link from 'next/link';
 
 export function NewPost() {
   return (
     <form>
-      <Card className="border-none shadow-none p-4 bg-white text-black w-full">
+      <Card className="border-none shadow-none p-0 bg-white text-black w-full">
         <CardHeader className="px-0">
           <CardTitle className="text-xl font-bold">Novo Post</CardTitle>
         </CardHeader>
@@ -119,14 +120,16 @@ export function NewPost() {
           />
         </CardContent>
 
-        <div className="flex py-4 gap-4 md:gap-6 w-full justify-between">
-          <Button className="flex-1 bg-red-600 hover:bg-red-500 text-white dark:text-white cursor-pointer border-none">
-            Cancelar
-          </Button>
+        <div className="flex pt-2 pb-4 gap-4 md:gap-6 w-full justify-between">
+          <Link className="flex flex-1 w-full" href="/dashboard/social-media/">
+            <Button className="flex-1 bg-red-600 hover:bg-red-500 text-white dark:text-white cursor-pointer border-none py-5 text-base font-semibold">
+              Cancelar
+            </Button>
+          </Link>
 
           <Button
             type="submit"
-            className="flex-1 bg-foreground hover:bg-foreground text-white dark:text-white cursor-pointer border-none"
+            className="flex-1 bg-foreground hover:bg-foreground text-white dark:text-white cursor-pointer border-none py-5 text-base font-semibold"
           >
             Postar
           </Button>

@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/table';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 import { EditPost } from '@/components/SocialMediaComponents/EditPost';
-import { NewPost } from '@/components/SocialMediaComponents/NewPost';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
@@ -53,9 +52,9 @@ export default function SociaMedia() {
       <NavbarDashboard />
 
       <div className="px-4 md:px-6">
-        <Card className="flex flex-col py-4 bg-white border-none text-black w-full">
+        <Card className="flex flex-col py-4 px-0 bg-white border-none text-black w-full">
           <CardHeader className="flex items-center w-full justify-between font-bold text-xl max-md:text-xl">
-            <h1>Suas campanhas</h1>
+            <h1>Postagens Recentes</h1>
 
             <Link href="/dashboard/social-media/new-post">
               <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
