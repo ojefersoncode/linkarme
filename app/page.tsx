@@ -16,12 +16,13 @@ export default function HomePage() {
         <div className="md:text-start space-y-6">
           <div className="space-y-4">
             <h1 className="text-3xl md:text-5xl font-semibold text-black">
-              Gerenciar seus links não precisa ser complicado.
+              Gerencie sua agençia sem complicação.
             </h1>
             <p className="text-base md:text-start md:text-xl font-medium text-black/80">
-              Personalize e acompanhe o desempenho de seus links e QR codes por
-              meio de uma plataforma criada para agências, profissionais de
-              marketing e criadores de conteúdo.
+              Crie links e QR codes personalizados, organize todos os seus
+              perfis sociais e acompanhe o desempenho da sua agência em tempo
+              real. Tudo fica mais eficiente, seus resultados mais claros e suas
+              decisões muito mais estratégicas.
             </p>
           </div>
 
@@ -34,7 +35,7 @@ export default function HomePage() {
               <div className="flex flex-row flex-nowrap items-center gap-1">
                 <Plus className="w-4 h-4 md:w-5 md:h-5 text-black" />
                 <p className="text-sm text-nowrap text-black/80 font-normal">
-                  de 1000 clientes satisfeitos
+                  de 100 clientes satisfeitos
                 </p>
               </div>
 

@@ -16,7 +16,6 @@ import { Button } from '@/components/ui/button';
 import {
   Facebook,
   Instagram,
-  LayoutGrid,
   Music2,
   Plus,
   Radio,

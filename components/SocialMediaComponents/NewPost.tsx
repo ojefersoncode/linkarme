@@ -16,6 +16,29 @@ import {
 import { Textarea } from '../ui/textarea';
 import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
 import Link from 'next/link';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '../ui/select';
+
+const Icons = [
+  { Icons: Music2, value: 'tiktok' },
+  { Icons: Instagram, value: 'instagram' },
+  { Icons: Facebook, value: 'facebook' },
+  { Icons: Youtube, value: 'youtube' },
+  { Icons: X, value: 'x' }
+];
+
+const Profiles = [
+  { Name: 'Luiz', value: 'luiz' },
+  { Name: 'Kariny', value: 'kariny' },
+  { Name: 'Daiane', value: 'daiane' },
+  { Name: 'Jon', value: 'jon' }
+];
 
 export function NewPost() {
   return (
@@ -24,6 +47,7 @@ export function NewPost() {
         <CardHeader className="px-0">
           <CardTitle className="text-xl font-bold">Novo Post</CardTitle>
         </CardHeader>
+
         <CardContent className="px-0">
           <Label htmlFor="name-1">Nome do post</Label>
           <Input
@@ -35,31 +59,40 @@ export function NewPost() {
         </CardContent>
 
         <CardContent className="px-0">
+          <Label htmlFor="username-1">Seus perfis</Label>
+          <Select>
+            <SelectTrigger className="w-full border border-black/50 bg-white hover:bg-white dark:bg-white dark:hover:bg-white text-black dark:text-black cursor-pointer max-w-48 mt-2">
+              <SelectValue placeholder="Selecione um perfil" />
+            </SelectTrigger>
+
+            <SelectContent className="border-none bg-white shadow-xl/20 shadow-black text-black dark:text-black">
+              <SelectGroup>
+                {Profiles.map((profile, index) => (
+                  <SelectItem key={index} value={profile.value}>
+                    {profile.Name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </CardContent>
+
+        <CardContent className="px-0">
           <Label htmlFor="plataforma">Plataformas integradas</Label>
           <div className="pt-2">
             <ToggleGroup variant="outline" type="multiple">
-              <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                <Music2 />
-              </ToggleGroupItem>
-              <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                <Instagram />
-              </ToggleGroupItem>
-
-              <ToggleGroupItem
-                value="strikethrough"
-                aria-label="Toggle strikethrough"
-              >
-                <Facebook />
-              </ToggleGroupItem>
-              <ToggleGroupItem
-                value="strikethrough"
-                aria-label="Toggle strikethrough"
-              >
-                <Youtube />
-              </ToggleGroupItem>
-              <ToggleGroupItem value="italic" aria-label="Toggle italic">
-                <X />
-              </ToggleGroupItem>
+              {Icons.map((item, index) => {
+                const Icon = item.Icons;
+                return (
+                  <ToggleGroupItem
+                    key={index}
+                    value={item.value}
+                    aria-label={item.value}
+                  >
+                    <Icon />
+                  </ToggleGroupItem>
+                );
+              })}
             </ToggleGroup>
           </div>
         </CardContent>
@@ -110,13 +143,12 @@ export function NewPost() {
         </CardContent>
 
         <CardContent className="px-0">
-          <Label htmlFor="username-1">Descrição do post</Label>
           <Textarea
-            className="mt-2 text-black/70 dark:text-black/70 bg-white dark:bg-white border border-black/40 placeholder:text-black/40 md:resize-none"
+            className="text-black/70 dark:text-black/70 bg-white dark:bg-white border border-black/50 placeholder:text-black/60 md:resize-none"
             id="description"
             name="description"
             placeholder="Descrição"
-            rows={7}
+            rows={5}
           />
         </CardContent>
 
