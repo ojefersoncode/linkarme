@@ -116,7 +116,7 @@ export function NewPost() {
             id="description"
             name="description"
             placeholder="Descrição"
-            rows={3}
+            rows={7}
           />
         </CardContent>
 
