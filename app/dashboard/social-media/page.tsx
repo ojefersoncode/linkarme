@@ -13,7 +13,16 @@ import {
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 import { EditPost } from '@/components/SocialMediaComponents/EditPost';
 import { Button } from '@/components/ui/button';
-import { Plus } from 'lucide-react';
+import {
+  Facebook,
+  Instagram,
+  LayoutGrid,
+  Music2,
+  Plus,
+  Radio,
+  X,
+  Youtube
+} from 'lucide-react';
 import Link from 'next/link';
 
 const mycampaigns = [
@@ -52,18 +61,46 @@ export default function SociaMedia() {
       <NavbarDashboard />
 
       <div className="px-4 md:px-6">
-        <Card className="flex flex-col py-4 px-0 bg-white border-none text-black w-full">
-          <CardHeader className="flex items-center w-full justify-between font-bold text-xl max-md:text-xl">
-            <h1>Postagens Recentes</h1>
+        <Card className="flex flex-col w-full gap-6 p-4 bg-white text-black dark:text-black border-none shadow-none">
+          <div className="flex items-center gap-4">
+            <Radio className="size-6" />
+            <h1 className="text-base font-semibold">Conectados</h1>
+          </div>
+          <div className="flex w-full gap-4">
+            <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none text-white">
+              <Music2 className="w-5 h-5" />
+            </Button>
+            <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none text-white">
+              <Youtube className="w-5 h-5" />
+            </Button>
+            <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none text-white">
+              <Instagram className="w-5 h-5" />
+            </Button>
+            <Button className="bg-white hover:bg-white/80 transition-all duration-300 cursor-pointer border text-black">
+              <Facebook className="w-5 h-5" />
+            </Button>
 
+            <Button className="bg-white hover:bg-white/80 transition-all duration-300 cursor-pointer border text-black">
+              <X className="w-5 h-5" />
+            </Button>
+          </div>
+        </Card>
+      </div>
+
+      <div className="px-4 pb-4 md:pb-6 md:px-6">
+        <Card className="flex flex-col py-4 px-0 bg-white border-none text-black w-full">
+          <CardHeader className="flex items-center w-full justify-between max-md:text-xl">
+            <h1 className="font-semibold text-xl">Postagens Recentes</h1>
+          </CardHeader>
+          <CardContent>
             <Link href="/dashboard/social-media/new-post">
-              <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
-                <div className="flex items-center gap-2 text-white">
+              <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none text-white">
+                <div className="flex items-center gap-2">
                   <Plus className="w-5 h-5" /> Novo Post
                 </div>
               </Button>
             </Link>
-          </CardHeader>
+          </CardContent>
           <CardContent className="font-medium text-black text-xl max-md:text-base">
             <Table>
               <TableHeader>
