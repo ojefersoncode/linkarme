@@ -112,7 +112,7 @@ export function NewPost() {
         <CardContent className="px-0">
           <Label htmlFor="username-1">Descrição do post</Label>
           <Textarea
-            className="mt-2 text-black/70 dark:text-black/70 bg-white dark:bg-white border border-black/40 placeholder:text-black/40 resize-none"
+            className="mt-2 text-black/70 dark:text-black/70 bg-white dark:bg-white border border-black/40 placeholder:text-black/40 md:resize-none"
             id="description"
             name="description"
             placeholder="Descrição"
