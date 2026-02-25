@@ -51,11 +51,11 @@ const mycampaigns = [
 
 export default function SociaMedia() {
   return (
-    <div className="space-y-6 bg-background min-h-screen">
+    <div className="space-y-4 bg-background min-h-screen">
       <NavbarDashboard />
 
-      <div className="px-4 md:px-6">
-        <Card className="flex flex-col w-full gap-6 p-4 bg-white text-black dark:text-black border-none shadow-none">
+      <div className="px-4">
+        <Card className="flex flex-col w-full gap-6 p-4 bg-white text-black dark:text-black border-none shadow-none rounded">
           <div className="flex items-center gap-4">
             <Radio className="size-6" />
             <h1 className="text-base font-semibold">Conectados</h1>
@@ -81,8 +81,8 @@ export default function SociaMedia() {
         </Card>
       </div>
 
-      <div className="px-4 pb-4 md:pb-6 md:px-6">
-        <Card className="flex flex-col py-4 px-0 bg-white border-none text-black w-full">
+      <div className="px-4 pb-4">
+        <Card className="flex flex-col py-4 px-0 bg-white border-none rounded text-black w-full">
           <CardHeader className="flex items-center w-full justify-between max-md:text-xl">
             <h1 className="font-semibold text-xl">Postagens Recentes</h1>
           </CardHeader>

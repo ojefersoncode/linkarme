@@ -76,14 +76,15 @@ export default async function DomainsPage() {
           {domains.map((domain) => (
             <Card
               key={domain.id}
-              className="bg-white text-black border-none shadow-xl/20 shadow-foreground"
+              className="bg-white text-black border-none rounded"
             >
               <CardHeader className="bg-white">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div>
                       <CardTitle className="text-lg font-medium flex items-center gap-2">
-                        <Globe className="h-5 w-5 text-black" /> {domain.domain}
+                        <Globe className="h-5 w-5 text-foreground" />{' '}
+                        {domain.domain}
                       </CardTitle>
                       <CardDescription className="text-black/70">
                         Adicionado em{' '}
