@@ -28,8 +28,8 @@ export default async function SettingsPage() {
     <main>
       <NavbarDashboard />
 
-      <div className="p-4 md:p-6 space-y-6">
-        <div className="grid gap-6 bg-white shadow shadow-primary rounded-lg">
+      <div className="p-4 space-y-4">
+        <div className="grid gap-6 bg-white shadow shadow-primary rounded">
           <Card className="bg-white border-none shadow-none">
             <CardHeader>
               <CardTitle className="flex items-center justify-between gap-2">

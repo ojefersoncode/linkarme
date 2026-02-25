@@ -21,7 +21,7 @@ export default async function Qrcode() {
       <NavbarDashboard />
 
       <div className="px-4 w-full">
-        <Card className="bg-white shadow shadow-primary border-none gap-2 w-full">
+        <Card className="bg-white shadow shadow-primary border-none rounded gap-2 w-full">
           {/* FORM */}
           <CardContent className="w-full">
             <QrGenerator />

@@ -8,8 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function NewPostPage() {
   return (
-    <div className="w-full p-4 md:p-6 bg-background min-h-screen">
-      <Card className="grid md:grid-cols-2 px-4 border-none shadow-none bg-white dark:bg-white">
+    <div className="w-full p-4 bg-background min-h-screen">
+      <Card className="grid md:grid-cols-2 px-4 border-none rounded shadow-none bg-white dark:bg-white">
         <NewPost />
 
         <Card className="border-none shadow-none px-4 pt-0 gap-2 bg-white text-black w-full">

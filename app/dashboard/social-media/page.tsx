@@ -1,6 +1,3 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import {
   Table,
@@ -53,8 +50,6 @@ const mycampaigns = [
 ];
 
 export default function SociaMedia() {
-  const router = useRouter();
-
   return (
     <div className="space-y-6 bg-background min-h-screen">
       <NavbarDashboard />

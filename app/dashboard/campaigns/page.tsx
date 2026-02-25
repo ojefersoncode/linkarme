@@ -1,6 +1,3 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import {
   Table,
@@ -18,7 +15,7 @@ const mycampaigns = [
   {
     Title: 'Campanha 1',
     paymentStatus: 'Desativado',
-    paymentMethod: 'Luiz, matheus, carla, maria, jose camila'
+    paymentMethod: 'Luiz, matheus, carla, maria, jose, camila'
   },
   {
     Title: 'Campanha 2',
@@ -47,20 +44,18 @@ const mycampaigns = [
 ];
 
 export default function Campaigns() {
-  const router = useRouter();
-
   return (
-    <div className="space-y-6 bg-background min-h-screen">
+    <div className="space-y-4 bg-background min-h-screen">
       <NavbarDashboard />
 
-      <div className="px-4 md:px-6">
-        <Card className="flex flex-col p-4 bg-white border-none text-black w-full">
-          <CardHeader className="flex items-center w-full justify-between font-bold text-xl max-md:text-xl">
+      <div className="px-4">
+        <Card className="flex flex-col p-4 bg-white border-none rounded text-black w-full">
+          <CardHeader className="flex items-center w-full justify-between font-bold text-xl max-md:text-xl px-0">
             <h1>Suas campanhas</h1>
 
             <NewCampaig />
           </CardHeader>
-          <CardContent className="font-medium text-black text-xl max-md:text-base">
+          <CardContent className="font-medium px-2 text-black text-xl max-md:text-base">
             <Table>
               <TableHeader>
                 <TableRow>
