@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Button } from '../ui/button';
-import { ArrowLeft, ArrowRight, Eye, Pencil, Plus } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Eye, Plus } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
@@ -39,15 +39,9 @@ export default async function Campaigns() {
                 <TableCell className="font-medium">{links.link}</TableCell>
                 <TableCell className="font-medium">{links.linkData}</TableCell>
                 <TableCell className="text-right ">
-                  <div className="flex flex-row justify-end items-center gap-4">
-                    <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
-                      <Eye className="w-5 h-5 text-white" />
-                    </Button>
-
-                    <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
-                      <Pencil className="w-5 h-5 text-white" />
-                    </Button>
-                  </div>
+                  <Button className="bg-transparent hover:bg-transparente dark:hover:bg-transparente cursor-pointer border-none">
+                    <Eye className="w-5 h-5 text-black" />
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

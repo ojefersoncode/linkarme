@@ -51,11 +51,11 @@ export default async function DashboardPage() {
     })) || [];
 
   return (
-    <div className="space-y-6 bg-[#eeeeee] min-h-screen">
+    <div className="space-y-4 bg-[#eeeeee] min-h-screen">
       <NavbarDashboard />
 
-      <div className="grid md:grid-cols-2 gap-4 pb-6 px-6 max-md:px-4 shadow shadow-primary">
-        <Card className="bg-white shadow shadow-primary p-4 border-none">
+      <div className="grid md:grid-cols-2 gap-4 pb-6 px-4 shadow shadow-primary">
+        <Card className="bg-white shadow shadow-primary p-4 rounded border-none">
           <CardHeader className="p-0">
             <h1 className="text-xl px-2 pt-2 md:text-3xl font-semibold text-black">
               Atividades Recentes
@@ -63,10 +63,10 @@ export default async function DashboardPage() {
           </CardHeader>
           <Activities />
         </Card>
-        <Card className="bg-white shadow shadow-primary border-none p-4">
+        <Card className="bg-white shadow shadow-primary border-none rounded p-4">
           <CardHeader className="p-0">
             <h1 className="text-xl px-2 pt-2 md:text-3xl font-semibold text-black">
-              Suas Campanhas
+              Campanhas Recentes
             </h1>
           </CardHeader>
           <Campaigns />

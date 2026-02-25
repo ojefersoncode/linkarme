@@ -8,18 +8,10 @@ import {
   TableRow
 } from '@/components/ui/table';
 import { Button } from '../ui/button';
-import {
-  ArrowLeft,
-  ArrowRight,
-  Copy,
-  Download,
-  Pencil,
-  Plus
-} from 'lucide-react';
+import { ArrowLeft, ArrowRight, Copy, Download, Plus } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-
 import { ExportDataDialog } from '../export-data-dialog';
 
 const links = [
@@ -114,15 +106,9 @@ export default async function Activities() {
                       {links.linkData}
                     </TableCell>
                     <TableCell className="text-right ">
-                      <div className="flex flex-row justify-end items-center gap-4">
-                        <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
-                          <Copy className="w-5 h-5 text-white" />
-                        </Button>
-
-                        <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
-                          <Pencil className="w-5 h-5 text-white" />
-                        </Button>
-                      </div>
+                      <Button className="bg-transparent hover:bg-transparente dark:hover:bg-transparente cursor-pointer border-none">
+                        <Copy className="w-5 h-5 text-black" />
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}
