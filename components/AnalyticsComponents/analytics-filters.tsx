@@ -8,14 +8,14 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Filter } from 'lucide-react';
 
 interface Link {
   id: string;
   slug: string;
   title: string | null;
-  domains: { domain: string } | null;
+  domains: { domain: string }[];
 }
 
 interface AnalyticsFiltersProps {
@@ -49,7 +49,7 @@ export function AnalyticsFilters({
   };
 
   return (
-    <Card className="bg-foreground border-accent/40">
+    <Card className="bg-white border-none text-black">
       <CardContent>
         <div className="flex items-center w-full justify-between pb-4">
           <h1 className="font-bold ">Filtro</h1>
@@ -107,7 +107,7 @@ export function AnalyticsFilters({
               </SelectItem>
               {links.map((link) => (
                 <SelectItem key={link.id} value={link.id}>
-                  {link.domains?.domain}/{link.slug}{' '}
+                  {link.domains?.[0]?.domain}/{link.slug}{' '}
                   {link.title && `- ${link.title}`}
                 </SelectItem>
               ))}

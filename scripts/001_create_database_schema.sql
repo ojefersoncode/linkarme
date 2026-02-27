@@ -97,3 +97,7 @@ CREATE INDEX IF NOT EXISTS idx_links_user_id ON public.links(user_id);
 CREATE INDEX IF NOT EXISTS idx_links_domain_slug ON public.links(domain_id, slug);
 CREATE INDEX IF NOT EXISTS idx_clicks_link_id ON public.clicks(link_id);
 CREATE INDEX IF NOT EXISTS idx_clicks_clicked_at ON public.clicks(clicked_at);
+
+
+
+

@@ -7,10 +7,10 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { AnalyticsFilters } from '@/components/analytics-filters';
-import { TopLinksTable } from '@/components/top-links-table';
-import { ClicksOverTimeChart } from '@/components/clicks-over-time-chart';
-import { GeographicChart } from '@/components/geographic-chart';
+import { AnalyticsFilters } from '@/components/AnalyticsComponents/analytics-filters';
+import { TopLinksTable } from '@/components/AnalyticsComponents/top-links-table';
+import { ClicksOverTimeChart } from '@/components/AnalyticsComponents/clicks-over-time-chart';
+import { GeographicChart } from '@/components/AnalyticsComponents/geographic-chart';
 import { ExportDataDialog } from '@/components/export-data-dialog';
 import { BarChart3, TrendingUp, Globe, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -198,26 +198,16 @@ export default async function AnalyticsPage({
     const userLinks = userLinksResult.data || [];
 
     return (
-      <div className="p-6 max-md:p-0 space-y-6">
-        <div className="flex items-center justify-between bg-foreground border-b border-accent/30 md:hidden">
+      <div className="space-y-4">
+        <div className="flex items-center justify-between bg-foreground border-b border-accent/30 ">
           <NavbarDashboard />
-
-          <div className="flex items-center px-4">
-            <ExportDataDialog links={userLinks} />
-          </div>
         </div>
 
-        <div className="flex items-center justify-between max-md:hidden">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">Analytics</h1>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <ExportDataDialog links={userLinks} />
-          </div>
+        <div className="px-4">
+          <ExportDataDialog links={userLinks} />
         </div>
 
-        <div className="max-md:px-4">
+        <div className="px-4">
           <AnalyticsFilters
             links={userLinks}
             currentDays={days}
@@ -226,80 +216,78 @@ export default async function AnalyticsPage({
         </div>
 
         {/* Overview Cards */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-md:px-4">
-          <Card className="bg-foreground border-accent/40">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-4">
+          <Card className="bg-white border-none gap-2">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0">
+              <CardTitle className="text-sm text-black font-medium">
                 Total de Cliques
               </CardTitle>
-              <BarChart3 className="h-4 w-4 text-primary" />
+              <BarChart3 className="h-4 w-4 text-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-black">
                 {totalClicks.toLocaleString()}
               </div>
-              <p className="text-xs text-muted-foreground">
-                últimos {days} dias
-              </p>
+              <p className="text-xs text-black">últimos {days} dias</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground border-accent/40">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
+          <Card className="bg-white border-none gap-2">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0">
+              <CardTitle className="text-sm text-black font-medium">
                 Visitantes Únicos
               </CardTitle>
-              <Users className="h-4 w-4 text-primary" />
+              <Users className="h-4 w-4 text-black" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-black">
                 {uniqueVisitors.toLocaleString()}
               </div>
-              <p className="text-xs text-muted-foreground">
-                baseado em IPs únicos
-              </p>
+              <p className="text-xs text-black">baseado em IPs únicos</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground border-accent/40">
+          <Card className="bg-white border-none gap-2">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
+              <CardTitle className="text-sm text-black font-medium">
                 Taxa de Cliques
               </CardTitle>
-              <TrendingUp className="h-4 w-4 text-primary" />
+              <TrendingUp className="h-4 w-4 text-black" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-black">
                 {uniqueVisitors > 0
                   ? (totalClicks / uniqueVisitors).toFixed(1)
                   : '0'}
               </div>
-              <p className="text-xs text-muted-foreground">
-                cliques por visitante
-              </p>
+              <p className="text-xs text-black">cliques por visitante</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground border-accent/40">
+          <Card className="bg-white border-none gap-2">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Países</CardTitle>
-              <Globe className="h-4 w-4 text-primary" />
+              <CardTitle className="text-sm text-black font-medium">
+                Países
+              </CardTitle>
+              <Globe className="h-4 w-4 text-black" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-black">
                 {Object.keys(clicksByCountry).length}
               </div>
-              <p className="text-xs text-muted-foreground">países diferentes</p>
+              <p className="text-xs text-black">países diferentes</p>
             </CardContent>
           </Card>
         </div>
 
         {/* Charts */}
-        <div className="grid gap-6 md:grid-cols-2 max-md:px-4">
-          <Card className="bg-foreground border-accent/40">
+        <div className="grid gap-6 md:grid-cols-2 px-4">
+          <Card className="bg-white border-none gap-2">
             <CardHeader>
-              <CardTitle>Cliques ao Longo do Tempo</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-black">
+                Cliques ao Longo do Tempo
+              </CardTitle>
+              <CardDescription className="text-black">
                 Visualize a evolução dos cliques nos últimos {days} dias
               </CardDescription>
             </CardHeader>
@@ -308,10 +296,14 @@ export default async function AnalyticsPage({
             </CardContent>
           </Card>
 
-          <Card className="bg-foreground border-accent/40">
+          <Card className="bg-white border-none gap-2">
             <CardHeader>
-              <CardTitle>Distribuição Geográfica</CardTitle>
-              <CardDescription>Cliques por país</CardDescription>
+              <CardTitle className="text-black">
+                Distribuição Geográfica
+              </CardTitle>
+              <CardDescription className="text-black">
+                Cliques por país
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <GeographicChart data={clicksByCountry} />
@@ -320,8 +312,8 @@ export default async function AnalyticsPage({
         </div>
 
         {/* Top Links Table */}
-        <div className="max-md:px-4 max-md:pb-4">
-          <Card className="bg-foreground border-accent/40">
+        <div className="px-4 pb-4">
+          <Card className="bg-white border-none gap-2">
             <CardHeader>
               <CardTitle>Links Mais Acessados</CardTitle>
               <CardDescription>

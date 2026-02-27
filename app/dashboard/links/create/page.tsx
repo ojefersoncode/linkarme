@@ -24,6 +24,7 @@ import {
 } from '@/components/ui/select';
 import { ArrowLeft, Link2, Shuffle } from 'lucide-react';
 import Link from 'next/link';
+import ArrowBack from '@/components/Dashboard/ArrowBack';
 
 interface Domain {
   id: string;
@@ -193,24 +194,10 @@ export default function CreateLinkPage() {
 
   return (
     <div className="p-6 space-y-6">
-      <div className="flex items-center gap-4">
-        <Button
-          variant="ghost"
-          size="sm"
-          asChild
-          className="bg-transparent hover:bg-transparent dark:hover:bg-transparent dark:hover:text-foreground text-foreground"
-        >
-          <Link href="/home/links">
-            <ArrowLeft className="h-4 w-4" />
-          </Link>
-        </Button>
-        <div>
-          <h1 className="text-2xl font-bold">Criar Link</h1>
-        </div>
-      </div>
+      <ArrowBack />
 
       <div className="flex w-full">
-        <Card className="w-full bg-foreground border-none text-white">
+        <Card className="w-full bg-white border-none text-black">
           <CardHeader>
             <CardTitle className="flex w-full justify-between items-center">
               <span> Configurar Link </span>
@@ -227,10 +214,10 @@ export default function CreateLinkPage() {
                   value={selectedDomain}
                   onValueChange={setSelectedDomain}
                 >
-                  <SelectTrigger className="border-none text-foreground bg-white dark:bg-white hover:bg-white hover:dark:bg-white">
+                  <SelectTrigger className="border border-black/40 text-black bg-white dark:bg-white hover:bg-white hover:dark:bg-white">
                     <SelectValue placeholder="Selecione um domínio" />
                   </SelectTrigger>
-                  <SelectContent className="bg-white dark:bg-white text-foreground dark:text-foreground border-bone">
+                  <SelectContent className="bg-white dark:bg-white text-black dark:text-black border-bone">
                     {domains.map((domain) => (
                       <SelectItem key={domain.id} value={domain.id}>
                         {domain.domain}
@@ -250,17 +237,17 @@ export default function CreateLinkPage() {
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
                     required
-                    className="border-none bg-background dark:bg-background text-foreground dark:text-foreground placeholder:text-foreground dark:placeholder:text-foreground"
+                    className="bg-white dark:bg-white border-black/40 placeholder:text-black/80 text-foreground"
                   />
                   <Button
                     type="button"
-                    className="bg-white hover:bg-white/90 text-foreground"
+                    className="bg-foreground hover:bg-foreground/90 cursor-pointer text-white"
                     onClick={generateRandomSlug}
                   >
                     <Shuffle className="h-4 w-4" />
                   </Button>
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-black/60">
                   Apenas letras, números, hífens e underscores são permitidos
                 </p>
                 {selectedDomain && slug && (
@@ -283,7 +270,7 @@ export default function CreateLinkPage() {
                   value={destinationUrl}
                   onChange={(e) => setDestinationUrl(e.target.value)}
                   required
-                  className="border-none bg-background dark:bg-background text-foreground dark:text-foreground placeholder:text-foreground dark:placeholder:text-foreground"
+                  className="bg-white dark:bg-white border-black/40 placeholder:text-black/80 text-foreground"
                 />
                 <p className="text-sm text-muted-foreground">
                   URL completa para onde o link deve redirecionar
@@ -298,7 +285,7 @@ export default function CreateLinkPage() {
                   placeholder="Título descritivo do link"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="border-none bg-background dark:bg-background text-foreground dark:text-foreground placeholder:text-foreground dark:placeholder:text-foreground"
+                  className="bg-white dark:bg-white border-black/40 placeholder:text-black/80 text-foreground"
                 />
               </div>
 
@@ -306,11 +293,11 @@ export default function CreateLinkPage() {
                 <Label htmlFor="description">Descrição (Opcional)</Label>
                 <Textarea
                   id="description"
-                  placeholder="Descrição detalhada do link"
+                  placeholder="Faça uma descrição sobre o link"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={3}
-                  className="border-none bg-background dark:bg-background text-foreground dark:text-foreground placeholder:text-foreground dark:placeholder:text-foreground"
+                  className="border-none bg-background dark:bg-background text-black dark:text-black placeholder:text-black dark:placeholder:text-black resize-none"
                 />
               </div>
 
@@ -324,12 +311,12 @@ export default function CreateLinkPage() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="bg-white hover:bg-white/80 transition-all duration-300 px-8 text-foreground max-md:text-sm"
+                  className="bg-foreground hover:bg-foreground/90 transition-all duration-300 px-8 border-none text-white max-md:text-sm"
                 >
                   {isLoading ? 'Criando...' : 'Criar Link'}
                 </Button>
                 <Button
-                  className="bg-red-600 hover:bg-red-600 border-none px-8 text-white"
+                  className="bg-red-600 hover:bg-red-500 transition-all duration-300 border-none px-8 text-white"
                   asChild
                 >
                   <Link href="/dashboard/links">Cancelar</Link>
