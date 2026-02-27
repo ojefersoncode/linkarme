@@ -49,41 +49,41 @@ export function AnalyticsFilters({
   };
 
   return (
-    <Card className="bg-white border-none text-black">
-      <CardContent>
-        <div className="flex items-center w-full justify-between pb-4">
-          <h1 className="font-bold ">Filtro</h1>
-          <Filter className="h-4 w-4 text-primary" />
+    <Card className="flex-1 bg-white border-none rounded-md text-black">
+      <CardContent className="space-y-6">
+        <div className="flex items-center w-full gap-4">
+          <Filter className="h-4 w-4 text-black" />
+          <h1 className="font-semibold text-sm">Filtro</h1>
         </div>
         <div className="flex w-full items-center gap-4">
           <Select
             value={currentDays.toString()}
             onValueChange={handleDaysChange}
           >
-            <SelectTrigger className="w-[180px] bg-primary dark:bg-primary hover:bg-primary dark:hover:bg-primary">
+            <SelectTrigger className="w-full flex-1 bg-white dark:bg-white hover:bg-white dark:hover:bg-white border-black/40 cursor-pointer">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-background">
+            <SelectContent className="border-none shadow-xl bg-white text-black dark:text-black">
               <SelectItem
-                className="bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary"
+                className="hover:bg-primary dark:hover:bg-primary"
                 value="7"
               >
                 Últimos 7 dias
               </SelectItem>
               <SelectItem
-                className="bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary"
+                className="hover:bg-primary dark:hover:bg-primary"
                 value="30"
               >
                 Últimos 30 dias
               </SelectItem>
               <SelectItem
-                className="bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary"
+                className="hover:bg-primary dark:hover:bg-primary"
                 value="90"
               >
                 Últimos 90 dias
               </SelectItem>
               <SelectItem
-                className="bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary"
+                className="hover:bg-primary dark:hover:bg-primary"
                 value="365"
               >
                 Último ano
@@ -95,12 +95,12 @@ export function AnalyticsFilters({
             value={currentLinkId || 'all'}
             onValueChange={handleLinkChange}
           >
-            <SelectTrigger className="w-[250px] bg-primary dark:bg-primary hover:bg-primary dark:hover:bg-primary">
+            <SelectTrigger className="w-full flex-1 bg-white dark:bg-white hover:bg-white dark:hover:bg-white border-black/40 cursor-pointer">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-background">
+            <SelectContent className="border-none shadow-xl bg-white text-black dark:text-black">
               <SelectItem
-                className="bg-background dark:bg-background hover:bg-primary dark:hover:bg-primary"
+                className="hover:bg-background dark:hover:bg-background text-black dark:text-black"
                 value="all"
               >
                 Todos os links
