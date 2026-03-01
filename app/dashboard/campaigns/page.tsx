@@ -14,32 +14,39 @@ import { EditCampaig } from '@/components/CampaignsComponents/EditCampaig';
 const mycampaigns = [
   {
     Title: 'Campanha 1',
-    paymentStatus: 'Desativado',
-    paymentMethod: 'Luiz, matheus, carla, maria, jose, camila'
+    Type: 'story',
+    Status: 'Desativado',
+    Duration: '15 dias',
+    Members: 'Luiz, matheus, carla, maria, jose, camila'
   },
   {
     Title: 'Campanha 2',
-    paymentStatus: 'Desativado',
-    paymentMethod:
+    Type: 'story',
+    Status: 'Desativado',
+    Duration: '15 dias',
+    Members:
       'Luiz, matheus, carla, maria, jose, pedro, ana, lucas, sophia, rafael, camila'
   },
   {
     Title: 'Campanha 3',
-    paymentStatus: 'Ativo',
-    paymentMethod:
-      'Hiago, maria, jose, pedro, ana, lucas, sophia, rafael, camila'
+    Type: 'story',
+    Status: 'Ativo',
+    Duration: '30 dias',
+    Members: 'Hiago, maria, jose, pedro, ana, lucas, sophia, rafael, camila'
   },
   {
     Title: 'Campanha 4',
-    paymentStatus: 'Ativo',
-    paymentMethod:
-      'Luiz, matheus, carla, maria, jose, pedro, ana, lucas, camila'
+    Type: 'story',
+    Status: 'Ativo',
+    Duration: '15 dias',
+    Members: 'Luiz, matheus, carla, maria, jose, pedro, ana, lucas, camila'
   },
   {
     Title: 'Campanha 5',
-    paymentStatus: 'Ativo',
-    paymentMethod:
-      'Luiz, matheus, carla, maria, jose, ana, lucas, sophia, rafael'
+    Type: 'story',
+    Status: 'Ativo',
+    Duration: '15 dias',
+    Members: 'Luiz, matheus, carla, maria, jose, ana, lucas, sophia, rafael'
   }
 ];
 
@@ -60,7 +67,13 @@ export default function Campaigns() {
               <TableHeader>
                 <TableRow>
                   <TableHead className="text-black dark:text-black font-bold w-[100px]">
-                    Nome da campanha
+                    Nome
+                  </TableHead>
+                  <TableHead className="text-black dark:text-black font-bold">
+                    Tipo
+                  </TableHead>
+                  <TableHead className="text-black dark:text-black font-bold">
+                    Duração
                   </TableHead>
                   <TableHead className="text-black dark:text-black font-bold">
                     Status
@@ -79,8 +92,10 @@ export default function Campaigns() {
                     <TableCell className="font-medium">
                       {campaign.Title}
                     </TableCell>
-                    <TableCell>{campaign.paymentStatus}</TableCell>
-                    <TableCell>{campaign.paymentMethod}</TableCell>
+                    <TableCell>{campaign.Type}</TableCell>
+                    <TableCell>{campaign.Duration}</TableCell>
+                    <TableCell>{campaign.Status}</TableCell>
+                    <TableCell>{campaign.Members}</TableCell>
 
                     <TableCell>
                       <EditCampaig />

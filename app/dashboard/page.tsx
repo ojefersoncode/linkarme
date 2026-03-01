@@ -1,8 +1,7 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { Globe, Link2, BarChart3, TrendingUp } from 'lucide-react';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader } from '@/components/ui/card';
 import Activities from '@/components/Dashboard/Activities';
 import Campaigns from '@/components/Dashboard/Campaigns';
 

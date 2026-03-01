@@ -219,11 +219,11 @@ export default async function AnalyticsPage({
         {/* Overview Cards */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-4">
           <Card className="bg-white border-none rounded-md gap-2 space-y-2">
-            <CardHeader className="flex flex-row items-center gap-4">
-              <BarChart3 className="size-4 text-foreground" />
+            <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-sm text-black font-medium">
                 Total de Cliques
               </CardTitle>
+              <BarChart3 className="size-4 text-foreground" />
             </CardHeader>
             <CardContent>
               <div className="flex items-center gap-2 text-2xl font-bold text-black">
@@ -236,11 +236,11 @@ export default async function AnalyticsPage({
           </Card>
 
           <Card className="bg-white border-none rounded-md gap-2 space-y-2">
-            <CardHeader className="flex flex-row items-center gap-4">
-              <Users className="size-4 text-foreground" />
+            <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-sm text-black font-medium">
                 Visitantes Únicos
               </CardTitle>
+              <Users className="size-4 text-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-black">
@@ -250,28 +250,28 @@ export default async function AnalyticsPage({
           </Card>
 
           <Card className="bg-white border-none rounded-md gap-2 space-y-2">
-            <CardHeader className="flex flex-row items-center gap-4">
-              <TrendingUp className="size-4 text-foreground" />
+            <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-sm text-black font-medium">
                 Taxa de Cliques
               </CardTitle>
+              <TrendingUp className="size-4 text-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-black">
                 {uniqueVisitors > 0
                   ? (totalClicks / uniqueVisitors).toFixed(1)
-                  : '0'}{' '}
+                  : '0'}
                 %
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-white border-none rounded-md gap-2 space-y-2">
-            <CardHeader className="flex flex-row items-center gap-4">
-              <Globe className="size-4 text-foreground" />
+            <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-sm text-black font-medium">
                 Países
               </CardTitle>
+              <Globe className="size-4 text-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-black">

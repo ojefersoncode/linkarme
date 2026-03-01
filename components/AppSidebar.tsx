@@ -10,7 +10,9 @@ import {
   ChartNoAxesCombined,
   Layers,
   CircleFadingPlus,
-  Radio
+  Radio,
+  FolderTree,
+  Chrome
 } from 'lucide-react';
 import {
   Sidebar,
@@ -28,8 +30,9 @@ import { usePathname } from 'next/navigation';
 const menuItems = [
   { title: 'Inicio', url: '/dashboard', icon: Home },
   { title: 'Metricas', url: '/dashboard/analytics', icon: BarChart3 },
-  { title: 'Social Media', url: '/dashboard/social-media', icon: Radio },
   { title: 'Encurtar links', url: '/dashboard/links', icon: Link2 },
+  { title: 'Social Media', url: '/dashboard/social-media', icon: Radio },
+  { title: 'Navegador', url: '/dashboard/workflow', icon: Chrome },
   { title: 'Campanhas', url: '/dashboard/campaigns', icon: Layers },
   { title: 'QR codes', url: '/dashboard/qrcode', icon: QrCode },
   { title: 'Domínios', url: '/dashboard/domains', icon: Globe },
