@@ -1,43 +1,77 @@
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import { SearchIcon } from 'lucide-react';
 import { Input } from '../ui/input';
-import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/dialog';
+import { SearchIcon } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 export function Search() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button className="bg-white hover:bg-white text-foreground px-3 border-none">
-          <div className="flex items-center gap-2">
-            <SearchIcon />
-          </div>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="w-full mr-4 z-40 bg-white text-accent border-none"
-        align="start"
-      >
-        <DropdownMenuGroup>
-          <DropdownMenuLabel className="p-4 rounded-lg shadow-4xl shadow-accent">
-            <div className="flex items-center gap-2">
+    <Dialog>
+      <form>
+        <DialogTrigger asChild>
+          <Button className="bg-transparent hover:bg-transparent cursor-pointer border-none text-black/80 dark:text-black/80">
+            <SearchIcon className="size-5" />
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-md w-full border-none shadow-xl bg-white text-black">
+          <DialogHeader>
+            <DialogTitle className="text-black">Pesquisar</DialogTitle>
+          </DialogHeader>
+
+          <div className="flex flex-col">
+            <div className="flex items-center gap-4">
               <Input
-                placeholder="buscar..."
-                className="bg-white dark:bg-white hover:bg-background border-black/40 text-black placeholder:text-black/80"
+                type="text"
+                placeholder="Pesquisar..."
+                className="border-black/40 bg-white dark:bg-white focus:ring-0 p-4"
               />
-              <Button className="bg-foreground hover:bg-foreground text-white hover:text-white">
-                <SearchIcon />
+              <Button className="p-4 bg-foreground hover:bg-foreground/90 border-none cursor-pointer text-white">
+                <SearchIcon className="size-5" />
               </Button>
             </div>
-          </DropdownMenuLabel>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+
+            <Card className="bg-white gap-2 text-black border-none shadow-none">
+              <CardHeader className="px-0">
+                <CardTitle className="py-0 text-sm font-semibold">
+                  Resultados da pesquisa
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="px-0 pt-0">
+                <ul className="flex flex-col gap-2 text-xs font-normal">
+                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    Resultado 1
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    Resultado 2
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    Resultado 3
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    Resultado 4
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    Resultado 5
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <DialogFooter className="pt-4 border-t">
+            <Button className="w-full text-black bg-white hover:bg-white border-none cursor-pointer underline">
+              Ver todos os resultados
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </form>
+    </Dialog>
   );
 }

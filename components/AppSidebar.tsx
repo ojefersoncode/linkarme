@@ -53,10 +53,10 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="justify-between bg-white border-t pt-1 border-primary">
+      <SidebarContent className="justify-between bg-white border-t pt-1 border-primary shadow-none">
         <SidebarGroup>
-          <SidebarGroupContent className="px-2 ">
-            <SidebarMenu>
+          <SidebarGroupContent className="px-2 border-none shadow-none">
+            <SidebarMenu className="border-none shadow-none">
               {menuItems.map((item) => {
                 const isActive = pathname === item.url;
 

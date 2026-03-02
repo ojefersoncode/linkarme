@@ -2,7 +2,16 @@
 
 import { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
 import { Card } from '../ui/card';
+import { Button } from '../ui/button';
+import { Plus } from 'lucide-react';
 
 export default function WorkTabs() {
   const [tabs] = useState([
@@ -12,11 +21,36 @@ export default function WorkTabs() {
     { id: 'tab-4', title: 'Youtube' },
     { id: 'tab-5', title: 'X' }
   ]);
-
   const [activeTab, setActiveTab] = useState('tab-1');
+
+  const [profiles] = useState([
+    { id: 'profile-1', title: 'Luiz' },
+    { id: 'profile-2', title: 'Jeferson' }
+  ]);
+
+  const [selectedProfile, setSelectedProfile] = useState('profile-1');
 
   return (
     <Card className="bg-transparent pt-0 shadow-none border-none">
+      <div className="flex items-center gap-4">
+        <Select value={selectedProfile} onValueChange={setSelectedProfile}>
+          <SelectTrigger className="border-none text-black bg-white dark:bg-white hover:bg-white hover:dark:bg-white cursor-pointer w-44">
+            <SelectValue className="text-foreground" />
+          </SelectTrigger>
+          <SelectContent className="bg-white dark:bg-white text-black dark:text-black border-none shadow-xl">
+            <SelectItem value="all">Meus perfis</SelectItem>
+            {profiles.map((profile) => (
+              <SelectItem key={profile.id} value={profile.id}>
+                {profile.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Button className="bg-white hover:bg-white cursor-pointer">
+          <Plus />
+        </Button>
+      </div>
+
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="flex gap-2 items-center bg-transparent dark:bg-transparent">
           {tabs.map((tab) => (

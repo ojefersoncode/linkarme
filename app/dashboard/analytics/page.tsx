@@ -9,14 +9,13 @@ import {
 } from '@/components/ui/card';
 import { AnalyticsFilters } from '@/components/AnalyticsComponents/analytics-filters';
 import { TopLinksTable } from '@/components/AnalyticsComponents/top-links-table';
-import { ClicksOverTimeChart } from '@/components/AnalyticsComponents/clicks-over-time-chart';
-import { GeographicChart } from '@/components/AnalyticsComponents/geographic-chart';
 import { ExportDataDialog } from '@/components/export-data-dialog';
 import { BarChart3, TrendingUp, Globe, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
-import CardsUse from '@/components/AnalyticsComponents/CardsUse';
+import { ChartClicks } from '@/components/AnalyticsComponents/Chart-clicks';
+import ChartOverView from '@/components/AnalyticsComponents/ChartOverView';
 
 interface Link {
   id: string;
@@ -204,11 +203,9 @@ export default async function AnalyticsPage({
           <NavbarDashboard />
         </div>
 
-        <div className="px-4">
+        <div className="flex items-center justify-between px-4">
           <ExportDataDialog links={userLinks} />
-        </div>
 
-        <div className="px-4">
           <AnalyticsFilters
             links={userLinks}
             currentDays={days}
@@ -216,86 +213,13 @@ export default async function AnalyticsPage({
           />
         </div>
 
-        {/* Overview Cards */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-4">
-          <Card className="bg-white border-none rounded-md gap-2 space-y-2">
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-sm text-black font-medium">
-                Total de Cliques
-              </CardTitle>
-              <BarChart3 className="size-4 text-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-2 text-2xl font-bold text-black">
-                {totalClicks.toLocaleString()}
-                <p className="text-xs font-normal mt-2 text-black">
-                  {days} dias
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-none rounded-md gap-2 space-y-2">
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-sm text-black font-medium">
-                Visitantes Únicos
-              </CardTitle>
-              <Users className="size-4 text-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-black">
-                {uniqueVisitors.toLocaleString()}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-none rounded-md gap-2 space-y-2">
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-sm text-black font-medium">
-                Taxa de Cliques
-              </CardTitle>
-              <TrendingUp className="size-4 text-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-black">
-                {uniqueVisitors > 0
-                  ? (totalClicks / uniqueVisitors).toFixed(1)
-                  : '0'}
-                %
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-none rounded-md gap-2 space-y-2">
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-sm text-black font-medium">
-                Países
-              </CardTitle>
-              <Globe className="size-4 text-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-black">
-                {Object.keys(clicksByCountry).length}
-              </div>
-            </CardContent>
-          </Card>
+        <div className="px-4">
+          <ChartOverView searchParams={searchParams} />
         </div>
 
         {/* Charts */}
         <div className="grid px-4">
-          <Card className="bg-white border-none rounded-md gap-2">
-            <CardHeader>
-              <CardTitle className="text-black">
-                Cliques ao Longo do Tempo
-              </CardTitle>
-              <CardDescription className="text-black">
-                Visualize a evolução dos cliques nos últimos {days} dias
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ClicksOverTimeChart data={clicksByDay} days={days} />
-            </CardContent>
-          </Card>
+          <ChartClicks />
         </div>
 
         {/* Top Links Table */}
