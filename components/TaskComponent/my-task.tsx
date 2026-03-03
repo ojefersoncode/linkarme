@@ -152,10 +152,7 @@ export default function Kanban() {
           const cfg = PRIORITY_CONFIG[priority];
           const col = tasksByPriority(priority);
           return (
-            <div
-              key={priority}
-              className="flex flex-col gap-3 border border-black/20 rounded-sm"
-            >
+            <div key={priority} className="flex flex-col gap-3 border-none">
               <div
                 className={`flex items-center gap-2 px-3 py-2 rounded-sm ${cfg.light} ${cfg.border} border`}
               >
@@ -174,7 +171,7 @@ export default function Kanban() {
                 {col.map((task) => (
                   <div
                     key={task.id}
-                    className="bg-white border-b border-gray-300 p-4 flex flex-col gap-2 hover:shadow-md transition-shadow"
+                    className="bg-white border rounded-sm border-gray-300 p-4 flex flex-col gap-2 shadow-primary hover:shadow-md md:hover:shadow-lg transition-shadow"
                   >
                     <div className="flex items-center justify-between gap-2">
                       <h3 className="font-semibold text-gray-800 text-sm">
