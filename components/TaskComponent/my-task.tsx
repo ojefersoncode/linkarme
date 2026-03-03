@@ -26,7 +26,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { Dot, EllipsisVertical, Pencil, Trash } from 'lucide-react';
+import { Dot, EllipsisVertical, Pencil, Plus, Trash } from 'lucide-react';
 import { Card } from '../ui/card';
 
 type PriorityType = 'Baixa' | 'Média' | 'Alta';
@@ -136,14 +136,14 @@ export default function Kanban() {
   };
 
   return (
-    <div className="min-h-screen bg-white p-6 font-sans">
-      <div className="flex items-center justify-between mb-6">
+    <Card className="min-h-screen bg-white border-none shadow rounded-sm p-6 max-md:p-4 font-sans">
+      <div className="flex items-center justify-between mb-2">
         <h1 className="text-xl font-bold text-gray-800">Tarefas</h1>
         <Button
           onClick={() => setShowAddModal(true)}
-          className="bg-foreground hover:bg-foreground/90  text-white gap-2"
+          className="bg-foreground hover:bg-foreground/90 cursor-pointer text-white gap-2"
         >
-          <span className="text-lg leading-none">+</span> Nova tarefa
+          <Plus className="size-4" /> Nova tarefa
         </Button>
       </div>
 
@@ -382,6 +382,6 @@ export default function Kanban() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </div>
+    </Card>
   );
 }
