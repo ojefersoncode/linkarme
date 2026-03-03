@@ -12,14 +12,14 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { ChevronDown, CircleUserRound } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { LogoutButton } from './Dashboard/Logout';
 
 export function ProfileButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="bg-white hover:bg-white text-accent border border-accent/30 max-md:px-3">
+        <Button className="bg-white hover:bg-white shadow text-black cursor-pointer border-none max-md:px-3">
           <div className="flex items-center gap-2">
             <div className="flex justify-center items-center text-center rounded-full w-6 h-6 bg-foreground">
               <span className="text-white text-sm font-bold"> J </span>

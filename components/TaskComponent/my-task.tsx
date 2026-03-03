@@ -8,6 +8,13 @@ import {
   DialogTitle,
   DialogFooter
 } from '@/components/ui/dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -19,7 +26,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { Pencil, Trash } from 'lucide-react';
+import { Dot, EllipsisVertical, Pencil, Trash } from 'lucide-react';
 
 type PriorityType = 'Baixa' | 'Média' | 'Alta';
 
@@ -76,7 +83,8 @@ const initialTasks: Task[] = [
   {
     id: 3,
     title: 'Tarefa 3',
-    description: 'O conteúdo fica aqui, e você poderá editá-lo posteriormente',
+    description:
+      'O conteúdo fica aqui, e você poderá editá-lo posteriormente, mas essa tarefa tem uma descrição um pouco maior para testar o comportamento do texto quando ele ultrapassa o limite de linhas definido no card. Vamos ver como fica quando isso acontecer.',
     priority: 'Média'
   },
   {
@@ -164,26 +172,46 @@ export default function Kanban() {
                     key={task.id}
                     className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col gap-2 hover:shadow-md transition-shadow"
                   >
-                    <div className="flex items-start justify-between gap-2">
-                      <h3 className="font-semibold text-gray-800 text-sm leading-snug">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="font-semibold text-gray-800 text-sm">
                         {task.title}
                       </h3>
-                      <div className="flex gap-1 shrink-0">
-                        <button
-                          onClick={() => setEditingTask({ ...task })}
-                          className="p-1.5 rounded-lg text-gray-400 hover:text-green-600 hover:bg-green-50 transition-colors"
+
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <button className="p-1 rounded cursor-pointer hover:bg-background transition-colors">
+                            <EllipsisVertical className="w-4 h-4 text-black" />
+                          </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                          className="flex-1 bg-white shadow-xl border-none"
+                          align="start"
                         >
-                          <Pencil className="size-4" />
-                        </button>
-                        <button
-                          onClick={() => handleDelete(task.id)}
-                          className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors"
-                        >
-                          <Trash className="size-4" />
-                        </button>
-                      </div>
+                          <DropdownMenuGroup>
+                            <DropdownMenuItem
+                              className="text-black hover:text-white"
+                              onClick={() => setEditingTask({ ...task })}
+                            >
+                              <div className="flex items-center gap-2 ">
+                                <Pencil className="size-4 " />
+                                <span> Editar</span>
+                              </div>
+                            </DropdownMenuItem>
+
+                            <DropdownMenuItem
+                              className="text-black hover:text-white dark:hover:text-white"
+                              onClick={() => handleDelete(task.id)}
+                            >
+                              <div className="flex items-center gap-2 ">
+                                <Trash className="size-4 " />
+                                <span> Excluir</span>
+                              </div>
+                            </DropdownMenuItem>
+                          </DropdownMenuGroup>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     </div>
-                    <p className="text-xs text-gray-500 leading-relaxed bg-background rounded-lg p-2">
+                    <p className="text-xs text-gray-500 leading-relaxed bg-background rounded-lg overflow-hidden line-clamp-3 p-1">
                       {task.description}
                     </p>
                   </div>
@@ -205,12 +233,15 @@ export default function Kanban() {
       >
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Editar tarefa</DialogTitle>
+            <DialogTitle className="text-black dark:text-black">
+              Editar tarefa
+            </DialogTitle>
           </DialogHeader>
           <div className="flex flex-col gap-4 py-2">
             <div className="flex flex-col gap-1.5">
-              <Label>Título</Label>
+              <Label className="text-black dark:text-black">Título</Label>
               <Input
+                className="bg-white dark:bg-white border-none shadow text-black placeholder:text-gray-500"
                 value={editingTask?.title ?? ''}
                 onChange={(e) =>
                   setEditingTask((p) =>
@@ -220,9 +251,10 @@ export default function Kanban() {
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <Label>Descrição</Label>
+              <Label className="text-black dark:text-black">Descrição</Label>
               <Textarea
-                rows={3}
+                rows={4}
+                className="bg-white dark:bg-white border-none shadow text-black resize-none placeholder:text-gray-500"
                 value={editingTask?.description ?? ''}
                 onChange={(e) =>
                   setEditingTask((p) =>
@@ -232,7 +264,7 @@ export default function Kanban() {
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <Label>Prioridade</Label>
+              <Label className="text-black dark:text-black">Prioridade</Label>
               <Select
                 value={editingTask?.priority}
                 onValueChange={(v) =>

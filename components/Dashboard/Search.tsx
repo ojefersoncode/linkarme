@@ -16,8 +16,8 @@ export function Search() {
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button className="bg-transparent hover:bg-transparent cursor-pointer border-none text-black/80 dark:text-black/80">
-            <SearchIcon className="size-5" />
+          <Button className="bg-transparent hover:bg-transparent cursor-pointer shadow border-none text-black/80 dark:text-black/80">
+            <SearchIcon className="size-4" />
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md w-full border-none shadow-xl bg-white text-black">
