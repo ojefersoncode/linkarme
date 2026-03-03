@@ -27,6 +27,7 @@ import {
   SelectValue
 } from '@/components/ui/select';
 import { Dot, EllipsisVertical, Pencil, Trash } from 'lucide-react';
+import { Card } from '../ui/card';
 
 type PriorityType = 'Baixa' | 'Média' | 'Alta';
 
@@ -146,14 +147,17 @@ export default function Kanban() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:gap-6 gap-4">
         {PRIORITIES.map((priority) => {
           const cfg = PRIORITY_CONFIG[priority];
           const col = tasksByPriority(priority);
           return (
-            <div key={priority} className="flex flex-col gap-3">
+            <div
+              key={priority}
+              className="flex flex-col gap-3 border border-black/20 rounded-sm"
+            >
               <div
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg ${cfg.light} ${cfg.border} border`}
+                className={`flex items-center gap-2 px-3 py-2 rounded-sm ${cfg.light} ${cfg.border} border`}
               >
                 <div className={`w-3 h-3 rounded-full ${cfg.color}`} />
                 <span className={`text-sm font-semibold ${cfg.text}`}>
@@ -170,7 +174,7 @@ export default function Kanban() {
                 {col.map((task) => (
                   <div
                     key={task.id}
-                    className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col gap-2 hover:shadow-md transition-shadow"
+                    className="bg-white border-b border-gray-300 p-4 flex flex-col gap-2 hover:shadow-md transition-shadow"
                   >
                     <div className="flex items-center justify-between gap-2">
                       <h3 className="font-semibold text-gray-800 text-sm">
@@ -211,7 +215,7 @@ export default function Kanban() {
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </div>
-                    <p className="text-xs text-gray-500 leading-relaxed bg-background rounded-lg overflow-hidden line-clamp-3 p-1">
+                    <p className="text-xs text-gray-500 leading-relaxed bg-background rounded-lg overflow-hidden line-clamp-3 px-2 py-1">
                       {task.description}
                     </p>
                   </div>
@@ -231,17 +235,17 @@ export default function Kanban() {
         open={!!editingTask}
         onOpenChange={(open) => !open && setEditingTask(null)}
       >
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md bg-white border-none shadow">
           <DialogHeader>
             <DialogTitle className="text-black dark:text-black">
               Editar tarefa
             </DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col gap-4 py-2">
-            <div className="flex flex-col gap-1.5">
+          <Card className="flex flex-col gap-6 bg-white dark:bg-white border-none shadow-none">
+            <div className="flex flex-col gap-2">
               <Label className="text-black dark:text-black">Título</Label>
               <Input
-                className="bg-white dark:bg-white border-none shadow text-black placeholder:text-gray-500"
+                className="bg-white dark:bg-white border border-black/20 shadow text-black placeholder:text-gray-500"
                 value={editingTask?.title ?? ''}
                 onChange={(e) =>
                   setEditingTask((p) =>
@@ -250,11 +254,11 @@ export default function Kanban() {
                 }
               />
             </div>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-2">
               <Label className="text-black dark:text-black">Descrição</Label>
               <Textarea
                 rows={4}
-                className="bg-white dark:bg-white border-none shadow text-black resize-none placeholder:text-gray-500"
+                className="bg-white dark:bg-white border border-black/20 shadow text-black resize-none placeholder:text-gray-500"
                 value={editingTask?.description ?? ''}
                 onChange={(e) =>
                   setEditingTask((p) =>
@@ -263,7 +267,7 @@ export default function Kanban() {
                 }
               />
             </div>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-3">
               <Label className="text-black dark:text-black">Prioridade</Label>
               <Select
                 value={editingTask?.priority}
@@ -273,7 +277,7 @@ export default function Kanban() {
                   )
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger className="bg-white dark:bg-white hover:bg-white dark:hover:bg-white border border-black/20 shadow cursor-pointer text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -285,13 +289,16 @@ export default function Kanban() {
                 </SelectContent>
               </Select>
             </div>
-          </div>
+          </Card>
           <DialogFooter className="gap-2">
-            <Button variant="outline" onClick={() => setEditingTask(null)}>
+            <Button
+              className="bg-white hover:bg-white text-black border border-black/20 shadow cursor-pointer"
+              onClick={() => setEditingTask(null)}
+            >
               Cancelar
             </Button>
             <Button
-              className="bg-green-700 hover:bg-green-800 text-white"
+              className="bg-foreground hover:bg-foreground/90 text-white cursor-pointer"
               onClick={handleSaveEdit}
             >
               Salvar
@@ -307,14 +314,17 @@ export default function Kanban() {
           if (!open) setNewTask(EMPTY_TASK);
         }}
       >
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md bg-white border-none shadow">
           <DialogHeader>
-            <DialogTitle>Nova tarefa</DialogTitle>
+            <DialogTitle className="text-black dark:text-black">
+              Nova tarefa
+            </DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col gap-4 py-2">
-            <div className="flex flex-col gap-1.5">
-              <Label>Título</Label>
+          <div className="flex flex-col gap-6 py-2">
+            <div className="flex flex-col gap-2">
+              <Label className="text-black dark:text-black">Título</Label>
               <Input
+                className="bg-white dark:bg-white border border-black/20 shadow text-black"
                 placeholder="Nome da tarefa"
                 value={newTask.title}
                 onChange={(e) =>
@@ -322,10 +332,11 @@ export default function Kanban() {
                 }
               />
             </div>
-            <div className="flex flex-col gap-1.5">
-              <Label>Descrição</Label>
+            <div className="flex flex-col gap-2">
+              <Label className="text-black dark:text-black">Descrição</Label>
               <Textarea
-                rows={3}
+                rows={4}
+                className="bg-white dark:bg-white border border-black/20 shadow text-black resize-none placeholder:text-gray-500"
                 placeholder="Descreva a tarefa..."
                 value={newTask.description}
                 onChange={(e) =>
@@ -333,20 +344,24 @@ export default function Kanban() {
                 }
               />
             </div>
-            <div className="flex flex-col gap-1.5">
-              <Label>Prioridade</Label>
+            <div className="flex flex-col gap-2">
+              <Label className="text-black dark:text-black">Prioridade</Label>
               <Select
                 value={newTask.priority}
                 onValueChange={(v) =>
                   setNewTask((p) => ({ ...p, priority: v as PriorityType }))
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger className="bg-white hover:bg-white dark:bg-white dark:hover:bg-white text-black dark:text-black border border-black/20 shadow cursor-pointer">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-foreground border-none text-white dark:text-white ">
                   {PRIORITIES.map((p) => (
-                    <SelectItem key={p} value={p}>
+                    <SelectItem
+                      key={p}
+                      value={p}
+                      className="text-white dark:text-white hover:text-black dark:hover:text-black"
+                    >
                       {p}
                     </SelectItem>
                   ))}
@@ -355,11 +370,14 @@ export default function Kanban() {
             </div>
           </div>
           <DialogFooter className="gap-2">
-            <Button variant="outline" onClick={() => setShowAddModal(false)}>
+            <Button
+              className="bg-white hover:bg-white cursor-pointers text-black border"
+              onClick={() => setShowAddModal(false)}
+            >
               Cancelar
             </Button>
             <Button
-              className="bg-green-700 hover:bg-green-800 text-white"
+              className="bg-foreground hover:bg-foreground/90 cursor-pointer text-white"
               onClick={handleAddTask}
             >
               Criar tarefa
