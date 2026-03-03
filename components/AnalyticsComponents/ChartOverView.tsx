@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@/lib/supabase/server';
 import { ChartOverViewClient } from './chart-overview-client';
 
 export default async function ChartOverView({
@@ -7,7 +7,7 @@ export default async function ChartOverView({
 }: {
   searchParams: Promise<{ days?: string; link_id?: string }>;
 }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const params = await searchParams;
 
   const {
@@ -25,7 +25,6 @@ export default async function ChartOverView({
   startDate.setDate(startDate.getDate() - days);
 
   try {
-    // Get user's links first for subquery
     const userLinksQuery = await supabase
       .from('links')
       .select('id')
@@ -37,10 +36,8 @@ export default async function ChartOverView({
 
     const userLinkIds = userLinksQuery.data.map((link) => link.id);
 
-    // Get analytics data
     const [totalClicksResult, uniqueVisitorsResult, clicksByCountryResult] =
       await Promise.all([
-        // Total de clicks
         linkId
           ? supabase
               .from('clicks')
@@ -53,7 +50,6 @@ export default async function ChartOverView({
               .in('link_id', userLinkIds)
               .gte('clicked_at', startDate.toISOString()),
 
-        // Visitas unicas
         linkId
           ? supabase
               .from('clicks')
@@ -65,8 +61,6 @@ export default async function ChartOverView({
               .select('ip_hash')
               .in('link_id', userLinkIds)
               .gte('clicked_at', startDate.toISOString()),
-
-        // Clicks by day
         linkId
           ? supabase
               .from('clicks')
@@ -79,7 +73,6 @@ export default async function ChartOverView({
               .in('link_id', userLinkIds)
               .gte('clicked_at', startDate.toISOString()),
 
-        // Clicks by country
         linkId
           ? supabase
               .from('clicks')
@@ -94,7 +87,6 @@ export default async function ChartOverView({
               .gte('clicked_at', startDate.toISOString())
               .not('country', 'is', null),
 
-        // User's links for filter
         supabase
           .from('links')
           .select('id, slug, title, domains (domain)')
@@ -102,18 +94,15 @@ export default async function ChartOverView({
           .order('created_at', { ascending: false })
       ]);
 
-    // Check for errors in results
     if (totalClicksResult.error) throw totalClicksResult.error;
     if (uniqueVisitorsResult.error) throw uniqueVisitorsResult.error;
     if (clicksByCountryResult.error) throw clicksByCountryResult.error;
 
-    // Process data
     const totalClicks = totalClicksResult.count || 0;
     const uniqueVisitors = uniqueVisitorsResult.data
       ? new Set(uniqueVisitorsResult.data.map((item: any) => item.ip_hash)).size
       : 0;
 
-    // Group clicks by country
     const clicksByCountry =
       clicksByCountryResult.data?.reduce(
         (acc: Record<string, number>, click: any) => {

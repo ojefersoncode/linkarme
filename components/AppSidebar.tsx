@@ -12,7 +12,8 @@ import {
   CircleFadingPlus,
   Radio,
   FolderTree,
-  Chrome
+  Chrome,
+  ListTodo
 } from 'lucide-react';
 import {
   Sidebar,
@@ -29,6 +30,7 @@ import { usePathname } from 'next/navigation';
 
 const menuItems = [
   { title: 'Inicio', url: '/dashboard', icon: Home },
+  { title: 'Tarefas', url: '/dashboard/task', icon: ListTodo },
   { title: 'Metricas', url: '/dashboard/analytics', icon: BarChart3 },
   { title: 'Encurtar links', url: '/dashboard/links', icon: Link2 },
   { title: 'Social Media', url: '/dashboard/social-media', icon: Radio },

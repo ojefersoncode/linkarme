@@ -158,7 +158,6 @@ export function ChartClicks() {
           <CardTitle className="text-black">
             Total de cliks por período
           </CardTitle>
-          <CardDescription>Visitas do ultimos 3 meses</CardDescription>
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
           <SelectTrigger
