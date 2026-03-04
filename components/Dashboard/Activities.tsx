@@ -38,7 +38,7 @@ const campaigns = [
 
 export default async function Activities() {
   return (
-    <Tabs defaultValue="overview" className="bg-white">
+    <Tabs defaultValue="campaigns" className="bg-white">
       <TabsList className="w-full bg-background ">
         <TabsTrigger
           className="border-none text-black/80 dark:text-black/80 data-[state=active]:bg-foreground dark:data-[state=active]:bg-foreground data-[state=active]:text-white dark:data-[state=active]:text-white"
@@ -46,6 +46,14 @@ export default async function Activities() {
         >
           Campanhas
         </TabsTrigger>
+
+        <TabsTrigger
+          className="border-none text-black/80 dark:text-black/80 data-[state=active]:bg-foreground dark:data-[state=active]:bg-foreground data-[state=active]:text-white dark:data-[state=active]:text-white"
+          value="tasks"
+        >
+          Tarefas
+        </TabsTrigger>
+
         <TabsTrigger
           className="border-none text-black/80 dark:text-black/80 data-[state=active]:bg-foreground dark:data-[state=active]:bg-foreground data-[state=active]:text-white dark:data-[state=active]:text-white"
           value="overview"
@@ -99,6 +107,15 @@ export default async function Activities() {
           </CardContent>
         </Card>
       </TabsContent>
+
+      <TabsContent value="tasks">
+        <Card className="bg-white text-black shadow-none border-none py-2">
+          <CardContent className="text-black text-sm p-0">
+            <h1 className="text-lg font-bold">Tarefas recentes</h1>
+          </CardContent>
+        </Card>
+      </TabsContent>
+
       <TabsContent value="overview">
         <Card className="bg-white text-black shadow-none border-none py-2">
           <CardContent className="text-black text-sm p-0">
