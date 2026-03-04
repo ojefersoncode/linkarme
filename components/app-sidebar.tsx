@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Home,
   Link2,
@@ -7,12 +9,8 @@ import {
   Settings,
   Globe,
   QrCode,
-  ChartNoAxesCombined,
   Layers,
-  CircleFadingPlus,
   Radio,
-  FolderTree,
-  Chrome,
   ListTodo
 } from 'lucide-react';
 import {
@@ -25,8 +23,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 const menuItems = [
   { title: 'Inicio', url: '/dashboard', icon: Home },
@@ -34,7 +30,6 @@ const menuItems = [
   { title: 'Metricas', url: '/dashboard/analytics', icon: BarChart3 },
   { title: 'Encurtar links', url: '/dashboard/links', icon: Link2 },
   { title: 'Social Media', url: '/dashboard/social-media', icon: Radio },
-  { title: 'Navegador', url: '/dashboard/workflow', icon: Chrome },
   { title: 'Campanhas', url: '/dashboard/campaigns', icon: Layers },
   { title: 'QR codes', url: '/dashboard/qrcode', icon: QrCode },
   { title: 'Domínios', url: '/dashboard/domains', icon: Globe },
