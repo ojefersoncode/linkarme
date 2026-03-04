@@ -113,10 +113,7 @@ export default function Campaigns() {
   ]);
   const [activeTab, setActiveTab] = useState('tab-1');
 
-  const [profiles] = useState([
-    { id: 'profile-1', title: 'Luiz' },
-    { id: 'profile-2', title: 'Jeferson' }
-  ]);
+  const [profiles] = useState([{ id: 'profile-1', title: 'Jeferson' }]);
 
   const [selectedProfile, setSelectedProfile] = useState('profile-1');
 
@@ -132,8 +129,6 @@ export default function Campaigns() {
                 <SelectValue className="text-foreground" />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-white text-black dark:text-black border-none shadow-xl">
-                <Label className="p-2 text-sm">Meus perfis</Label>
-                <MenubarSeparator className="border border-gray-200" />
                 {profiles.map((profile) => (
                   <SelectItem
                     className="cursor-pointer"
@@ -143,17 +138,13 @@ export default function Campaigns() {
                     {profile.title}
                   </SelectItem>
                 ))}
-                <MenubarSeparator className="border border-gray-200" />
+
                 <SelectItem
                   value="new-profile"
-                  className="cursor-pointer mt-2 text-black dark:text-black hover:text-black dark:hover:text-black flex items-center gap-2"
+                  className="cursor-pointer text-black dark:text-black hover:text-black dark:hover:text-black flex items-center gap-2"
                 >
-                  <div className="flex items-center gap-2 p-2 cursor-pointer">
-                    <Plus className="size-4" />
-                    <span className="text-xs font-semibold">
-                      Adicionar novo perfil
-                    </span>
-                  </div>
+                  <Plus className="size-4" />
+                  <span className="text-xs font-semibold">Criar</span>
                 </SelectItem>
               </SelectContent>
             </Select>

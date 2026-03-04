@@ -3,7 +3,8 @@ import { createClient } from '@/lib/supabase/server';
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 import { Card, CardHeader } from '@/components/ui/card';
 import Activities from '@/components/Dashboard/Activities';
-import Campaigns from '@/components/Dashboard/Campaigns';
+import { Button } from '@/components/ui/button';
+import { Edit } from 'lucide-react';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -52,23 +53,17 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-4 bg-[#eeeeee] min-h-screen">
       <NavbarDashboard />
-
-      <div className="grid md:grid-cols-2 gap-4 pb-6 px-4 shadow shadow-primary">
+      <div className="pb-6 px-4 shadow shadow-primary">
         <Card className="bg-white shadow shadow-primary p-4 rounded border-none">
-          <CardHeader className="p-0">
+          <CardHeader className="flex items-center justify-between p-0">
             <h1 className="text-xl px-2 pt-2 md:text-3xl font-semibold text-black">
               Atividades Recentes
             </h1>
+            <Button className="bg-white hover:bg-background transition-all duration-300 text-black hover:text-black/70 cursor-pointer">
+              <Edit />
+            </Button>
           </CardHeader>
           <Activities />
-        </Card>
-        <Card className="bg-white shadow shadow-primary border-none rounded p-4">
-          <CardHeader className="p-0">
-            <h1 className="text-xl px-2 pt-2 md:text-3xl font-semibold text-black">
-              Campanhas Recentes
-            </h1>
-          </CardHeader>
-          <Campaigns />
         </Card>
       </div>
     </div>

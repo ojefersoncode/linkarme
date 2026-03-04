@@ -11,7 +11,8 @@ import {
   QrCode,
   Layers,
   Radio,
-  ListTodo
+  ListTodo,
+  Plus
 } from 'lucide-react';
 import {
   Sidebar,
@@ -23,6 +24,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+import { useState } from 'react';
 
 const menuItems = [
   { title: 'Inicio', url: '/dashboard', icon: Home },
@@ -37,17 +46,41 @@ const menuItems = [
 ];
 
 export function AppSidebar() {
+  const [profiles] = useState([{ id: 'profile-1', title: 'Jeferson' }]);
+
+  const [selectedProfile, setSelectedProfile] = useState('profile-1');
   const pathname = usePathname();
 
   return (
     <Sidebar className="shadow shadow-primary border-none">
-      <SidebarHeader className="bg-white px-4 pt-4 pb-5">
-        <div className="flex items-center">
-          <img src="/icon.png" alt="Linktraces" className="w-8 h-8" />
-          <h1 className="ml-2 text-foreground font-semibold text-lg">
-            Linktraces
-          </h1>
-        </div>
+      <SidebarHeader className="bg-white p-4">
+        <Select value={selectedProfile} onValueChange={setSelectedProfile}>
+          <SelectTrigger className="flex gap-2 w-full border-none shadow-none text-black bg-white dark:bg-white hover:bg-background hover:dark:bg-background cursor-pointer">
+            <span className="h-6 w-6 rounded-full text-center text-sm font-semibold bg-foreground text-background">
+              J
+            </span>
+
+            <SelectValue className="text-foreground font-bold text-base" />
+          </SelectTrigger>
+          <SelectContent className="bg-white dark:bg-white text-black dark:text-black border-gray-300 shadow-xl shadow-black/10">
+            {profiles.map((profile) => (
+              <SelectItem
+                className="cursor-pointer"
+                key={profile.id}
+                value={profile.id}
+              >
+                {profile.title}
+              </SelectItem>
+            ))}
+            <SelectItem
+              value="new-profile"
+              className="cursor-pointer mt-2 text-black dark:text-black hover:text-black dark:hover:text-black flex items-center gap-2"
+            >
+              <Plus className="size-4" />
+              <span className="text-xs font-normal">Criar</span>
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </SidebarHeader>
 
       <SidebarContent className="justify-between bg-white border-t pt-1 border-primary shadow-none">
