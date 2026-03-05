@@ -10,10 +10,7 @@ export function NavbarDashboard() {
         <img src="/icon.png" alt="Linktraces" className="w-6 h-6" />
       </div>
 
-      <div className="flex items-center gap-4 max-md:justify-end max-md:w-full">
-        <Search />
-        <ProfileButton />
-      </div>
+      <Search />
     </div>
   );
 }

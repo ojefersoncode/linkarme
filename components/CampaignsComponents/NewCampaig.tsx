@@ -38,9 +38,9 @@ export function NewCampaig() {
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button className="bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
-            <div className="flex items-center gap-2 text-white">
-              <Plus className="w-5 h-5" /> Nova campanha
+          <Button className="w-full bg-foreground hover:bg-foreground/80 transition-all duration-300 cursor-pointer border-none">
+            <div className="flex items-center gap-2 text-white text-xs font-semibold">
+              <Plus className="size-4" /> Nova campanha
             </div>
           </Button>
         </DialogTrigger>

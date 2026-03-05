@@ -21,9 +21,9 @@ import {
 import { NavbarDashboard } from '@/components/Dashboard/navbar-dashboard';
 import { NewCampaig } from '@/components/CampaignsComponents/NewCampaig';
 import { EditCampaig } from '@/components/CampaignsComponents/EditCampaig';
-import { Plus } from 'lucide-react';
-import { Label } from '@/components/ui/label';
-import { MenubarSeparator } from '@/components/ui/menubar';
+import { CopyIcon } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 const mycampaigns = [
   {
@@ -106,10 +106,9 @@ const CampaignsTable = () => (
 
 export default function Campaigns() {
   const [tabs] = useState([
-    { id: 'tab-1', title: 'Facebook' },
-    { id: 'tab-2', title: 'Instagram' },
-    { id: 'tab-3', title: 'Tiktok' },
-    { id: 'tab-4', title: 'Google' }
+    { id: 'tab-1', title: 'Meta' },
+    { id: 'tab-2', title: 'Tiktok' },
+    { id: 'tab-3', title: 'Google' }
   ]);
   const [activeTab, setActiveTab] = useState('tab-1');
 
@@ -121,42 +120,10 @@ export default function Campaigns() {
     <div className=" bg-background h-screen">
       <NavbarDashboard />
 
-      <div className="px-4">
-        <Card className="bg-transparent shadow-none border-none">
-          <div className="flex items-center gap-4">
-            <Select value={selectedProfile} onValueChange={setSelectedProfile}>
-              <SelectTrigger className="border-none text-black bg-white dark:bg-white hover:bg-white hover:dark:bg-white cursor-pointer w-44">
-                <SelectValue className="text-foreground" />
-              </SelectTrigger>
-              <SelectContent className="bg-white dark:bg-white text-black dark:text-black border-none shadow-xl">
-                {profiles.map((profile) => (
-                  <SelectItem
-                    className="cursor-pointer"
-                    key={profile.id}
-                    value={profile.id}
-                  >
-                    {profile.title}
-                  </SelectItem>
-                ))}
-
-                <SelectItem
-                  value="new-profile"
-                  className="cursor-pointer text-black dark:text-black hover:text-black dark:hover:text-black flex items-center gap-2"
-                >
-                  <Plus className="size-4" />
-                  <span className="text-xs font-semibold">Criar</span>
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </Card>
-      </div>
-
-      <div className="px-4 pb-4">
+      <div className="p-4">
         <Card className="flex flex-col p-4 bg-white border-none rounded text-black w-full">
           <CardHeader className="flex items-center w-full justify-between font-bold text-xl max-md:text-xl px-0">
             <h1>Suas campanhas</h1>
-            <NewCampaig />
           </CardHeader>
           <CardContent className="font-medium px-0 text-black text-xl max-md:text-base">
             <Tabs
@@ -175,6 +142,37 @@ export default function Campaigns() {
                   </TabsTrigger>
                 ))}
               </TabsList>
+
+              <div className="flex w-full max-md:grid grid-cols-2 items-center gap-4 pt-4">
+                <Select
+                  value={selectedProfile}
+                  onValueChange={setSelectedProfile}
+                >
+                  <SelectTrigger className="border border-gray-400 text-black bg-white dark:bg-white hover:bg-white hover:dark:bg-white cursor-pointer w-full md:w-44">
+                    <SelectValue className="text-foreground" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white dark:bg-white text-black dark:text-black border-none shadow-xl">
+                    {profiles.map((profile) => (
+                      <SelectItem
+                        className="cursor-pointer"
+                        key={profile.id}
+                        value={profile.id}
+                      >
+                        {profile.title}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Input
+                  type="date"
+                  className="w-full md:max-w-40 border border-gray-400 bg-white dark:bg-white text-black dark:text-black focus:ring-0 focus:ring-foreground cursor-pointer"
+                />
+                <Button className="border border-gray-400 text-black hover:text-black bg-white dark:bg-white hover:bg-white hover:dark:bg-white cursor-pointer">
+                  <CopyIcon className="size-4" />
+                  <span className="text-xs font-semibold">Duplicar</span>
+                </Button>
+                <NewCampaig />
+              </div>
 
               {tabs.map((tab) => (
                 <TabsContent
