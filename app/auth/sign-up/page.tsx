@@ -6,11 +6,9 @@ import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import Image from 'next/image';
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('');
@@ -67,47 +65,35 @@ export default function SignUpPage() {
           <CardContent>
             <form onSubmit={handleSignUp}>
               <div className="flex flex-col gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="fullName" className="text-foreground">
-                    Nome Completo
-                  </Label>
-                  <Input
-                    id="fullName"
-                    type="text"
-                    placeholder="Seu nome completo"
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="bg-white dark:bg-white text-black border-black/40"
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="email" className="text-foreground">
-                    Email
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="seu@email.com"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="bg-white dark:bg-white text-black border-black/40"
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="password" className="text-foreground">
-                    Senha
-                  </Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="bg-white dark:bg-white text-black border-black/40"
-                  />
-                </div>
+                <Input
+                  id="fullName"
+                  type="text"
+                  placeholder="Nome completo"
+                  required
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="bg-white dark:bg-white placeholder:text-gray-700 text-black border-black/40"
+                />
+
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Email ou numero de telefone"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-white dark:bg-white placeholder:text-gray-700 text-black border-black/40"
+                />
+
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Senha"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="bg-white dark:bg-white placeholder:text-gray-700 text-black border-black/40"
+                />
 
                 {error && <p className="text-sm text-destructive">{error}</p>}
                 <Button
@@ -117,29 +103,6 @@ export default function SignUpPage() {
                 >
                   {isLoading ? 'Criando conta...' : 'Criar Conta'}
                 </Button>
-
-                <div className="flex flex-col w-full justify-center gap-3 ">
-                  <div className="flex w-full items-center gap-2">
-                    <div className="h-px flex-1 bg-black/40"></div>
-                    <span className="text-foreground text-sm">OU</span>
-                    <div className="h-px flex-1 bg-accent/70"></div>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="flex items-center w-full text-sm font-semibold text-foreground bg-white hover:bg-white/80 border border-black/40 cursor-pointer"
-                    disabled={isLoading}
-                  >
-                    <Image
-                      width="100"
-                      height="100"
-                      src={'/google-icon.svg'}
-                      alt={'Google icon'}
-                      className="size-4"
-                    />
-                    Registre-se com o Google
-                  </Button>
-                </div>
               </div>
               <div className="flex items-center w-full justify-center gap-2 mt-6 text-black text-center text-sm">
                 Já tem uma conta?

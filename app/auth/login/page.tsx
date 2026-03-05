@@ -6,11 +6,9 @@ import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import Image from 'next/image';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -52,33 +50,26 @@ export default function LoginPage() {
             <CardContent className="bg-white">
               <form onSubmit={handleLogin}>
                 <div className="flex flex-col gap-6">
-                  <div className="grid gap-2">
-                    <Label htmlFor="email" className="text-foreground">
-                      Email
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="seu@email.com"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="bg-white dark:bg-white text-black border-black/40"
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="password" className="text-foreground">
-                      Senha
-                    </Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      required
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="bg-white dark:bg-white text-black border-black/40"
-                    />
-                  </div>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Email ou numero de telefone"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="bg-white dark:bg-white placeholder:text-gray-700 text-black border-black/40"
+                  />
+
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Senha"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="bg-white dark:bg-white placeholder:text-gray-700 text-black border-black/40"
+                  />
+
                   {error && <p className="text-sm text-destructive">{error}</p>}
                   <Button
                     type="submit"
@@ -89,36 +80,18 @@ export default function LoginPage() {
                   </Button>
                 </div>
 
-                <div className="flex flex-col w-full justify-center gap-4 py-4">
-                  <div className="flex w-full items-center gap-2">
-                    <div className="h-px flex-1 bg-black/40"></div>
-                    <span className="text-foreground text-sm">OU</span>
-                    <div className="h-px flex-1 bg-accent/70"></div>
-                  </div>
+                <div className="flex flex-col w-full items-center justify-center mt-2 gap-4">
+                  <span className="p-2 text-black hover:underline cursor-pointer text-sm">
+                    Esqueçeu a senha?
+                  </span>
 
-                  <Button
-                    type="submit"
-                    className="flex items-center w-full text-sm font-semibold text-foreground bg-white hover:bg-white/80 border border-black/40 cursor-pointer"
-                    disabled={isLoading}
-                  >
-                    <Image
-                      width="100"
-                      height="100"
-                      src={'/google-icon.svg'}
-                      alt={'Google icon'}
-                      className="size-4"
-                    />
-                    Entrar com o Google
-                  </Button>
-                </div>
-
-                <div className="flex w-full items-center justify-center gap-2 mt-4 text-center text-black text-sm ">
-                  Não tem uma conta?
                   <Link
                     href="/auth/sign-up"
-                    className="font-semibold text-sm text-foreground hover:text-foreground/70"
+                    className="flex w-full justify-center items-center mt-4 font-semibold text-sm text-foreground hover:text-foreground/70"
                   >
-                    Criar conta
+                    <Button className="w-full bg-white hover:bg-green-500/10 text-foreground cursor-pointer border border-foreground">
+                      Criar nova conta
+                    </Button>
                   </Link>
                 </div>
               </form>
