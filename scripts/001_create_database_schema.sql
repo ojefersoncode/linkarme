@@ -90,6 +90,30 @@ USING (
 
 CREATE POLICY "clicks_insert_public" ON public.clicks FOR INSERT WITH CHECK (true);
 
+
+-- Create Task table for users
+CREATE TABLE IF NOT EXISTS public.tasks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  title_task TEXT NOT NULL,
+  content_task TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Enable RLS for tasks
+ALTER TABLE public.tasks ENABLE ROW LEVEL SECURITY;
+
+-- Tasks policies
+CREATE POLICY "tasks_select_own" ON public.tasks
+FOR SELECT
+USING (auth.uid() = user_id);
+
+CREATE POLICY "tasks_delete_own" ON public.tasks
+FOR DELETE
+USING (auth.uid() = user_id);
+
+
 -- Create indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_domains_user_id ON public.domains(user_id);
 CREATE INDEX IF NOT EXISTS idx_domains_domain ON public.domains(domain);
@@ -97,6 +121,7 @@ CREATE INDEX IF NOT EXISTS idx_links_user_id ON public.links(user_id);
 CREATE INDEX IF NOT EXISTS idx_links_domain_slug ON public.links(domain_id, slug);
 CREATE INDEX IF NOT EXISTS idx_clicks_link_id ON public.clicks(link_id);
 CREATE INDEX IF NOT EXISTS idx_clicks_clicked_at ON public.clicks(clicked_at);
+CREATE INDEX IF NOT EXISTS idx_tasks_user_id ON public.tasks(user_id);
 
 
 

@@ -25,6 +25,7 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { ArrowLeft, Link2 } from 'lucide-react';
 import Link from 'next/link';
+import ArrowBack from '@/components/Dashboard/ArrowBack';
 
 interface Domain {
   id: string;
@@ -206,21 +207,11 @@ export default function EditLinkPage({
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="sm" asChild>
-          <Link href="/dashboard/links">
-            <ArrowLeft className="h-4 w-4" />
-          </Link>
-        </Button>
-        <div>
-          <h1 className="text-3xl font-bold text-white">Editar Link</h1>
-          <p className="text-muted-foreground">
-            Edite as informações do seu link
-          </p>
-        </div>
+        <ArrowBack />
       </div>
 
-      <div className="max-w-2xl">
-        <Card className="bg-foreground border-zinc-700">
+      <div className="w-full">
+        <Card className="bg-white border-none">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Link2 className="h-5 w-5" />

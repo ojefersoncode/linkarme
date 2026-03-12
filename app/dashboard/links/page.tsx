@@ -70,7 +70,7 @@ export default async function LinksPage() {
       </div>
 
       {links && links.length > 0 ? (
-        <div className="grid gap-4 px-6">
+        <div className="grid gap-4 px-4">
           {links.map((link) => {
             const clickCount = Array.isArray(link.clicks)
               ? link.clicks.length
@@ -78,94 +78,101 @@ export default async function LinksPage() {
             const shortUrl = `https://${link.domains?.domain}/${link.slug}`;
 
             return (
-              <Card key={link.id} className="bg-foreground border-accent/40">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-2 flex-1">
-                      <div className="flex items-center gap-2">
-                        <Link2 className="h-4 w-4 text-muted-foreground" />
-                        <CardTitle className="text-lg">
-                          {link.title || link.slug}
-                        </CardTitle>
-                        {getStatusBadge(link.active)}
-                      </div>
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-sm">
-                          <span className="font-medium text-primary">
-                            {shortUrl}
-                          </span>
-                          <CopyLinkButton url={shortUrl} />
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            asChild
-                            className="h-6 w-6 p-0"
-                          >
-                            <a
-                              href={shortUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
+              <div className="pb-4">
+                <Card key={link.id} className="bg-white text-black border-none">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div className="space-y-2 flex-1">
+                        <div className="flex items-center gap-2">
+                          <Link2 className="h-4 w-4 text-muted-foreground" />
+                          <CardTitle className="text-lg text-black dark:text-black">
+                            {link.title || link.slug}
+                          </CardTitle>
+                          {getStatusBadge(link.active)}
+                        </div>
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2 text-sm">
+                            <span className="font-medium text-black dark:text-black">
+                              {shortUrl}
+                            </span>
+                            <CopyLinkButton url={shortUrl} />
+                            <Button
+                              size="sm"
+                              asChild
+                              className="bg-white hover:bg-white text-black h-6 w-6 p-0"
                             >
-                              <ExternalLink className="h-3 w-3" />
-                            </a>
-                          </Button>
+                              <a
+                                href={shortUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <ExternalLink className="h-3 w-3" />
+                              </a>
+                            </Button>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <span>→</span>
+                            <span className="truncate max-w-md">
+                              {link.destination_url}
+                            </span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <span>→</span>
-                          <span className="truncate max-w-md">
-                            {link.destination_url}
-                          </span>
+                        {link.description && (
+                          <CardDescription className="mt-2">
+                            {link.description}
+                          </CardDescription>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-2 ml-4">
+                        <div className="text-right">
+                          <div className="flex items-center gap-1 text-sm font-medium">
+                            <BarChart3 className="h-4 w-4" />
+                            {clickCount}
+                          </div>
+                          <div className="text-xs text-muted-foreground">
+                            cliques
+                          </div>
                         </div>
                       </div>
-                      {link.description && (
-                        <CardDescription className="mt-2">
-                          {link.description}
-                        </CardDescription>
-                      )}
                     </div>
-                    <div className="flex items-center gap-2 ml-4">
-                      <div className="text-right">
-                        <div className="flex items-center gap-1 text-sm font-medium">
-                          <BarChart3 className="h-4 w-4" />
-                          {clickCount}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          cliques
-                        </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm text-muted-foreground">
+                        Criado em
+                        {new Date(link.created_at).toLocaleDateString(
+                          'pt-BR'
+                        )}{' '}
+                        • Domínio: {link.domains?.domain}
+                        {!link.domains?.verified && (
+                          <Badge variant="destructive" className="ml-2">
+                            Domínio não verificado
+                          </Badge>
+                        )}
+                      </div>
+                      <div className="flex gap-2">
+                        <ToggleLinkButton
+                          linkId={link.id}
+                          currentStatus={link.active}
+                        />
+                        <Button
+                          className="border-none bg-foreground hover:bg-foreground/80 cursor-pointer"
+                          size="sm"
+                          asChild
+                        >
+                          <Link href={`/dashboard/links/${link.id}/edit`}>
+                            Editar
+                          </Link>
+                        </Button>
+                        <DeleteLinkButton
+                          linkId={link.id}
+                          linkTitle={link.title || link.slug}
+                        />
                       </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm text-muted-foreground">
-                      Criado em{' '}
-                      {new Date(link.created_at).toLocaleDateString('pt-BR')} •
-                      Domínio: {link.domains?.domain}
-                      {!link.domains?.verified && (
-                        <Badge variant="destructive" className="ml-2">
-                          Domínio não verificado
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="flex gap-2">
-                      <ToggleLinkButton
-                        linkId={link.id}
-                        currentStatus={link.active}
-                      />
-                      <Button variant="outline" size="sm" asChild>
-                        <Link href={`/dashboard/links/${link.id}/edit`}>
-                          Editar
-                        </Link>
-                      </Button>
-                      <DeleteLinkButton
-                        linkId={link.id}
-                        linkTitle={link.title || link.slug}
-                      />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             );
           })}
         </div>

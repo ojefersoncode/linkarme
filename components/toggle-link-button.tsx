@@ -1,45 +1,53 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { createClient } from "@/lib/supabase/client"
-import { Button } from "@/components/ui/button"
-import { Power, PowerOff, Loader2 } from "lucide-react"
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
+import { Button } from '@/components/ui/button';
+import { Power, PowerOff, Loader2 } from 'lucide-react';
 
 interface ToggleLinkButtonProps {
-  linkId: string
-  currentStatus: boolean
+  linkId: string;
+  currentStatus: boolean;
 }
 
-export function ToggleLinkButton({ linkId, currentStatus }: ToggleLinkButtonProps) {
-  const [isToggling, setIsToggling] = useState(false)
-  const router = useRouter()
+export function ToggleLinkButton({
+  linkId,
+  currentStatus
+}: ToggleLinkButtonProps) {
+  const [isToggling, setIsToggling] = useState(false);
+  const router = useRouter();
 
   const handleToggle = async () => {
-    setIsToggling(true)
+    setIsToggling(true);
 
     try {
-      const supabase = createClient()
+      const supabase = createClient();
       const { error } = await supabase
-        .from("links")
+        .from('links')
         .update({
           active: !currentStatus,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
-        .eq("id", linkId)
+        .eq('id', linkId);
 
-      if (error) throw error
+      if (error) throw error;
 
-      router.refresh()
+      router.refresh();
     } catch (error) {
-      console.error("Error toggling link:", error)
+      console.error('Error toggling link:', error);
     } finally {
-      setIsToggling(false)
+      setIsToggling(false);
     }
-  }
+  };
 
   return (
-    <Button variant={currentStatus ? "outline" : "default"} size="sm" onClick={handleToggle} disabled={isToggling}>
+    <Button
+      className="bg-white hover:bg-white text-black dark:text-black cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+      size="sm"
+      onClick={handleToggle}
+      disabled={isToggling}
+    >
       {isToggling ? (
         <Loader2 className="h-4 w-4 animate-spin" />
       ) : currentStatus ? (
@@ -48,5 +56,5 @@ export function ToggleLinkButton({ linkId, currentStatus }: ToggleLinkButtonProp
         <Power className="h-4 w-4" />
       )}
     </Button>
-  )
+  );
 }
