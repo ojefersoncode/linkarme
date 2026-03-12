@@ -26,14 +26,15 @@ export function Search() {
           </DialogHeader>
 
           <div className="flex flex-col">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 border border-black/30 rounded-sm p-1">
               <Input
                 type="text"
                 placeholder="Pesquisar..."
-                className="border-black/40 bg-white dark:bg-white focus:ring-0 p-4"
+                className="border-none text-black dark:text-black placeholder:text-black dark:placeholder:text-black bg-white dark:bg-white focus:ring-0 p-4"
               />
-              <Button className="p-4 bg-foreground hover:bg-foreground/90 border-none cursor-pointer text-white">
-                <SearchIcon className="size-5" />
+
+              <Button className="p-4 bg-foreground hover:bg-foreground/90 shadow-none border-none cursor-pointer rounded-sm text-white">
+                <SearchIcon className="size-4" />
               </Button>
             </div>
 
@@ -43,8 +44,8 @@ export function Search() {
                   Resultados da pesquisa
                 </CardTitle>
               </CardHeader>
-              <CardContent className="px-0 pt-0">
-                <ul className="flex flex-col gap-2 text-xs font-normal">
+              <CardContent className="p-0">
+                <ul className="flex flex-col gap-1 text-xs font-normal">
                   <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                     Resultado 1
                   </li>
